@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-base: #f4f6f9;
+  --bg-card: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+}
+
+.dark {
+  --bg-base: #0d1117;
+  --bg-card: #161b22;
+  --text-primary: #f0f6fc;
+  --text-muted: #8b949e;
+  --border-light: #30363d;
+}
+
+body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
