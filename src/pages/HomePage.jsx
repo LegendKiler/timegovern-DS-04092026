@@ -4,6 +4,7 @@ import { Calendar, Moon, Clock, Activity, Zap, Wrench, DollarSign, ArrowRight, S
 import { useEffect, useState } from 'react'
 import Clocks from '../components/Clocks'
 import WorldClocks from '../components/WorldClocks'
+import { SEARCH_INDEX } from '../data/searchIndex'
 
 const CATEGORIES = [
   { name: 'Time', tagline: 'Live clocks', href: '/world-clock', icon: Clock, gradient: 'from-sky-500 to-blue-600', desc: 'World clock, time zone converter, meeting planner.' },
@@ -67,7 +68,7 @@ export default function HomePage() {
   }, [])
 
   const results = query.trim()
-    ? FEATURED.filter(t => t.name.toLowerCase().includes(query.toLowerCase()) || t.tagline.toLowerCase().includes(query.toLowerCase()))
+    ? SEARCH_INDEX.filter(t => t.name.toLowerCase().includes(query.toLowerCase()) || t.tagline.toLowerCase().includes(query.toLowerCase()) || t.href.toLowerCase().includes(query.toLowerCase())).slice(0, 12)
     : []
 
   return (
