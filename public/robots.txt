@@ -17,4 +17,4 @@ Disallow: /compare-calculations
 Disallow: /api/
 
 # Sitemap
-Sitemap: https://timegovern.com/sitemap.xml
+Sitemap: https://timegovern.com/sitemap-index.xml
