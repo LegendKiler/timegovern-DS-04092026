@@ -80,8 +80,8 @@ const NAV = [
 ]
 
 function countryToFlag(cc) {
-  if (!cc || typeof cc !== 'string' || cc.length !== 2) return 'ðŸŒ'
-  return String.fromCodePoint(...cc.toUpperCase().split(').map(c => 0x1F1E6 + c.charCodeAt(0) - 65))
+  if (!cc || typeof cc !== 'string' || cc.length !== 2) return 'Ã°Å¸Å’Â'
+  return String.fromCodePoint(...cc.toUpperCase().split('').map(c => 0x1F1E6 + c.charCodeAt(0) - 65))
 }
 
 export default function Header() {
@@ -254,7 +254,7 @@ export default function Header() {
           </Button>
 
           {geo?.country && (
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/50 border border-border text-xs font-medium cursor-default" title={[geo.city, geo.region, geo.timezone].filter(Boolean).join(' Â· ')}>
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/50 border border-border text-xs font-medium cursor-default" title={[geo.city, geo.region, geo.timezone].filter(Boolean).join(' Ã‚Â· ')}>
               <span className="text-base leading-none">{countryToFlag(geo.country)}</span>
               <span className="text-muted-foreground">{geo.country}</span>
             </div>
