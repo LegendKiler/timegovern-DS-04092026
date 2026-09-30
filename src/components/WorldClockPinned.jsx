@@ -1,17 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import { useState, useEffect } from 'react'
-}
-import { useGeo } from '../hooks/useGeo'
-import { useState, useEffect } from 'react'
-import { Card, CardContent } from '@/components/ui/card'
 import { Clock, Plus, X, Sun, Moon, Globe, Search, Sparkles } from 'lucide-react'
 import { CITIES, CITY_LIST, REGIONS } from '../data/cities'
 import { useServerTime, describeDrift } from '../hooks/useServerTime'
 import { useSupporterStatus, TIER_LIMITS } from '../hooks/useSupporterStatus'
+import { useGeo } from '../hooks/useGeo'
 
 const limit = 12
-
 const readPins = () => {
   try {
     const raw = localStorage.getItem('timegovern_world_clock_pins')
@@ -21,6 +16,7 @@ const readPins = () => {
     }
   } catch {}
   return { list: ['new-york', 'london', 'tokyo', 'sydney'], customized: false }
+}
 }
 
 const formatTime = (tz, date) => {
