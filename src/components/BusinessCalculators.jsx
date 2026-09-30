@@ -1,6 +1,10 @@
-import { useState } from 'react'
-import { addBusinessDays, isWeekend, differenceInBusinessDays } from 'date-fns'
+﻿import { useState } from 'react'
+import { isWeekend } from 'date-fns'
 import { isHoliday } from '../utils/holidays'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function BusinessCalculators() {
   const [region, setRegion] = useState('US')
@@ -37,35 +41,40 @@ export default function BusinessCalculators() {
   }
 
   return (
-    <div className="card bg-card rounded-card p-6 shadow-card">
-      <h2 className="text-xl font-semibold mb-4">Business Tools</h2>
-      <div className="mb-2">
-        <label className="block text-sm">Region</label>
-        <select value={region} onChange={e => setRegion(e.target.value)} className="w-full border rounded p-2">
-          <option>US</option>
-          <option>UK</option>
-          <option>AU</option>
-          <option>NZ</option>
-        </select>
-      </div>
-      <div className="mb-2">
-        <p className="font-medium">Working Day Counter</p>
-        <div className="flex gap-2">
-          <input type="date" className="border rounded p-2" value={start} onChange={e => setStart(e.target.value)} />
-          <input type="date" className="border rounded p-2" value={end} onChange={e => setEnd(e.target.value)} />
+    <Card>
+      <CardHeader><CardTitle>Business Tools</CardTitle></CardHeader>
+      <CardContent className="space-y-4">
+        <div>
+          <label className="text-sm">Region</label>
+          <Select value={region} onValueChange={setRegion}>
+            <SelectTrigger className="mt-1 w-full"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="US">US</SelectItem>
+              <SelectItem value="UK">UK</SelectItem>
+              <SelectItem value="AU">AU</SelectItem>
+              <SelectItem value="NZ">NZ</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
-        <button onClick={countBusiness} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Count</button>
-        {days !== null && <p className="mt-2">Business days: {days}</p>}
-      </div>
-      <div className="mt-4">
-        <p className="font-medium">Deadline Projector</p>
-        <div className="flex gap-2">
-          <input type="date" className="border rounded p-2" value={startProj} onChange={e => setStartProj(e.target.value)} />
-          <input type="number" className="border rounded p-2" value={numDays} onChange={e => setNumDays(parseInt(e.target.value))} />
+        <div>
+          <p className="font-medium mb-2">Working Day Counter</p>
+          <div className="flex gap-2">
+            <Input type="date" onClick={(e) => e.target.showPicker?.()} value={start} onChange={e => setStart(e.target.value)} />
+            <Input type="date" onClick={(e) => e.target.showPicker?.()} value={end} onChange={e => setEnd(e.target.value)} />
+          </div>
+          <Button onClick={countBusiness} className="mt-2 w-full">Count</Button>
+          {days !== null && <p className="mt-2 text-center font-semibold">{days} business days</p>}
         </div>
-        <button onClick={projectDeadline} className="mt-2 bg-green-500 text-white px-4 py-2 rounded">Project</button>
-        {projEnd && <p className="mt-2">Projected end: {projEnd}</p>}
-      </div>
-    </div>
+        <div>
+          <p className="font-medium mb-2">Deadline Projector</p>
+          <div className="flex gap-2">
+            <Input type="date" onClick={(e) => e.target.showPicker?.()} value={startProj} onChange={e => setStartProj(e.target.value)} />
+            <Input type="number" value={numDays} onChange={e => setNumDays(parseInt(e.target.value))} />
+          </div>
+          <Button onClick={projectDeadline} className="mt-2 w-full">Project</Button>
+          {projEnd && <p className="mt-2 text-center font-semibold">End: {projEnd}</p>}
+        </div>
+      </CardContent>
+    </Card>
   )
 }

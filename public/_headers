@@ -1,0 +1,6 @@
+# Cloudflare Pages headers
+# Allow /embed/* to be framed from any origin
+
+/embed/*
+  Content-Security-Policy: frame-ancestors *
+  Cache-Control: public, max-age=3600

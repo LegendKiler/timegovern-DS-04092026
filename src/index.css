@@ -1,26 +1,707 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 142.1 76.2% 36.3%;
+    --secondary-foreground: 355.7 100% 97.3%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 38.9 92% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 142.1 76.2% 36.3%;
+    --secondary-foreground: 355.7 100% 97.3%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 38.9 92% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* Custom animations */
+@keyframes marquee-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee-slow {
+  animation: marquee-slow 60s linear infinite;
+  display: inline-block;
+}
+
+@keyframes ticker-slow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-ticker-slow {
+  animation: ticker-slow 80s linear infinite;
+  display: inline-block;
+}
+
+/* ============================================================
+   TIMEGOVERN DESIGN SYSTEM — Bank-Grade Calculator Tokens
+   Matches Capital One, ING, Revolut standards
+   ============================================================ */
+
 :root {
-  --bg-base: #f4f6f9;
-  --bg-card: #ffffff;
-  --text-primary: #1a1a2e;
-  --text-muted: #6b7280;
-  --border-light: #e5e7eb;
+  /* Typography Scale */
+  --tg-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --tg-font-mono: 'JetBrains Mono', 'SF Mono', 'Roboto Mono', Menlo, monospace;
+  --tg-text-hero: 56px;
+  --tg-text-page-title: 36px;
+  --tg-text-section: 26px;
+  --tg-text-card-title: 20px;
+  --tg-text-body: 16px;
+  --tg-text-label: 13px;
+  --tg-text-caption: 11px;
+  --tg-line-tight: 1.05;
+  --tg-line-heading: 1.2;
+  --tg-line-body: 1.6;
+  --tg-line-number: 1.0;
+
+  /* Font Weights */
+  --tg-weight-light: 300;
+  --tg-weight-regular: 400;
+  --tg-weight-medium: 500;
+  --tg-weight-semibold: 600;
+  --tg-weight-bold: 700;
+  --tg-weight-black: 800;
+
+  /* Financial Colors */
+  --tg-positive: #16A34A;
+  --tg-positive-bg: rgba(22, 163, 74, 0.1);
+  --tg-negative: #DC2626;
+  --tg-negative-bg: rgba(220, 38, 38, 0.1);
+  --tg-warning: #D97706;
+  --tg-warning-bg: rgba(217, 119, 6, 0.1);
+  --tg-info: #2563EB;
+  --tg-info-bg: rgba(37, 99, 235, 0.1);
+
+  /* Result Card Colors */
+  --tg-result-primary-bg: rgba(16, 185, 129, 0.12);
+  --tg-result-primary-border: rgba(16, 185, 129, 0.4);
+  --tg-result-primary-text: #059669;
+  --tg-result-secondary-bg: rgba(220, 38, 38, 0.08);
+  --tg-result-secondary-border: rgba(220, 38, 38, 0.25);
+  --tg-result-secondary-text: #DC2626;
+
+  /* Spacing (8px base) */
+  --tg-space-1: 4px;
+  --tg-space-2: 8px;
+  --tg-space-3: 12px;
+  --tg-space-4: 16px;
+  --tg-space-5: 20px;
+  --tg-space-6: 24px;
+  --tg-space-8: 32px;
+  --tg-space-10: 40px;
+  --tg-space-12: 48px;
+
+  /* Border Radius */
+  --tg-radius-sm: 6px;
+  --tg-radius-md: 10px;
+  --tg-radius-lg: 14px;
+  --tg-radius-xl: 20px;
+
+  /* Shadows */
+  --tg-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --tg-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --tg-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+  --tg-shadow-xl: 0 20px 48px rgba(0, 0, 0, 0.15);
 }
 
-.dark {
-  --bg-base: #0d1117;
-  --bg-card: #161b22;
-  --text-primary: #f0f6fc;
-  --text-muted: #8b949e;
-  --border-light: #30363d;
+/* ============================================================
+   CALCULATOR CARD
+   ============================================================ */
+.tg-calc-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--tg-radius-lg);
+  box-shadow: var(--tg-shadow-md);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
+.tg-calc-card:hover {
+  box-shadow: var(--tg-shadow-lg);
+}
+
+.tg-calc-card-accent {
+  height: 4px;
+  background: linear-gradient(90deg, #10b981, #14b8a6, #06b6d4);
+}
+
+/* ============================================================
+   RESULT DISPLAY
+   ============================================================ */
+.tg-result-primary {
+  background: var(--tg-result-primary-bg);
+  border: 2px solid var(--tg-result-primary-border);
+  border-radius: var(--tg-radius-md);
+  padding: var(--tg-space-5);
+  text-align: center;
+}
+
+.tg-result-primary-value {
+  font-family: var(--tg-font-mono);
+  font-size: 32px;
+  font-weight: var(--tg-weight-black);
+  color: var(--tg-result-primary-text);
+  line-height: var(--tg-line-number);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.tg-result-primary-label {
+  font-size: var(--tg-text-caption);
+  font-weight: var(--tg-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: var(--tg-space-2);
+}
+
+/* ============================================================
+   INPUT FIELDS
+   ============================================================ */
+.tg-input {
+  height: 48px;
+  padding: 0 var(--tg-space-4);
+  font-family: var(--tg-font-sans);
+  font-size: var(--tg-text-body);
+  font-weight: var(--tg-weight-medium);
+  font-variant-numeric: tabular-nums;
+  background: hsl(var(--background));
+  border: 1.5px solid hsl(var(--border));
+  border-radius: var(--tg-radius-sm);
+  transition: all 0.2s ease;
+}
+
+.tg-input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+  outline: none;
+}
+
+.tg-input-label {
+  font-size: var(--tg-text-label);
+  font-weight: var(--tg-weight-semibold);
+  color: hsl(var(--foreground));
+  margin-bottom: var(--tg-space-2);
+  display: block;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================
+   SLIDER
+   ============================================================ */
+.tg-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: hsl(var(--border));
+  outline: none;
+}
+
+.tg-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #10b981;
+  box-shadow: var(--tg-shadow-md);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.tg-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+.tg-slider::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #10b981;
+  box-shadow: var(--tg-shadow-md);
+  cursor: pointer;
+}
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+.tg-h1 { font-size: var(--tg-text-page-title); font-weight: var(--tg-weight-bold); line-height: var(--tg-line-heading); letter-spacing: -0.02em; }
+.tg-h2 { font-size: var(--tg-text-section); font-weight: var(--tg-weight-semibold); line-height: var(--tg-line-heading); letter-spacing: -0.015em; }
+.tg-h3 { font-size: var(--tg-text-card-title); font-weight: var(--tg-weight-semibold); line-height: 1.3; letter-spacing: -0.01em; }
+.tg-body { font-size: var(--tg-text-body); font-weight: var(--tg-weight-regular); line-height: var(--tg-line-body); }
+.tg-label { font-size: var(--tg-text-label); font-weight: var(--tg-weight-medium); line-height: 1.4; }
+.tg-number { font-family: var(--tg-font-mono); font-variant-numeric: tabular-nums; font-weight: var(--tg-weight-bold); letter-spacing: -0.02em; }
+
+/* ============================================================
+   STAT GRID
+   ============================================================ */
+.tg-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--tg-space-3);
+}
+
+.tg-stat {
+  background: hsl(var(--muted) / 0.5);
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--tg-radius-sm);
+  padding: var(--tg-space-4);
+}
+
+.tg-stat-label {
+  font-size: var(--tg-text-caption);
+  font-weight: var(--tg-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: var(--tg-space-1);
+}
+
+.tg-stat-value {
+  font-family: var(--tg-font-mono);
+  font-size: 20px;
+  font-weight: var(--tg-weight-bold);
+  font-variant-numeric: tabular-nums;
+  color: hsl(var(--foreground));
+}
+
+/* ============================================================
+   GLOBAL BODY FONT — Applied site-wide
+   ============================================================ */
 body {
-  background-color: var(--bg-base);
-  color: var(--text-primary);
+  font-family: var(--tg-font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force tabular numbers on all currency/stat displays */
+[data-value], .tabular-nums, .font-mono {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   BANK-GRADE OVERRIDES — Auto-applied site-wide
+   No JSX changes needed — upgrades existing calculators
+   ============================================================ */
+
+/* ---------- Base typography ---------- */
+html, body, #root {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-feature-settings: 'cv11', 'ss01', 'ss03';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Mono fonts for all numbers ---------- */
+.font-mono, code, kbd, samp, pre, .tabular-nums,
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"] {
+  font-family: 'JetBrains Mono', 'SF Mono', 'Roboto Mono', Menlo, monospace !important;
+  font-variant-numeric: tabular-nums !important;
+}
+
+/* ---------- Auto-monospace for currency-styled text ---------- */
+.text-2xl, .text-3xl, .text-4xl, .text-5xl, .text-6xl {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Card enhancement (all existing Cards) ---------- */
+[class*="rounded-2xl"][class*="border-2"],
+[class*="rounded-xl"][class*="border-2"] {
+  transition: box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+[class*="rounded-2xl"][class*="border-2"]:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Input enhancement (all existing inputs) ---------- */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+select,
+textarea {
   font-family: 'Inter', system-ui, sans-serif;
-  transition: background-color 0.3s, color 0.3s;
+  font-weight: 500;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #10b981 !important;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15) !important;
+  outline: none !important;
+}
+
+/* ---------- Number inputs — right-aligned with tabular ---------- */
+input[type="number"] {
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Table enhancement (amortization schedules) ---------- */
+table {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum' 1;
+}
+
+table thead th {
+  font-weight: 700 !important;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
+
+table tbody td {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+table tbody td.tabular-nums,
+table tbody td[class*="text-right"] {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Button enhancement (all Buttons) ---------- */
+button {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.15s ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* ---------- Headings — tighter tracking for bank look ---------- */
+h1 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+h2 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+h3 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.3;
+}
+
+/* ---------- Section labels ---------- */
+[class*="uppercase"][class*="tracking-widest"] {
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* ---------- Result cards — big numbers get special treatment ---------- */
+[class*="text-4xl"][class*="font-black"],
+[class*="text-5xl"][class*="font-black"],
+[class*="text-6xl"][class*="font-black"] {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+}
+
+/* ---------- FAQ details/summary ---------- */
+details summary {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+details summary:hover {
+  color: #10b981;
+}
+
+details[open] summary {
+  color: #10b981;
+}
+
+/* ---------- Links — subtle underline on hover ---------- */
+a:not([class*="no-underline"]):hover {
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* ---------- Focus visible — accessibility ---------- */
+*:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ---------- Selection color — brand green ---------- */
+::selection {
+  background: rgba(16, 185, 129, 0.25);
+  color: inherit;
+}
+
+/* ---------- Scrollbar styling (dark mode) ---------- */
+.dark ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: hsl(var(--muted) / 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 5px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* ---------- Slider enhancement (all range inputs) ---------- */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  background: hsl(var(--border));
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #10b981;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+/* ---------- Print styles ---------- */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print, header, footer, nav {
+    display: none !important;
+  }
+}
+
+
+/* ============================================================
+   BUTTON CONTRAST FIX
+   Prevents white text disappearing on light-colored backgrounds
+   ============================================================ */
+
+/* Buttons with custom colored backgrounds should keep readable text */
+button[class*="border-emerald"] { color: #047857; }
+button[class*="border-emerald"]:hover { color: #047857; }
+
+button[class*="hover:bg-emerald"]:not([class*="bg-emerald-5"]):not([class*="bg-emerald-6"]) {
+  color: #047857 !important;
+}
+
+.dark button[class*="border-emerald"] { color: #6ee7b7; }
+.dark button[class*="border-emerald"]:hover { color: #6ee7b7; }
+
+/* Ensure outline buttons never inherit invisible text */
+button[class*="variant-outline"] {
+  color: hsl(var(--foreground));
+}
+
+button[class*="variant-outline"]:hover {
+  color: hsl(var(--accent-foreground));
+}
+
+/* Icon inside colored button */
+button[class*="border-emerald"] svg,
+button[class*="hover:bg-emerald"] svg {
+  color: inherit;
+}
+
+
+
+
+/* ============================================================
+   FLUID WIDE-SCREEN LAYOUT
+   Makes content grow gracefully from 1280 → 2400px
+   Used by Google, Apple, Stripe
+   ============================================================ */
+
+/* Container grows with viewport */
+.container {
+  width: 100%;
+  max-width: min(96vw, 1280px);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+@media (min-width: 1536px) {
+  .container { max-width: min(94vw, 1440px); }
+}
+@media (min-width: 1920px) {
+  .container { max-width: min(92vw, 1680px); }
+}
+@media (min-width: 2560px) {
+  .container { max-width: min(90vw, 2000px); }
+  html { font-size: 17px; }
+}
+@media (min-width: 3200px) {
+  .container { max-width: min(88vw, 2400px); }
+  html { font-size: 18px; }
+}
+
+/* Fluid typography on XL — headings scale up proportionally */
+@media (min-width: 1920px) {
+  h1 { letter-spacing: -0.03em; }
+  .text-4xl { font-size: 2.5rem; }
+  .text-5xl { font-size: 3.2rem; }
+  .text-6xl { font-size: 4rem; }
+  .text-7xl { font-size: 5rem; }
+}
+
+@media (min-width: 2560px) {
+  .text-4xl { font-size: 2.75rem; }
+  .text-5xl { font-size: 3.5rem; }
+  .text-6xl { font-size: 4.4rem; }
+  .text-7xl { font-size: 5.5rem; }
+}
+
+/* Homepage hero — expand for maximum visual impact on XL */
+@media (min-width: 1920px) {
+  .hero-fluid {
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+/* ============================================================
+   PAGE-WITH-SIDEBAR — CSS-only two-column layout
+   No JSX wrapping needed. Just add className to root container.
+   ============================================================ */
+.page-with-sidebar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+@media (min-width: 1024px) {
+  .page-with-sidebar {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+}
+/* Force ALL children into column 1 by default */
+.page-with-sidebar > :not(.page-sidebar) {
+  grid-column: 1;
+}
+/* Only .page-sidebar goes to column 2 */
+.page-with-sidebar > .page-sidebar {
+  grid-column: 1;
+}
+@media (min-width: 1024px) {
+  .page-with-sidebar > .page-sidebar {
+    grid-column: 2;
+    grid-row: 1 / span 100;
+    position: sticky;
+    top: 1rem;
+    align-self: start;
+    height: fit-content;
+  }
 }

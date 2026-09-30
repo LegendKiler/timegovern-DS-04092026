@@ -1,5 +1,8 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { differenceInDays, differenceInWeeks, differenceInMonths } from 'date-fns'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 export default function DateCalculator() {
   const [start, setStart] = useState('')
@@ -18,20 +21,22 @@ export default function DateCalculator() {
   }
 
   return (
-    <div className="card bg-card rounded-card p-6 shadow-card">
-      <h2 className="text-xl font-semibold mb-4">Date Calculator</h2>
-      <div className="grid grid-cols-2 gap-2">
-        <input type="date" className="border rounded p-2" value={start} onChange={e => setStart(e.target.value)} />
-        <input type="date" className="border rounded p-2" value={end} onChange={e => setEnd(e.target.value)} />
-      </div>
-      <button onClick={calculate} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">Calculate</button>
-      {result && (
-        <div className="mt-4">
-          <p>Days: {result.days}</p>
-          <p>Weeks: {result.weeks}</p>
-          <p>Months: {result.months}</p>
+    <Card>
+      <CardHeader><CardTitle>Date Calculator</CardTitle></CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-2 gap-2">
+          <Input type="date" onClick={(e) => e.target.showPicker?.()} value={start} onChange={e => setStart(e.target.value)} />
+          <Input type="date" onClick={(e) => e.target.showPicker?.()} value={end} onChange={e => setEnd(e.target.value)} />
         </div>
-      )}
-    </div>
+        <Button onClick={calculate} className="mt-4 w-full">Calculate</Button>
+        {result && (
+          <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+            <div className="rounded bg-muted p-2"><div className="text-2xl font-bold">{result.days}</div><div className="text-sm">Days</div></div>
+            <div className="rounded bg-muted p-2"><div className="text-2xl font-bold">{result.weeks}</div><div className="text-sm">Weeks</div></div>
+            <div className="rounded bg-muted p-2"><div className="text-2xl font-bold">{result.months}</div><div className="text-sm">Months</div></div>
+          </div>
+        )}
+      </CardContent>
+    </Card>
   )
 }

@@ -1,0 +1,20 @@
+# TimeGovern robots.txt
+# https://timegovern.com
+
+User-agent: *
+Allow: /
+
+# Block private/account pages
+Disallow: /auth
+Disallow: /reset-password
+Disallow: /my-calculations
+Disallow: /my-bookings
+Disallow: /my-widgets
+Disallow: /settings
+Disallow: /compare-calculations
+
+# Block API endpoints
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://timegovern.com/sitemap.xml

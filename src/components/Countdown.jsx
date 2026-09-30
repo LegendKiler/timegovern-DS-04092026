@@ -1,17 +1,22 @@
-import { useEffect, useState } from 'react'
+﻿import { useState } from 'react'
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
 
 export default function Countdown() {
   const [target, setTarget] = useState('')
   const [remaining, setRemaining] = useState(null)
+  const [intervalId, setIntervalId] = useState(null)
 
   const startCountdown = () => {
     if (!target) return
+    if (intervalId) clearInterval(intervalId)
     const end = new Date(target)
     const update = () => {
       const diff = end - new Date()
       if (diff <= 0) {
         setRemaining(null)
-        clearInterval(interval)
+        clearInterval(intervalId)
         alert('Countdown finished!')
         return
       }
@@ -21,22 +26,25 @@ export default function Countdown() {
       const secs = Math.floor((diff % (1000*60)) / 1000)
       setRemaining({ days, hours, mins, secs })
     }
-    const interval = setInterval(update, 1000)
+    const id = setInterval(update, 1000)
+    setIntervalId(id)
     update()
   }
 
   return (
-    <div className="card bg-card rounded-card p-6 shadow-card">
-      <h2 className="text-xl font-semibold mb-4">Countdown</h2>
-      <div className="flex gap-2">
-        <input type="datetime-local" className="border rounded p-2 flex-1" value={target} onChange={e => setTarget(e.target.value)} />
-        <button onClick={startCountdown} className="bg-blue-500 text-white px-4 py-2 rounded">Start</button>
-      </div>
-      {remaining && (
-        <div className="mt-4 font-mono text-lg">
-          {remaining.days}d {remaining.hours}h {remaining.mins}m {remaining.secs}s
+    <Card>
+      <CardHeader><CardTitle>Countdown</CardTitle></CardHeader>
+      <CardContent>
+        <div className="flex gap-2">
+          <Input type="datetime-local" onClick={(e) => e.target.showPicker?.()} value={target} onChange={e => setTarget(e.target.value)} className="flex-1" />
+          <Button onClick={startCountdown}>Start</Button>
         </div>
-      )}
-    </div>
+        {remaining && (
+          <div className="mt-6 font-mono text-3xl text-center">
+            {remaining.days}d {remaining.hours}h {remaining.mins}m {remaining.secs}s
+          </div>
+        )}
+      </CardContent>
+    </Card>
   )
 }

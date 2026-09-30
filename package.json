@@ -1,26 +1,52 @@
 {
-  "name": "timegovern",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "date-fns": "^3.6.0",
-    "date-fns-tz": "^3.1.3",
-    "lucide-react": "^0.454.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "suncalc": "^1.9.0"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
-  }
+    "name": "timegovern",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "sync": "powershell -ExecutionPolicy Bypass -File sync-sitemap.ps1",
+        "check": "powershell -ExecutionPolicy Bypass -File check-all.ps1",
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "predev": "powershell -ExecutionPolicy Bypass -File validate-icons.ps1",
+        "prebuild": "powershell -ExecutionPolicy Bypass -File validate-icons.ps1"
+    },
+    "dependencies": {
+        "@dnd-kit/core": "^6.1.0",
+        "@dnd-kit/sortable": "^8.0.0",
+        "@dnd-kit/utilities": "^3.2.2",
+        "@radix-ui/react-select": "^2.0.0",
+        "@radix-ui/react-slot": "^1.1.0",
+        "@radix-ui/react-switch": "^1.3.7",
+        "@radix-ui/react-tabs": "^1.1.21",
+        "@react-pdf/renderer": "^4.9.0",
+        "@supabase/supabase-js": "^2.116.0",
+        "@universal-i18n/react": "^3.0.5",
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.1.1",
+        "country-data": "^0.0.31",
+        "date-fns": "^3.6.0",
+        "date-fns-tz": "^3.1.3",
+        "date-holidays": "^3.36.1",
+        "framer-motion": "^11.3.0",
+        "ics": "^3.12.0",
+        "jspdf": "^2.5.1",
+        "lucide-react": "^0.454.0",
+        "qrcode": "^1.5.4",
+        "react": "^18.3.1",
+        "react-day-picker": "^8.10.1",
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^6.26.0",
+        "react-simple-maps": "^3.0.0",
+        "suncalc": "^1.9.0",
+        "tailwind-merge": "^2.4.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^4.3.1",
+        "autoprefixer": "^10.4.19",
+        "postcss": "^8.4.38",
+        "tailwindcss": "^3.4.4",
+        "vite": "^5.4.0"
+    }
 }

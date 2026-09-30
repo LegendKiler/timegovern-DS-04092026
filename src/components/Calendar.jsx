@@ -1,35 +1,57 @@
-import { useState } from 'react'
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameDay } from 'date-fns'
+﻿import { useState, useEffect } from 'react'
+import { Calendar as CalendarUI } from "@/components/ui/calendar"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import Holidays from 'date-holidays'
 
 export default function Calendar() {
-  const [currentMonth, setCurrentMonth] = useState(new Date())
+  const [date, setDate] = useState(new Date())
+  const [holidays, setHolidays] = useState({})
+  const [country, setCountry] = useState('US')
 
-  const days = eachDayOfInterval({
-    start: startOfMonth(currentMonth),
-    end: endOfMonth(currentMonth),
-  })
-
-  const firstDay = startOfMonth(currentMonth).getDay()
-
-  const prevMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1))
-  const nextMonth = () => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1))
+  useEffect(() => {
+    const hd = new Holidays(country)
+    const year = new Date().getFullYear()
+    const holidays = hd.getHolidays(year)
+    const holidayMap = {}
+    holidays.forEach(hol => {
+      holidayMap[hol.date] = hol.name
+    })
+    setHolidays(holidayMap)
+  }, [country])
 
   return (
-    <div className="card bg-card rounded-card p-6 shadow-card">
-      <div className="flex justify-between items-center mb-4">
-        <button onClick={prevMonth} className="p-2 border rounded">â€¹</button>
-        <h2 className="text-lg font-semibold">{format(currentMonth, 'MMMM yyyy')}</h2>
-        <button onClick={nextMonth} className="p-2 border rounded">â€º</button>
-      </div>
-      <div className="grid grid-cols-7 gap-1 text-center text-sm">
-        {['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].map(d => <div key={d} className="font-bold">{d}</div>)}
-        {Array.from({ length: firstDay }).map((_, i) => <div key={`empty-${i}`}></div>)}
-        {days.map(day => (
-          <div key={day.toISOString()} className={`p-2 rounded ${isSameDay(day, new Date()) ? 'bg-blue-500 text-white' : ''}`}>
-            {format(day, 'd')}
+    <Card>
+      <CardHeader><CardTitle>Calendar</CardTitle></CardHeader>
+      <CardContent>
+        <div className="mb-4">
+          <select value={country} onChange={(e) => setCountry(e.target.value)} className="w-full p-2 border rounded">
+            <option value="US">United States</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AU">Australia</option>
+            <option value="NZ">New Zealand</option>
+          </select>
+        </div>
+        <CalendarUI
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          className="rounded-md border"
+          modifiers={{
+            holiday: Object.keys(holidays),
+            weekend: [0, 6] // Sunday, Saturday
+          }}
+          modifiersClassNames={{
+            holiday: 'bg-yellow-200 text-yellow-900 font-bold',
+            weekend: 'bg-blue-100 text-blue-900'
+          }}
+        />
+        {date && holidays[date.toISOString().split('T')[0]] && (
+          <div className="mt-4 p-3 bg-yellow-50 rounded">
+            <p className="font-semibold">{holidays[date.toISOString().split('T')[0]]}</p>
+            <p className="text-sm text-muted-foreground">Holiday</p>
           </div>
-        ))}
-      </div>
-    </div>
+        )}
+      </CardContent>
+    </Card>
   )
 }

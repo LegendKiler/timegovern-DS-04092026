@@ -1,4 +1,60 @@
+# ---- Dependencies ----
 node_modules/
+
+# ---- Build output ----
 dist/
+.vite/
+
+# ---- Environment (NEVER commit) ----
 .env
+.env.local
+.env.*.local
+.dev.vars
+
+# ---- Secrets / credentials ----
+*.key
+*.pem
+secrets*
+credentials*
+id_rsa*
+*.token
+
+# ---- Cloudflare Wrangler cache ----
+.wrangler/
+
+# ---- Backups / recon / scratch ----
+_backups/
+_recon/
+backup_nested_src_*/
+backup_*.log
+*.bak
+*.backup
+*.backup2
+*.backup3
+*.backup4
+
+# ---- Local setup scripts (may contain user-specific paths) ----
 setup.ps1
+tts-reminder.ps1
+
+# ---- Logs ----
+*.log
+preview-test.log
+
+# ---- OS ----
+.DS_Store
+Thumbs.db
+
+# ---- Editor ----
+.vscode/
+.idea/
+*.swp
+
+# ---- Misc scratch ----
+"New Text Document.txt"
+audit-report-*.txt
+# ---- Additional backup patterns (caught during Stage 3) ----
+*.backup.jsx
+*.broken*
+*.broken2
+"New Text Document.txt"
