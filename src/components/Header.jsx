@@ -253,9 +253,8 @@ export default function Header() {
             {isDark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
           </Button>
 
-          <div style={{position:'fixed',bottom:'8px',left:'8px',zIndex:99999,background:'#dc2626',color:'#fff',fontSize:'12px',padding:'8px 12px',borderRadius:'6px',fontFamily:'monospace',maxWidth:'90vw',wordBreak:'break-all'}}>GEO DEBUG: {JSON.stringify(geo)}</div>
           {geo?.country && (
-            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/50 border border-border text-xs font-medium cursor-default" title={[geo.city, geo.region, geo.timezone].filter(Boolean).join(' \u00B7 ')}>
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/50 border border-border text-xs font-medium cursor-default" title={[geo.city, geo.region, geo.timezone].filter(Boolean).join(' \u00B7 ')}>
               <span className="text-base leading-none">{countryToFlag(geo.country)}</span>
               <span className="text-muted-foreground">{geo.country}</span>
             </div>
