@@ -1,3 +1,8 @@
+import { useState, useEffect, useRef } from 'react'
+import { Card, CardContent } from '@/components/ui/card'
+import { useState, useEffect } from 'react'
+}
+import { useGeo } from '../hooks/useGeo'
 import { useState, useEffect } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Clock, Plus, X, Sun, Moon, Globe, Search, Sparkles } from 'lucide-react'
@@ -12,10 +17,10 @@ const readPins = () => {
     const raw = localStorage.getItem('timegovern_world_clock_pins')
     if (raw) {
       const parsed = JSON.parse(raw)
-      if (Array.isArray(parsed) && parsed.length > 0) return parsed
+      if (Array.isArray(parsed) && parsed.length > 0) return { list: parsed, customized: true }
     }
   } catch {}
-  return ['new-york', 'london', 'tokyo', 'sydney']
+  return { list: ['new-york', 'london', 'tokyo', 'sydney'], customized: false }
 }
 
 const formatTime = (tz, date) => {
@@ -50,11 +55,14 @@ const formatOffset = (min) => {
 }
 
 export default function WorldClockPinned() {
-  const [pins, setPins] = useState(readPins)
+  const [initial] = useState(readPins)
+  const [pins, setPins] = useState(initial.list)
+  const customizedRef = useRef(initial.customized)
   const [showPicker, setShowPicker] = useState(false)
   const [search, setSearch] = useState('')
   const [regionFilter, setRegionFilter] = useState('All')
   const [now, setNow] = useState(new Date())
+  const { geo } = useGeo()
 
   useEffect(() => {
     const t = setInterval(() => setNow(new Date()), 1000)
@@ -64,6 +72,18 @@ export default function WorldClockPinned() {
   useEffect(() => {
     try { localStorage.setItem('timegovern_world_clock_pins', JSON.stringify(pins)) } catch {}
   }, [pins])
+
+  useEffect(() => {
+    if (!geo?.timezone) return
+    if (customizedRef.current) return
+    const match = CITY_LIST.find(c => c.tz === geo.timezone)
+    if (!match) return
+    setPins(prev => {
+      if (prev[0] === match.slug) return prev
+      const filtered = prev.filter(s => s !== match.slug)
+      return [match.slug, ...filtered].slice(0, limit)
+    })
+  }, [geo?.timezone])
 
   const addPin = (slug) => {
     if (pins.includes(slug)) { setPins(pins.filter(p => p !== slug)); return }

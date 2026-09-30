@@ -80,7 +80,7 @@ const NAV = [
 ]
 
 function countryToFlag(cc) {
-  if (!cc || typeof cc !== 'string' || cc.length !== 2) return '🌍'
+  if (!cc || typeof cc !== 'string' || cc.length !== 2) return 'ðŸŒ'
   return String.fromCodePoint(...cc.toUpperCase().split(').map(c => 0x1F1E6 + c.charCodeAt(0) - 65))
 }
 
@@ -92,7 +92,7 @@ export default function Header() {
   const [openDropdown, setOpenDropdown] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const geo = useGeo()
+  const { geo } = useGeo()
   if (pathname.startsWith('/embed/')) return null
   const isDark = theme === 'dark'
 
@@ -254,7 +254,7 @@ export default function Header() {
           </Button>
 
           {geo?.country && (
-            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/50 border border-border text-xs font-medium cursor-default" title={[geo.city, geo.region, geo.timezone].filter(Boolean).join(' · ')}>
+            <div className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-muted/50 border border-border text-xs font-medium cursor-default" title={[geo.city, geo.region, geo.timezone].filter(Boolean).join(' Â· ')}>
               <span className="text-base leading-none">{countryToFlag(geo.country)}</span>
               <span className="text-muted-foreground">{geo.country}</span>
             </div>
