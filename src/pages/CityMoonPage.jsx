@@ -1,10 +1,11 @@
 import { useEffect, useMemo } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { Moon, Sun, Sparkles, ArrowRight, ExternalLink, Globe } from 'lucide-react'
+import { Moon, Sun, Sparkles, ArrowRight, ExternalLink, Globe, Clock } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
 import { ASTRO_CITIES, getAstroCityBySlug } from '../data/astroCities'
+import { CITIES } from '../data/cities'
 import { getMoonPhase, getMoonPhaseInfo, getNextMoonPhases } from '../lib/astronomyUtils'
 import { COUNTRIES_DATA } from '../data/countries'
 
@@ -53,7 +54,7 @@ export default function CityMoonPage() {
               </p>
             </div>
           </div>
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid md:grid-cols-4 gap-3">
             <Card className="border-2 border-indigo-500/30"><CardContent className="p-6 text-center">
               <div className="text-6xl mb-3">{info.emoji}</div>
               <div className="text-lg font-black mb-1">{info.name}</div>
@@ -142,7 +143,7 @@ export default function CityMoonPage() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-3">
+        <div className="grid md:grid-cols-4 gap-3">
           <Card className="border-2 border-indigo-500/30"><CardContent className="p-6 text-center">
             <div className="text-6xl mb-3">{info.emoji}</div>
             <div className="text-lg font-black mb-1">{info.name}</div>
@@ -176,8 +177,8 @@ export default function CityMoonPage() {
             <CardContent className="p-5 space-y-3">
               <p className="text-sm leading-relaxed"><strong>{city.name}</strong> is a city in <strong>{city.region}</strong>. {city.fact}</p>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                {city.hemisphere === 'N' && ('As a Northern Hemisphere city, ' + city.name + ' sees the moon follow the same general path as in other northern latitudes — higher in the sky during summer months.')}
-                {city.hemisphere === 'S' && ('As a Southern Hemisphere city, ' + city.name + ' sees the moon travel the opposite arc from northern cities — a detail that surprises visitors from the north.')}
+                {city.hemisphere === 'N' && ('As a Northern Hemisphere city, ' + city.name + ' sees the moon follow the same general path as in other northern latitudes â€” higher in the sky during summer months.')}
+                {city.hemisphere === 'S' && ('As a Southern Hemisphere city, ' + city.name + ' sees the moon travel the opposite arc from northern cities â€” a detail that surprises visitors from the north.')}
               </p>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {city.climate === 'arid' && ('Clear desert skies around ' + city.name + ' make it an excellent location for moon watching when the moon is visible.')}
@@ -194,13 +195,19 @@ export default function CityMoonPage() {
 
         <div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-5">Related tools</h2>
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid md:grid-cols-4 gap-3">
             <Link to={'/sun/' + city.slug} className="block rounded-xl border border-border bg-card hover:border-amber-400 p-5 transition-colors">
               <Sun className="h-5 w-5 text-amber-500 mb-2" />
               <h3 className="font-bold mb-1">{city.name} Sun</h3>
               <p className="text-xs text-muted-foreground">Sunrise, sunset, twilight.</p>
             </Link>
-            <Link to="/world-clock" className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
+            {CITIES[city.slug] && (
+              <Link to={'/time-in/' + city.slug} className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
+                <Clock className="h-5 w-5 text-cyan-500 mb-2" />
+                <h3 className="font-bold mb-1">{city.name} Time</h3>
+                <p className="text-xs text-muted-foreground">Live clock, UTC offset, DST.</p>
+              </Link>
+            )}            <Link to="/world-clock" className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
               <Globe className="h-5 w-5 text-cyan-500 mb-2" />
               <h3 className="font-bold mb-1">World Clock</h3>
               <p className="text-xs text-muted-foreground">Live time in 45 ASTRO_CITIES.</p>

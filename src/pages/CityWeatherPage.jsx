@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { CloudSun, Sparkles, ArrowRight, ExternalLink, Globe, AlertCircle, Wind, Droplets, Thermometer, Sunrise, Sunset } from 'lucide-react'
+import { CloudSun, Sparkles, ArrowRight, ExternalLink, Globe, AlertCircle, Wind, Droplets, Thermometer, Sunrise, Sunset, Clock } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
 import { ASTRO_CITIES, getAstroCityBySlug } from '../data/astroCities'
+import { CITIES } from '../data/cities'
 import { COUNTRIES_DATA } from '../data/countries'
 import { fetchWeather, getWmoInfo, formatTemp, formatWindDirection } from '../lib/weatherUtils'
 
@@ -222,7 +223,7 @@ export default function CityWeatherPage() {
 
         <div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-5">Related tools</h2>
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="grid md:grid-cols-4 gap-3">
             <Link to={'/sun/' + city.slug} className="block rounded-xl border border-border bg-card hover:border-amber-400 p-5 transition-colors">
               <Sunrise className="h-5 w-5 text-amber-500 mb-2" />
               <h3 className="font-bold mb-1">{city.name} Sun</h3>
@@ -233,7 +234,13 @@ export default function CityWeatherPage() {
               <h3 className="font-bold mb-1">{city.name} Moon</h3>
               <p className="text-xs text-muted-foreground">Moon phase and illumination.</p>
             </Link>
-            <Link to="/world-clock" className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
+            {CITIES[city.slug] && (
+              <Link to={'/time-in/' + city.slug} className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
+                <Clock className="h-5 w-5 text-cyan-500 mb-2" />
+                <h3 className="font-bold mb-1">{city.name} Time</h3>
+                <p className="text-xs text-muted-foreground">Live clock, UTC offset, DST.</p>
+              </Link>
+            )}            <Link to="/world-clock" className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
               <Globe className="h-5 w-5 text-cyan-500 mb-2" />
               <h3 className="font-bold mb-1">World Clock</h3>
               <p className="text-xs text-muted-foreground">Live time in every city.</p>
