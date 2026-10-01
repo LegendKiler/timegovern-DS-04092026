@@ -75,8 +75,8 @@ export default function HomePage() {
     <div className="container mx-auto py-4">
 
       {/* ============ HERO ============ */}
-      <div className="relative overflow-hidden rounded-3xl mb-12 shadow-2xl">
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950"></div>
+      <div className="relative rounded-3xl mb-12 shadow-2xl">
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950"></div>
         <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 20% 30%, rgba(99,102,241,0.6) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(168,85,247,0.6) 0%, transparent 50%)' }}></div>
         <div className="relative z-10 p-8 md:p-16 text-white text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-6">
@@ -102,7 +102,7 @@ export default function HomePage() {
               className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white text-slate-900 placeholder-slate-400 font-medium shadow-2xl outline-none focus:ring-4 focus:ring-cyan-400/30"
             />
             {results.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white shadow-2xl overflow-hidden text-left z-20">
+              <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white shadow-2xl text-left z-50 max-h-96 overflow-y-auto">
                 {results.map((t) => {
                   return (
                   <Link key={t.href} to={t.href} className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 transition">
