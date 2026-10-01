@@ -18,6 +18,7 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'))
 const AstronomyPage = lazy(() => import('./pages/AstronomyPage'))
 const CitySunPage = lazy(() => import('./pages/CitySunPage'))
 const CityMoonPage = lazy(() => import('./pages/CityMoonPage'))
+const TimeInCityPage = lazy(() => import('./pages/TimeInCityPage'))
 const CalendarPage = lazy(() => import('./pages/CalendarPage'))
 const CalendarMonthPage = lazy(() => import('./pages/CalendarMonthPage'))
 const WeekNumbersPage = lazy(() => import('./pages/WeekNumbersPage'))
@@ -653,6 +654,8 @@ function AppRoutes() {
         <Route path="/sun/:city" element={<CitySunPage />} />
         <Route path="/moon" element={<CityMoonPage />} />
         <Route path="/moon/:city" element={<CityMoonPage />} />
+        <Route path="/time-in" element={<TimeInCityPage />} />
+        <Route path="/time-in/:city" element={<TimeInCityPage />} />
       
         <Route path="/services" element={<ServicesPage />} />
       
@@ -679,7 +682,8 @@ function AppRoutes() {
 }
 
 import RouteErrorBoundary from './components/RouteErrorBoundary'
-import LoadingFallback from './components/LoadingFallback'
+import LoadingFallback from './components/LoadingFallback'
+
 import {  } from 'lucide-react'
 
 export default function App() {
@@ -690,7 +694,7 @@ export default function App() {
         <AutoTranslateProvider apiKey={import.meta.env.VITE_LINGO_API_KEY || ''} sourceLocale="en" availableLocales="all">
           <Router>
             <div className="min-h-screen bg-background text-foreground relative">
-              {/* Subtle radial glow Ã¢€\u201d no more grid cubes */}
+              {/* Subtle radial glow ÃƒÂ¢â‚¬\u201d no more grid cubes */}
               <div className="fixed inset-0 pointer-events-none -z-10">
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl"></div>
