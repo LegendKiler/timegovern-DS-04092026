@@ -104,10 +104,9 @@ export default function HomePage() {
             {results.length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 rounded-xl bg-white shadow-2xl overflow-hidden text-left z-20">
                 {results.map((t) => {
-                  const Icon = t.icon
                   return (
-                    <Link key={t.href} to={t.href} className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 transition">
-                      <Icon className="h-5 w-5 text-indigo-500 shrink-0" />
+                  <Link key={t.href} to={t.href} className="flex items-center gap-3 px-4 py-3 hover:bg-slate-100 transition">
+                      <Search className="h-5 w-5 text-indigo-500 shrink-0" />
                       <div className="min-w-0">
                         <div className="text-sm font-bold text-slate-900">{t.name}</div>
                         <div className="text-xs text-slate-500">{t.tagline}</div>
