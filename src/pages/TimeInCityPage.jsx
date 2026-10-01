@@ -4,7 +4,7 @@ import { Sun, Moon, Globe, Sparkles } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
-import { CITY_LIST, getCity } from '../data/cities'
+import { CITY_LIST } from '../data/cities'
 import { useGeo } from '../hooks/useGeo'
 
 const fmtTime = (tz, d) => new Intl.DateTimeFormat('en-GB', { timeZone: tz, hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).format(d)
@@ -24,7 +24,8 @@ const getOffsetMin = (tzStr, d) => {
 
 export default function TimeInCityPage() {
   const { city: slug } = useParams()
-  const city = slug ? getCity(slug) : null
+  const normalized = (slug || '').toLowerCase().trim()
+  const city = normalized ? CITY_LIST.find(c => c.slug === normalized) : null
   const [now, setNow] = useState(new Date())
   const { geo } = useGeo()
 
@@ -45,7 +46,15 @@ export default function TimeInCityPage() {
     setPageMeta()
   }, [city])
 
-  if (slug && !city) return <Navigate to="/time-in" replace />
+  if (slug && !city) {
+    return (
+      <div className="container mx-auto p-8 max-w-2xl">
+        <h1 className="text-3xl font-black mb-3">City not found: {slug}</h1>
+        <p className="text-muted-foreground mb-4">That slug isn't in our database. Browse all {CITY_LIST.length} cities below.</p>
+        <Link to="/time-in" className="inline-block px-5 py-2 rounded-lg bg-primary text-primary-foreground font-bold">Browse all cities</Link>
+      </div>
+    )
+  }
 
   const byRegion = useMemo(() => CITY_LIST.reduce((acc, c) => {
     (acc[c.region] = acc[c.region] || []).push(c)
