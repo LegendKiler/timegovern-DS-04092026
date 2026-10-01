@@ -13,6 +13,7 @@ function forceFullReload() {
 }
 
 export default defineConfig({
+  build: { chunkSizeWarningLimit: 2000 },
   plugins: [react(), forceFullReload()],
   resolve: {
     alias: {
