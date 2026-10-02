@@ -1,3 +1,5 @@
+import { SUPPLEMENTAL_HOLIDAYS } from './holidaysSupplement'
+
 // Countries supported by the Nager.Date public-holiday API.
 // Authoritative list verified 2026-10-01 against:
 //   https://date.nager.at/api/v3/AvailableCountries (204 entries)
@@ -8,7 +10,7 @@
 //   - Non-ASCII display names use \uXXXX escapes so the file survives
 //     any terminal encoding (same convention as data/countryNames.js).
 
-export const HOLIDAY_COUNTRIES = [
+const NAGER_COUNTRIES = [
   // ---------------- Europe ----------------
   { code: 'AD', name: 'Andorra', region: 'Europe' },
   { code: 'AL', name: 'Albania', region: 'Europe' },
@@ -231,6 +233,15 @@ export const HOLIDAY_COUNTRIES = [
   { code: 'WF', name: 'Wallis and Futuna', region: 'Oceania' },
   { code: 'WS', name: 'Samoa', region: 'Oceania' },
 ]
+
+const SUPPLEMENTAL_ENTRIES = Object.entries(SUPPLEMENTAL_HOLIDAYS).map(([code, d]) => ({
+  code,
+  name: d.name,
+  region: d.region,
+  supplemental: true,
+}))
+
+export const HOLIDAY_COUNTRIES = [...NAGER_COUNTRIES, ...SUPPLEMENTAL_ENTRIES]
 
 // Preferred display order for the /holidays hub.
 export const REGION_ORDER = [

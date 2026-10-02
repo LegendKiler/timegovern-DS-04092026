@@ -7,6 +7,8 @@
 //   GET /api/v4/Holidays/{CountryCode}/{Year} -> [{ date, name, ... }, ...]
 //   (v3 is used as fallback if v4 returns 400/404)
 
+import { SUPPLEMENTAL_HOLIDAYS } from '../data/holidaysSupplement'
+
 const BASE_V4 = 'https://date.nager.at/api/v4'
 const BASE_V3 = 'https://date.nager.at/api/v3'
 const FETCH_TIMEOUT_MS = 15000
@@ -45,6 +47,23 @@ export async function getHolidays(countryCode, year) {
   }
   const cc = countryCode.toUpperCase()
   const y = Number(year) || DEFAULT_YEAR
+
+  const supp = SUPPLEMENTAL_HOLIDAYS[cc]
+  if (supp) {
+    const rows = (supp.years && supp.years[y]) || []
+    return rows
+      .map(h => ({
+        date: h.date,
+        name: h.name || '',
+        localName: h.name || '',
+        countryCode: cc,
+        nationalHoliday: true,
+        global: true,
+        types: Array.isArray(h.types) ? h.types : ['Public'],
+        supplemental: true,
+      }))
+      .sort((a, b) => a.date.localeCompare(b.date))
+  }
 
   let raw
   try {
