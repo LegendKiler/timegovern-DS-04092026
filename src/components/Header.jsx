@@ -35,6 +35,7 @@ const NAV = [
       { to: '/calendar', label: 'Calendar', desc: 'Interactive month view' },
       { to: '/week-numbers', label: 'Week Numbers', desc: 'ISO 8601 weeks' },
       { to: '/months', label: 'Months', desc: 'All 12 months' },
+      { to: '/holidays', label: 'Public Holidays', desc: '204 countries' },
       { to: '/days-between-dates', label: 'Days Between Dates', desc: 'Any date difference' },
     ],
   },
