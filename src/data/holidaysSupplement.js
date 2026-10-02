@@ -191,4 +191,132 @@ export const SUPPLEMENTAL_HOLIDAYS = {
       ]
     }
   },
+  QA: {
+    name: 'Qatar', region: 'Middle East',
+    note: 'Islamic holidays follow the lunar calendar and may shift by 1 day.',
+    years: {
+      2026: [
+        { date: '2026-02-10', name: 'National Sports Day', types: ['Public'] },
+        { date: '2026-03-20', name: 'Eid al-Fitr (Day 1)', types: ['Public'] },
+        { date: '2026-03-21', name: 'Eid al-Fitr (Day 2)', types: ['Public'] },
+        { date: '2026-03-22', name: 'Eid al-Fitr (Day 3)', types: ['Public'] },
+        { date: '2026-05-27', name: 'Arafat Day', types: ['Public'] },
+        { date: '2026-05-28', name: 'Eid al-Adha (Day 1)', types: ['Public'] },
+        { date: '2026-05-29', name: 'Eid al-Adha (Day 2)', types: ['Public'] },
+        { date: '2026-05-30', name: 'Eid al-Adha (Day 3)', types: ['Public'] },
+        { date: '2026-06-17', name: 'Islamic New Year', types: ['Public'] },
+        { date: '2026-08-26', name: "Prophet Muhammad's Birthday", types: ['Public'] },
+        { date: '2026-12-18', name: 'National Day', types: ['Public'] },
+      ]
+    }
+  },
+  OM: {
+    name: 'Oman', region: 'Middle East',
+    note: 'Islamic holidays follow the lunar calendar and may shift by 1 day.',
+    years: {
+      2026: [
+        { date: '2026-01-16', name: "Isra and Mi'raj", types: ['Public'] },
+        { date: '2026-03-20', name: 'Eid al-Fitr (Day 1)', types: ['Public'] },
+        { date: '2026-03-21', name: 'Eid al-Fitr (Day 2)', types: ['Public'] },
+        { date: '2026-03-22', name: 'Eid al-Fitr (Day 3)', types: ['Public'] },
+        { date: '2026-05-27', name: 'Arafat Day', types: ['Public'] },
+        { date: '2026-05-28', name: 'Eid al-Adha (Day 1)', types: ['Public'] },
+        { date: '2026-05-29', name: 'Eid al-Adha (Day 2)', types: ['Public'] },
+        { date: '2026-05-30', name: 'Eid al-Adha (Day 3)', types: ['Public'] },
+        { date: '2026-06-17', name: 'Islamic New Year', types: ['Public'] },
+        { date: '2026-07-23', name: 'Renaissance Day', types: ['Public'] },
+        { date: '2026-08-26', name: "Prophet Muhammad's Birthday", types: ['Public'] },
+        { date: '2026-11-18', name: 'National Day', types: ['Public'] },
+      ]
+    }
+  },
+  JO: {
+    name: 'Jordan', region: 'Middle East',
+    note: 'Islamic and Christian holidays may shift by 1 day.',
+    years: {
+      2026: [
+        { date: '2026-01-01', name: "New Year's Day", types: ['Public'] },
+        { date: '2026-01-16', name: "Isra and Mi'raj", types: ['Public'] },
+        { date: '2026-03-20', name: 'Eid al-Fitr (Day 1)', types: ['Public'] },
+        { date: '2026-03-21', name: 'Eid al-Fitr (Day 2)', types: ['Public'] },
+        { date: '2026-03-22', name: 'Eid al-Fitr (Day 3)', types: ['Public'] },
+        { date: '2026-04-03', name: 'Good Friday', types: ['Public'] },
+        { date: '2026-04-05', name: 'Easter Sunday', types: ['Public'] },
+        { date: '2026-05-01', name: 'Labour Day', types: ['Public'] },
+        { date: '2026-05-25', name: 'Independence Day', types: ['Public'] },
+        { date: '2026-05-28', name: 'Eid al-Adha (Day 1)', types: ['Public'] },
+        { date: '2026-05-29', name: 'Eid al-Adha (Day 2)', types: ['Public'] },
+        { date: '2026-05-30', name: 'Eid al-Adha (Day 3)', types: ['Public'] },
+        { date: '2026-06-17', name: 'Islamic New Year', types: ['Public'] },
+        { date: '2026-08-26', name: "Prophet Muhammad's Birthday", types: ['Public'] },
+        { date: '2026-12-25', name: 'Christmas Day', types: ['Public'] },
+      ]
+    }
+  },
+  LB: {
+    name: 'Lebanon', region: 'Middle East',
+    note: 'Islamic and Christian holidays may shift by 1 day.',
+    years: {
+      2026: [
+        { date: '2026-01-01', name: "New Year's Day", types: ['Public'] },
+        { date: '2026-01-06', name: 'Armenian Orthodox Christmas', types: ['Public'] },
+        { date: '2026-02-09', name: "Saint Maron's Day", types: ['Public'] },
+        { date: '2026-02-14', name: 'Rafic Hariri Memorial Day', types: ['Public'] },
+        { date: '2026-03-20', name: 'Eid al-Fitr (Day 1)', types: ['Public'] },
+        { date: '2026-03-21', name: 'Eid al-Fitr (Day 2)', types: ['Public'] },
+        { date: '2026-03-22', name: 'Eid al-Fitr (Day 3)', types: ['Public'] },
+        { date: '2026-03-25', name: 'Feast of the Annunciation', types: ['Public'] },
+        { date: '2026-04-03', name: 'Good Friday (Catholic)', types: ['Public'] },
+        { date: '2026-04-05', name: 'Easter Sunday (Catholic)', types: ['Public'] },
+        { date: '2026-05-01', name: 'Labour Day', types: ['Public'] },
+        { date: '2026-05-25', name: 'Resistance and Liberation Day', types: ['Public'] },
+        { date: '2026-05-28', name: 'Eid al-Adha (Day 1)', types: ['Public'] },
+        { date: '2026-05-29', name: 'Eid al-Adha (Day 2)', types: ['Public'] },
+        { date: '2026-05-30', name: 'Eid al-Adha (Day 3)', types: ['Public'] },
+        { date: '2026-06-17', name: 'Islamic New Year', types: ['Public'] },
+        { date: '2026-08-15', name: 'Assumption of Mary', types: ['Public'] },
+        { date: '2026-08-26', name: "Prophet Muhammad's Birthday", types: ['Public'] },
+        { date: '2026-11-22', name: 'Independence Day', types: ['Public'] },
+        { date: '2026-12-25', name: 'Christmas Day', types: ['Public'] },
+      ]
+    }
+  },
+  MM: {
+    name: 'Myanmar', region: 'Asia',
+    note: 'Several holidays follow the Buddhist lunar calendar; dates are approximate.',
+    years: {
+      2026: [
+        { date: '2026-01-01', name: "New Year's Day", types: ['Public'] },
+        { date: '2026-01-04', name: 'Independence Day', types: ['Public'] },
+        { date: '2026-02-12', name: 'Union Day', types: ['Public'] },
+        { date: '2026-03-02', name: "Peasants' Day", types: ['Public'] },
+        { date: '2026-03-27', name: 'Armed Forces Day', types: ['Public'] },
+        { date: '2026-04-13', name: 'Thingyan (Day 1)', types: ['Public'] },
+        { date: '2026-04-14', name: 'Thingyan (Day 2)', types: ['Public'] },
+        { date: '2026-04-15', name: 'Thingyan (Day 3)', types: ['Public'] },
+        { date: '2026-04-16', name: 'Thingyan (Day 4)', types: ['Public'] },
+        { date: '2026-04-17', name: 'Myanmar New Year', types: ['Public'] },
+        { date: '2026-05-01', name: 'Labour Day', types: ['Public'] },
+        { date: '2026-07-19', name: "Martyrs' Day", types: ['Public'] },
+        { date: '2026-10-26', name: 'Thadingyut (End of Buddhist Lent)', types: ['Public'] },
+        { date: '2026-11-24', name: 'Tazaungmon Full Moon', types: ['Public'] },
+        { date: '2026-12-25', name: 'Christmas Day', types: ['Public'] },
+      ]
+    }
+  },
+  LA: {
+    name: 'Laos', region: 'Asia',
+    years: {
+      2026: [
+        { date: '2026-01-01', name: "New Year's Day", types: ['Public'] },
+        { date: '2026-03-08', name: "International Women's Day", types: ['Public'] },
+        { date: '2026-04-14', name: 'Lao New Year (Day 1)', types: ['Public'] },
+        { date: '2026-04-15', name: 'Lao New Year (Day 2)', types: ['Public'] },
+        { date: '2026-04-16', name: 'Lao New Year (Day 3)', types: ['Public'] },
+        { date: '2026-05-01', name: 'Labour Day', types: ['Public'] },
+        { date: '2026-06-01', name: "International Children's Day", types: ['Public'] },
+        { date: '2026-12-02', name: 'National Day', types: ['Public'] },
+      ]
+    }
+  },
 }
