@@ -26,11 +26,12 @@ function formatRange(startIso, endIso) {
 function isWeekendDow(dow) { return dow === 0 || dow === 6 }
 
 function findLongWeekends(holidays) {
-  const holidaySet = new Set(holidays.map(h => h.date))
+  const globalOnly = holidays.filter(h => h.global !== false)
+  const holidaySet = new Set(globalOnly.map(h => h.date))
   const seen = new Set()
   const out = []
 
-  for (const h of holidays) {
+  for (const h of globalOnly) {
     if (seen.has(h.date)) continue
     const dow = dowOf(h.date)
     // Only start blocks from a Friday, Saturday, Sunday or Monday holiday
@@ -57,7 +58,13 @@ function findLongWeekends(holidays) {
     const days = Math.round((dateAt(end) - dateAt(start)) / 86400000) + 1
     if (days < 3) continue
 
-    const blockHolidays = holidays.filter(hh => hh.date >= start && hh.date <= end)
+    const inBlock = globalOnly.filter(hh => hh.date >= start && hh.date <= end)
+    const byDate = new Map()
+    for (const hh of inBlock) {
+      if (!byDate.has(hh.date)) byDate.set(hh.date, { ...hh })
+      else byDate.get(hh.date).name = byDate.get(hh.date).name + ' \u00b7 ' + hh.name
+    }
+    const blockHolidays = [...byDate.values()]
     for (const bh of blockHolidays) seen.add(bh.date)
 
     out.push({
