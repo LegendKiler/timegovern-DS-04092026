@@ -294,6 +294,7 @@ const EmbedPage = lazy(() => import('./pages/EmbedPage'))
 const CountryCodesPage = lazy(() => import('./pages/CountryCodesPage'))
 const HolidaysHubPage = lazy(() => import('./pages/HolidaysHubPage'))
 const HolidayCountryPage = lazy(() => import('./pages/HolidayCountryPage'))
+const LongWeekendsPage = lazy(() => import('./pages/LongWeekendsPage'))
 const JobsPage = lazy(() => import('./pages/JobsPage'))
 const NewsletterPage = lazy(() => import('./pages/NewsletterPage'))
 const GlobalPrivacyPolicy = lazy(() => import('./pages/legal/GlobalPrivacyPolicy'))
@@ -346,6 +347,7 @@ function AppRoutes() {
         <Route path="/news" element={<NewsPage />} />
         <Route path="/holidays" element={<HolidaysHubPage />} />
         <Route path="/holidays/:country/:year" element={<HolidayCountryPage />} />
+        <Route path="/holidays/:country/:year/long-weekends" element={<LongWeekendsPage />} />
         <Route path="/sleep-debt-calculator" element={<SleepDebtPage />} />
         <Route path="/caffeine-calculator" element={<CaffeinePage />} />
         <Route path="/chronotype-quiz" element={<ChronotypePage />} />
