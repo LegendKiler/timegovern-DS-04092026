@@ -155,6 +155,24 @@ export default function HomePage() {
             )
           })}
         </div>
+      {/* ============ PUBLIC HOLIDAYS ============ */}
+      <section className="mb-16">
+        <Link
+          to="/holidays"
+          className="group block rounded-3xl border border-border bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/10 p-8 md:p-10 hover:border-primary hover:shadow-xl transition-all"
+        >
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="flex-1">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/15 px-3 py-1 rounded-full">New</span>
+              <h2 className="text-3xl md:text-4xl 2xl:text-5xl font-black tracking-tight mt-4 mb-2">Public Holidays 2026</h2>
+              <p className="text-muted-foreground text-lg">214 countries &middot; long weekends &middot; .ics calendar export</p>
+            </div>
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-bold group-hover:gap-3 transition-all shrink-0">
+              Explore holidays <ArrowRight className="h-4 w-4" />
+            </div>
+          </div>
+        </Link>
+      </section>
       </section>
 
       {/* ============ FEATURED TOOLS ============ */}
