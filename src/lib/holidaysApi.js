@@ -65,6 +65,27 @@ export async function getHolidays(countryCode, year) {
       .sort((a, b) => a.date.localeCompare(b.date))
   }
 
+  // Local static JSON first (fast, offline-capable, no rate limits)
+  try {
+    const localRes = await fetch(`/data/holidays/${cc}-${y}.json`, { cache: 'force-cache' })
+    if (localRes.ok) {
+      const localData = await localRes.json()
+      const arr = Array.isArray(localData) ? localData : (localData.holidays || [])
+      if (Array.isArray(arr)) {
+        return arr
+          .map(h => ({
+            date: h.date,
+            name: h.name || h.localName || '',
+            localName: h.localName || h.name || '',
+            countryCode: h.countryCode || cc,
+            nationalHoliday: !!h.nationalHoliday,
+            global: h.global !== undefined ? !!h.global : !!h.nationalHoliday,
+            types: Array.isArray(h.types) ? h.types : Array.isArray(h.holidayTypes) ? h.holidayTypes : ['Public'],
+          }))
+          .sort((a, b) => a.date.localeCompare(b.date))
+      }
+    }
+  } catch { /* fall through to live API */ }
   let raw
   try {
     raw = await fetchJson(`${BASE_V4}/Holidays/${cc}/${y}`)

@@ -149,6 +149,16 @@ export default function TimeInCityPage() {
       </div>
 
       <div>
+        <h2 className="text-2xl font-black tracking-tight mb-4">Public Holidays</h2>
+        <Link
+          to="/holidays"
+          className="block p-4 rounded-xl border border-border bg-card hover:border-primary hover:shadow-lg transition"
+        >
+          <div className="font-bold">Public Holidays worldwide</div>
+          <div className="text-sm text-muted-foreground">214 countries, long weekends, .ics download &rarr;</div>
+        </Link>
+      </div>
+      <div>
         <h2 className="text-2xl font-black tracking-tight mb-4">Frequently Asked Questions</h2>
         <div className="space-y-3">
           {faq.map((f, i) => (
