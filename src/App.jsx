@@ -228,6 +228,7 @@ const BestTimeToTakeLeave2026Page = lazy(() => import('./pages/BestTimeToTakeLea
 const LongWeekends2026Page = lazy(() => import('./pages/LongWeekends2026Page'))
 const MostPublicHolidaysPage = lazy(() => import('./pages/MostPublicHolidaysPage'))
 const PublicHolidaysComparisonPage = lazy(() => import('./pages/PublicHolidaysComparisonPage'))
+const SyncTeamTimeOffPage = lazy(() => import('./pages/SyncTeamTimeOffPage'))
 const FinanceToolsHub = lazy(() => import('./pages/FinanceToolsHub'))
 const MathToolsHub = lazy(() => import('./pages/MathToolsHub'))
 const DeveloperToolsHub = lazy(() => import('./pages/DeveloperToolsHub'))
@@ -390,6 +391,7 @@ function AppRoutes() {
         <Route path="/blog/how-to-maximise-long-weekends-2026" element={<LongWeekends2026Page />} />
         <Route path="/blog/countries-with-most-public-holidays" element={<MostPublicHolidaysPage />} />
         <Route path="/blog/public-holidays-2026-comparison" element={<PublicHolidaysComparisonPage />} />
+        <Route path="/blog/sync-team-time-off-time-zones" element={<SyncTeamTimeOffPage />} />
         <Route path="/finance-tools" element={<FinanceToolsHub />} />
         <Route path="/compound-interest-calculator" element={<CompoundInterestPage />} />
         <Route path="/loan-calculator" element={<LoanCalculatorPage />} />
