@@ -106,7 +106,10 @@ export default function BlogPage() {
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search articles..."
-                className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white text-slate-900 placeholder-slate-400 font-medium shadow-2xl outline-none focus:ring-4 focus:ring-cyan-400/30"
+                autoComplete="off"
+                spellCheck="false"
+                style={{ color: '#0f172a', WebkitTextFillColor: '#0f172a', colorScheme: 'light' }}
+                className="w-full pl-12 pr-4 py-3.5 rounded-2xl bg-white placeholder-slate-400 font-medium shadow-2xl outline-none focus:ring-4 focus:ring-cyan-400/30"
               />
             </div>
           </div>
