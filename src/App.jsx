@@ -224,6 +224,7 @@ const BmiCalculatorPage = lazy(() => import('./pages/BmiCalculatorPage'))
 const SleepTimerPage = lazy(() => import('./pages/SleepTimerPage'))
 const SleepToolsHub = lazy(() => import('./pages/SleepToolsHub'))
 const BlogPage = lazy(() => import('./pages/BlogPage'))
+const BestTimeToTakeLeave2026Page = lazy(() => import('./pages/BestTimeToTakeLeave2026Page'))
 const FinanceToolsHub = lazy(() => import('./pages/FinanceToolsHub'))
 const MathToolsHub = lazy(() => import('./pages/MathToolsHub'))
 const DeveloperToolsHub = lazy(() => import('./pages/DeveloperToolsHub'))
@@ -382,6 +383,7 @@ function AppRoutes() {
         <Route path="/blog/why-25-minutes-pomodoro" element={<Why25MinutesPage />} />
         <Route path="/blog/best-pomodoro-apps" element={<BestPomodoroAppsPage />} />
                 <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/best-time-to-take-leave-2026" element={<BestTimeToTakeLeave2026Page />} />
         <Route path="/finance-tools" element={<FinanceToolsHub />} />
         <Route path="/compound-interest-calculator" element={<CompoundInterestPage />} />
         <Route path="/loan-calculator" element={<LoanCalculatorPage />} />
