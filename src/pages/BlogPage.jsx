@@ -31,6 +31,7 @@ const ARTICLES = [
   { to: '/blog/how-to-schedule-meetings-across-time-zones', title: 'Scheduling Meetings Across Time Zones', desc: 'A practical playbook for global team meetings that work for everyone.', tag: 'time', tagLabel: 'Time', icon: Globe },
   { to: '/blog/best-time-to-take-leave-2026', title: 'Best Time to Take Leave in 2026', desc: 'Turn 20 days into 50+ by targeting public holidays and long weekends.', tag: 'time', tagLabel: 'Time', icon: Globe },
   { to: '/blog/how-to-maximise-long-weekends-2026', title: 'How to Maximise Long Weekends in 2026', desc: 'Every long weekend by country, plus the bridge-day multiplier.', tag: 'time', tagLabel: 'Time', icon: Globe },
+  { to: '/blog/countries-with-most-public-holidays', title: 'Which Countries Have the Most Public Holidays?', desc: 'Top 10 ranked - India, Lebanon, Colombia and more.', tag: 'time', tagLabel: 'Time', icon: Globe },
 
   { to: '/blog/morning-routine-guide', title: 'Morning Routine Guide', desc: 'Build a morning routine that sets up the whole day - without the hype.', tag: 'habits', tagLabel: 'Habits', icon: Sun },
 ]
@@ -63,7 +64,7 @@ export default function BlogPage() {
   useEffect(() => {
     document.title = 'Guides & Articles - Sleep, Caffeine & Productivity | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
-    meta.content = 'Practical guides on sleep science, caffeine timing, productivity techniques, and time zones. 23 free articles, no signup.'
+    meta.content = 'Practical guides on sleep science, caffeine timing, productivity techniques, and time zones. 24 free articles, no signup.'
     if (!meta.parentNode) document.head.appendChild(meta)
     setPageMeta()
   }, [])
