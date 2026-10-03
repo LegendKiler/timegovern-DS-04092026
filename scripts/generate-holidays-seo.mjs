@@ -1,6 +1,7 @@
 import { readFileSync, writeFileSync } from 'fs'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
+import { execSync } from 'child_process'
 
 const here = dirname(fileURLToPath(import.meta.url))
 const root = join(here, '..')
@@ -12,7 +13,7 @@ const out = []
 let m
 const re = /code: '([A-Z]{2})', name: '([^']+)'/g
 while ((m = re.exec(ccSrc)) !== null) out.push({ code: m[1], name: m[2] })
-for (const code of ['PK','IN','AE','SA','TH','MY','IL','LK','NP','KW']) {
+for (const code of ['PK','IN','AE','SA','TH','MY','IL','LK','NP','KW','QA','OM','JO','LB','MM','LA']) {
   const r = new RegExp(`  ${code}: \\{\\s*name: '([^']+)'`)
   const mm = r.exec(suppSrc)
   if (mm) out.push({ code, name: mm[1] })
@@ -24,7 +25,15 @@ console.log('Countries:', countries.length)
 // --- 2) sitemap-holidays.xml ---
 const year = new Date().getFullYear()
 const base = 'https://timegovern.com'
-const today = new Date().toISOString().slice(0, 10)
+function gitLastMod(relPath) {
+  try {
+    const d = execSync('git log -1 --format=%cs -- "' + relPath + '"', { cwd: root }).toString().trim()
+    return d || new Date().toISOString().slice(0, 10)
+  } catch {
+    return new Date().toISOString().slice(0, 10)
+  }
+}
+const today = gitLastMod('src/data/holidaysSupplement.js')
 let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
 let n = 0
 xml += `  <url><loc>${base}/holidays</loc><lastmod>${today}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>\n`; n++
