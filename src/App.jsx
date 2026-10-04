@@ -14,6 +14,11 @@ const EmbedDocsPage = lazy(() => import('./pages/EmbedDocsPage'))
 const HowToConvertCurrencyPage = lazy(() => import('./pages/HowToConvertCurrencyPage'))
 const BestCurrencyConverterToolsPage = lazy(() => import('./pages/BestCurrencyConverterToolsPage'))
 const MidMarketRatePage = lazy(() => import('./pages/MidMarketRatePage'))
+const DateDurationPage = lazy(() => import('./pages/DateDurationPage'))
+const BusinessDaysPage = lazy(() => import('./pages/BusinessDaysPage'))
+const TimeDurationPage = lazy(() => import('./pages/TimeDurationPage'))
+const UnixTimestampPage = lazy(() => import('./pages/UnixTimestampPage'))
+const GpaCalculatorPage = lazy(() => import('./pages/GpaCalculatorPage'))
 const WeatherVsPage = lazy(() => import('./pages/WeatherVsPage'))
 const HistoricWeatherPage = lazy(() => import('./pages/HistoricWeatherPage'))
 const HourlyForecastPage = lazy(() => import('./pages/HourlyForecastPage'))
@@ -551,6 +556,11 @@ function AppRoutes() {
         <Route path="/blog/how-to-convert-currency" element={<HowToConvertCurrencyPage />} />
         <Route path="/blog/best-currency-converter-tools" element={<BestCurrencyConverterToolsPage />} />
         <Route path="/blog/mid-market-exchange-rate" element={<MidMarketRatePage />} />
+        <Route path="/date-duration-calculator" element={<DateDurationPage />} />
+        <Route path="/business-days-calculator" element={<BusinessDaysPage />} />
+        <Route path="/time-duration-calculator" element={<TimeDurationPage />} />
+        <Route path="/unix-timestamp-converter" element={<UnixTimestampPage />} />
+        <Route path="/gpa-calculator" element={<GpaCalculatorPage />} />
         <Route path="/country-codes" element={<CountryCodesPage />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/newsletter" element={<NewsletterPage />} />
