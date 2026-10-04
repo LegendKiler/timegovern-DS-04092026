@@ -713,11 +713,12 @@ import LoadingFallback from './components/LoadingFallback'
 import {  } from 'lucide-react'
 
 export default function App() {
+  const isEmbedPage = typeof window !== 'undefined' && window.location.pathname.startsWith('/embed/')
   return (
     <UserProvider>
       <AuthProvider>
         <CalculationProvider>
-        <AutoTranslateProvider apiKey={import.meta.env.VITE_LINGO_API_KEY || ''} sourceLocale="en" availableLocales="all">
+        {isEmbedPage ? (
           <Router>
             <div className="min-h-screen bg-background text-foreground relative">
               {/* Subtle radial glow ÃƒÂ¢â‚¬\u201d no more grid cubes */}
@@ -728,7 +729,20 @@ export default function App() {
               <AppRoutes />
             </div>
           </Router>
-        </AutoTranslateProvider>
+        ) : (
+          <AutoTranslateProvider apiKey={import.meta.env.VITE_LINGO_API_KEY || ''} sourceLocale="en" availableLocales="all">
+            <Router>
+            <div className="min-h-screen bg-background text-foreground relative">
+              {/* Subtle radial glow ÃƒÂ¢â‚¬\u201d no more grid cubes */}
+              <div className="fixed inset-0 pointer-events-none -z-10">
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl"></div>
+              </div>
+              <AppRoutes />
+            </div>
+          </Router>
+          </AutoTranslateProvider>
+        )}
       </CalculationProvider>
       </AuthProvider>
     </UserProvider>
