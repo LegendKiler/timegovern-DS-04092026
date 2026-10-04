@@ -250,6 +250,9 @@ const WorldometersHub = lazy(() => import('./pages/WorldometersHub'))
 const WorldPopulationClockPage = lazy(() => import('./pages/WorldPopulationClockPage'))
 const BirthsClockPage = lazy(() => import('./pages/BirthsClockPage'))
 const DeathsClockPage = lazy(() => import('./pages/DeathsClockPage'))
+const Co2EmissionsClockPage = lazy(() => import('./pages/Co2EmissionsClockPage'))
+const EnergyUseClockPage = lazy(() => import('./pages/EnergyUseClockPage'))
+const FoodWasteClockPage = lazy(() => import('./pages/FoodWasteClockPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
 const TdeeCalculatorPage = lazy(() => import('./pages/TdeeCalculatorPage'))
 const ProteinCalculatorPage = lazy(() => import('./pages/ProteinCalculatorPage'))
@@ -420,6 +423,9 @@ function AppRoutes() {
         <Route path="/world-population-clock" element={<WorldPopulationClockPage />} />
         <Route path="/births-clock" element={<BirthsClockPage />} />
         <Route path="/deaths-clock" element={<DeathsClockPage />} />
+        <Route path="/co2-emissions-clock" element={<Co2EmissionsClockPage />} />
+        <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
+        <Route path="/food-waste-clock" element={<FoodWasteClockPage />} />
         <Route path="/macro-calculator" element={<MacroCalculatorPage />} />
         <Route path="/tdee-calculator" element={<TdeeCalculatorPage />} />
         <Route path="/protein-calculator" element={<ProteinCalculatorPage />} />

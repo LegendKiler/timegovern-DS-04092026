@@ -1,7 +1,7 @@
 import { useUser } from '../context/UserContext'
 import { useAuth } from '../context/AuthContext'
 import { Button } from "@/components/ui/button"
-import { Moon, Sun, User, LogOut, Crown, Settings, LayoutDashboard, Calendar, Plane, Code2, Calculator, ChevronDown, Menu, X } from "lucide-react"
+import { Moon, Sun, User, LogOut, Crown, Settings, LayoutDashboard, Calendar, Plane, Code2, Calculator, ChevronDown, Menu, X, Globe } from "lucide-react"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { useState } from "react"
 import Logo from './Logo'
@@ -46,6 +46,18 @@ const NAV = [
       { to: '/live-data', label: 'Live Data', desc: 'Real-time feeds' },
       { to: '/api-docs', label: 'Country Data API', desc: 'Free JSON and CSV' },
       { to: '/widgets', label: 'Widgets', desc: 'Embeddable tools' },
+    ],
+  },
+  {
+    label: 'Live',
+    items: [
+      { to: '/worldometers', label: 'Live World Counters', desc: 'Population, births, deaths' },
+      { to: '/world-population-clock', label: 'Population Clock', desc: 'Live global population' },
+      { to: '/births-clock', label: 'Births Clock', desc: 'Babies born today' },
+      { to: '/deaths-clock', label: 'Deaths Clock', desc: 'Deaths today' },
+      { to: '/co2-emissions-clock', label: 'CO2 Emissions', desc: 'Global emissions today' },
+      { to: '/energy-use-clock', label: 'Energy Use', desc: 'Primary energy today' },
+      { to: '/food-waste-clock', label: 'Food Waste', desc: 'Food wasted today' },
     ],
   },
   {
