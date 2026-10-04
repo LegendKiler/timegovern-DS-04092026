@@ -55,9 +55,9 @@ export default function EmbedPage() {
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'transparent',
+      background: theme === 'dark' ? '#0f172a' : '#ffffff',
       margin: 0,
-      padding: 0,
+      padding: '24px',
       position: 'relative',
     }}>
       <div>{widget}</div>
