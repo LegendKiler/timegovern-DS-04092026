@@ -9,6 +9,7 @@ import Header from './components/Header'
 const CarsPage = lazy(() => import('./pages/CarsPage'))
 const CurrencyConverterPage = lazy(() => import('./pages/CurrencyConverterPage'))
 const CurrencyPairPage = lazy(() => import('./pages/CurrencyPairPage'))
+const WidgetTestPage = lazy(() => import('./pages/WidgetTestPage'))
 const WeatherVsPage = lazy(() => import('./pages/WeatherVsPage'))
 const HistoricWeatherPage = lazy(() => import('./pages/HistoricWeatherPage'))
 const HourlyForecastPage = lazy(() => import('./pages/HourlyForecastPage'))
@@ -693,6 +694,7 @@ function AppRoutes() {
         <Route path="/cars" element={<CarsPage />} />
         <Route path="/currency-converter" element={<CurrencyConverterPage />} />
         <Route path="/currency/:pair" element={<CurrencyPairPage />} />
+        <Route path="/widgets/test" element={<WidgetTestPage />} />
       </Routes>
         </Suspense>
         </RouteErrorBoundary>
