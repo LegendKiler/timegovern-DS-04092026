@@ -1,4 +1,4 @@
-﻿import { useParams, useSearchParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget'
 import MultiCityWorldClockWidget from '../components/widgets/MultiCityWorldClockWidget'
 import TimeZoneConverterWidget from '../components/widgets/TimeZoneConverterWidget'
@@ -7,6 +7,7 @@ import CountdownWidget from '../components/widgets/CountdownWidget'
 import WeatherWidget from '../components/widgets/WeatherWidget'
 import DaysUntilWidget from '../components/widgets/DaysUntilWidget'
 import MoonPhaseWidget from '../components/widgets/MoonPhaseWidget'
+import CurrencyWidget from '../components/widgets/CurrencyWidget'
 
 export default function EmbedPage() {
   const { type } = useParams()
@@ -36,6 +37,8 @@ export default function EmbedPage() {
         return <DaysUntilWidget accent={accent} theme={theme} target={params.get('target') || '2027-01-01'} event={params.get('event') || 'New Year'} emoji={params.get('emoji') || '🎉'} />
       case 'moon':
         return <MoonPhaseWidget accent={accent} theme={theme} />
+      case 'currency':
+        return <CurrencyWidget from={params.get('from') || 'USD'} to={params.get('to') || 'EUR'} amount={parseFloat(params.get('amount') || '100')} accent={accent} theme={theme} />
       case 'timezone':
         return <TimeZoneConverterWidget accent={accent} theme={theme} from={params.get('from') || 'Sydney'} to={params.get('to') || 'London'} format={params.get('format') || '24h'} />
       case 'world-clock':
