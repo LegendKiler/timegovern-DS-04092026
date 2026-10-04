@@ -19,6 +19,11 @@ const BusinessDaysPage = lazy(() => import('./pages/BusinessDaysPage'))
 const TimeDurationPage = lazy(() => import('./pages/TimeDurationPage'))
 const UnixTimestampPage = lazy(() => import('./pages/UnixTimestampPage'))
 const GpaCalculatorPage = lazy(() => import('./pages/GpaCalculatorPage'))
+const DateDurationGuidePage = lazy(() => import('./pages/DateDurationGuidePage'))
+const BusinessDaysGuidePage = lazy(() => import('./pages/BusinessDaysGuidePage'))
+const AddSubtractTimeGuidePage = lazy(() => import('./pages/AddSubtractTimeGuidePage'))
+const UnixTimestampGuidePage = lazy(() => import('./pages/UnixTimestampGuidePage'))
+const HowToCalculateGpaPage = lazy(() => import('./pages/HowToCalculateGpaPage'))
 const WeatherVsPage = lazy(() => import('./pages/WeatherVsPage'))
 const HistoricWeatherPage = lazy(() => import('./pages/HistoricWeatherPage'))
 const HourlyForecastPage = lazy(() => import('./pages/HourlyForecastPage'))
@@ -561,6 +566,11 @@ function AppRoutes() {
         <Route path="/time-duration-calculator" element={<TimeDurationPage />} />
         <Route path="/unix-timestamp-converter" element={<UnixTimestampPage />} />
         <Route path="/gpa-calculator" element={<GpaCalculatorPage />} />
+        <Route path="/blog/date-duration-guide" element={<DateDurationGuidePage />} />
+        <Route path="/blog/business-days-guide" element={<BusinessDaysGuidePage />} />
+        <Route path="/blog/add-subtract-time-guide" element={<AddSubtractTimeGuidePage />} />
+        <Route path="/blog/unix-timestamp-guide" element={<UnixTimestampGuidePage />} />
+        <Route path="/blog/how-to-calculate-gpa" element={<HowToCalculateGpaPage />} />
         <Route path="/country-codes" element={<CountryCodesPage />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/newsletter" element={<NewsletterPage />} />

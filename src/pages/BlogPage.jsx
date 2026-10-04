@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BookOpen, Sparkles, ArrowRight, Moon, Coffee, Zap, Globe, Sun, Search, Coins } from 'lucide-react'
+import { BookOpen, Sparkles, ArrowRight, Moon, Coffee, Zap, Globe, Sun, Search, Coins, Wrench } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -40,6 +40,12 @@ const ARTICLES = [
   { to: '/blog/how-to-convert-currency', title: 'How to Convert Currency', desc: 'The complete guide to currency conversion, exchange fees, and getting the best rate.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
   { to: '/blog/best-currency-converter-tools', title: 'Best Currency Converter Tools Compared', desc: 'Wise vs XE vs Google vs Revolut vs OFX - fees, speeds, and which wins.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
   { to: '/blog/mid-market-exchange-rate', title: 'Mid-Market Exchange Rates Explained', desc: 'What the mid-market rate is, why banks add a spread, and how to find it.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
+
+  { to: '/blog/date-duration-guide', title: 'How to Calculate Duration Between Two Dates', desc: 'The formula, leap-year traps, and breaking duration into units.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/business-days-guide', title: 'Business Days Explained', desc: 'Working days vs calendar days, per-month counts, country differences.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/add-subtract-time-guide', title: 'How to Add and Subtract Time', desc: 'Carry-over rules, decimal hours, crossing midnight.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/unix-timestamp-guide', title: 'What Is a Unix Timestamp?', desc: 'Why 1970, seconds vs milliseconds, the Year 2038 problem.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/how-to-calculate-gpa', title: 'How to Calculate GPA', desc: 'The 4.0 scale, weighted vs unweighted, how to raise a low GPA.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
 ]
 
 const TAGS = [
@@ -50,6 +56,7 @@ const TAGS = [
   { key: 'time', label: 'Time', count: ARTICLES.filter(a => a.tag === 'time').length },
   { key: 'habits', label: 'Habits', count: ARTICLES.filter(a => a.tag === 'habits').length },
   { key: 'currency', label: 'Currency', count: ARTICLES.filter(a => a.tag === 'currency').length },
+  { key: 'tools', label: 'Tools', count: ARTICLES.filter(a => a.tag === 'tools').length },
 ]
 
 const FAQ = [
