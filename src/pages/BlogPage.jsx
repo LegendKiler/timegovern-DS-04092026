@@ -38,6 +38,8 @@ const ARTICLES = [
   { to: '/blog/morning-routine-guide', title: 'Morning Routine Guide', desc: 'Build a morning routine that sets up the whole day - without the hype.', tag: 'habits', tagLabel: 'Habits', icon: Sun },
 
   { to: '/blog/how-to-convert-currency', title: 'How to Convert Currency', desc: 'The complete guide to currency conversion, exchange fees, and getting the best rate.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
+  { to: '/blog/best-currency-converter-tools', title: 'Best Currency Converter Tools Compared', desc: 'Wise vs XE vs Google vs Revolut vs OFX - fees, speeds, and which wins.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
+  { to: '/blog/mid-market-exchange-rate', title: 'Mid-Market Exchange Rates Explained', desc: 'What the mid-market rate is, why banks add a spread, and how to find it.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
 ]
 
 const TAGS = [
