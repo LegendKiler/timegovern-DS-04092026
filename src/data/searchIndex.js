@@ -99,7 +99,7 @@ export const SEARCH_INDEX = [
   { name: "Germany Take Home Pay", href: "/blog/germany-take-home-pay", tagline: "Blog" },
   { name: "Global Ai", href: "/global-ai", tagline: "Page" },
   { name: "Global Privacy", href: "/global-privacy", tagline: "Page" },
-  { name: "Health", href: "/health-tools", tagline: "4 tools" },
+  { name: "Health", href: "/health-tools", tagline: "13 tools" },
   { name: "Healthy Bmi Range", href: "/blog/healthy-bmi-range", tagline: "Blog" },
   { name: "Home", href: "/", tagline: "Page" },
   { name: "Hong Kong", href: "/weather/hong-kong", tagline: "China - Weather, sun, moon" },

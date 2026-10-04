@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Activity, Sparkles, ArrowRight, Cake, Moon, Clock, BookOpen, Heart, Flame, Droplets, Scale } from 'lucide-react'
+import { Activity, Sparkles, ArrowRight, Cake, Moon, Clock, BookOpen, Heart, Flame, Droplets, Scale, Utensils, Beef, Timer, Wine } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -14,6 +14,11 @@ const TOOLS = [
   { to: '/age-calculator', name: 'Age Calculator', desc: 'Find your exact age in years, months, days - plus heartbeats, minutes alive, and more.', icon: Cake, color: 'pink' },
   { to: '/sleep-debt-calculator', name: 'Sleep Debt Calculator', desc: 'Find out exactly how much sleep you owe your body and get a recovery plan.', icon: Moon, color: 'indigo' },
   { to: '/sleep-timer', name: 'Sleep Timer', desc: 'Best times to fall asleep or wake up based on 90-minute sleep cycles.', icon: Clock, color: 'purple' },
+  { to: '/macro-calculator', name: 'Macro Calculator', desc: 'Daily protein, fat, and carb targets for cutting, maintaining, or bulking.', icon: Utensils, color: 'violet' },
+  { to: '/tdee-calculator', name: 'TDEE Calculator', desc: 'Total Daily Energy Expenditure - calories you burn including activity.', icon: Flame, color: 'orange' },
+  { to: '/protein-calculator', name: 'Protein Calculator', desc: 'Daily protein target based on body weight, activity, and goal.', icon: Beef, color: 'rose' },
+  { to: '/pace-calculator', name: 'Pace Calculator', desc: 'Solve for pace, time, or distance - runs, rides, any endurance sport.', icon: Timer, color: 'sky' },
+  { to: '/bac-calculator', name: 'BAC Calculator', desc: 'Estimate blood alcohol content with the Widmark formula. Educational only.', icon: Wine, color: 'purple' },
 ]
 
 const ARTICLES = [
@@ -24,7 +29,7 @@ const ARTICLES = [
 ]
 
 const FAQ = [
-  { q: 'What health tools does TimeGovern offer?', a: 'TimeGovern has four free health-related tools: a BMI Calculator, Age Calculator, Sleep Debt Calculator, and Sleep Timer. All run in your browser with no signup.' },
+  { q: 'What health tools does TimeGovern offer?', a: 'TimeGovern has 13 free health-related tools including BMI, calorie, macro, TDEE, protein, pace, BAC, body fat, water intake, ideal weight, age, sleep debt, and sleep timer. All run in your browser with no signup.' },
   { q: 'Are these health tools accurate?', a: 'The calculations use standard, published formulas - BMI uses the WHO formula, age uses exact calendar arithmetic, sleep debt uses the cumulative shortfall method, and the sleep timer uses 90-minute sleep cycles. They are screening tools, not medical devices.' },
   { q: 'Should I rely on these tools for medical decisions?', a: 'No. They are for informational purposes only and are not a substitute for professional medical advice. Always speak to a healthcare professional about health concerns.' },
   { q: 'Is my health data private?', a: 'Yes, completely. All calculations happen in your browser. Your weight, height, birth date, and sleep data are never sent to a server or stored anywhere except your device.' },
@@ -33,7 +38,7 @@ const FAQ = [
 ]
 
 const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
-const COLLECTION_SCHEMA = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Health & Wellness Tools', description: 'Free health and wellness tools - BMI, Age, Sleep Debt, and Sleep Timer calculators.', url: 'https://timegovern.com/health-tools' }
+const COLLECTION_SCHEMA = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: 'Health & Wellness Tools', description: 'Free health and wellness tools - BMI, calorie, macro, TDEE, protein, pace, BAC, and more.', url: 'https://timegovern.com/health-tools' }
 
 export default function HealthToolsHub() {
   useEffect(() => {
@@ -54,7 +59,7 @@ export default function HealthToolsHub() {
           <div className="relative z-10 p-8 md:p-12 text-white">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-5">
               <Sparkles className="h-3.5 w-3.5 text-rose-300" />
-              <span className="text-xs font-bold uppercase tracking-widest text-rose-200">4 tools - Free - Private</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-rose-200">13 tools - Free - Private</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-4 leading-tight flex items-center gap-4">
               <Activity className="h-10 w-10 md:h-14 md:w-14 text-rose-300" />
