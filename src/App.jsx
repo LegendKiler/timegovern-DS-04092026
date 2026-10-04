@@ -7,6 +7,7 @@ import {useEffect, lazy, Suspense} from 'react'
 import { useLocation } from 'react-router-dom'
 import Header from './components/Header'
 const CarsPage = lazy(() => import('./pages/CarsPage'))
+const CurrencyConverterPage = lazy(() => import('./pages/CurrencyConverterPage'))
 const WeatherVsPage = lazy(() => import('./pages/WeatherVsPage'))
 const HistoricWeatherPage = lazy(() => import('./pages/HistoricWeatherPage'))
 const HourlyForecastPage = lazy(() => import('./pages/HourlyForecastPage'))
@@ -689,6 +690,7 @@ function AppRoutes() {
         <Route path="/weather/:city/vs/:city2" element={<WeatherVsPage />} />
       
         <Route path="/cars" element={<CarsPage />} />
+        <Route path="/currency-converter" element={<CurrencyConverterPage />} />
       </Routes>
         </Suspense>
         </RouteErrorBoundary>
