@@ -696,7 +696,7 @@ function AppRoutes() {
       </Routes>
         </Suspense>
         </RouteErrorBoundary>
-      <Footer />
+      {!isEmbed && <Footer />}
     </>
   )
 }

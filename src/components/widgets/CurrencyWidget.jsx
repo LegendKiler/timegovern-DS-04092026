@@ -31,20 +31,20 @@ export default function CurrencyWidget({ from = 'USD', to = 'EUR', amount = 100,
   const accentColor = accent || '#10b981'
 
   return (
-    <div className={`${bg} ${text} p-6 rounded-2xl border ${border} w-full max-w-sm`} style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div className={`${bg} ${text} p-6 rounded-2xl border ${border} w-full max-w-md`} style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <div className={`text-xs uppercase tracking-wide ${muted} mb-3`}>Currency Converter</div>
 
-      <div className="flex items-center gap-2 text-lg font-bold mb-1">
+      <div className="flex items-center gap-2 text-2xl font-bold mb-1">
         <span>{fromMeta?.flag}</span>
         <span>{from}</span>
       </div>
-      <div className={`text-sm ${muted} mb-3 tabular-nums`}>{numericAmount.toLocaleString()}</div>
+      <div className={`text-base ${muted} mb-3 tabular-nums`}>{numericAmount.toLocaleString()}</div>
 
-      <div className={`text-xs ${muted} mb-2`}>
+      <div className={`text-sm ${muted} mb-2`}>
         {rate ? `1 ${from} = ${rate.toFixed(4)} ${to}` : 'Loading…'}
       </div>
 
-      <div className="flex items-center gap-2 text-lg font-bold">
+      <div className="flex items-center gap-2 text-2xl font-bold">
         <span>{toMeta?.flag}</span>
         <span style={{ color: accentColor }} className="tabular-nums">
           {result !== null ? formatCurrencyAmount(result, to) : '\u2014'}
