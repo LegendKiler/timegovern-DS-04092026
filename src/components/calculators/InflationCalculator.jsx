@@ -1,32 +1,34 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useCalculation } from '../../context/CalculationContext'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { TrendingUp, Loader2 } from "lucide-react"
+import { HOLIDAY_COUNTRIES_BY_REGION, REGION_ORDER } from '../../data/countryCodes'
 
-const COUNTRIES = [
-  { code: 'US', name: 'United States' }, { code: 'GB', name: 'United Kingdom' },
-  { code: 'AU', name: 'Australia' }, { code: 'CA', name: 'Canada' },
-  { code: 'NZ', name: 'New Zealand' }, { code: 'DE', name: 'Germany' },
-  { code: 'FR', name: 'France' }, { code: 'IT', name: 'Italy' },
-  { code: 'ES', name: 'Spain' }, { code: 'NL', name: 'Netherlands' },
-  { code: 'CH', name: 'Switzerland' }, { code: 'SE', name: 'Sweden' },
-  { code: 'NO', name: 'Norway' }, { code: 'DK', name: 'Denmark' },
-  { code: 'IE', name: 'Ireland' }, { code: 'PL', name: 'Poland' },
-  { code: 'IN', name: 'India' }, { code: 'PK', name: 'Pakistan' },
-  { code: 'BD', name: 'Bangladesh' }, { code: 'CN', name: 'China' },
-  { code: 'JP', name: 'Japan' }, { code: 'KR', name: 'South Korea' },
-  { code: 'SG', name: 'Singapore' }, { code: 'MY', name: 'Malaysia' },
-  { code: 'ID', name: 'Indonesia' }, { code: 'PH', name: 'Philippines' },
-  { code: 'TH', name: 'Thailand' }, { code: 'VN', name: 'Vietnam' },
-  { code: 'AE', name: 'UAE' }, { code: 'SA', name: 'Saudi Arabia' },
-  { code: 'QA', name: 'Qatar' }, { code: 'TR', name: 'Turkey' },
-  { code: 'ZA', name: 'South Africa' }, { code: 'NG', name: 'Nigeria' },
-  { code: 'KE', name: 'Kenya' }, { code: 'EG', name: 'Egypt' },
-  { code: 'BR', name: 'Brazil' }, { code: 'MX', name: 'Mexico' },
-  { code: 'AR', name: 'Argentina' }, { code: 'CL', name: 'Chile' },
-]
+function CountryPicker({ value, onChange, disabled }) {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      disabled={disabled}
+      aria-label="Country"
+      className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground"
+    >
+      {REGION_ORDER.map((region) => {
+        const list = HOLIDAY_COUNTRIES_BY_REGION[region] || []
+        if (list.length === 0) return null
+        return (
+          <optgroup key={region} label={region}>
+            {list.map((c) => (
+              <option key={c.code} value={c.code}>{c.name}</option>
+            ))}
+          </optgroup>
+        )
+      })}
+    </select>
+  )
+}
 
 export default function InflationCalculator() {
   const [amount, setAmount] = useState('1000')
@@ -46,6 +48,11 @@ export default function InflationCalculator() {
       results: result || {},
     })
   }, [amount, startYear, endYear, country, result, registerCalculation])
+
+  const totalCountries = useMemo(
+    () => REGION_ORDER.reduce((n, r) => n + (HOLIDAY_COUNTRIES_BY_REGION[r]?.length || 0), 0),
+    []
+  )
 
   const calc = async () => {
     const a = parseFloat(amount)
@@ -76,22 +83,13 @@ export default function InflationCalculator() {
         yearsUsed++
       }
 
-      if (yearsUsed === 0) { setResult({ error: 'No data' }); setLoading(false); return }
+      if (yearsUsed === 0) { setResult({ error: 'No data for this country in this period' }); setLoading(false); return }
 
       const avgRate = cumulative / yearsUsed
       const totalChange = ((value - a) / a) * 100
       const purchasingPowerLost = ((a - value) / a) * 100
 
-      setResult({
-        originalValue: a,
-        adjustedValue: value,
-        totalChangePct: totalChange,
-        avgRate,
-        yearsUsed,
-        purchasingPowerLost,
-        startYear: y0,
-        endYear: y1,
-      })
+      setResult({ originalValue: a, adjustedValue: value, totalChangePct: totalChange, avgRate, yearsUsed, purchasingPowerLost, startYear: y0, endYear: y1 })
     } catch (e) {
       setResult({ error: 'Failed to fetch data' })
     } finally {
@@ -117,10 +115,10 @@ export default function InflationCalculator() {
           <Input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} className="h-11" />
         </div>
         <div>
-          <label className="text-sm font-semibold mb-1.5 block">Country</label>
-          <select value={country} onChange={(e) => setCountry(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground">
-            {COUNTRIES.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
-          </select>
+          <label className="text-sm font-semibold mb-1.5 block">
+            Country <span className="text-xs text-muted-foreground font-normal">({totalCountries} supported)</span>
+          </label>
+          <CountryPicker value={country} onChange={setCountry} disabled={loading} />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div>
@@ -139,9 +137,7 @@ export default function InflationCalculator() {
         {result && !result.error && (
           <div className="space-y-2">
             <div className="bg-gradient-to-br from-red-500/10 to-orange-500/10 rounded-xl p-4 text-center border border-red-500/20">
-              <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
-                {fmt(result.originalValue)} in {result.startYear} = 
-              </div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">{fmt(result.originalValue)} in {result.startYear} =</div>
               <div className="text-3xl font-black text-red-600 tabular-nums">{fmt(result.adjustedValue)}</div>
               <div className="text-xs text-muted-foreground mt-1">in {result.endYear}</div>
             </div>
