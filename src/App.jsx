@@ -24,6 +24,11 @@ const BusinessDaysGuidePage = lazy(() => import('./pages/BusinessDaysGuidePage')
 const AddSubtractTimeGuidePage = lazy(() => import('./pages/AddSubtractTimeGuidePage'))
 const UnixTimestampGuidePage = lazy(() => import('./pages/UnixTimestampGuidePage'))
 const HowToCalculateGpaPage = lazy(() => import('./pages/HowToCalculateGpaPage'))
+const InflationCalculatorPage = lazy(() => import('./pages/InflationCalculatorPage'))
+const SalesTaxCalculatorPage = lazy(() => import('./pages/SalesTaxCalculatorPage'))
+const DiscountCalculatorPage = lazy(() => import('./pages/DiscountCalculatorPage'))
+const RoiCalculatorPage = lazy(() => import('./pages/RoiCalculatorPage'))
+const SimpleInterestCalculatorPage = lazy(() => import('./pages/SimpleInterestCalculatorPage'))
 const WeatherVsPage = lazy(() => import('./pages/WeatherVsPage'))
 const HistoricWeatherPage = lazy(() => import('./pages/HistoricWeatherPage'))
 const HourlyForecastPage = lazy(() => import('./pages/HourlyForecastPage'))
@@ -571,6 +576,11 @@ function AppRoutes() {
         <Route path="/blog/add-subtract-time-guide" element={<AddSubtractTimeGuidePage />} />
         <Route path="/blog/unix-timestamp-guide" element={<UnixTimestampGuidePage />} />
         <Route path="/blog/how-to-calculate-gpa" element={<HowToCalculateGpaPage />} />
+        <Route path="/inflation-calculator" element={<InflationCalculatorPage />} />
+        <Route path="/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
+        <Route path="/discount-calculator" element={<DiscountCalculatorPage />} />
+        <Route path="/roi-calculator" element={<RoiCalculatorPage />} />
+        <Route path="/simple-interest-calculator" element={<SimpleInterestCalculatorPage />} />
         <Route path="/country-codes" element={<CountryCodesPage />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/newsletter" element={<NewsletterPage />} />
