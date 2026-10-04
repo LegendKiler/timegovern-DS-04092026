@@ -166,6 +166,30 @@ export const CURRENCIES = [
   { code: "VUV", name: "Vanuatu Vatu", symbol: "VT", flag: "\u{1F1FB}\u{1F1FA}", country: "Vanuatu", region: "Oceania", popular: false },
   { code: "SBD", name: "Solomon Islands Dollar", symbol: "SI$", flag: "\u{1F1F8}\u{1F1E7}", country: "Solomon Islands", region: "Oceania", popular: false },
   { code: "XPF", name: "CFP Franc", symbol: "\u20A3", flag: "\u{1F1F5}\u{1F1EB}", country: "French Polynesia", region: "Oceania", popular: false },
+
+  // ── API parity additions (2026-10-04) ──
+  { code: "CNH", name: "Chinese Yuan (Offshore)", symbol: "\u00A5", flag: "\u{1F1ED}\u{1F1F0}", country: "Hong Kong", region: "Asia", popular: true },
+  { code: "CLF", name: "Chilean Unit of Account (UF)", symbol: "UF", flag: "\u{1F1E8}\u{1F1F1}", country: "Chile", region: "South America", popular: false },
+  { code: "CRC", name: "Costa Rican Col\u00F3n", symbol: "\u20A1", flag: "\u{1F1E8}\u{1F1F7}", country: "Costa Rica", region: "North America", popular: false },
+  { code: "FKP", name: "Falkland Islands Pound", symbol: "\u00A3", flag: "\u{1F1EB}\u{1F1F0}", country: "Falkland Islands", region: "South America", popular: false },
+  { code: "FOK", name: "Faroese Kr\u00F3na", symbol: "kr", flag: "\u{1F1EB}\u{1F1F4}", country: "Faroe Islands", region: "Europe", popular: false },
+  { code: "GGP", name: "Guernsey Pound", symbol: "\u00A3", flag: "\u{1F1EC}\u{1F1EC}", country: "Guernsey", region: "Europe", popular: false },
+  { code: "GIP", name: "Gibraltar Pound", symbol: "\u00A3", flag: "\u{1F1EC}\u{1F1EE}", country: "Gibraltar", region: "Europe", popular: false },
+  { code: "GTQ", name: "Guatemalan Quetzal", symbol: "Q", flag: "\u{1F1EC}\u{1F1F9}", country: "Guatemala", region: "North America", popular: false },
+  { code: "HNL", name: "Honduran Lempira", symbol: "L", flag: "\u{1F1ED}\u{1F1F3}", country: "Honduras", region: "North America", popular: false },
+  { code: "HRK", name: "Croatian Kuna", symbol: "kn", flag: "\u{1F1ED}\u{1F1F7}", country: "Croatia", region: "Europe", popular: false },
+  { code: "IMP", name: "Isle of Man Pound", symbol: "\u00A3", flag: "\u{1F1EE}\u{1F1F2}", country: "Isle of Man", region: "Europe", popular: false },
+  { code: "JEP", name: "Jersey Pound", symbol: "\u00A3", flag: "\u{1F1EF}\u{1F1EA}", country: "Jersey", region: "Europe", popular: false },
+  { code: "KID", name: "Kiribati Dollar", symbol: "$", flag: "\u{1F1F0}\u{1F1EE}", country: "Kiribati", region: "Oceania", popular: false },
+  { code: "MRU", name: "Mauritanian Ouguiya", symbol: "UM", flag: "\u{1F1F2}\u{1F1F7}", country: "Mauritania", region: "Africa", popular: false },
+  { code: "NIO", name: "Nicaraguan C\u00F3rdoba", symbol: "C$", flag: "\u{1F1F3}\u{1F1EE}", country: "Nicaragua", region: "North America", popular: false },
+  { code: "PAB", name: "Panamanian Balboa", symbol: "B/.", flag: "\u{1F1F5}\u{1F1E6}", country: "Panama", region: "North America", popular: false },
+  { code: "SHP", name: "Saint Helena Pound", symbol: "\u00A3", flag: "\u{1F1F8}\u{1F1ED}", country: "Saint Helena", region: "Africa", popular: false },
+  { code: "SLL", name: "Sierra Leonean Leone (old)", symbol: "Le", flag: "\u{1F1F8}\u{1F1F1}", country: "Sierra Leone", region: "Africa", popular: false },
+  { code: "TVD", name: "Tuvaluan Dollar", symbol: "$", flag: "\u{1F1F9}\u{1F1FB}", country: "Tuvalu", region: "Oceania", popular: false },
+  { code: "XCG", name: "Caribbean Guilder", symbol: "\u0192", flag: "\u{1F1E8}\u{1F1FC}", country: "Cura\u00E7ao", region: "Caribbean", popular: false },
+  { code: "XDR", name: "IMF Special Drawing Rights", symbol: "SDR", flag: "\u{1F1FA}\u{1F1F3}", country: "International", region: "Europe", popular: false },
+  { code: "ZWG", name: "Zimbabwe Gold", symbol: "ZiG", flag: "\u{1F1FF}\u{1F1FC}", country: "Zimbabwe", region: "Africa", popular: false },
 ];
 
 // Top pairs for /currency/:pair programmatic SEO pages.
