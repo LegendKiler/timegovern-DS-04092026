@@ -256,6 +256,11 @@ const SalesTaxGuidePage = lazy(() => import('./pages/SalesTaxGuidePage'))
 const DiscountGuidePage = lazy(() => import('./pages/DiscountGuidePage'))
 const RoiGuidePage = lazy(() => import('./pages/RoiGuidePage'))
 const SimpleInterestGuidePage = lazy(() => import('./pages/SimpleInterestGuidePage'))
+const MacroGuidePage = lazy(() => import('./pages/MacroGuidePage'))
+const TdeeGuidePage = lazy(() => import('./pages/TdeeGuidePage'))
+const ProteinGuidePage = lazy(() => import('./pages/ProteinGuidePage'))
+const PaceGuidePage = lazy(() => import('./pages/PaceGuidePage'))
+const BacGuidePage = lazy(() => import('./pages/BacGuidePage'))
 const BestTimeToTakeLeave2026Page = lazy(() => import('./pages/BestTimeToTakeLeave2026Page'))
 const LongWeekends2026Page = lazy(() => import('./pages/LongWeekends2026Page'))
 const MostPublicHolidaysPage = lazy(() => import('./pages/MostPublicHolidaysPage'))
@@ -596,6 +601,11 @@ function AppRoutes() {
         <Route path="/blog/discount-guide" element={<DiscountGuidePage />} />
         <Route path="/blog/roi-guide" element={<RoiGuidePage />} />
         <Route path="/blog/simple-interest-guide" element={<SimpleInterestGuidePage />} />
+        <Route path="/blog/macro-guide" element={<MacroGuidePage />} />
+        <Route path="/blog/tdee-guide" element={<TdeeGuidePage />} />
+        <Route path="/blog/protein-guide" element={<ProteinGuidePage />} />
+        <Route path="/blog/pace-guide" element={<PaceGuidePage />} />
+        <Route path="/blog/bac-guide" element={<BacGuidePage />} />
         <Route path="/inflation-calculator" element={<InflationCalculatorPage />} />
         <Route path="/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
         <Route path="/discount-calculator" element={<DiscountCalculatorPage />} />

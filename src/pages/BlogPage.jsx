@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BookOpen, Sparkles, ArrowRight, Moon, Coffee, Zap, Globe, Sun, Search, Coins, Wrench } from 'lucide-react'
+import { BookOpen, Sparkles, ArrowRight, Moon, Coffee, Zap, Globe, Sun, Search, Coins, Wrench, Heart } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -51,6 +51,11 @@ const ARTICLES = [
   { to: '/blog/discount-guide', title: 'Discount Guide', desc: 'Percent off, stacked discounts, reverse to find original price.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
   { to: '/blog/roi-guide', title: 'ROI Guide', desc: 'ROI formula, annualizing, CAGR, real vs nominal return.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
   { to: '/blog/simple-interest-guide', title: 'Simple Interest Guide', desc: 'I = P x r x t, vs compound, day-count conventions.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/macro-guide', title: 'Macro Guide', desc: 'How to calculate protein, fat, and carbs - with worked examples.', tag: 'health', tagLabel: 'Health', icon: Heart },
+  { to: '/blog/tdee-guide', title: 'TDEE Guide', desc: 'What TDEE is, BMR vs TDEE, and how to use it for weight goals.', tag: 'health', tagLabel: 'Health', icon: Heart },
+  { to: '/blog/protein-guide', title: 'Protein Guide', desc: 'Daily protein targets by activity level, distribution, and timing.', tag: 'health', tagLabel: 'Health', icon: Heart },
+  { to: '/blog/pace-guide', title: 'Pace Guide', desc: 'The pace formula, converting to speed, race paces, negative splits.', tag: 'health', tagLabel: 'Health', icon: Heart },
+  { to: '/blog/bac-guide', title: 'BAC Guide', desc: 'Blood alcohol content, Widmark formula, legal limits, safety.', tag: 'health', tagLabel: 'Health', icon: Heart },
 ]
 
 const TAGS = [
@@ -62,6 +67,7 @@ const TAGS = [
   { key: 'habits', label: 'Habits', count: ARTICLES.filter(a => a.tag === 'habits').length },
   { key: 'currency', label: 'Currency', count: ARTICLES.filter(a => a.tag === 'currency').length },
   { key: 'tools', label: 'Tools', count: ARTICLES.filter(a => a.tag === 'tools').length },
+  { key: 'health', label: 'Health', count: ARTICLES.filter(a => a.tag === 'health').length },
 ]
 
 const FAQ = [
