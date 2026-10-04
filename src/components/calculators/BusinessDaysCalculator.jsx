@@ -1,27 +1,41 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useCalculation } from '../../context/CalculationContext'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Briefcase, Loader2 } from "lucide-react"
+import { HOLIDAY_COUNTRIES_BY_REGION, REGION_ORDER } from '../../data/countryCodes'
+import { getHolidays } from '../../lib/holidaysApi'
 
-const COUNTRIES = [
-  { code: 'US', name: 'United States' },
-  { code: 'GB', name: 'United Kingdom' },
-  { code: 'AU', name: 'Australia' },
-  { code: 'CA', name: 'Canada' },
-  { code: 'IN', name: 'India' },
-  { code: 'DE', name: 'Germany' },
-  { code: 'FR', name: 'France' },
-  { code: 'NZ', name: 'New Zealand' },
-  { code: 'PK', name: 'Pakistan' },
-  { code: 'AE', name: 'United Arab Emirates' },
-  { code: 'SA', name: 'Saudi Arabia' },
-  { code: 'SG', name: 'Singapore' },
-  { code: 'JP', name: 'Japan' },
-  { code: 'CN', name: 'China' },
-  { code: 'ZA', name: 'South Africa' },
-]
+function CountryPicker({ value, onChange, disabled }) {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      disabled={disabled}
+      aria-label="Country"
+      className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground"
+    >
+      {REGION_ORDER.map((region) => {
+        const list = HOLIDAY_COUNTRIES_BY_REGION[region] || []
+        if (list.length === 0) return null
+        return (
+          <optgroup key={region} label={region}>
+            {list.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.name}
+              </option>
+            ))}
+          </optgroup>
+        )
+      })}
+    </select>
+  )
+}
+
+function isoDate(d) {
+  return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0')
+}
 
 export default function BusinessDaysCalculator() {
   const [from, setFrom] = useState('')
@@ -42,6 +56,11 @@ export default function BusinessDaysCalculator() {
     })
   }, [from, to, country, excludeHolidays, result, registerCalculation])
 
+  const totalCountries = useMemo(
+    () => REGION_ORDER.reduce((n, r) => n + (HOLIDAY_COUNTRIES_BY_REGION[r]?.length || 0), 0),
+    []
+  )
+
   const calc = async () => {
     if (!from || !to) return
     setLoading(true)
@@ -53,19 +72,19 @@ export default function BusinessDaysCalculator() {
       const end = new Date(Math.max(a, b))
 
       const holidaySet = new Set()
+      let holidaySource = 'skipped'
       if (excludeHolidays) {
+        holidaySource = 'none'
         const years = new Set()
         for (let y = start.getFullYear(); y <= end.getFullYear(); y++) years.add(y)
         for (const y of years) {
           try {
-            const res = await fetch('/data/holidays/' + country.toLowerCase() + '/' + y + '.json')
-            if (res.ok) {
-              const data = await res.json()
-              const list = Array.isArray(data) ? data : (data?.holidays || [])
-              for (const h of list) {
-                const d = (typeof h === 'string') ? h : (h.date || h.iso || null)
-                if (d) holidaySet.add(d)
-              }
+            const res = await getHolidays(country, y)
+            const list = Array.isArray(res) ? res : (res?.holidays || [])
+            if (list.length > 0) holidaySource = 'loaded'
+            for (const h of list) {
+              const d = (typeof h === 'string') ? h : (h.date || h.iso || null)
+              if (d) holidaySet.add(d.slice(0, 10))
             }
           } catch {}
         }
@@ -77,7 +96,7 @@ export default function BusinessDaysCalculator() {
       const cur = new Date(start)
       while (cur <= end) {
         const dow = cur.getDay()
-        const iso = cur.getFullYear() + '-' + String(cur.getMonth()+1).padStart(2,'0') + '-' + String(cur.getDate()).padStart(2,'0')
+        const iso = isoDate(cur)
         const isWeekend = dow === 0 || dow === 6
         const isHoliday = holidaySet.has(iso)
         if (isWeekend) weekendDays++
@@ -87,7 +106,7 @@ export default function BusinessDaysCalculator() {
       }
 
       const totalDays = Math.floor((end - start) / 86400000) + 1
-      setResult({ businessDays, weekendDays, holidayDays, totalDays })
+      setResult({ businessDays, weekendDays, holidayDays, totalDays, holidaySource, holidayCount: holidaySet.size })
     } finally {
       setLoading(false)
     }
@@ -115,10 +134,10 @@ export default function BusinessDaysCalculator() {
           </div>
         </div>
         <div>
-          <label className="text-sm font-semibold mb-1.5 block">Country (for holidays)</label>
-          <select value={country} onChange={(e) => setCountry(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground">
-            {COUNTRIES.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
-          </select>
+          <label className="text-sm font-semibold mb-1.5 block">
+            Country <span className="text-xs text-muted-foreground font-normal">({totalCountries} supported)</span>
+          </label>
+          <CountryPicker value={country} onChange={setCountry} disabled={loading} />
         </div>
         <label className="flex items-center gap-2 text-sm cursor-pointer">
           <input type="checkbox" checked={excludeHolidays} onChange={(e) => setExcludeHolidays(e.target.checked)} className="h-4 w-4" />
@@ -139,6 +158,13 @@ export default function BusinessDaysCalculator() {
               <div className="bg-muted/50 p-3 rounded-lg text-center"><div className="text-xs text-muted-foreground">Weekend</div><div className="font-bold tabular-nums">{result.weekendDays}</div></div>
               <div className="bg-muted/50 p-3 rounded-lg text-center"><div className="text-xs text-muted-foreground">Holidays</div><div className="font-bold tabular-nums">{result.holidayDays}</div></div>
             </div>
+            {excludeHolidays && (
+              <p className="text-[11px] text-muted-foreground text-center">
+                {result.holidaySource === 'loaded'
+                  ? `Excluded ${result.holidayCount} public holiday${result.holidayCount === 1 ? '' : 's'}`
+                  : 'No holiday data available for this range — weekend exclusion only'}
+              </p>
+            )}
           </div>
         )}
       </CardContent>
