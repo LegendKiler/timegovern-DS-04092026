@@ -196,6 +196,13 @@ export const CURRENCIES = [
 // 20 majors cross-product ≈ 380 pairs. Expand by editing this list.
 export const POPULAR_CURRENCIES = CURRENCIES.filter((c) => c.popular).map((c) => c.code);
 
+// Curated 20-currency list for /currency/:pair programmatic SEO pages.
+// 20 × 19 = 380 one-directional pairs. Add a code here to grow the set.
+export const PAIR_PAGE_CURRENCIES = [
+  "USD", "EUR", "GBP", "JPY", "AUD", "CAD", "CHF", "CNY", "INR", "NZD",
+  "HKD", "SGD", "SEK", "NOK", "DKK", "KRW", "BRL", "MXN", "ZAR", "AED",
+];
+
 // Region order for grouped dropdowns
 export const CURRENCY_REGION_ORDER = [
   "North America",
