@@ -1,13 +1,47 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import FreshnessBadge from './FreshnessBadge'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { DollarSign, RefreshCw, ArrowRightLeft, TrendingUp, Loader2 } from "lucide-react"
+import { CURRENCIES, CURRENCY_REGION_ORDER, getCurrency, formatCurrencyAmount } from '../../data/currencies'
 
-const CURRENCIES = [
-  'USD','EUR','GBP','AUD','NZD','JPY','CNY','INR','PKR','AED','SAR','CAD','CHF','SGD','HKD','ZAR','TRY','BRL','MXN','KRW'
-]
+// Group currencies by region in the canonical order
+function groupByRegion() {
+  const groups = {}
+  for (const c of CURRENCIES) {
+    if (!groups[c.region]) groups[c.region] = []
+    groups[c.region].push(c)
+  }
+  return CURRENCY_REGION_ORDER
+    .filter((r) => groups[r])
+    .map((r) => ({ region: r, currencies: groups[r].slice().sort((a, b) => a.code.localeCompare(b.code)) }))
+}
+
+function CurrencySelect({ value, onChange, disabled, label }) {
+  const grouped = useMemo(groupByRegion, [])
+  return (
+    <div>
+      <label className="text-xs text-muted-foreground mb-1 block">{label}</label>
+      <select
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        disabled={disabled}
+        className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground font-semibold"
+      >
+        {grouped.map((g) => (
+          <optgroup key={g.region} label={g.region}>
+            {g.currencies.map((c) => (
+              <option key={c.code} value={c.code}>
+                {c.flag} {c.code} — {c.name}
+              </option>
+            ))}
+          </optgroup>
+        ))}
+      </select>
+    </div>
+  )
+}
 
 export default function CurrencyConverter() {
   const [amount, setAmount] = useState('100')
@@ -17,6 +51,7 @@ export default function CurrencyConverter() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [updated, setUpdated] = useState(null)
+  const [rateDate, setRateDate] = useState(null)
 
   const fetchRates = async (base) => {
     setLoading(true); setError('')
@@ -27,6 +62,7 @@ export default function CurrencyConverter() {
       if (data.result === 'error') throw new Error(data['error-type'] || 'API error')
       setRates(data.rates)
       setUpdated(new Date())
+      setRateDate(data.time_last_update_utc || null)
     } catch (e) {
       setError(e.message || 'Failed to load rates')
     } finally {
@@ -38,8 +74,12 @@ export default function CurrencyConverter() {
 
   const swap = () => { setFrom(to); setTo(from) }
 
-  const result = rates && rates[to] ? (parseFloat(amount || 0) * rates[to]).toFixed(2) : '—'
-  const rate = rates && rates[to] ? rates[to].toFixed(4) : '—'
+  const fromMeta = getCurrency(from)
+  const toMeta = getCurrency(to)
+
+  const numericAmount = parseFloat(amount || 0)
+  const result = rates && rates[to] ? formatCurrencyAmount(numericAmount * rates[to], to) : '\u2014'
+  const rate = rates && rates[to] ? rates[to].toFixed(4) : '\u2014'
 
   return (
     <Card className="border-0 shadow-xl bg-gradient-to-br from-emerald-500/10 to-teal-500/10 h-full">
@@ -48,7 +88,7 @@ export default function CurrencyConverter() {
           <span className="flex items-center gap-2">
             <DollarSign className="h-5 w-5 text-emerald-500" /> Currency Converter <FreshnessBadge status="hourly" />
           </span>
-          <Button variant="ghost" size="sm" onClick={() => fetchRates(from)} disabled={loading}>
+          <Button variant="ghost" size="sm" onClick={() => fetchRates(from)} disabled={loading} aria-label="Refresh rates">
             <RefreshCw className={'h-4 w-4 ' + (loading ? 'animate-spin' : '')} />
           </Button>
         </CardTitle>
@@ -62,25 +102,15 @@ export default function CurrencyConverter() {
         </div>
 
         <div className="grid grid-cols-1 gap-3">
-          <div>
-            <label className="text-xs text-muted-foreground mb-1 block">From</label>
-            <select value={from} onChange={(e) => setFrom(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground font-semibold">
-              {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </div>
+          <CurrencySelect value={from} onChange={setFrom} disabled={loading} label="From" />
 
           <div className="flex justify-center">
-            <Button variant="outline" size="sm" onClick={swap} className="rounded-full">
+            <Button variant="outline" size="sm" onClick={swap} className="rounded-full" aria-label="Swap currencies">
               <ArrowRightLeft className="h-4 w-4" />
             </Button>
           </div>
 
-          <div>
-            <label className="text-xs text-muted-foreground mb-1 block">To</label>
-            <select value={to} onChange={(e) => setTo(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground font-semibold">
-              {CURRENCIES.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
-          </div>
+          <CurrencySelect value={to} onChange={setTo} disabled={loading} label="To" />
         </div>
 
         <div className="bg-card border border-border rounded-xl p-4 mt-2">
@@ -89,17 +119,17 @@ export default function CurrencyConverter() {
           ) : (
             <>
               <div className="text-xs text-muted-foreground mb-1">Converted Amount</div>
-              <div className="text-2xl font-black text-emerald-600 tabular-nums">
-                {result} <span className="text-sm font-bold text-muted-foreground">{to}</span>
-              </div>
+              <div className="text-2xl font-black text-emerald-600 tabular-nums">{result}</div>
               <div className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
                 <TrendingUp className="h-3 w-3" /> 1 {from} = {rate} {to}
+                {fromMeta && toMeta ? ' \u00B7 ' + fromMeta.name + ' \u2192 ' + toMeta.name : ''}
               </div>
             </>
           )}
         </div>
 
-        {updated && <p className="text-xs text-muted-foreground text-center">Updated {updated.toLocaleTimeString()}</p>}
+        {rateDate && <p className="text-xs text-muted-foreground text-center">Rates as of {rateDate}</p>}
+        {!rateDate && updated && <p className="text-xs text-muted-foreground text-center">Updated {updated.toLocaleTimeString()}</p>}
       </CardContent>
     </Card>
   )
