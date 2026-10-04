@@ -31,7 +31,7 @@ export default function CurrencyWidget({ from = 'USD', to = 'EUR', amount = 100,
   const accentColor = accent || '#10b981'
 
   return (
-    <div className={`${bg} ${text} p-5 rounded-2xl border ${border} w-full max-w-xs`} style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
+    <div className={`${bg} ${text} p-6 rounded-2xl border ${border} w-full max-w-sm`} style={{ fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       <div className={`text-xs uppercase tracking-wide ${muted} mb-3`}>Currency Converter</div>
 
       <div className="flex items-center gap-2 text-lg font-bold mb-1">

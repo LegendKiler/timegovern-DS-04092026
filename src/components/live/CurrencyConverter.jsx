@@ -4,6 +4,7 @@ import FreshnessBadge from './FreshnessBadge'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { DollarSign, RefreshCw, ArrowRightLeft, TrendingUp, Loader2 } from "lucide-react"
+import SearchableCurrencySelect from '../SearchableCurrencySelect'
 import { CURRENCIES, CURRENCY_REGION_ORDER, getCurrency, formatCurrencyAmount } from '../../data/currencies'
 
 // Group currencies by region in the canonical order
@@ -18,30 +19,7 @@ function groupByRegion() {
     .map((r) => ({ region: r, currencies: groups[r].slice().sort((a, b) => a.code.localeCompare(b.code)) }))
 }
 
-function CurrencySelect({ value, onChange, disabled, label }) {
-  const grouped = useMemo(groupByRegion, [])
-  return (
-    <div>
-      <label className="text-xs text-muted-foreground mb-1 block">{label}</label>
-      <select
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        disabled={disabled}
-        className="w-full h-11 px-3 border border-border rounded-lg bg-background text-foreground font-semibold"
-      >
-        {grouped.map((g) => (
-          <optgroup key={g.region} label={g.region}>
-            {g.currencies.map((c) => (
-              <option key={c.code} value={c.code}>
-                {c.flag} {c.code} — {c.name}
-              </option>
-            ))}
-          </optgroup>
-        ))}
-      </select>
-    </div>
-  )
-}
+
 
 export default function CurrencyConverter() {
   const [amount, setAmount] = useState('100')
@@ -102,7 +80,7 @@ export default function CurrencyConverter() {
         </div>
 
         <div className="grid grid-cols-1 gap-3">
-          <CurrencySelect value={from} onChange={setFrom} disabled={loading} label="From" />
+          <SearchableCurrencySelect value={from} onChange={setFrom} disabled={loading} label="From" />
 
           <div className="flex justify-center">
             <Button variant="outline" size="sm" onClick={swap} className="rounded-full" aria-label="Swap currencies">
@@ -110,7 +88,7 @@ export default function CurrencyConverter() {
             </Button>
           </div>
 
-          <CurrencySelect value={to} onChange={setTo} disabled={loading} label="To" />
+          <SearchableCurrencySelect value={to} onChange={setTo} disabled={loading} label="To" />
         </div>
 
         <div className="bg-card border border-border rounded-xl p-4 mt-2">
