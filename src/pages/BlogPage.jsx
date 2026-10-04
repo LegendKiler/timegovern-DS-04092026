@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { BookOpen, Sparkles, ArrowRight, Moon, Coffee, Zap, Globe, Sun, Search } from 'lucide-react'
+import { BookOpen, Sparkles, ArrowRight, Moon, Coffee, Zap, Globe, Sun, Search, Coins } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -36,6 +36,8 @@ const ARTICLES = [
   { to: '/blog/sync-team-time-off-time-zones', title: "How to Sync Your Team's Time Off Across Time Zones", desc: 'A playbook for distributed teams coordinating national holidays.', tag: 'time', tagLabel: 'Time', icon: Globe },
 
   { to: '/blog/morning-routine-guide', title: 'Morning Routine Guide', desc: 'Build a morning routine that sets up the whole day - without the hype.', tag: 'habits', tagLabel: 'Habits', icon: Sun },
+
+  { to: '/blog/how-to-convert-currency', title: 'How to Convert Currency', desc: 'The complete guide to currency conversion, exchange fees, and getting the best rate.', tag: 'currency', tagLabel: 'Currency', icon: Coins },
 ]
 
 const TAGS = [
@@ -45,6 +47,7 @@ const TAGS = [
   { key: 'productivity', label: 'Productivity', count: ARTICLES.filter(a => a.tag === 'productivity').length },
   { key: 'time', label: 'Time', count: ARTICLES.filter(a => a.tag === 'time').length },
   { key: 'habits', label: 'Habits', count: ARTICLES.filter(a => a.tag === 'habits').length },
+  { key: 'currency', label: 'Currency', count: ARTICLES.filter(a => a.tag === 'currency').length },
 ]
 
 const FAQ = [
@@ -66,7 +69,7 @@ export default function BlogPage() {
   useEffect(() => {
     document.title = 'Guides & Articles - Sleep, Caffeine & Productivity | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
-    meta.content = 'Practical guides on sleep science, caffeine timing, productivity techniques, and time zones. 26 free articles, no signup.'
+    meta.content = 'Practical guides on sleep science, caffeine timing, productivity techniques, time zones, and currency. ' + ARTICLES.length + ' free articles, no signup.'
     if (!meta.parentNode) document.head.appendChild(meta)
     setPageMeta()
   }, [])

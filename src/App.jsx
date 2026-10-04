@@ -11,6 +11,7 @@ const CurrencyConverterPage = lazy(() => import('./pages/CurrencyConverterPage')
 const CurrencyPairPage = lazy(() => import('./pages/CurrencyPairPage'))
 const WidgetTestPage = lazy(() => import('./pages/WidgetTestPage'))
 const EmbedDocsPage = lazy(() => import('./pages/EmbedDocsPage'))
+const HowToConvertCurrencyPage = lazy(() => import('./pages/HowToConvertCurrencyPage'))
 const WeatherVsPage = lazy(() => import('./pages/WeatherVsPage'))
 const HistoricWeatherPage = lazy(() => import('./pages/HistoricWeatherPage'))
 const HourlyForecastPage = lazy(() => import('./pages/HourlyForecastPage'))
@@ -545,6 +546,7 @@ function AppRoutes() {
         <Route path="/my-widgets" element={<MyWidgetsPage />} />
         <Route path="/embed/:type" element={<EmbedPage />} />
         <Route path="/embed-docs" element={<EmbedDocsPage />} />
+        <Route path="/blog/how-to-convert-currency" element={<HowToConvertCurrencyPage />} />
         <Route path="/country-codes" element={<CountryCodesPage />} />
         <Route path="/jobs" element={<JobsPage />} />
         <Route path="/newsletter" element={<NewsletterPage />} />
