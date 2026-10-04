@@ -246,6 +246,11 @@ const BmiCalculatorPage = lazy(() => import('./pages/BmiCalculatorPage'))
 const SleepTimerPage = lazy(() => import('./pages/SleepTimerPage'))
 const SleepToolsHub = lazy(() => import('./pages/SleepToolsHub'))
 const BlogPage = lazy(() => import('./pages/BlogPage'))
+const InflationGuidePage = lazy(() => import('./pages/InflationGuidePage'))
+const SalesTaxGuidePage = lazy(() => import('./pages/SalesTaxGuidePage'))
+const DiscountGuidePage = lazy(() => import('./pages/DiscountGuidePage'))
+const RoiGuidePage = lazy(() => import('./pages/RoiGuidePage'))
+const SimpleInterestGuidePage = lazy(() => import('./pages/SimpleInterestGuidePage'))
 const BestTimeToTakeLeave2026Page = lazy(() => import('./pages/BestTimeToTakeLeave2026Page'))
 const LongWeekends2026Page = lazy(() => import('./pages/LongWeekends2026Page'))
 const MostPublicHolidaysPage = lazy(() => import('./pages/MostPublicHolidaysPage'))
@@ -576,6 +581,11 @@ function AppRoutes() {
         <Route path="/blog/add-subtract-time-guide" element={<AddSubtractTimeGuidePage />} />
         <Route path="/blog/unix-timestamp-guide" element={<UnixTimestampGuidePage />} />
         <Route path="/blog/how-to-calculate-gpa" element={<HowToCalculateGpaPage />} />
+        <Route path="/blog/inflation-guide" element={<InflationGuidePage />} />
+        <Route path="/blog/sales-tax-guide" element={<SalesTaxGuidePage />} />
+        <Route path="/blog/discount-guide" element={<DiscountGuidePage />} />
+        <Route path="/blog/roi-guide" element={<RoiGuidePage />} />
+        <Route path="/blog/simple-interest-guide" element={<SimpleInterestGuidePage />} />
         <Route path="/inflation-calculator" element={<InflationCalculatorPage />} />
         <Route path="/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
         <Route path="/discount-calculator" element={<DiscountCalculatorPage />} />

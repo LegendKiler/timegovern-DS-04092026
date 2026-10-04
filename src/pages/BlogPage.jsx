@@ -46,6 +46,11 @@ const ARTICLES = [
   { to: '/blog/add-subtract-time-guide', title: 'How to Add and Subtract Time', desc: 'Carry-over rules, decimal hours, crossing midnight.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
   { to: '/blog/unix-timestamp-guide', title: 'What Is a Unix Timestamp?', desc: 'Why 1970, seconds vs milliseconds, the Year 2038 problem.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
   { to: '/blog/how-to-calculate-gpa', title: 'How to Calculate GPA', desc: 'The 4.0 scale, weighted vs unweighted, how to raise a low GPA.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/inflation-guide', title: 'Inflation Guide: How to Calculate and Understand Inflation', desc: 'CPI formula, worked examples, nominal vs real value.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/sales-tax-guide', title: 'Sales Tax Guide', desc: 'Multiply and reverse formulas, US state rates, sales tax vs VAT.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/discount-guide', title: 'Discount Guide', desc: 'Percent off, stacked discounts, reverse to find original price.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/roi-guide', title: 'ROI Guide', desc: 'ROI formula, annualizing, CAGR, real vs nominal return.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
+  { to: '/blog/simple-interest-guide', title: 'Simple Interest Guide', desc: 'I = P x r x t, vs compound, day-count conventions.', tag: 'tools', tagLabel: 'Tools', icon: Wrench },
 ]
 
 const TAGS = [
