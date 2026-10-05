@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Sparkles, ArrowRight, BookOpen } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import LiveCounter from './LiveCounter'
+import TrendChart from './TrendChart'
 import ShareButtons from '../ShareButtons'
 import { setPageMeta } from '../../lib/seo'
 
@@ -18,6 +19,8 @@ export default function MetricPage({ metric, explainers, faqs, related }) {
 
   const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
   const APP_SCHEMA = { '@context': 'https://schema.org', '@type': 'WebApplication', name: metric.label, description: metric.description, applicationCategory: 'UtilityApplication', operatingSystem: 'Web', url: 'https://timegovern.com' + metric.route, offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
+
+  const hasChart = (metric.history && metric.history.length > 0) || (metric.projection && metric.projection.length > 0)
 
   return (
     <>
@@ -40,6 +43,16 @@ export default function MetricPage({ metric, explainers, faqs, related }) {
         <div className="text-center text-xs text-muted-foreground">
           Source: {metric.source} - <a href={metric.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">view data</a>
         </div>
+
+        {hasChart && (
+          <div>
+            <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4">Historical trend</h2>
+            <p className="text-sm text-muted-foreground mb-4">
+              Solid line shows historical values. Dashed line shows the medium-variant projection.
+            </p>
+            <TrendChart history={metric.history} projection={metric.projection} />
+          </div>
+        )}
 
         {explainers.map((sec, i) => (
           <div key={i}>

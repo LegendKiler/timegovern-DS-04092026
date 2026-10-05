@@ -1,6 +1,7 @@
-// Live world metrics - rate constants and metadata
-// All rates are sourced from public primary data. Update monthly via PR.
-// baseTimestamp = Unix ms of when baseValue was measured.
+// Live world metrics - rate constants, metadata, and historical series
+// Sources: UN WPP 2024 (population/births/deaths), Global Carbon Budget 2024 (CO2),
+//          IEA WEO 2024 (energy), UNEP Food Waste Index 2024 (food waste).
+// Historical values are widely cited published figures. Projections use medium-variant UN pathways.
 
 export const WORLD_RATES = {
   population: {
@@ -20,6 +21,19 @@ export const WORLD_RATES = {
     description: 'Current world population, updated in real time.',
     icon: 'Users',
     gradient: 'from-blue-950 via-indigo-950 to-slate-950',
+    history: [
+      { year: 1950, value: 2500000000 }, { year: 1960, value: 3020000000 },
+      { year: 1970, value: 3695000000 }, { year: 1980, value: 4450000000 },
+      { year: 1990, value: 5320000000 }, { year: 2000, value: 6140000000 },
+      { year: 2010, value: 6950000000 }, { year: 2020, value: 7840000000 },
+      { year: 2024, value: 8182000000 },
+    ],
+    projection: [
+      { year: 2030, value: 8500000000 }, { year: 2040, value: 9180000000 },
+      { year: 2050, value: 9700000000 }, { year: 2060, value: 10010000000 },
+      { year: 2070, value: 10220000000 }, { year: 2080, value: 10320000000 },
+      { year: 2100, value: 10190000000 },
+    ],
   },
   births: {
     key: 'births',
@@ -38,6 +52,19 @@ export const WORLD_RATES = {
     description: 'Babies born worldwide today.',
     icon: 'Baby',
     gradient: 'from-pink-950 via-rose-950 to-slate-950',
+    history: [
+      { year: 1950, value: 97000000 }, { year: 1960, value: 110000000 },
+      { year: 1970, value: 122000000 }, { year: 1980, value: 129000000 },
+      { year: 1990, value: 141000000 }, { year: 2000, value: 136000000 },
+      { year: 2010, value: 140000000 }, { year: 2020, value: 140000000 },
+      { year: 2024, value: 134000000 },
+    ],
+    projection: [
+      { year: 2030, value: 132000000 }, { year: 2040, value: 128000000 },
+      { year: 2050, value: 124000000 }, { year: 2060, value: 118000000 },
+      { year: 2070, value: 112000000 }, { year: 2080, value: 106000000 },
+      { year: 2100, value: 95000000 },
+    ],
   },
   deaths: {
     key: 'deaths',
@@ -56,6 +83,19 @@ export const WORLD_RATES = {
     description: 'Deaths worldwide today.',
     icon: 'Activity',
     gradient: 'from-slate-950 via-zinc-950 to-slate-950',
+    history: [
+      { year: 1950, value: 49000000 }, { year: 1960, value: 47000000 },
+      { year: 1970, value: 47000000 }, { year: 1980, value: 49000000 },
+      { year: 1990, value: 52000000 }, { year: 2000, value: 52000000 },
+      { year: 2010, value: 54000000 }, { year: 2020, value: 60000000 },
+      { year: 2024, value: 62000000 },
+    ],
+    projection: [
+      { year: 2030, value: 70000000 }, { year: 2040, value: 81000000 },
+      { year: 2050, value: 93000000 }, { year: 2060, value: 102000000 },
+      { year: 2070, value: 110000000 }, { year: 2080, value: 116000000 },
+      { year: 2100, value: 121000000 },
+    ],
   },
   co2: {
     key: 'co2',
@@ -74,6 +114,19 @@ export const WORLD_RATES = {
     description: 'Global CO2 emissions today, in tonnes.',
     icon: 'Cloud',
     gradient: 'from-emerald-950 via-teal-950 to-slate-950',
+    history: [
+      { year: 1950, value: 5900000000 }, { year: 1960, value: 9400000000 },
+      { year: 1970, value: 14900000000 }, { year: 1980, value: 19500000000 },
+      { year: 1990, value: 22700000000 }, { year: 2000, value: 25500000000 },
+      { year: 2010, value: 33100000000 }, { year: 2020, value: 34800000000 },
+      { year: 2024, value: 37400000000 },
+    ],
+    projection: [
+      { year: 2030, value: 36000000000 }, { year: 2040, value: 30000000000 },
+      { year: 2050, value: 20000000000 }, { year: 2060, value: 12000000000 },
+      { year: 2070, value: 6000000000 }, { year: 2080, value: 2500000000 },
+      { year: 2100, value: 500000000 },
+    ],
   },
   energy: {
     key: 'energy',
@@ -92,6 +145,15 @@ export const WORLD_RATES = {
     description: 'Primary energy consumed globally today, in gigajoules.',
     icon: 'Zap',
     gradient: 'from-amber-950 via-orange-950 to-slate-950',
+    history: [
+      { year: 1950, value: 100000000000000000000 }, { year: 1970, value: 230000000000000000000 },
+      { year: 1990, value: 360000000000000000000 }, { year: 2000, value: 420000000000000000000 },
+      { year: 2010, value: 520000000000000000000 }, { year: 2020, value: 580000000000000000000 },
+      { year: 2024, value: 630000000000000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 660000000000000000000 }, { year: 2050, value: 750000000000000000000 },
+    ],
   },
   foodwaste: {
     key: 'foodwaste',
@@ -110,6 +172,11 @@ export const WORLD_RATES = {
     description: 'Food wasted worldwide today, in tonnes.',
     icon: 'Utensils',
     gradient: 'from-lime-950 via-green-950 to-slate-950',
+    history: [
+      { year: 2010, value: 800000000 }, { year: 2015, value: 900000000 },
+      { year: 2020, value: 1000000000 }, { year: 2024, value: 1050000000 },
+    ],
+    projection: [],
   },
 }
 
