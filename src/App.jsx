@@ -257,6 +257,10 @@ const ForestLossClockPage = lazy(() => import('./pages/ForestLossClockPage'))
 const PlasticProducedClockPage = lazy(() => import('./pages/PlasticProducedClockPage'))
 const WaterUsedClockPage = lazy(() => import('./pages/WaterUsedClockPage'))
 const RenewableEnergyClockPage = lazy(() => import('./pages/RenewableEnergyClockPage'))
+const EmailsSentTodayPage = lazy(() => import('./pages/EmailsSentTodayPage'))
+const GoogleSearchesTodayPage = lazy(() => import('./pages/GoogleSearchesTodayPage'))
+const GdpClockPage = lazy(() => import('./pages/GdpClockPage'))
+const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -436,6 +440,10 @@ function AppRoutes() {
         <Route path="/plastic-produced-clock" element={<PlasticProducedClockPage />} />
         <Route path="/water-used-clock" element={<WaterUsedClockPage />} />
         <Route path="/renewable-energy-clock" element={<RenewableEnergyClockPage />} />
+        <Route path="/emails-sent-today" element={<EmailsSentTodayPage />} />
+        <Route path="/google-searches-today" element={<GoogleSearchesTodayPage />} />
+        <Route path="/gdp-clock" element={<GdpClockPage />} />
+        <Route path="/money-spent-online-today" element={<MoneySpentOnlineTodayPage />} />
         <Route path="/population" element={<PopulationByCountryPage />} />
         <Route path="/population/:code" element={<CountryPopulationPage />} />
         <Route path="/macro-calculator" element={<MacroCalculatorPage />} />

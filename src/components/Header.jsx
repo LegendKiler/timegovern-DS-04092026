@@ -62,6 +62,10 @@ const NAV = [
       { to: '/plastic-produced-clock', label: 'Plastic Produced', desc: 'Plastic produced today' },
       { to: '/water-used-clock', label: 'Water Used', desc: 'Freshwater used today' },
       { to: '/renewable-energy-clock', label: 'Renewable Energy', desc: 'Renewable energy today' },
+      { to: '/emails-sent-today', label: 'Emails Sent', desc: 'Emails sent today' },
+      { to: '/google-searches-today', label: 'Google Searches', desc: 'Searches today' },
+      { to: '/gdp-clock', label: 'Global GDP', desc: 'Global GDP today' },
+      { to: '/money-spent-online-today', label: 'Money Spent Online', desc: 'E-commerce today' },
     ],
   },
   {
