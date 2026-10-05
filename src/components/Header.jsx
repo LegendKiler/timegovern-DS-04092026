@@ -58,6 +58,10 @@ const NAV = [
       { to: '/co2-emissions-clock', label: 'CO2 Emissions', desc: 'Global emissions today' },
       { to: '/energy-use-clock', label: 'Energy Use', desc: 'Primary energy today' },
       { to: '/food-waste-clock', label: 'Food Waste', desc: 'Food wasted today' },
+      { to: '/forest-loss-clock', label: 'Forest Loss', desc: 'Forest lost today' },
+      { to: '/plastic-produced-clock', label: 'Plastic Produced', desc: 'Plastic produced today' },
+      { to: '/water-used-clock', label: 'Water Used', desc: 'Freshwater used today' },
+      { to: '/renewable-energy-clock', label: 'Renewable Energy', desc: 'Renewable energy today' },
     ],
   },
   {

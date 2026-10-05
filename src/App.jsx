@@ -253,6 +253,10 @@ const DeathsClockPage = lazy(() => import('./pages/DeathsClockPage'))
 const Co2EmissionsClockPage = lazy(() => import('./pages/Co2EmissionsClockPage'))
 const EnergyUseClockPage = lazy(() => import('./pages/EnergyUseClockPage'))
 const FoodWasteClockPage = lazy(() => import('./pages/FoodWasteClockPage'))
+const ForestLossClockPage = lazy(() => import('./pages/ForestLossClockPage'))
+const PlasticProducedClockPage = lazy(() => import('./pages/PlasticProducedClockPage'))
+const WaterUsedClockPage = lazy(() => import('./pages/WaterUsedClockPage'))
+const RenewableEnergyClockPage = lazy(() => import('./pages/RenewableEnergyClockPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -428,6 +432,10 @@ function AppRoutes() {
         <Route path="/co2-emissions-clock" element={<Co2EmissionsClockPage />} />
         <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
         <Route path="/food-waste-clock" element={<FoodWasteClockPage />} />
+        <Route path="/forest-loss-clock" element={<ForestLossClockPage />} />
+        <Route path="/plastic-produced-clock" element={<PlasticProducedClockPage />} />
+        <Route path="/water-used-clock" element={<WaterUsedClockPage />} />
+        <Route path="/renewable-energy-clock" element={<RenewableEnergyClockPage />} />
         <Route path="/population" element={<PopulationByCountryPage />} />
         <Route path="/population/:code" element={<CountryPopulationPage />} />
         <Route path="/macro-calculator" element={<MacroCalculatorPage />} />
