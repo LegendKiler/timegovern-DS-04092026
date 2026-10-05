@@ -254,6 +254,7 @@ export const SEARCH_INDEX = [
   { name: "Perth", href: "/weather/perth", tagline: "Australia - Weather, sun, moon" },
   { name: "Pomodoro Timer", href: "/pomodoro-timer", tagline: "25-minute focus sprints" },
   { name: "Population Vs Sample Standard Deviation", href: "/blog/population-vs-sample-standard-deviation", tagline: "Blog" },
+  { name: "Population by Country", href: "/population", tagline: "204 countries ranked" },
   { name: "Premium", href: "/premium", tagline: "Page" },
   { name: "Pricing", href: "/pricing", tagline: "Page" },
   { name: "Privacy", href: "/privacy", tagline: "Page" },
