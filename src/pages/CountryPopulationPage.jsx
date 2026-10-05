@@ -3,13 +3,14 @@ import { Link, useParams, Navigate } from 'react-router-dom'
 import { Globe, Sparkles, ArrowRight, Users, TrendingUp, TrendingDown, BookOpen, RefreshCw, Database } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
+import TrendChart from '../components/worldometers/TrendChart'
 import { setPageMeta } from '../lib/seo'
 import { COUNTRY_POPULATIONS, TOTAL_WORLD_POPULATION } from '../data/countryPopulations'
 import { useCountryPopulation } from '../hooks/useCountryPopulation'
 
 export default function CountryPopulationPage() {
   const { code } = useParams()
-  const { country, status, cacheStatus } = useCountryPopulation(code)
+  const { country, status, cacheStatus, history, historyStatus } = useCountryPopulation(code)
 
   const derived = useMemo(() => {
     if (!country) return null
@@ -41,20 +42,26 @@ export default function CountryPopulationPage() {
   }
 
   const freshnessLabel = {
-    live:      'Live from World Bank',
-    cache:     'Fresh from cache (24h)',
-    loading:   'Updating...',
-    bundled:   'Snapshot: ' + country.year,
+    live:    'Live from World Bank',
+    cache:   'Fresh from cache (24h)',
+    loading: 'Updating...',
+    bundled: 'Snapshot: ' + country.year,
   }[status] || 'Snapshot: ' + country.year
 
   const freshnessIcon = (status === 'live' || status === 'cache') ? RefreshCw : Database
+
+  const historyLabel = {
+    live:  'History: live from World Bank',
+    cache: 'History: cached',
+    none:  'History: unavailable',
+  }[historyStatus] || ''
 
   const FAQ = [
     { q: 'What is the population of ' + country.name + '?', a: 'The current population is approximately ' + country.population.toLocaleString('en-US') + ' as of ' + country.year + ', according to World Bank data.' },
     { q: 'What is the world population rank of ' + country.name + '?', a: country.name + ' ranks #' + country.rank + ' in the world by population, out of the ' + COUNTRY_POPULATIONS.length + ' countries tracked on this site.' },
     { q: 'How fast is ' + country.name + '\'s population growing?', a: 'The annual growth rate is approximately ' + country.growthRate.toFixed(2) + '% per year. ' + (country.growthRate > 0 ? 'At this rate, the population would double in roughly ' + (70 / country.growthRate).toFixed(0) + ' years.' : 'The population is roughly stable or declining.') },
     { q: 'What share of the world population lives in ' + country.name + '?', a: country.name + ' accounts for approximately ' + derived.worldShare.toFixed(2) + '% of the world population.' },
-    { q: 'How fresh is this data?', a: 'The page attempts a live refresh from the World Bank API on every visit, cached for 24 hours. If the API is unreachable, it falls back to a bundled snapshot from ' + country.year + '.' },
+    { q: 'How far back does the history go?', a: 'The World Bank population series starts in 1960 for most countries. The chart below shows every year from 1960 through the latest available data (currently 2024 for most countries).' },
   ]
 
   const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
@@ -122,6 +129,22 @@ export default function CountryPopulationPage() {
             </div>
           </CardContent></Card>
         </div>
+
+        {history && history.length > 5 && (
+          <div>
+            <div className="flex items-center justify-between gap-3 mb-4">
+              <h2 className="text-2xl md:text-3xl font-black tracking-tight">Population history (1960-{history[history.length - 1].year})</h2>
+              <span className="text-xs text-muted-foreground whitespace-nowrap">{historyLabel}</span>
+            </div>
+            <TrendChart history={history} projection={[]} height={320} />
+          </div>
+        )}
+
+        {historyStatus === 'loading' && (
+          <div className="rounded-2xl border border-border bg-card p-8 text-center text-sm text-muted-foreground">
+            Loading history...
+          </div>
+        )}
 
         <div className="text-center text-xs text-muted-foreground">
           Source: <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">World Bank SP.POP.TOTL ({country.year})</a>

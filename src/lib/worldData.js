@@ -77,6 +77,34 @@ export async function fetchWorldRate(key) {
   return null
 }
 
+export async function fetchCountryPopulationHistory(code) {
+  if (!code) return null
+  const key = 'hist_' + String(code).toUpperCase()
+
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/SP.POP.TOTL?format=json&per_page=100&date=1960:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    const rows = (json[1] || [])
+      .filter(r => r.value != null)
+      .map(r => ({ year: parseInt(r.date, 10), value: Number(r.value) }))
+      .sort((a, b) => a.year - b.year)
+    if (rows.length === 0) throw new Error('no history')
+
+    const result = { points: rows, count: rows.length }
+    writeCache(key, result)
+    return { ...result, source: 'live' }
+  } catch {
+    return null
+  }
+}
 export function clearWorldDataCache() {
   try {
     const keys = []
