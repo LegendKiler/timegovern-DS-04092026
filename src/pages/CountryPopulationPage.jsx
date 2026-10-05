@@ -1,22 +1,22 @@
 import { useEffect, useMemo } from 'react'
 import { Link, useParams, Navigate } from 'react-router-dom'
-import { Globe, Sparkles, ArrowRight, Users, TrendingUp, TrendingDown, BookOpen } from 'lucide-react'
+import { Globe, Sparkles, ArrowRight, Users, TrendingUp, TrendingDown, BookOpen, RefreshCw, Database } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
-import { getCountryPopulation, COUNTRY_POPULATIONS, TOTAL_WORLD_POPULATION, getCountriesByRegion } from '../data/countryPopulations'
+import { COUNTRY_POPULATIONS, TOTAL_WORLD_POPULATION } from '../data/countryPopulations'
+import { useCountryPopulation } from '../hooks/useCountryPopulation'
 
 export default function CountryPopulationPage() {
   const { code } = useParams()
-  const country = code ? getCountryPopulation(code) : null
+  const { country, status, cacheStatus } = useCountryPopulation(code)
 
   const derived = useMemo(() => {
     if (!country) return null
     const worldShare = (country.population / TOTAL_WORLD_POPULATION) * 100
-    const perSecond = (country.population * (country.growthRate / 100)) / (365.25 * 24 * 3600)
     const doublingYears = country.growthRate > 0.01 ? (70 / country.growthRate).toFixed(1) : null
     const halvingYears = country.growthRate < -0.01 ? (70 / Math.abs(country.growthRate)).toFixed(1) : null
-    return { worldShare, perSecond, doublingYears, halvingYears }
+    return { worldShare, doublingYears, halvingYears }
   }, [country])
 
   const peers = useMemo(() => {
@@ -40,12 +40,21 @@ export default function CountryPopulationPage() {
     return <Navigate to="/population" replace />
   }
 
+  const freshnessLabel = {
+    live:      'Live from World Bank',
+    cache:     'Fresh from cache (24h)',
+    loading:   'Updating...',
+    bundled:   'Snapshot: ' + country.year,
+  }[status] || 'Snapshot: ' + country.year
+
+  const freshnessIcon = (status === 'live' || status === 'cache') ? RefreshCw : Database
+
   const FAQ = [
     { q: 'What is the population of ' + country.name + '?', a: 'The current population is approximately ' + country.population.toLocaleString('en-US') + ' as of ' + country.year + ', according to World Bank data.' },
     { q: 'What is the world population rank of ' + country.name + '?', a: country.name + ' ranks #' + country.rank + ' in the world by population, out of the ' + COUNTRY_POPULATIONS.length + ' countries tracked on this site.' },
     { q: 'How fast is ' + country.name + '\'s population growing?', a: 'The annual growth rate is approximately ' + country.growthRate.toFixed(2) + '% per year. ' + (country.growthRate > 0 ? 'At this rate, the population would double in roughly ' + (70 / country.growthRate).toFixed(0) + ' years.' : 'The population is roughly stable or declining.') },
     { q: 'What share of the world population lives in ' + country.name + '?', a: country.name + ' accounts for approximately ' + derived.worldShare.toFixed(2) + '% of the world population.' },
-    { q: 'Where does this data come from?', a: 'World Bank SP.POP.TOTL indicator, which is built on UN World Population Prospects. Updated annually when the World Bank publishes new estimates.' },
+    { q: 'How fresh is this data?', a: 'The page attempts a live refresh from the World Bank API on every visit, cached for 24 hours. If the API is unreachable, it falls back to a bundled snapshot from ' + country.year + '.' },
   ]
 
   const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
@@ -86,6 +95,10 @@ export default function CountryPopulationPage() {
                 {country.population.toLocaleString('en-US')}
               </div>
               <div className="text-xs uppercase tracking-widest text-white/60 mt-2">people ({country.year})</div>
+              <div className="inline-flex items-center gap-1.5 text-[11px] text-white/50 mt-3">
+                {(() => { const I = freshnessIcon; return <I className="h-3 w-3" /> })()}
+                <span>{freshnessLabel}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -112,6 +125,11 @@ export default function CountryPopulationPage() {
 
         <div className="text-center text-xs text-muted-foreground">
           Source: <a href="https://data.worldbank.org/indicator/SP.POP.TOTL" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">World Bank SP.POP.TOTL ({country.year})</a>
+          {cacheStatus && (
+            <span className="ml-2">
+              &middot; cached {Math.round(cacheStatus.ageMs / 60000)} min ago
+            </span>
+          )}
         </div>
 
         <div>
