@@ -1038,4 +1038,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+<url>
+    <loc>https://timegovern.com/grade-calculator</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://timegovern.com/roman-numeral-converter</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://timegovern.com/pregnancy-due-date-calculator</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://timegovern.com/ovulation-calculator</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

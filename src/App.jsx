@@ -265,6 +265,10 @@ const AutoLoanCalculatorPage = lazy(() => import('./pages/AutoLoanCalculatorPage
 const CreditCardPayoffCalculatorPage = lazy(() => import('./pages/CreditCardPayoffCalculatorPage'))
 const RetirementCalculatorPage = lazy(() => import('./pages/RetirementCalculatorPage'))
 const InvestmentCalculatorPage = lazy(() => import('./pages/InvestmentCalculatorPage'))
+const GradeCalculatorPage = lazy(() => import('./pages/GradeCalculatorPage'))
+const RomanNumeralCalculatorPage = lazy(() => import('./pages/RomanNumeralCalculatorPage'))
+const PregnancyDueDateCalculatorPage = lazy(() => import('./pages/PregnancyDueDateCalculatorPage'))
+const OvulationCalculatorPage = lazy(() => import('./pages/OvulationCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -489,6 +493,10 @@ function AppRoutes() {
         <Route path="/credit-card-payoff-calculator" element={<CreditCardPayoffCalculatorPage />} />
         <Route path="/retirement-calculator" element={<RetirementCalculatorPage />} />
         <Route path="/investment-calculator" element={<InvestmentCalculatorPage />} />
+        <Route path="/grade-calculator" element={<GradeCalculatorPage />} />
+        <Route path="/roman-numeral-converter" element={<RomanNumeralCalculatorPage />} />
+        <Route path="/pregnancy-due-date-calculator" element={<PregnancyDueDateCalculatorPage />} />
+        <Route path="/ovulation-calculator" element={<OvulationCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />

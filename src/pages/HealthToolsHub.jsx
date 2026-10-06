@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Activity, Sparkles, ArrowRight, Cake, Moon, Clock, BookOpen, Heart, Flame, Droplets, Scale, Utensils, Beef, Timer, Wine } from 'lucide-react'
+import { Activity, Sparkles, ArrowRight, Cake, Moon, Clock, BookOpen, Heart, Flame, Droplets, Scale, Utensils, Beef, Timer, Wine, Baby } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -19,6 +19,8 @@ const TOOLS = [
   { to: '/protein-calculator', name: 'Protein Calculator', desc: 'Daily protein target based on body weight, activity, and goal.', icon: Beef, color: 'rose' },
   { to: '/pace-calculator', name: 'Pace Calculator', desc: 'Solve for pace, time, or distance - runs, rides, any endurance sport.', icon: Timer, color: 'sky' },
   { to: '/bac-calculator', name: 'BAC Calculator', desc: 'Estimate blood alcohol content with the Widmark formula. Educational only.', icon: Wine, color: 'purple' },
+  { to: '/pregnancy-due-date-calculator', name: 'Pregnancy Due Date', desc: 'Estimated due date plus trimester milestones.', icon: Baby, color: 'pink' },
+  { to: '/ovulation-calculator', name: 'Ovulation Calculator', desc: 'Ovulation date and fertile window estimate.', icon: Heart, color: 'fuchsia' },
 ]
 
 const ARTICLES = [

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Calculator, Percent, Sigma, Sparkles, ArrowRight, Divide, BarChart3 } from 'lucide-react'
+import { Calculator, Percent, Sigma, Sparkles, ArrowRight, Divide, BarChart3, GraduationCap, Hash } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -12,6 +12,8 @@ const TOOLS = [
   { to: '/standard-deviation-calculator', name: 'Standard Deviation Calculator', desc: 'Population + sample SD, variance, mean, median from any data set.', icon: BarChart3, color: 'indigo' },
   { to: '/fraction-calculator', name: 'Fraction Calculator', desc: 'Add, subtract, multiply, divide fractions with auto-simplify.', icon: Divide, color: 'purple' },
   { to: '/percentage-calculator', name: 'Percentage Calculator', desc: 'Percent of, increase, decrease, and difference between two numbers.', icon: Percent, color: 'indigo' },
+  { to: '/grade-calculator', name: 'Grade Calculator', desc: 'Weighted grades in US GPA, UK class, German, French, Indian, or percentage scales.', icon: GraduationCap, color: 'amber' },
+  { to: '/roman-numeral-converter', name: 'Roman Numeral Converter', desc: 'Convert between Arabic numbers and Roman numerals.', icon: Hash, color: 'slate' },
 ]
 
 const FAQ = [
