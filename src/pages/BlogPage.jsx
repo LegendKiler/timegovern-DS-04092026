@@ -56,6 +56,16 @@ const ARTICLES = [
   { to: '/blog/protein-guide', title: 'Protein Guide', desc: 'Daily protein targets by activity level, distribution, and timing.', tag: 'health', tagLabel: 'Health', icon: Heart },
   { to: '/blog/pace-guide', title: 'Pace Guide', desc: 'The pace formula, converting to speed, race paces, negative splits.', tag: 'health', tagLabel: 'Health', icon: Heart },
   { to: '/blog/bac-guide', title: 'BAC Guide', desc: 'Blood alcohol content, Widmark formula, legal limits, safety.', tag: 'health', tagLabel: 'Health', icon: Heart },
+  { to: '/blog/world-population-explained', title: 'World Population Explained', desc: 'How the UN counts 8 billion people, and when we will hit 9 billion.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/how-many-babies-born-per-day', title: 'How Many Babies Born Per Day?', desc: '367,000 babies a day - where they are born and how the rate is changing.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/how-many-people-die-per-day', title: 'How Many People Die Per Day?', desc: '170,000 deaths a day - causes, rates, and why the number is rising.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/co2-emissions-per-second', title: 'CO2 Emissions Per Second', desc: '1,186 tonnes per second - where it comes from and why it has not peaked.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/where-does-co2-come-from', title: 'Where Does CO2 Come From?', desc: 'Sector-by-sector breakdown of global CO2 emissions.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/global-energy-use-explained', title: 'Global Energy Use Explained', desc: '630 exajoules per year - sources, uses, and how fast it is changing.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/food-waste-climate-impact', title: 'Food Waste and Climate Change', desc: 'The 8% problem - why food waste is a top-3 emitter.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/deforestation-rates-explained', title: 'Deforestation Rates Explained', desc: '10 million hectares lost per year - where, why, and what is improving.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/how-much-plastic-produced-daily', title: 'How Much Plastic Is Produced Daily?', desc: '1.1 million tonnes per day - production, waste, and the treaty.', tag: 'world', tagLabel: 'World', icon: Globe },
+  { to: '/blog/global-gdp-explained', title: 'Global GDP Explained', desc: 'The 110 trillion dollar world economy - what it measures and how it grows.', tag: 'world', tagLabel: 'World', icon: Globe },
 ]
 
 const TAGS = [
@@ -68,6 +78,7 @@ const TAGS = [
   { key: 'currency', label: 'Currency', count: ARTICLES.filter(a => a.tag === 'currency').length },
   { key: 'tools', label: 'Tools', count: ARTICLES.filter(a => a.tag === 'tools').length },
   { key: 'health', label: 'Health', count: ARTICLES.filter(a => a.tag === 'health').length },
+  { key: 'world', label: 'World', count: ARTICLES.filter(a => a.tag === 'world').length },
 ]
 
 const FAQ = [

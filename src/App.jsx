@@ -278,6 +278,16 @@ const TdeeGuidePage = lazy(() => import('./pages/TdeeGuidePage'))
 const ProteinGuidePage = lazy(() => import('./pages/ProteinGuidePage'))
 const PaceGuidePage = lazy(() => import('./pages/PaceGuidePage'))
 const BacGuidePage = lazy(() => import('./pages/BacGuidePage'))
+const WorldPopulationExplainedPage = lazy(() => import('./pages/WorldPopulationExplainedPage'))
+const HowManyBabiesBornPage = lazy(() => import('./pages/HowManyBabiesBornPage'))
+const HowManyPeopleDiePage = lazy(() => import('./pages/HowManyPeopleDiePage'))
+const Co2EmissionsPerSecondPage = lazy(() => import('./pages/Co2EmissionsPerSecondPage'))
+const WhereDoesCo2ComeFromPage = lazy(() => import('./pages/WhereDoesCo2ComeFromPage'))
+const GlobalEnergyUsePage = lazy(() => import('./pages/GlobalEnergyUsePage'))
+const FoodWasteClimatePage = lazy(() => import('./pages/FoodWasteClimatePage'))
+const DeforestationRatesPage = lazy(() => import('./pages/DeforestationRatesPage'))
+const HowMuchPlasticProducedPage = lazy(() => import('./pages/HowMuchPlasticProducedPage'))
+const GlobalGdpExplainedPage = lazy(() => import('./pages/GlobalGdpExplainedPage'))
 const BestTimeToTakeLeave2026Page = lazy(() => import('./pages/BestTimeToTakeLeave2026Page'))
 const LongWeekends2026Page = lazy(() => import('./pages/LongWeekends2026Page'))
 const MostPublicHolidaysPage = lazy(() => import('./pages/MostPublicHolidaysPage'))
@@ -640,6 +650,16 @@ function AppRoutes() {
         <Route path="/blog/protein-guide" element={<ProteinGuidePage />} />
         <Route path="/blog/pace-guide" element={<PaceGuidePage />} />
         <Route path="/blog/bac-guide" element={<BacGuidePage />} />
+        <Route path="/blog/world-population-explained" element={<WorldPopulationExplainedPage />} />
+        <Route path="/blog/how-many-babies-born-per-day" element={<HowManyBabiesBornPage />} />
+        <Route path="/blog/how-many-people-die-per-day" element={<HowManyPeopleDiePage />} />
+        <Route path="/blog/co2-emissions-per-second" element={<Co2EmissionsPerSecondPage />} />
+        <Route path="/blog/where-does-co2-come-from" element={<WhereDoesCo2ComeFromPage />} />
+        <Route path="/blog/global-energy-use-explained" element={<GlobalEnergyUsePage />} />
+        <Route path="/blog/food-waste-climate-impact" element={<FoodWasteClimatePage />} />
+        <Route path="/blog/deforestation-rates-explained" element={<DeforestationRatesPage />} />
+        <Route path="/blog/how-much-plastic-produced-daily" element={<HowMuchPlasticProducedPage />} />
+        <Route path="/blog/global-gdp-explained" element={<GlobalGdpExplainedPage />} />
         <Route path="/inflation-calculator" element={<InflationCalculatorPage />} />
         <Route path="/sales-tax-calculator" element={<SalesTaxCalculatorPage />} />
         <Route path="/discount-calculator" element={<DiscountCalculatorPage />} />
