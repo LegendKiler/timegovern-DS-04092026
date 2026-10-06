@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Baby } from "lucide-react"
-import { COUNTRY_METADATA, getSortedCountries } from '../../data/countryMetadata'
+import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data/countryMetadata'
 
 function addDays(date, days) {
   const d = new Date(date.getTime())
@@ -23,7 +23,7 @@ export default function PregnancyDueDateCalculator() {
   })
   const [cycleLen, setCycleLen] = useState('28')
 
-  const sorted = useMemo(() => getSortedCountries(), [])
+  const byRegion = useMemo(() => getCountriesByRegion(), [])
   const meta = COUNTRY_METADATA[countryCode] || {}
   const authority = (meta.healthAuthorityName && meta.healthAuthorityUrl)
     ? { name: meta.healthAuthorityName, url: meta.healthAuthorityUrl }
@@ -59,7 +59,7 @@ export default function PregnancyDueDateCalculator() {
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (for health guidance)</label>
           <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
-            {sorted.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
+            {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name}</option>)}</optgroup>))}
           </select>
         </div>
         <div className="grid grid-cols-2 gap-3">
