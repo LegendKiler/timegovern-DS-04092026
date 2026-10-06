@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { DollarSign, TrendingUp, PiggyBank, Calculator, Sparkles, ArrowRight } from 'lucide-react'
+import { DollarSign, TrendingUp, PiggyBank, Calculator, Sparkles, ArrowRight, Car, CreditCard, LineChart } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
@@ -8,6 +8,10 @@ import { setPageMeta } from '../lib/seo'
 const TOOLS = [
   { to: '/compound-interest-calculator', name: 'Compound Interest Calculator', desc: 'See how investments grow over time with monthly or annual compounding.', icon: TrendingUp, color: 'emerald' },
   { to: '/loan-calculator', name: 'Loan Calculator', desc: 'Monthly payments, total interest, and amortisation for any loan.', icon: DollarSign, color: 'blue' },
+  { to: '/auto-loan-calculator', name: 'Auto Loan Calculator', desc: 'Monthly car payments, total interest, and total cost.', icon: Car, color: 'blue' },
+  { to: '/credit-card-payoff-calculator', name: 'Credit Card Payoff', desc: 'How long to pay off a balance and how much interest.', icon: CreditCard, color: 'rose' },
+  { to: '/retirement-calculator', name: 'Retirement Calculator', desc: 'Estimate nest egg and monthly retirement income.', icon: PiggyBank, color: 'emerald' },
+  { to: '/investment-calculator', name: 'Investment Calculator', desc: 'Future value with monthly contributions.', icon: LineChart, color: 'violet' },
 ]
 
 const FAQ = [

@@ -261,6 +261,10 @@ const EmailsSentTodayPage = lazy(() => import('./pages/EmailsSentTodayPage'))
 const GoogleSearchesTodayPage = lazy(() => import('./pages/GoogleSearchesTodayPage'))
 const GdpClockPage = lazy(() => import('./pages/GdpClockPage'))
 const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
+const AutoLoanCalculatorPage = lazy(() => import('./pages/AutoLoanCalculatorPage'))
+const CreditCardPayoffCalculatorPage = lazy(() => import('./pages/CreditCardPayoffCalculatorPage'))
+const RetirementCalculatorPage = lazy(() => import('./pages/RetirementCalculatorPage'))
+const InvestmentCalculatorPage = lazy(() => import('./pages/InvestmentCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -481,6 +485,10 @@ function AppRoutes() {
         <Route path="/finance-tools" element={<FinanceToolsHub />} />
         <Route path="/compound-interest-calculator" element={<CompoundInterestPage />} />
         <Route path="/loan-calculator" element={<LoanCalculatorPage />} />
+        <Route path="/auto-loan-calculator" element={<AutoLoanCalculatorPage />} />
+        <Route path="/credit-card-payoff-calculator" element={<CreditCardPayoffCalculatorPage />} />
+        <Route path="/retirement-calculator" element={<RetirementCalculatorPage />} />
+        <Route path="/investment-calculator" element={<InvestmentCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />
