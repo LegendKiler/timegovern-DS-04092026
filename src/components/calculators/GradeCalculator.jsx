@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { GraduationCap } from "lucide-react"
-import { COUNTRY_METADATA } from '../../data/countryMetadata'
+import { COUNTRY_METADATA, getSortedCountries } from '../../data/countryMetadata'
 
 const SCALE_BY_COUNTRY = {
   US: 'us4', CA: 'us4', GB: 'ukClass', IE: 'ukClass', AU: 'ukClass', NZ: 'ukClass',
@@ -89,7 +89,7 @@ export default function GradeCalculator() {
   ])
   const [mode, setMode] = useState('weighted')
 
-  const sorted = useMemo(() => Object.values(COUNTRY_METADATA).sort((a, b) => a.code.localeCompare(b.code)), [])
+  const sorted = useMemo(() => getSortedCountries(), [])
 
   const addRow = () => setGrades([...grades, { grade: '', weight: '' }])
   const removeRow = (idx) => setGrades(grades.filter((_, i) => i !== idx))
@@ -135,7 +135,7 @@ export default function GradeCalculator() {
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (grading scale)</label>
           <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
-            {sorted.map(c => <option key={c.code} value={c.code}>{c.code} — {scaleLabel(SCALE_BY_COUNTRY[c.code] || 'percent100')}</option>)}
+            {sorted.map(c => <option key={c.code} value={c.code}>{c.name} — {scaleLabel(SCALE_BY_COUNTRY[c.code] || 'percent100')}</option>)}
           </select>
         </div>
         <div>

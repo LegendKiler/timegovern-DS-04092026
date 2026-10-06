@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { TrendingUp } from "lucide-react"
-import { COUNTRY_METADATA } from '../../data/countryMetadata'
+import { COUNTRY_METADATA, getSortedCountries } from '../../data/countryMetadata'
 
 const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', AUD: 'A$', JPY: '¥', CNY: '¥', INR: '₹', BRL: 'R$', MXN: 'MX$', ZAR: 'R', NZD: 'NZ$', CHF: 'CHF ', SEK: 'kr ', NOK: 'kr ', DKK: 'kr ', KRW: '₩', SGD: 'S$', HKD: 'HK$', TRY: '₺', RUB: '₽', PLN: 'zł ', ILS: '₪', AED: 'AED ', SAR: 'SAR ', ARS: 'AR$', CLP: 'CLP$', THB: '฿', MYR: 'RM ', IDR: 'Rp ', PHP: '₱', VND: '₫', EGP: 'E£', NGN: '₦', PKR: '₨ ', BDT: '৳' }
 
@@ -15,7 +15,7 @@ export default function InvestmentCalculator() {
 
   const meta = COUNTRY_METADATA[countryCode] || {}
   const sym = CURRENCY_SYMBOLS[meta.currency] || '$'
-  const sorted = useMemo(() => Object.values(COUNTRY_METADATA).sort((a, b) => a.code.localeCompare(b.code)), [])
+  const sorted = useMemo(() => getSortedCountries(), [])
 
   const calc = useMemo(() => {
     const p0 = parseFloat(initial) || 0
@@ -47,7 +47,7 @@ export default function InvestmentCalculator() {
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (currency)</label>
           <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
-            {sorted.map(c => <option key={c.code} value={c.code}>{c.code} — {c.currency || 'No currency data'}</option>)}
+            {sorted.map(c => <option key={c.code} value={c.code}>{c.name} — {c.currency || 'N/A'}</option>)}
           </select>
         </div>
         <div className="grid grid-cols-2 gap-3">

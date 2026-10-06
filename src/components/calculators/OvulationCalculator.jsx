@@ -2,15 +2,7 @@ import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Heart } from "lucide-react"
-import { COUNTRY_METADATA } from '../../data/countryMetadata'
-
-const HEALTH_AUTHORITY = {
-  US: { name: 'CDC', url: 'https://www.cdc.gov/reproductivehealth/' },
-  GB: { name: 'NHS', url: 'https://www.nhs.uk/conditions/periods/' },
-  AU: { name: 'healthdirect Australia', url: 'https://www.healthdirect.gov.au/ovulation' },
-  CA: { name: 'Health Canada', url: 'https://www.canada.ca/en/public-health/services/fertility.html' },
-  IN: { name: 'MoHFW', url: 'https://mohfw.gov.in/' }
-}
+import { COUNTRY_METADATA, getSortedCountries } from '../../data/countryMetadata'
 
 function addDays(date, days) {
   const d = new Date(date.getTime())
@@ -36,8 +28,11 @@ export default function OvulationCalculator() {
   const [cycleLen, setCycleLen] = useState('28')
   const [luteal, setLuteal] = useState('14')
 
-  const sorted = useMemo(() => Object.values(COUNTRY_METADATA).sort((a, b) => a.code.localeCompare(b.code)), [])
-  const authority = HEALTH_AUTHORITY[countryCode] || { name: 'World Health Organization', url: 'https://www.who.int/health-topics/sexual-and-reproductive-health-and-rights' }
+  const sorted = useMemo(() => getSortedCountries(), [])
+  const meta = COUNTRY_METADATA[countryCode] || {}
+  const authority = (meta.healthAuthorityName && meta.healthAuthorityUrl)
+    ? { name: meta.healthAuthorityName, url: meta.healthAuthorityUrl }
+    : { name: 'World Health Organization', url: 'https://www.who.int/health-topics/maternal-health' }
 
   const calc = useMemo(() => {
     const lmpDate = new Date(lmp)
@@ -68,7 +63,7 @@ export default function OvulationCalculator() {
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (for health guidance)</label>
           <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
-            {sorted.map(c => <option key={c.code} value={c.code}>{c.code}</option>)}
+            {sorted.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
           </select>
         </div>
         <div className="grid grid-cols-3 gap-3">

@@ -2,20 +2,7 @@ import { useState, useMemo } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Baby } from "lucide-react"
-import { COUNTRY_METADATA } from '../../data/countryMetadata'
-
-const HEALTH_AUTHORITY = {
-  US: { name: 'CDC (Centers for Disease Control and Prevention)', url: 'https://www.cdc.gov/pregnancy/' },
-  GB: { name: 'NHS (National Health Service)', url: 'https://www.nhs.uk/pregnancy/' },
-  AU: { name: 'healthdirect Australia', url: 'https://www.healthdirect.gov.au/pregnancy' },
-  CA: { name: 'Health Canada', url: 'https://www.canada.ca/en/public-health/services/pregnancy.html' },
-  IN: { name: 'Ministry of Health and Family Welfare', url: 'https://mohfw.gov.in/' },
-  DE: { name: 'Bundeszentrale fur gesundheitliche Aufklarung', url: 'https://www.bzga.de/' },
-  FR: { name: 'Sante publique France', url: 'https://www.santepubliquefrance.fr/' },
-  JP: { name: 'Ministry of Health, Labour and Welfare', url: 'https://www.mhlw.go.jp/' },
-  BR: { name: 'Ministerio da Saude', url: 'https://www.gov.br/saude/' },
-  ZA: { name: 'Department of Health', url: 'https://www.health.gov.za/' }
-}
+import { COUNTRY_METADATA, getSortedCountries } from '../../data/countryMetadata'
 
 function addDays(date, days) {
   const d = new Date(date.getTime())
@@ -36,8 +23,11 @@ export default function PregnancyDueDateCalculator() {
   })
   const [cycleLen, setCycleLen] = useState('28')
 
-  const sorted = useMemo(() => Object.values(COUNTRY_METADATA).sort((a, b) => a.code.localeCompare(b.code)), [])
-  const authority = HEALTH_AUTHORITY[countryCode] || { name: 'World Health Organization', url: 'https://www.who.int/health-topics/maternal-health' }
+  const sorted = useMemo(() => getSortedCountries(), [])
+  const meta = COUNTRY_METADATA[countryCode] || {}
+  const authority = (meta.healthAuthorityName && meta.healthAuthorityUrl)
+    ? { name: meta.healthAuthorityName, url: meta.healthAuthorityUrl }
+    : { name: 'World Health Organization', url: 'https://www.who.int/health-topics/maternal-health' }
 
   const calc = useMemo(() => {
     const lmpDate = new Date(lmp)
@@ -69,7 +59,7 @@ export default function PregnancyDueDateCalculator() {
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (for health guidance)</label>
           <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
-            {sorted.map(c => <option key={c.code} value={c.code}>{c.code}</option>)}
+            {sorted.map(c => <option key={c.code} value={c.code}>{c.name}</option>)}
           </select>
         </div>
         <div className="grid grid-cols-2 gap-3">
