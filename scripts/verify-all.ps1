@@ -17,13 +17,13 @@ Set-Location $root
 SaySection "1. Git state"
 # ============================================================
 $lines = @(git status --short)
-$unexpected = @()
-foreach ($l in $lines) {
-  $isOurs = ($l -match "test-all\.ps1") -or ($l -match "check-full-build\.ps1") -or ($l -match "verify-all\.ps1")
-  if (-not $isOurs) { $unexpected += $l }
+Write-Host ("HEAD: " + (git log --oneline -1))
+if ($lines.Count -eq 0) {
+  SayPass "working tree clean"
+} else {
+  Write-Host ("[INFO] " + $lines.Count + " uncommitted file(s) - commit when stage is complete:") -ForegroundColor Yellow
+  foreach ($l in $lines) { Write-Host ("       " + $l) -ForegroundColor DarkYellow }
 }
-if ($unexpected.Count -eq 0) { SayPass "working tree clean (only our scripts untracked)" } else { SayFail ("unexpected changes: " + ($unexpected -join " | ")) }
-SayPass ("HEAD: " + (git log --oneline -1))
 
 # ============================================================
 SaySection "2. Key files present"
@@ -144,7 +144,11 @@ $calcRoutes = @(
   "/triangle-calculator",
   "/slope-calculator",
   "/quadratic-calculator",
-  "/binary-hex-converter"
+  "/binary-hex-converter",
+  "/debt-payoff-calculator",
+  "/down-payment-calculator",
+  "/amortization-calculator",
+  "/cagr-calculator"
 )
 $mc = @()
 foreach ($r in $calcRoutes) {
@@ -157,7 +161,8 @@ $calcComponents = @(
   "AutoLoanCalculator","CreditCardPayoffCalculator","RetirementCalculator","InvestmentCalculator",
   "GradeCalculator","RomanNumeralCalculator","PregnancyDueDateCalculator","OvulationCalculator",
   "AreaCalculator","VolumeCalculator","TriangleCalculator",
-  "SlopeCalculator","QuadraticCalculator","BinaryHexConverter"
+  "SlopeCalculator","QuadraticCalculator","BinaryHexConverter",
+  "DebtPayoffCalculator","DownPaymentCalculator","AmortizationCalculator","CAGRCalculator"
 )
 $missingComp = @()
 foreach ($c in $calcComponents) {

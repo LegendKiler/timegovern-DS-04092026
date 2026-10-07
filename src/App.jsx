@@ -275,6 +275,10 @@ const TriangleCalculatorPage = lazy(() => import('./pages/TriangleCalculatorPage
 const SlopeCalculatorPage = lazy(() => import('./pages/SlopeCalculatorPage'))
 const QuadraticCalculatorPage = lazy(() => import('./pages/QuadraticCalculatorPage'))
 const BinaryHexConverterPage = lazy(() => import('./pages/BinaryHexConverterPage'))
+const DebtPayoffCalculatorPage = lazy(() => import('./pages/DebtPayoffCalculatorPage'))
+const DownPaymentCalculatorPage = lazy(() => import('./pages/DownPaymentCalculatorPage'))
+const AmortizationCalculatorPage = lazy(() => import('./pages/AmortizationCalculatorPage'))
+const CAGRCalculatorPage = lazy(() => import('./pages/CAGRCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -509,6 +513,10 @@ function AppRoutes() {
         <Route path="/slope-calculator" element={<SlopeCalculatorPage />} />
         <Route path="/quadratic-calculator" element={<QuadraticCalculatorPage />} />
         <Route path="/binary-hex-converter" element={<BinaryHexConverterPage />} />
+        <Route path="/debt-payoff-calculator" element={<DebtPayoffCalculatorPage />} />
+        <Route path="/down-payment-calculator" element={<DownPaymentCalculatorPage />} />
+        <Route path="/amortization-calculator" element={<AmortizationCalculatorPage />} />
+        <Route path="/cagr-calculator" element={<CAGRCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />
