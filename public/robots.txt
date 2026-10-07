@@ -17,4 +17,17 @@ Disallow: /compare-calculations
 Disallow: /api/
 
 # Sitemap
+# AI crawlers - allow for AI search visibility (ChatGPT, Perplexity, Claude, Google AI)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://timegovern.com/sitemap-index.xml
