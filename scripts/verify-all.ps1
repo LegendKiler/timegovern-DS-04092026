@@ -138,7 +138,10 @@ $calcRoutes = @(
   "/grade-calculator",
   "/roman-numeral-converter",
   "/pregnancy-due-date-calculator",
-  "/ovulation-calculator"
+  "/ovulation-calculator",
+  "/area-calculator",
+  "/volume-calculator",
+  "/triangle-calculator"
 )
 $mc = @()
 foreach ($r in $calcRoutes) {
@@ -149,7 +152,8 @@ if ($mc.Count -eq 0) { SayPass ("all " + $calcRoutes.Count + " calculator routes
 # Component + page files for each calculator
 $calcComponents = @(
   "AutoLoanCalculator","CreditCardPayoffCalculator","RetirementCalculator","InvestmentCalculator",
-  "GradeCalculator","RomanNumeralCalculator","PregnancyDueDateCalculator","OvulationCalculator"
+  "GradeCalculator","RomanNumeralCalculator","PregnancyDueDateCalculator","OvulationCalculator",
+  "AreaCalculator","VolumeCalculator","TriangleCalculator"
 )
 $missingComp = @()
 foreach ($c in $calcComponents) {

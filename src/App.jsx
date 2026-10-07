@@ -269,6 +269,9 @@ const GradeCalculatorPage = lazy(() => import('./pages/GradeCalculatorPage'))
 const RomanNumeralCalculatorPage = lazy(() => import('./pages/RomanNumeralCalculatorPage'))
 const PregnancyDueDateCalculatorPage = lazy(() => import('./pages/PregnancyDueDateCalculatorPage'))
 const OvulationCalculatorPage = lazy(() => import('./pages/OvulationCalculatorPage'))
+const AreaCalculatorPage = lazy(() => import('./pages/AreaCalculatorPage'))
+const VolumeCalculatorPage = lazy(() => import('./pages/VolumeCalculatorPage'))
+const TriangleCalculatorPage = lazy(() => import('./pages/TriangleCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -497,6 +500,9 @@ function AppRoutes() {
         <Route path="/roman-numeral-converter" element={<RomanNumeralCalculatorPage />} />
         <Route path="/pregnancy-due-date-calculator" element={<PregnancyDueDateCalculatorPage />} />
         <Route path="/ovulation-calculator" element={<OvulationCalculatorPage />} />
+        <Route path="/area-calculator" element={<AreaCalculatorPage />} />
+        <Route path="/volume-calculator" element={<VolumeCalculatorPage />} />
+        <Route path="/triangle-calculator" element={<TriangleCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />
