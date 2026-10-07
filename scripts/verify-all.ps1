@@ -141,7 +141,10 @@ $calcRoutes = @(
   "/ovulation-calculator",
   "/area-calculator",
   "/volume-calculator",
-  "/triangle-calculator"
+  "/triangle-calculator",
+  "/slope-calculator",
+  "/quadratic-calculator",
+  "/binary-hex-converter"
 )
 $mc = @()
 foreach ($r in $calcRoutes) {
@@ -153,7 +156,8 @@ if ($mc.Count -eq 0) { SayPass ("all " + $calcRoutes.Count + " calculator routes
 $calcComponents = @(
   "AutoLoanCalculator","CreditCardPayoffCalculator","RetirementCalculator","InvestmentCalculator",
   "GradeCalculator","RomanNumeralCalculator","PregnancyDueDateCalculator","OvulationCalculator",
-  "AreaCalculator","VolumeCalculator","TriangleCalculator"
+  "AreaCalculator","VolumeCalculator","TriangleCalculator",
+  "SlopeCalculator","QuadraticCalculator","BinaryHexConverter"
 )
 $missingComp = @()
 foreach ($c in $calcComponents) {
