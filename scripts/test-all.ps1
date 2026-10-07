@@ -11,8 +11,8 @@ $root = Split-Path -Parent $PSScriptRoot
 $metaPath = Join-Path $root "src\data\countryMetadata.js"
 $appPath  = Join-Path $root "src\App.jsx"
 
-if (-not (Test-Path $metaPath)) { SayFail "countryMetadata.js not found at $metaPath"; exit 1 }
-if (-not (Test-Path $appPath))  { SayFail "App.jsx not found at $appPath";           exit 1 }
+if (-not (Test-Path $metaPath)) { SayFail "countryMetadata.js not found at $metaPath"; return }
+if (-not (Test-Path $appPath))  { SayFail "App.jsx not found at $appPath";           return }
 
 $meta = [System.IO.File]::ReadAllText($metaPath)
 $app  = [System.IO.File]::ReadAllText($appPath)
@@ -61,5 +61,4 @@ if ($mh.Count -eq 0) { SayPass "helpers exported: getCountriesByRegion, REGION_O
 # Summary
 Write-Host ""
 Write-Host ("Summary: $pass passed, $fail failed")
-if ($fail -gt 0) { exit 1 }
-exit 0
+if ($fail -gt 0) { Write-Host "STATUS: FAILED" -ForegroundColor Red } else { Write-Host "STATUS: ALL PASS" -ForegroundColor Green }

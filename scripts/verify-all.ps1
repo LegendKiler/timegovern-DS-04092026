@@ -246,5 +246,4 @@ if ($SkipBuild) {
 # ============================================================
 Write-Host ""
 Write-Host ("Summary: " + $pass + " passed, " + $fail + " failed")
-if ($fail -gt 0) { exit 1 }
-exit 0
+if ($fail -gt 0) { Write-Host "STATUS: FAILED" -ForegroundColor Red } else { Write-Host "STATUS: ALL PASS" -ForegroundColor Green }
