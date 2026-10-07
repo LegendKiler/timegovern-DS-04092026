@@ -1,4 +1,5 @@
 export function setPageMeta() {
+  setCanonical()
   const title = document.title
   const descEl = document.querySelector('meta[name="description"]')
   const desc = descEl ? descEl.content : ''
@@ -33,4 +34,13 @@ export function setPageMeta() {
   og('twitter:title', title)
   og('twitter:description', desc)
   og('twitter:image', 'https://timegovern.com/icon-512.png')
+}
+// --- Canonical link management (added for SEO) ---
+export function setCanonical(override) {
+  if (typeof document === 'undefined') return
+  var p = override || (window.location.pathname + window.location.search)
+  var url = 'https://timegovern.com' + p
+  var link = document.querySelector('link[rel="canonical"]')
+  if (!link) { link = document.createElement('link'); link.setAttribute('rel', 'canonical'); document.head.appendChild(link) }
+  link.setAttribute('href', url)
 }
