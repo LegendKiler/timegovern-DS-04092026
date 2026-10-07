@@ -18,8 +18,8 @@ function fmtFull(d) {
   return d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-export default function OvulationCalculator() {
-  const [countryCode, setCountryCode] = useState('US')
+export default function OvulationCalculator({ initialCountryCode }) {
+  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [lmp, setLmp] = useState(() => {
     const d = new Date()
     d.setDate(d.getDate() - 10)

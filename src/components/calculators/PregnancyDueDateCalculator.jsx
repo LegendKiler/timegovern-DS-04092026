@@ -14,8 +14,8 @@ function fmtDate(d) {
   return d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-export default function PregnancyDueDateCalculator() {
-  const [countryCode, setCountryCode] = useState('US')
+export default function PregnancyDueDateCalculator({ initialCountryCode }) {
+  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [lmp, setLmp] = useState(() => {
     const d = new Date()
     d.setDate(d.getDate() - 60)

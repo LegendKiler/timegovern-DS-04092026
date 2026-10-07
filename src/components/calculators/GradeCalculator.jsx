@@ -81,8 +81,8 @@ function interpret(pct, scaleKey) {
   return { value: pct.toFixed(1) + '%', letter: pct >= 60 ? 'Pass' : 'Fail' }
 }
 
-export default function GradeCalculator() {
-  const [countryCode, setCountryCode] = useState('US')
+export default function GradeCalculator({ initialCountryCode }) {
+  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [grades, setGrades] = useState([
     { grade: '85', weight: '40' },
     { grade: '92', weight: '60' }

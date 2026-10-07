@@ -279,6 +279,7 @@ const DebtPayoffCalculatorPage = lazy(() => import('./pages/DebtPayoffCalculator
 const DownPaymentCalculatorPage = lazy(() => import('./pages/DownPaymentCalculatorPage'))
 const AmortizationCalculatorPage = lazy(() => import('./pages/AmortizationCalculatorPage'))
 const CAGRCalculatorPage = lazy(() => import('./pages/CAGRCalculatorPage'))
+const CountryCalculatorPage = lazy(() => import('./pages/CountryCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -517,6 +518,13 @@ function AppRoutes() {
         <Route path="/down-payment-calculator" element={<DownPaymentCalculatorPage />} />
         <Route path="/amortization-calculator" element={<AmortizationCalculatorPage />} />
         <Route path="/cagr-calculator" element={<CAGRCalculatorPage />} />
+        <Route path="/auto-loan-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/credit-card-payoff-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/retirement-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/investment-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/pregnancy-due-date-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/ovulation-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/grade-calculator/:code" element={<CountryCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />

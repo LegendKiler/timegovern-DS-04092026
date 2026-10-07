@@ -6,8 +6,8 @@ import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data
 
 const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', AUD: 'A$', JPY: '¥', CNY: '¥', INR: '₹', BRL: 'R$', MXN: 'MX$', ZAR: 'R', NZD: 'NZ$', CHF: 'CHF ', SEK: 'kr ', NOK: 'kr ', DKK: 'kr ', KRW: '₩', SGD: 'S$', HKD: 'HK$', TRY: '₺', RUB: '₽', PLN: 'zł ', ILS: '₪', AED: 'AED ', SAR: 'SAR ', ARS: 'AR$', CLP: 'CLP$', THB: '฿', MYR: 'RM ', IDR: 'Rp ', PHP: '₱', VND: '₫', EGP: 'E£', NGN: '₦', PKR: '₨ ', BDT: '৳' }
 
-export default function InvestmentCalculator() {
-  const [countryCode, setCountryCode] = useState('US')
+export default function InvestmentCalculator({ initialCountryCode }) {
+  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [initial, setInitial] = useState('10000')
   const [monthly, setMonthly] = useState('500')
   const [years, setYears] = useState('20')

@@ -62,7 +62,9 @@ $files = @(
   "public\sitemap-cities.xml",
   "public\sitemap-holidays.xml",
   "public\sitemap-currency.xml",
-  "public\sitemap-population.xml"
+  "public\sitemap-population.xml",
+  "public\sitemap-calculators.xml",
+  "src\pages\CountryCalculatorPage.jsx"
 )
 $missing = @()
 foreach ($f in $files) { if (-not (Test-Path (Join-Path $root $f))) { $missing += $f } }
@@ -148,7 +150,14 @@ $calcRoutes = @(
   "/debt-payoff-calculator",
   "/down-payment-calculator",
   "/amortization-calculator",
-  "/cagr-calculator"
+  "/cagr-calculator",
+  "/auto-loan-calculator/:code",
+  "/credit-card-payoff-calculator/:code",
+  "/retirement-calculator/:code",
+  "/investment-calculator/:code",
+  "/pregnancy-due-date-calculator/:code",
+  "/ovulation-calculator/:code",
+  "/grade-calculator/:code"
 )
 $mc = @()
 foreach ($r in $calcRoutes) {
@@ -191,7 +200,7 @@ SaySection "7. Sitemaps"
 # ============================================================
 $sitemapIdx = [System.IO.File]::ReadAllText((Join-Path $root "public\sitemap-index.xml"))
 $childCount = ([regex]::Matches($sitemapIdx, "<loc>")).Count
-if ($childCount -eq 6) { SayPass "sitemap-index: 6 children" } else { SayFail ("sitemap-index: " + $childCount + " children (expected 6)") }
+if ($childCount -eq 7) { SayPass "sitemap-index: 7 children" } else { SayFail ("sitemap-index: " + $childCount + " children (expected 7)") }
 
 $expect = @{
   "sitemap-core.xml"       = 187
@@ -199,7 +208,8 @@ $expect = @{
   "sitemap-cities.xml"     = 5498
   "sitemap-holidays.xml"   = 881
   "sitemap-currency.xml"   = 381
-  "sitemap-population.xml" = 182
+  "sitemap-population.xml" = 182,
+  "sitemap-calculators.xml" = 315
 }
 $total = 0
 foreach ($k in $expect.Keys) {

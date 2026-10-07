@@ -24,4 +24,8 @@
     <loc>https://timegovern.com/sitemap-population.xml</loc>
     <lastmod>2026-10-06</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-calculators.xml</loc>
+    <lastmod>2026-10-07</lastmod>
+  </sitemap>
 </sitemapindex>

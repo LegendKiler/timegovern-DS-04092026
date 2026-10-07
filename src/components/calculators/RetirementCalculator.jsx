@@ -6,8 +6,8 @@ import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data
 
 const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', AUD: 'A$', JPY: '¥', CNY: '¥', INR: '₹', BRL: 'R$', MXN: 'MX$', ZAR: 'R', NZD: 'NZ$', CHF: 'CHF ', SEK: 'kr ', NOK: 'kr ', DKK: 'kr ', KRW: '₩', SGD: 'S$', HKD: 'HK$', TRY: '₺', RUB: '₽', PLN: 'zł ', ILS: '₪', AED: 'AED ', SAR: 'SAR ', ARS: 'AR$', CLP: 'CLP$', THB: '฿', MYR: 'RM ', IDR: 'Rp ', PHP: '₱', VND: '₫', EGP: 'E£', NGN: '₦', PKR: '₨ ', BDT: '৳' }
 
-export default function RetirementCalculator() {
-  const [countryCode, setCountryCode] = useState('US')
+export default function RetirementCalculator({ initialCountryCode }) {
+  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [currentAge, setCurrentAge] = useState('30')
   const [retireAge, setRetireAge] = useState('65')
   const [currentSavings, setCurrentSavings] = useState('50000')
