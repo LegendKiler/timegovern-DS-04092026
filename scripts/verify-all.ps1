@@ -203,12 +203,12 @@ $childCount = ([regex]::Matches($sitemapIdx, "<loc>")).Count
 if ($childCount -eq 7) { SayPass "sitemap-index: 7 children" } else { SayFail ("sitemap-index: " + $childCount + " children (expected 7)") }
 
 $expect = @{
-  "sitemap-core.xml"       = 187
-  "sitemap-blog.xml"       = 171
-  "sitemap-cities.xml"     = 5498
-  "sitemap-holidays.xml"   = 881
-  "sitemap-currency.xml"   = 381
-  "sitemap-population.xml" = 182,
+  "sitemap-core.xml"        = 187
+  "sitemap-blog.xml"        = 171
+  "sitemap-cities.xml"      = 5498
+  "sitemap-holidays.xml"    = 881
+  "sitemap-currency.xml"    = 381
+  "sitemap-population.xml"  = 182
   "sitemap-calculators.xml" = 315
 }
 $total = 0
