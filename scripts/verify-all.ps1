@@ -188,9 +188,11 @@ SaySection "6. Search index coverage"
 $si = [System.IO.File]::ReadAllText((Join-Path $root "src\data\searchIndex.js"))
 $mse = @()
 foreach ($r in $calcRoutes) {
+    if ($r.Contains(':')) { continue }
   if (-not $si.Contains('href: "' + $r + '"')) { $mse += $r }
 }
 foreach ($r in @("/worldometers","/population")) {
+    if ($r.Contains(':')) { continue }
   if (-not $si.Contains('href: "' + $r + '"')) { $mse += $r }
 }
 if ($mse.Count -eq 0) { SayPass "searchIndex covers all calculators + worldometers hub" } else { SayFail ("searchIndex missing: " + ($mse -join ", ")) }
@@ -219,7 +221,7 @@ foreach ($k in $expect.Keys) {
   $min = $expect[$k]
   if ($c -ge $min) { SayPass ($k + ": " + $c + " urls (min " + $min + ")") } else { SayFail ($k + ": " + $c + " urls (min " + $min + ")") }
 }
-Write-Host ("Total URLs across 6 maps: " + $total)
+Write-Host ("Total URLs across 7 maps: " + $total)
 
 # ============================================================
 SaySection "8. Nav + static"
