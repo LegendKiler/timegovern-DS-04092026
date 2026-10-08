@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Heart } from "lucide-react"
 import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data/countryMetadata'
+import { useGeoCountry } from '../../hooks/useGeoCountry'
 
 function addDays(date, days) {
   const d = new Date(date.getTime())
@@ -19,7 +20,11 @@ function fmtFull(d) {
 }
 
 export default function OvulationCalculator({ initialCountryCode, onCountryChange }) {
-  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
+  const [countryCode, setCountryCode] = useState(initialCountryCode || '')
+  const geoCountry = useGeoCountry()
+  useEffect(() => {
+    if (!countryCode && geoCountry) setCountryCode(geoCountry)
+  }, [geoCountry])
   const [lmp, setLmp] = useState(() => {
     const d = new Date()
     d.setDate(d.getDate() - 10)
@@ -63,6 +68,7 @@ export default function OvulationCalculator({ initialCountryCode, onCountryChang
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (for health guidance)</label>
           <select value={countryCode} onChange={e => { setCountryCode(e.target.value); if (onCountryChange) onCountryChange(e.target.value) }} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
+            <option value="">Select a country</option>
             {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name}</option>)}</optgroup>))}
           </select>
         </div>

@@ -1,13 +1,18 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { PiggyBank } from "lucide-react"
 import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data/countryMetadata'
+import { useGeoCountry } from '../../hooks/useGeoCountry'
 
 const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', AUD: 'A$', JPY: '¥', CNY: '¥', INR: '₹', BRL: 'R$', MXN: 'MX$', ZAR: 'R', NZD: 'NZ$', CHF: 'CHF ', SEK: 'kr ', NOK: 'kr ', DKK: 'kr ', KRW: '₩', SGD: 'S$', HKD: 'HK$', TRY: '₺', RUB: '₽', PLN: 'zł ', ILS: '₪', AED: 'AED ', SAR: 'SAR ', ARS: 'AR$', CLP: 'CLP$', THB: '฿', MYR: 'RM ', IDR: 'Rp ', PHP: '₱', VND: '₫', EGP: 'E£', NGN: '₦', PKR: '₨ ', BDT: '৳' }
 
 export default function RetirementCalculator({ initialCountryCode, onCountryChange }) {
-  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
+  const [countryCode, setCountryCode] = useState(initialCountryCode || '')
+  const geoCountry = useGeoCountry()
+  useEffect(() => {
+    if (!countryCode && geoCountry) setCountryCode(geoCountry)
+  }, [geoCountry])
   const [currentAge, setCurrentAge] = useState('30')
   const [retireAge, setRetireAge] = useState('65')
   const [currentSavings, setCurrentSavings] = useState('50000')
@@ -48,6 +53,7 @@ export default function RetirementCalculator({ initialCountryCode, onCountryChan
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (currency)</label>
           <select value={countryCode} onChange={e => { setCountryCode(e.target.value); if (onCountryChange) onCountryChange(e.target.value) }} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
+            <option value="">Select a country</option>
             {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name} — {c.currency || 'N/A'}</option>)}</optgroup>))}
           </select>
         </div>

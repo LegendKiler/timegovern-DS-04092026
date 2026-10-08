@@ -1,8 +1,9 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { GraduationCap } from "lucide-react"
 import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data/countryMetadata'
+import { useGeoCountry } from '../../hooks/useGeoCountry'
 
 const SCALE_BY_COUNTRY = {
   US: 'us4', CA: 'us4', GB: 'ukClass', IE: 'ukClass', AU: 'ukClass', NZ: 'ukClass',
@@ -82,7 +83,11 @@ function interpret(pct, scaleKey) {
 }
 
 export default function GradeCalculator({ initialCountryCode, onCountryChange }) {
-  const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
+  const [countryCode, setCountryCode] = useState(initialCountryCode || '')
+  const geoCountry = useGeoCountry()
+  useEffect(() => {
+    if (!countryCode && geoCountry) setCountryCode(geoCountry)
+  }, [geoCountry])
   const [grades, setGrades] = useState([
     { grade: '85', weight: '40' },
     { grade: '92', weight: '60' }
@@ -135,6 +140,7 @@ export default function GradeCalculator({ initialCountryCode, onCountryChange })
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (grading scale)</label>
           <select value={countryCode} onChange={e => { setCountryCode(e.target.value); if (onCountryChange) onCountryChange(e.target.value) }} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
+            <option value="">Select a country</option>
             {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name} — {scaleLabel(SCALE_BY_COUNTRY[c.code] || 'percent100')}</option>)}</optgroup>))}
           </select>
         </div>
