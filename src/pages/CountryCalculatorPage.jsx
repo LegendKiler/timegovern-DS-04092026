@@ -81,9 +81,9 @@ export default function CountryCalculatorPage({ kind }) {
               <Sparkles className="h-3.5 w-3.5 text-white/70" />
               <span className="text-xs font-bold uppercase tracking-widest text-white/70">Localized - Free - No signup</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4">{entry.title} for {meta.name}</h1>
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4">{entry.title}</h1>
             <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
-              {entry.desc} Currency prefilled to {meta.currency || 'local'} ({sym.trim() || 'default'}).
+              {entry.desc} Use the country selector to set your local currency.
             </p>
           </div>
         </div>
