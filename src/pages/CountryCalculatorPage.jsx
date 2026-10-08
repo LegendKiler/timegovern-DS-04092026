@@ -83,7 +83,7 @@ export default function CountryCalculatorPage({ kind }) {
             </div>
             <h1 className="text-3xl md:text-5xl font-black tracking-tight mb-4">{entry.title}</h1>
             <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
-              {entry.desc} Use the country selector to set your local currency.
+              {entry.desc}
             </p>
           </div>
         </div>
