@@ -22,7 +22,7 @@ export default function CAGRCalculatorPage() {
     document.title = 'CAGR Calculator | TimeGovern'
     let d = document.querySelector('meta[name="description"]')
     if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d) }
-    d.setAttribute('content', 'Calculate compound annual growth rate from beginning value, ending value and years held.')
+    d.setAttribute('content', 'Free CAGR calculator. Find compound annual growth rate from beginning value, ending value, and number of years. Compare investments, track portfolio growth, no signup needed.')
     setPageMeta()
     window.scrollTo(0, 0)
   }, [])
@@ -39,7 +39,7 @@ export default function CAGRCalculatorPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-white/70">Free - All countries - No signup</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">CAGR Calculator</h1>
-            <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">Calculate compound annual growth rate from beginning value, ending value and years held.</p>
+            <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">Free CAGR calculator. Find compound annual growth rate from beginning value, ending value, and number of years. Compare investments, track portfolio growth, no signup needed.</p>
           </div>
         </div>
 

@@ -15,14 +15,14 @@ const FAQ = [
 ]
 
 const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
-const APP_SCHEMA = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Binary Hex Converter', description: 'Convert between binary, octal, decimal and hexadecimal in one tool.', applicationCategory: 'DeveloperApplication', operatingSystem: 'Web', url: 'https://timegovern.com/binary-hex-converter', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
+const APP_SCHEMA = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Binary Hex Converter', description: 'Free binary to hex converter. Convert between binary, octal, decimal, and hexadecimal instantly. Accepts 0b, 0o, and 0x prefixes. Works offline, no signup needed.', applicationCategory: 'DeveloperApplication', operatingSystem: 'Web', url: 'https://timegovern.com/binary-hex-converter', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
 
 export default function BinaryHexConverterPage() {
   useEffect(() => {
     document.title = 'Binary Hex Converter - Decimal, Octal, Hex | TimeGovern'
     let d = document.querySelector('meta[name="description"]')
     if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d) }
-    d.setAttribute('content', 'Convert between binary, octal, decimal and hexadecimal in one tool.')
+    d.setAttribute('content', 'Free binary to hex converter. Convert between binary, octal, decimal, and hexadecimal instantly. Accepts 0b, 0o, and 0x prefixes. Works offline, no signup needed.')
     setPageMeta()
     window.scrollTo(0, 0)
   }, [])

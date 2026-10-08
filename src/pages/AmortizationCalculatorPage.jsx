@@ -22,7 +22,7 @@ export default function AmortizationCalculatorPage() {
     document.title = 'Amortization Calculator | TimeGovern'
     let d = document.querySelector('meta[name="description"]')
     if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d) }
-    d.setAttribute('content', 'Calculate monthly loan payment and see the first year of your amortization schedule.')
+    d.setAttribute('content', 'Free amortization calculator with full payment schedule. See monthly loan payment, total interest, and total cost for any fixed-rate loan. Works in any currency, no signup.')
     setPageMeta()
     window.scrollTo(0, 0)
   }, [])
@@ -39,7 +39,7 @@ export default function AmortizationCalculatorPage() {
               <span className="text-xs font-bold uppercase tracking-widest text-white/70">Free - All countries - No signup</span>
             </div>
             <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4">Amortization Calculator</h1>
-            <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">Calculate monthly loan payment and see the first year of your amortization schedule.</p>
+            <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">Free amortization calculator with full payment schedule. See monthly loan payment, total interest, and total cost for any fixed-rate loan. Works in any currency, no signup.</p>
           </div>
         </div>
 

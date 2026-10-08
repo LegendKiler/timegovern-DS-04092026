@@ -15,14 +15,14 @@ const FAQ = [
 ]
 
 const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
-const APP_SCHEMA = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Debt Payoff Calculator', description: 'Calculate how long to pay off a credit card or loan given balance, APR and monthly payment.', applicationCategory: 'FinanceApplication', operatingSystem: 'Web', url: 'https://timegovern.com/debt-payoff-calculator', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
+const APP_SCHEMA = { '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Debt Payoff Calculator', description: 'Free debt payoff calculator. See how many months it takes to pay off a credit card or loan from balance, APR, and monthly payment. Includes total interest paid. No signup.', applicationCategory: 'FinanceApplication', operatingSystem: 'Web', url: 'https://timegovern.com/debt-payoff-calculator', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } }
 
 export default function DebtPayoffCalculatorPage() {
   useEffect(() => {
     document.title = 'Debt Payoff Calculator | TimeGovern'
     let d = document.querySelector('meta[name="description"]')
     if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d) }
-    d.setAttribute('content', 'Calculate how long to pay off a credit card or loan given balance, APR and monthly payment.')
+    d.setAttribute('content', 'Free debt payoff calculator. See how many months it takes to pay off a credit card or loan from balance, APR, and monthly payment. Includes total interest paid. No signup.')
     setPageMeta()
     window.scrollTo(0, 0)
   }, [])
