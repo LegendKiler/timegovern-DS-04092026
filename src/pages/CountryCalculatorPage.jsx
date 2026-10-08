@@ -3,6 +3,7 @@ import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { Sparkles, ExternalLink, ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { COUNTRY_METADATA } from '../data/countryMetadata'
+import { COUNTRY_FACTS, CALCULATOR_INTROS } from '../data/countryCalculatorContent'
 import { setPageMeta } from '../lib/seo'
 import AutoLoanCalculator from '../components/calculators/AutoLoanCalculator'
 import CreditCardPayoffCalculator from '../components/calculators/CreditCardPayoffCalculator'
@@ -120,6 +121,19 @@ export default function CountryCalculatorPage({ kind }) {
                 )}
               </div>
             )}
+        <Card>
+          <CardContent className="p-6 space-y-3">
+            <h2 className="text-xl font-black tracking-tight">{(CALCULATOR_INTROS[kind] || {heading: "Local context"}).heading.replace("{name}", meta.name)}</h2>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              {(() => {
+                const tmpl = (CALCULATOR_INTROS[kind] || {template: ""}).template
+                const facts = COUNTRY_FACTS[cc]
+                if (!facts || !tmpl) return "Use the calculator above with local rates and currency."
+                return tmpl.replace("{name}", facts.name).replace("{currency}", facts.currency).replace("{autoLoan}", facts.autoLoan).replace("{creditCard}", facts.creditCard).replace("{mortgage}", facts.mortgage).replace("{banks}", facts.banks).replace("{note}", facts.note)
+              })()}
+            </p>
+          </CardContent>
+        </Card>
           </CardContent>
         </Card>
 
