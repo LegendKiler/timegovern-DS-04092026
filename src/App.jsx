@@ -518,13 +518,13 @@ function AppRoutes() {
         <Route path="/down-payment-calculator" element={<DownPaymentCalculatorPage />} />
         <Route path="/amortization-calculator" element={<AmortizationCalculatorPage />} />
         <Route path="/cagr-calculator" element={<CAGRCalculatorPage />} />
-        <Route path="/auto-loan-calculator/:code" element={<CountryCalculatorPage />} />
-        <Route path="/credit-card-payoff-calculator/:code" element={<CountryCalculatorPage />} />
-        <Route path="/retirement-calculator/:code" element={<CountryCalculatorPage />} />
-        <Route path="/investment-calculator/:code" element={<CountryCalculatorPage />} />
-        <Route path="/pregnancy-due-date-calculator/:code" element={<CountryCalculatorPage />} />
-        <Route path="/ovulation-calculator/:code" element={<CountryCalculatorPage />} />
-        <Route path="/grade-calculator/:code" element={<CountryCalculatorPage />} />
+        <Route path="/auto-loan-calculator/:code" element={<CountryCalculatorPage kind="auto-loan-calculator" />} />
+        <Route path="/credit-card-payoff-calculator/:code" element={<CountryCalculatorPage kind="credit-card-payoff-calculator" />} />
+        <Route path="/retirement-calculator/:code" element={<CountryCalculatorPage kind="retirement-calculator" />} />
+        <Route path="/investment-calculator/:code" element={<CountryCalculatorPage kind="investment-calculator" />} />
+        <Route path="/pregnancy-due-date-calculator/:code" element={<CountryCalculatorPage kind="pregnancy-due-date-calculator" />} />
+        <Route path="/ovulation-calculator/:code" element={<CountryCalculatorPage kind="ovulation-calculator" />} />
+        <Route path="/grade-calculator/:code" element={<CountryCalculatorPage kind="grade-calculator" />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />

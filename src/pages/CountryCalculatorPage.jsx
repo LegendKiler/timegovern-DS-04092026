@@ -24,8 +24,8 @@ const KIND_MAP = {
 
 const ALLOWED_COUNTRIES = ['AT','BE','CH','DE','DK','ES','FI','FR','GB','GR','IE','IT','NL','NO','PL','PT','RU','SE','CA','MX','US','AR','BR','CL','BD','CN','ID','JP','KR','PH','SG','VN','TR','EG','NG','ZA','AU','NZ','PK','IN','AE','SA','TH','MY','IL']
 
-export default function CountryCalculatorPage() {
-  const { kind, code } = useParams()
+export default function CountryCalculatorPage({ kind }) {
+  const { code } = useParams()
   const entry = KIND_MAP[kind]
   const cc = (code || '').toUpperCase()
   const meta = COUNTRY_METADATA[cc]
