@@ -26,6 +26,7 @@ const ALLOWED_COUNTRIES = ['AT','BE','CH','DE','DK','ES','FI','FR','GB','GR','IE
 
 export default function CountryCalculatorPage({ kind }) {
   const { code } = useParams()
+  const navigate = useNavigate()
   const entry = KIND_MAP[kind]
   const cc = (code || '').toUpperCase()
   const meta = COUNTRY_METADATA[cc]
