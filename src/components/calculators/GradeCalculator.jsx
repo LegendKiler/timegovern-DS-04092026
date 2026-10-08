@@ -81,7 +81,7 @@ function interpret(pct, scaleKey) {
   return { value: pct.toFixed(1) + '%', letter: pct >= 60 ? 'Pass' : 'Fail' }
 }
 
-export default function GradeCalculator({ initialCountryCode }) {
+export default function GradeCalculator({ initialCountryCode, onCountryChange }) {
   const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [grades, setGrades] = useState([
     { grade: '85', weight: '40' },
@@ -134,7 +134,7 @@ export default function GradeCalculator({ initialCountryCode }) {
       <CardContent className="space-y-4">
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (grading scale)</label>
-          <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
+          <select value={countryCode} onChange={e => { setCountryCode(e.target.value); if (onCountryChange) onCountryChange(e.target.value) }} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
             {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name} — {scaleLabel(SCALE_BY_COUNTRY[c.code] || 'percent100')}</option>)}</optgroup>))}
           </select>
         </div>

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useParams, Link, Navigate } from 'react-router-dom'
+import { useParams, Link, Navigate, useNavigate } from 'react-router-dom'
 import { Sparkles, ExternalLink, ArrowRight } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { COUNTRY_METADATA } from '../data/countryMetadata'
@@ -95,7 +95,7 @@ export default function CountryCalculatorPage({ kind }) {
           <span className="font-semibold text-foreground">{meta.name}</span>
         </div>
 
-        <Comp initialCountryCode={cc} />
+        <Comp initialCountryCode={cc} onCountryChange={(c) => navigate('/' + kind + '/' + c.toLowerCase(), { replace: true })} />
 
         <Card>
           <CardContent className="p-6 space-y-3">

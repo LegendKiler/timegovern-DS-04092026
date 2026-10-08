@@ -14,7 +14,7 @@ function fmtDate(d) {
   return d.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'long', day: 'numeric' })
 }
 
-export default function PregnancyDueDateCalculator({ initialCountryCode }) {
+export default function PregnancyDueDateCalculator({ initialCountryCode, onCountryChange }) {
   const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [lmp, setLmp] = useState(() => {
     const d = new Date()
@@ -58,7 +58,7 @@ export default function PregnancyDueDateCalculator({ initialCountryCode }) {
       <CardContent className="space-y-4">
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (for health guidance)</label>
-          <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
+          <select value={countryCode} onChange={e => { setCountryCode(e.target.value); if (onCountryChange) onCountryChange(e.target.value) }} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
             {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name}</option>)}</optgroup>))}
           </select>
         </div>

@@ -6,7 +6,7 @@ import { COUNTRY_METADATA, getCountriesByRegion, REGION_ORDER } from '../../data
 
 const CURRENCY_SYMBOLS = { USD: '$', EUR: '€', GBP: '£', CAD: 'C$', AUD: 'A$', JPY: '¥', CNY: '¥', INR: '₹', BRL: 'R$', MXN: 'MX$', ZAR: 'R', NZD: 'NZ$', CHF: 'CHF ', SEK: 'kr ', NOK: 'kr ', DKK: 'kr ', KRW: '₩', SGD: 'S$', HKD: 'HK$', TRY: '₺', RUB: '₽', PLN: 'zł ', ILS: '₪', AED: 'AED ', SAR: 'SAR ', ARS: 'AR$', CLP: 'CLP$', THB: '฿', MYR: 'RM ', IDR: 'Rp ', PHP: '₱', VND: '₫', EGP: 'E£', NGN: '₦', PKR: '₨ ', BDT: '৳' }
 
-export default function CreditCardPayoffCalculator({ initialCountryCode }) {
+export default function CreditCardPayoffCalculator({ initialCountryCode, onCountryChange }) {
   const [countryCode, setCountryCode] = useState(initialCountryCode || 'US')
   const [balance, setBalance] = useState('5000')
   const [apr, setApr] = useState('19.99')
@@ -53,7 +53,7 @@ export default function CreditCardPayoffCalculator({ initialCountryCode }) {
       <CardContent className="space-y-4">
         <div>
           <label className="text-sm font-semibold mb-1.5 block">Country (currency)</label>
-          <select value={countryCode} onChange={e => setCountryCode(e.target.value)} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
+          <select value={countryCode} onChange={e => { setCountryCode(e.target.value); if (onCountryChange) onCountryChange(e.target.value) }} className="w-full h-11 px-3 border border-border rounded-lg bg-background">
             {REGION_ORDER.map(r => byRegion[r] && byRegion[r].length > 0 && (<optgroup key={r} label={r}>{byRegion[r].map(c => <option key={c.code} value={c.code}>{c.name} — {c.currency || 'N/A'}</option>)}</optgroup>))}
           </select>
         </div>
