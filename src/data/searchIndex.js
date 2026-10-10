@@ -1,5 +1,10 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
+  { name: "Present Value Calculator", href: "/present-value-calculator", tagline: "Discount future cash" },
+  { name: "Future Value Calculator", href: "/future-value-calculator", tagline: "Compound growth" },
+  { name: "Payback Period Calculator", href: "/payback-period-calculator", tagline: "Simple and discounted" },
+  { name: "Break Even Calculator", href: "/break-even-calculator", tagline: "Units to break even" },
+  { name: "Markup Calculator", href: "/markup-calculator", tagline: "Cost to selling price" },
   { name: "Speed Converter", href: "/speed-converter", tagline: "km/h, mph, m/s, knots" },
   { name: "Data Storage Converter", href: "/data-storage-converter", tagline: "B, KB, MB, GB, TB" },
   { name: "Weight Converter", href: "/weight-converter", tagline: "kg, lb, oz, stone" },

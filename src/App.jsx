@@ -295,6 +295,11 @@ const LengthConverterPage = lazy(() => import('./pages/LengthConverterPage'))
 const WeightConverterPage = lazy(() => import('./pages/WeightConverterPage'))
 const DataStorageConverterPage = lazy(() => import('./pages/DataStorageConverterPage'))
 const SpeedConverterPage = lazy(() => import('./pages/SpeedConverterPage'))
+const MarkupCalculatorPage = lazy(() => import('./pages/MarkupCalculatorPage'))
+const BreakEvenCalculatorPage = lazy(() => import('./pages/BreakEvenCalculatorPage'))
+const PaybackPeriodCalculatorPage = lazy(() => import('./pages/PaybackPeriodCalculatorPage'))
+const FutureValueCalculatorPage = lazy(() => import('./pages/FutureValueCalculatorPage'))
+const PresentValueCalculatorPage = lazy(() => import('./pages/PresentValueCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -555,6 +560,11 @@ function AppRoutes() {
         <Route path="/weight-converter" element={<WeightConverterPage />} />
         <Route path="/data-storage-converter" element={<DataStorageConverterPage />} />
         <Route path="/speed-converter" element={<SpeedConverterPage />} />
+        <Route path="/markup-calculator" element={<MarkupCalculatorPage />} />
+        <Route path="/break-even-calculator" element={<BreakEvenCalculatorPage />} />
+        <Route path="/payback-period-calculator" element={<PaybackPeriodCalculatorPage />} />
+        <Route path="/future-value-calculator" element={<FutureValueCalculatorPage />} />
+        <Route path="/present-value-calculator" element={<PresentValueCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />

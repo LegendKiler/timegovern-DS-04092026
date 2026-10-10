@@ -172,7 +172,12 @@ $calcRoutes = @(
   "/length-converter",
   "/weight-converter",
   "/data-storage-converter",
-  "/speed-converter"
+  "/speed-converter",
+  "/markup-calculator",
+  "/break-even-calculator",
+  "/payback-period-calculator",
+  "/future-value-calculator",
+  "/present-value-calculator"
 )
 $mc = @()
 foreach ($r in $calcRoutes) {
@@ -189,6 +194,7 @@ $calcComponents = @(
   "LogarithmCalculator","ScientificNotationConverter","SignificantFiguresCalculator","PercentErrorCalculator","GcdLcmCalculator",
   "PrimeFactorizationCalculator","MatrixCalculator","ExponentRootCalculator","PermutationCombinationCalculator","ProbabilityCalculator",
   "TemperatureConverter","LengthConverter","WeightConverter","DataStorageConverter","SpeedConverter",
+  "MarkupCalculator","BreakEvenCalculator","PaybackPeriodCalculator","FutureValueCalculator","PresentValueCalculator",
   "DebtPayoffCalculator","DownPaymentCalculator","AmortizationCalculator","CAGRCalculator"
 )
 $missingComp = @()
