@@ -1,5 +1,7 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
+  { name: "GCD LCM Calculator", href: "/gcd-lcm-calculator", tagline: "Greatest common divisor" },
+  { name: "Significant Figures Calculator", href: "/significant-figures-calculator", tagline: "Count and round sig figs" },
   { name: "About", href: "/about", tagline: "Page" },
   { name: "Accurate Time Remote Work", href: "/blog/accurate-time-remote-work", tagline: "Blog" },
   { name: "Advertising", href: "/advertising", tagline: "Page" },
@@ -172,6 +174,7 @@ export const SEARCH_INDEX = [
   { name: "Lisbon", href: "/weather/lisbon", tagline: "Portugal - Weather, sun, moon" },
   { name: "Live Data", href: "/live-data", tagline: "Page" },
   { name: "Loan Calculator", href: "/loan-calculator", tagline: "Tool" },
+  { name: "Logarithm Calculator", href: "/logarithm-calculator", tagline: "Log base x, ln, log10, log2" },
   { name: "London", href: "/weather/london", tagline: "UK - Weather, sun, moon" },
   { name: "Los Angeles", href: "/weather/los-angeles", tagline: "USA - Weather, sun, moon" },
   { name: "Macro Calculator", href: "/macro-calculator", tagline: "Protein, fat, carbs" },
@@ -267,6 +270,7 @@ export const SEARCH_INDEX = [
   { name: "Password Generator", href: "/password-generator", tagline: "Tool" },
   { name: "Password Security Guide", href: "/blog/password-security-guide", tagline: "Blog" },
   { name: "Percentage Calculator", href: "/percentage-calculator", tagline: "Tool" },
+  { name: "Percent Error Calculator", href: "/percent-error-calculator", tagline: "Experimental vs theoretical" },
   { name: "Perth", href: "/weather/perth", tagline: "Australia - Weather, sun, moon" },
   { name: "Plastic Produced Clock", href: "/plastic-produced-clock", tagline: "Live counter" },
   { name: "Pomodoro Timer", href: "/pomodoro-timer", tagline: "25-minute focus sprints" },
@@ -303,6 +307,7 @@ export const SEARCH_INDEX = [
   { name: "Saudi Arabia Gosi", href: "/blog/saudi-arabia-gosi", tagline: "Blog" },
   { name: "Saudi Arabia Take Home Pay", href: "/blog/saudi-arabia-take-home-pay", tagline: "Blog" },
   { name: "Scientific Calculator", href: "/scientific-calculator", tagline: "Tool" },
+  { name: "Scientific Notation Converter", href: "/scientific-notation-converter", tagline: "Decimal to and from scientific" },
   { name: "Seattle", href: "/weather/seattle", tagline: "USA - Weather, sun, moon" },
   { name: "Seoul", href: "/weather/seoul", tagline: "South Korea - Weather, sun, moon" },
   { name: "Services", href: "/services", tagline: "Page" },

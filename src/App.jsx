@@ -280,6 +280,11 @@ const DownPaymentCalculatorPage = lazy(() => import('./pages/DownPaymentCalculat
 const AmortizationCalculatorPage = lazy(() => import('./pages/AmortizationCalculatorPage'))
 const CAGRCalculatorPage = lazy(() => import('./pages/CAGRCalculatorPage'))
 const CountryCalculatorPage = lazy(() => import('./pages/CountryCalculatorPage'))
+const LogarithmCalculatorPage = lazy(() => import('./pages/LogarithmCalculatorPage'))
+const ScientificNotationConverterPage = lazy(() => import('./pages/ScientificNotationConverterPage'))
+const SignificantFiguresCalculatorPage = lazy(() => import('./pages/SignificantFiguresCalculatorPage'))
+const PercentErrorCalculatorPage = lazy(() => import('./pages/PercentErrorCalculatorPage'))
+const GcdLcmCalculatorPage = lazy(() => import('./pages/GcdLcmCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -525,6 +530,11 @@ function AppRoutes() {
         <Route path="/pregnancy-due-date-calculator/:code" element={<CountryCalculatorPage kind="pregnancy-due-date-calculator" />} />
         <Route path="/ovulation-calculator/:code" element={<CountryCalculatorPage kind="ovulation-calculator" />} />
         <Route path="/grade-calculator/:code" element={<CountryCalculatorPage kind="grade-calculator" />} />
+        <Route path="/logarithm-calculator" element={<LogarithmCalculatorPage />} />
+        <Route path="/scientific-notation-converter" element={<ScientificNotationConverterPage />} />
+        <Route path="/significant-figures-calculator" element={<SignificantFiguresCalculatorPage />} />
+        <Route path="/percent-error-calculator" element={<PercentErrorCalculatorPage />} />
+        <Route path="/gcd-lcm-calculator" element={<GcdLcmCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />

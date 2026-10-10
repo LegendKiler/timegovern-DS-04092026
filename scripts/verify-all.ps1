@@ -157,7 +157,12 @@ $calcRoutes = @(
   "/investment-calculator/:code",
   "/pregnancy-due-date-calculator/:code",
   "/ovulation-calculator/:code",
-  "/grade-calculator/:code"
+  "/grade-calculator/:code",
+  "/logarithm-calculator",
+  "/scientific-notation-converter",
+  "/significant-figures-calculator",
+  "/percent-error-calculator",
+  "/gcd-lcm-calculator"
 )
 $mc = @()
 foreach ($r in $calcRoutes) {
@@ -171,6 +176,7 @@ $calcComponents = @(
   "GradeCalculator","RomanNumeralCalculator","PregnancyDueDateCalculator","OvulationCalculator",
   "AreaCalculator","VolumeCalculator","TriangleCalculator",
   "SlopeCalculator","QuadraticCalculator","BinaryHexConverter",
+  "LogarithmCalculator","ScientificNotationConverter","SignificantFiguresCalculator","PercentErrorCalculator","GcdLcmCalculator",
   "DebtPayoffCalculator","DownPaymentCalculator","AmortizationCalculator","CAGRCalculator"
 )
 $missingComp = @()
