@@ -1,5 +1,10 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
+  { name: "Probability Calculator", href: "/probability-calculator", tagline: "Union, intersection, conditional" },
+  { name: "Permutation Combination Calculator", href: "/permutation-combination-calculator", tagline: "nPr, nCr, factorials" },
+  { name: "Exponent Root Calculator", href: "/exponent-root-calculator", tagline: "Powers, roots, e^x" },
+  { name: "Matrix Calculator", href: "/matrix-calculator", tagline: "2x2 determinant, inverse, multiply" },
+  { name: "Prime Factorization Calculator", href: "/prime-factorization-calculator", tagline: "Prime factors and divisors" },
   { name: "GCD LCM Calculator", href: "/gcd-lcm-calculator", tagline: "Greatest common divisor" },
   { name: "Significant Figures Calculator", href: "/significant-figures-calculator", tagline: "Count and round sig figs" },
   { name: "About", href: "/about", tagline: "Page" },

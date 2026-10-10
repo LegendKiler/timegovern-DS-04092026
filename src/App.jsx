@@ -285,6 +285,11 @@ const ScientificNotationConverterPage = lazy(() => import('./pages/ScientificNot
 const SignificantFiguresCalculatorPage = lazy(() => import('./pages/SignificantFiguresCalculatorPage'))
 const PercentErrorCalculatorPage = lazy(() => import('./pages/PercentErrorCalculatorPage'))
 const GcdLcmCalculatorPage = lazy(() => import('./pages/GcdLcmCalculatorPage'))
+const PrimeFactorizationCalculatorPage = lazy(() => import('./pages/PrimeFactorizationCalculatorPage'))
+const MatrixCalculatorPage = lazy(() => import('./pages/MatrixCalculatorPage'))
+const ExponentRootCalculatorPage = lazy(() => import('./pages/ExponentRootCalculatorPage'))
+const PermutationCombinationCalculatorPage = lazy(() => import('./pages/PermutationCombinationCalculatorPage'))
+const ProbabilityCalculatorPage = lazy(() => import('./pages/ProbabilityCalculatorPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -535,6 +540,11 @@ function AppRoutes() {
         <Route path="/significant-figures-calculator" element={<SignificantFiguresCalculatorPage />} />
         <Route path="/percent-error-calculator" element={<PercentErrorCalculatorPage />} />
         <Route path="/gcd-lcm-calculator" element={<GcdLcmCalculatorPage />} />
+        <Route path="/prime-factorization-calculator" element={<PrimeFactorizationCalculatorPage />} />
+        <Route path="/matrix-calculator" element={<MatrixCalculatorPage />} />
+        <Route path="/exponent-root-calculator" element={<ExponentRootCalculatorPage />} />
+        <Route path="/permutation-combination-calculator" element={<PermutationCombinationCalculatorPage />} />
+        <Route path="/probability-calculator" element={<ProbabilityCalculatorPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />
