@@ -290,6 +290,11 @@ const MatrixCalculatorPage = lazy(() => import('./pages/MatrixCalculatorPage'))
 const ExponentRootCalculatorPage = lazy(() => import('./pages/ExponentRootCalculatorPage'))
 const PermutationCombinationCalculatorPage = lazy(() => import('./pages/PermutationCombinationCalculatorPage'))
 const ProbabilityCalculatorPage = lazy(() => import('./pages/ProbabilityCalculatorPage'))
+const TemperatureConverterPage = lazy(() => import('./pages/TemperatureConverterPage'))
+const LengthConverterPage = lazy(() => import('./pages/LengthConverterPage'))
+const WeightConverterPage = lazy(() => import('./pages/WeightConverterPage'))
+const DataStorageConverterPage = lazy(() => import('./pages/DataStorageConverterPage'))
+const SpeedConverterPage = lazy(() => import('./pages/SpeedConverterPage'))
 const PopulationByCountryPage = lazy(() => import('./pages/PopulationByCountryPage'))
 const CountryPopulationPage = lazy(() => import('./pages/CountryPopulationPage'))
 const MacroCalculatorPage = lazy(() => import('./pages/MacroCalculatorPage'))
@@ -545,6 +550,11 @@ function AppRoutes() {
         <Route path="/exponent-root-calculator" element={<ExponentRootCalculatorPage />} />
         <Route path="/permutation-combination-calculator" element={<PermutationCombinationCalculatorPage />} />
         <Route path="/probability-calculator" element={<ProbabilityCalculatorPage />} />
+        <Route path="/temperature-converter" element={<TemperatureConverterPage />} />
+        <Route path="/length-converter" element={<LengthConverterPage />} />
+        <Route path="/weight-converter" element={<WeightConverterPage />} />
+        <Route path="/data-storage-converter" element={<DataStorageConverterPage />} />
+        <Route path="/speed-converter" element={<SpeedConverterPage />} />
         <Route path="/password-generator" element={<PasswordGeneratorPage />} />
         <Route path="/qr-code-generator" element={<QRCodeGeneratorPage />} />
         <Route path="/tip-calculator" element={<TipCalculatorPage />} />

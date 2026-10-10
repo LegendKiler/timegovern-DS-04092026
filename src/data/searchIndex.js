@@ -1,5 +1,10 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
+  { name: "Speed Converter", href: "/speed-converter", tagline: "km/h, mph, m/s, knots" },
+  { name: "Data Storage Converter", href: "/data-storage-converter", tagline: "B, KB, MB, GB, TB" },
+  { name: "Weight Converter", href: "/weight-converter", tagline: "kg, lb, oz, stone" },
+  { name: "Length Converter", href: "/length-converter", tagline: "m, ft, in, mi, km" },
+  { name: "Temperature Converter", href: "/temperature-converter", tagline: "C, F, K, Rankine" },
   { name: "Probability Calculator", href: "/probability-calculator", tagline: "Union, intersection, conditional" },
   { name: "Permutation Combination Calculator", href: "/permutation-combination-calculator", tagline: "nPr, nCr, factorials" },
   { name: "Exponent Root Calculator", href: "/exponent-root-calculator", tagline: "Powers, roots, e^x" },
