@@ -436,6 +436,73 @@ export const WORLD_RATES = {
       { year: 2030, value: 3200000000000 }, { year: 2050, value: 5800000000000 },
     ],
   },
+  books: {
+    key: 'books', label: 'Books Published Today', shortLabel: 'Books',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.070, resetDaily: true,
+    unit: 'books', format: 'integer',
+    source: 'UNESCO Institute for Statistics 2024', sourceUrl: 'https://uis.unesco.org/',
+    category: 'society', route: '/books-published-today',
+    description: 'New book titles published worldwide today.', icon: 'BookOpen',
+    gradient: 'from-violet-950 via-purple-950 to-slate-950',
+    history: [
+      { year: 1950, value: 220000 }, { year: 1970, value: 500000 },
+      { year: 1990, value: 900000 }, { year: 2010, value: 1800000 },
+      { year: 2024, value: 2200000 },
+    ],
+    projection: [
+      { year: 2030, value: 2600000 }, { year: 2050, value: 3800000 },
+    ],
+  },
+  posts: {
+    key: 'posts', label: 'Social Media Posts Today', shortLabel: 'Posts',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 5800, resetDaily: true,
+    unit: 'posts', format: 'integer',
+    source: 'Internet Live Stats 2024', sourceUrl: 'https://www.internetlivestats.com/',
+    category: 'society', route: '/social-media-posts-today',
+    description: 'Social media posts published worldwide today.', icon: 'MessageCircle',
+    gradient: 'from-cyan-950 via-blue-950 to-slate-950',
+    history: [
+      { year: 2010, value: 10000000000 }, { year: 2015, value: 60000000000 },
+      { year: 2020, value: 150000000000 }, { year: 2024, value: 183000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 220000000000 }, { year: 2050, value: 350000000000 },
+    ],
+  },
+  tvs: {
+    key: 'tvs', label: 'Televisions Sold Today', shortLabel: 'TVs',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 6.4, resetDaily: true,
+    unit: 'TVs', format: 'integer',
+    source: 'Statista Consumer Electronics Outlook 2024', sourceUrl: 'https://www.statista.com/outlook/cmo/consumer-electronics/',
+    category: 'society', route: '/tvs-sold-today',
+    description: 'Television sets sold worldwide today.', icon: 'Tv',
+    gradient: 'from-slate-950 via-neutral-950 to-slate-950',
+    history: [
+      { year: 2000, value: 120000000 }, { year: 2010, value: 250000000 },
+      { year: 2015, value: 230000000 }, { year: 2020, value: 220000000 },
+      { year: 2024, value: 200000000 },
+    ],
+    projection: [
+      { year: 2030, value: 180000000 }, { year: 2050, value: 150000000 },
+    ],
+  },
+  phones: {
+    key: 'phones', label: 'Mobile Phones Sold Today', shortLabel: 'Phones',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 38.0, resetDaily: true,
+    unit: 'phones', format: 'integer',
+    source: 'IDC Worldwide Quarterly Mobile Phone Tracker 2024', sourceUrl: 'https://www.idc.com/',
+    category: 'society', route: '/mobile-phones-sold-today',
+    description: 'Mobile phones sold worldwide today.', icon: 'Smartphone',
+    gradient: 'from-indigo-950 via-blue-950 to-slate-950',
+    history: [
+      { year: 2000, value: 400000000 }, { year: 2010, value: 1500000000 },
+      { year: 2015, value: 1900000000 }, { year: 2020, value: 1300000000 },
+      { year: 2024, value: 1200000000 },
+    ],
+    projection: [
+      { year: 2030, value: 1300000000 }, { year: 2050, value: 1500000000 },
+    ],
+  },
 }
 
 export const CATEGORY_ORDER = ['population', 'environment', 'food', 'health', 'economy', 'government', 'society']

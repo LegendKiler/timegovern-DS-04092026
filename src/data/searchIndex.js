@@ -1,6 +1,9 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
-  { name: "Health Spending Clock", href: "/health-spending-clock", tagline: "Global health spend today" },
+  { name: "Books Published Today", href: "/books-published-today", tagline: "New book titles today" },
+  { name: "Social Media Posts Today", href: "/social-media-posts-today", tagline: "Posts worldwide today" },
+  { name: "TVs Sold Today", href: "/tvs-sold-today", tagline: "Televisions sold worldwide today" },
+  { name: "Mobile Phones Sold Today", href: "/mobile-phones-sold-today", tagline: "Phones sold worldwide today" },  { name: "Health Spending Clock", href: "/health-spending-clock", tagline: "Global health spend today" },
   { name: "Education Spending Clock", href: "/education-spending-clock", tagline: "Global education spend today" },
   { name: "Military Spending Clock", href: "/military-spending-clock", tagline: "Global military spend today" },
   { name: "Present Value Calculator", href: "/present-value-calculator", tagline: "Discount future cash" },

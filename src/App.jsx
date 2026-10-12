@@ -263,6 +263,10 @@ const GdpClockPage = lazy(() => import('./pages/GdpClockPage'))
 const HealthSpendingClockPage = lazy(() => import('./pages/HealthSpendingClockPage'))
 const EducationSpendingClockPage = lazy(() => import('./pages/EducationSpendingClockPage'))
 const MilitarySpendingClockPage = lazy(() => import('./pages/MilitarySpendingClockPage'))
+const BooksPublishedTodayPage = lazy(() => import('./pages/BooksPublishedTodayPage'))
+const SocialMediaPostsTodayPage = lazy(() => import('./pages/SocialMediaPostsTodayPage'))
+const TvsSoldTodayPage = lazy(() => import('./pages/TvsSoldTodayPage'))
+const MobilePhonesSoldTodayPage = lazy(() => import('./pages/MobilePhonesSoldTodayPage'))
 const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
 const AutoLoanCalculatorPage = lazy(() => import('./pages/AutoLoanCalculatorPage'))
 const CreditCardPayoffCalculatorPage = lazy(() => import('./pages/CreditCardPayoffCalculatorPage'))
@@ -489,6 +493,10 @@ function AppRoutes() {
         <Route path="/health-spending-clock" element={<HealthSpendingClockPage />} />
         <Route path="/education-spending-clock" element={<EducationSpendingClockPage />} />
         <Route path="/military-spending-clock" element={<MilitarySpendingClockPage />} />
+        <Route path="/books-published-today" element={<BooksPublishedTodayPage />} />
+        <Route path="/social-media-posts-today" element={<SocialMediaPostsTodayPage />} />
+        <Route path="/tvs-sold-today" element={<TvsSoldTodayPage />} />
+        <Route path="/mobile-phones-sold-today" element={<MobilePhonesSoldTodayPage />} />
         <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
         <Route path="/food-waste-clock" element={<FoodWasteClockPage />} />
         <Route path="/forest-loss-clock" element={<ForestLossClockPage />} />
