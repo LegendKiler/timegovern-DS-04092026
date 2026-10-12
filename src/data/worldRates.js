@@ -385,9 +385,60 @@ export const WORLD_RATES = {
     ],
     projection: [],
   },
+  healthspend: {
+    key: 'healthspend', label: 'Health Care Spending Today', shortLabel: 'Health Spend',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 317000, resetDaily: true,
+    unit: 'USD', format: 'integer',
+    source: 'WHO Global Health Expenditure Database 2024', sourceUrl: 'https://apps.who.int/nha/database',
+    category: 'government', route: '/health-spending-clock',
+    description: 'Global health care spending today, in US dollars.', icon: 'HeartPulse',
+    gradient: 'from-rose-950 via-red-950 to-slate-950',
+    history: [
+      { year: 2000, value: 3200000000000 }, { year: 2010, value: 6600000000000 },
+      { year: 2015, value: 7600000000000 }, { year: 2020, value: 9100000000000 },
+      { year: 2024, value: 10000000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 13000000000000 }, { year: 2050, value: 28000000000000 },
+    ],
+  },
+  eduspend: {
+    key: 'eduspend', label: 'Education Spending Today', shortLabel: 'Education Spend',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 177500, resetDaily: true,
+    unit: 'USD', format: 'integer',
+    source: 'UNESCO Institute for Statistics 2024', sourceUrl: 'https://uis.unesco.org/',
+    category: 'government', route: '/education-spending-clock',
+    description: 'Global education spending today, in US dollars.', icon: 'GraduationCap',
+    gradient: 'from-sky-950 via-blue-950 to-slate-950',
+    history: [
+      { year: 2000, value: 1900000000000 }, { year: 2010, value: 3900000000000 },
+      { year: 2015, value: 4600000000000 }, { year: 2020, value: 5100000000000 },
+      { year: 2024, value: 5600000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 7000000000000 }, { year: 2050, value: 14000000000000 },
+    ],
+  },
+  milspend: {
+    key: 'milspend', label: 'Military Spending Today', shortLabel: 'Military Spend',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 77500, resetDaily: true,
+    unit: 'USD', format: 'integer',
+    source: 'SIPRI Military Expenditure Database 2024', sourceUrl: 'https://www.sipri.org/databases/milex',
+    category: 'government', route: '/military-spending-clock',
+    description: 'Global military spending today, in US dollars.', icon: 'Shield',
+    gradient: 'from-stone-950 via-zinc-950 to-slate-950',
+    history: [
+      { year: 2000, value: 1080000000000 }, { year: 2010, value: 1750000000000 },
+      { year: 2015, value: 1670000000000 }, { year: 2020, value: 1980000000000 },
+      { year: 2024, value: 2443000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 3200000000000 }, { year: 2050, value: 5800000000000 },
+    ],
+  },
 }
 
-export const CATEGORY_ORDER = ['population', 'environment', 'food', 'health', 'economy', 'society']
+export const CATEGORY_ORDER = ['population', 'environment', 'food', 'health', 'economy', 'government', 'society']
 
 export const CATEGORY_LABELS = {
   population: 'Population',
@@ -395,5 +446,6 @@ export const CATEGORY_LABELS = {
   food: 'Food & Water',
   health: 'Health',
   economy: 'Economy',
+  government: 'Government',
   society: 'Society & Media',
 }

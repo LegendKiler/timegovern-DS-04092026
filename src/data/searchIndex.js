@@ -1,5 +1,8 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
+  { name: "Health Spending Clock", href: "/health-spending-clock", tagline: "Global health spend today" },
+  { name: "Education Spending Clock", href: "/education-spending-clock", tagline: "Global education spend today" },
+  { name: "Military Spending Clock", href: "/military-spending-clock", tagline: "Global military spend today" },
   { name: "Present Value Calculator", href: "/present-value-calculator", tagline: "Discount future cash" },
   { name: "Future Value Calculator", href: "/future-value-calculator", tagline: "Compound growth" },
   { name: "Payback Period Calculator", href: "/payback-period-calculator", tagline: "Simple and discounted" },
