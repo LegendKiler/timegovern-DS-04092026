@@ -1,5 +1,6 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
+  { name: "Energy Use by Country", href: "/energy", tagline: "Ranked energy consumption for all countries" },
   { name: "CO2 Emissions by Country", href: "/co2-emissions", tagline: "Ranked CO2 emissions for all countries" },
   { name: "Cigarettes Smoked Today", href: "/cigarettes-smoked-today", tagline: "Cigarettes smoked worldwide today" },
   { name: "Deaths From Smoking Today", href: "/smoking-deaths-today", tagline: "Tobacco-related deaths today" },
