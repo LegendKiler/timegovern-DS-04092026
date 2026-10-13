@@ -277,6 +277,8 @@ const CigarettesSmokedTodayPage = lazy(() => import('./pages/CigarettesSmokedTod
 const SmokingDeathsTodayPage = lazy(() => import('./pages/SmokingDeathsTodayPage'))
 const AlcoholDeathsTodayPage = lazy(() => import('./pages/AlcoholDeathsTodayPage'))
 const RoadTrafficDeathsTodayPage = lazy(() => import('./pages/RoadTrafficDeathsTodayPage'))
+const Co2ByCountryPage = lazy(() => import('./pages/Co2ByCountryPage'))
+const CountryCo2Page = lazy(() => import('./pages/CountryCo2Page'))
 const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
 const AutoLoanCalculatorPage = lazy(() => import('./pages/AutoLoanCalculatorPage'))
 const CreditCardPayoffCalculatorPage = lazy(() => import('./pages/CreditCardPayoffCalculatorPage'))
@@ -517,6 +519,8 @@ function AppRoutes() {
         <Route path="/smoking-deaths-today" element={<SmokingDeathsTodayPage />} />
         <Route path="/alcohol-deaths-today" element={<AlcoholDeathsTodayPage />} />
         <Route path="/road-traffic-deaths-today" element={<RoadTrafficDeathsTodayPage />} />
+        <Route path="/co2-emissions" element={<Co2ByCountryPage />} />
+        <Route path="/co2-emissions/:code" element={<CountryCo2Page />} />
         <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
         <Route path="/food-waste-clock" element={<FoodWasteClockPage />} />
         <Route path="/forest-loss-clock" element={<ForestLossClockPage />} />

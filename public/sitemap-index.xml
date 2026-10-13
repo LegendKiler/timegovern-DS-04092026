@@ -28,4 +28,7 @@
     <loc>https://timegovern.com/sitemap-calculators.xml</loc>
     <lastmod>2026-10-07</lastmod>
   </sitemap>
-</sitemapindex>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-co2.xml</loc>
+    <lastmod>2026-10-13</lastmod>
+  </sitemap></sitemapindex>

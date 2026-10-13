@@ -105,6 +105,68 @@ export async function fetchCountryPopulationHistory(code) {
     return null
   }
 }
+// ---- CO2 (World Bank EN.GHG.CO2.MT.CE.AR5, Mt CO2e) ----
+const CO2_INDICATOR = 'EN.GHG.CO2.MT.CE.AR5'
+
+export async function fetchCountryCo2(code) {
+  if (!code) return null
+  const key = 'co2_' + String(code).toUpperCase()
+
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/' + CO2_INDICATOR + '?format=json&per_page=30&date=2000:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    if (!Array.isArray(json) || json.length < 2) throw new Error('no rows')
+    const rows = (json[1] || []).filter(r => r.value != null)
+    if (rows.length === 0) throw new Error('no data')
+    rows.sort((a, b) => String(b.date).localeCompare(String(a.date)))
+
+    const value = Number(rows[0].value)
+    const year = parseInt(rows[0].date, 10)
+    const result = { value, year }
+    writeCache(key, result)
+    return { ...result, source: 'live' }
+  } catch {
+    return null
+  }
+}
+
+export async function fetchCountryCo2History(code) {
+  if (!code) return null
+  const key = 'co2hist_' + String(code).toUpperCase()
+
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/' + CO2_INDICATOR + '?format=json&per_page=100&date=2000:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    if (!Array.isArray(json) || json.length < 2) throw new Error('no rows')
+    const rows = (json[1] || [])
+      .filter(r => r.value != null)
+      .map(r => ({ year: parseInt(r.date, 10), value: Number(r.value) }))
+      .sort((a, b) => a.year - b.year)
+    if (rows.length === 0) throw new Error('no history')
+
+    const result = { points: rows, count: rows.length }
+    writeCache(key, result)
+    return { ...result, source: 'live' }
+  } catch {
+    return null
+  }
+}
 export function clearWorldDataCache() {
   try {
     const keys = []
