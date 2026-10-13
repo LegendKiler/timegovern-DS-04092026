@@ -605,6 +605,74 @@ export const WORLD_RATES = {
       { year: 2030, value: 320000000 }, { year: 2050, value: 400000000 },
     ],
   },
+  cigarettes: {
+    key: 'cigarettes', label: 'Cigarettes Smoked Today', shortLabel: 'Cigarettes',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 173000, resetDaily: true,
+    unit: 'cigarettes', format: 'integer',
+    source: 'WHO Report on the Global Tobacco Epidemic 2024', sourceUrl: 'https://www.who.int/teams/health-promotion/tobacco-control',
+    category: 'health', route: '/cigarettes-smoked-today',
+    description: 'Cigarettes smoked worldwide today.', icon: 'Cigarette',
+    gradient: 'from-stone-950 via-zinc-950 to-slate-950',
+    history: [
+      { year: 2000, value: 5500000000000 }, { year: 2010, value: 6100000000000 },
+      { year: 2015, value: 5900000000000 }, { year: 2020, value: 5700000000000 },
+      { year: 2024, value: 5500000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 5200000000000 }, { year: 2050, value: 4000000000000 },
+    ],
+  },
+  smokingdeaths: {
+    key: 'smokingdeaths', label: 'Deaths From Smoking Today', shortLabel: 'Smoking Deaths',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.28, resetDaily: true,
+    unit: 'people', format: 'integer',
+    source: 'WHO Tobacco Fact Sheet 2024', sourceUrl: 'https://www.who.int/news-room/fact-sheets/detail/tobacco',
+    category: 'health', route: '/smoking-deaths-today',
+    description: 'People who died from tobacco-related causes today.', icon: 'HeartCrack',
+    gradient: 'from-red-950 via-stone-950 to-slate-950',
+    history: [
+      { year: 2000, value: 5400000 }, { year: 2010, value: 6800000 },
+      { year: 2015, value: 7500000 }, { year: 2020, value: 8300000 },
+      { year: 2024, value: 8700000 },
+    ],
+    projection: [
+      { year: 2030, value: 9100000 }, { year: 2050, value: 9500000 },
+    ],
+  },
+  alcoholdeaths: {
+    key: 'alcoholdeaths', label: 'Alcohol-Related Deaths Today', shortLabel: 'Alcohol Deaths',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.082, resetDaily: true,
+    unit: 'people', format: 'integer',
+    source: 'WHO Global Status Report on Alcohol 2024', sourceUrl: 'https://www.who.int/publications/i/item/9789240088921',
+    category: 'health', route: '/alcohol-deaths-today',
+    description: 'People who died from alcohol-related causes today.', icon: 'Wine',
+    gradient: 'from-rose-950 via-red-950 to-slate-950',
+    history: [
+      { year: 2000, value: 1800000 }, { year: 2010, value: 2300000 },
+      { year: 2015, value: 2600000 }, { year: 2020, value: 2700000 },
+      { year: 2024, value: 2600000 },
+    ],
+    projection: [
+      { year: 2030, value: 2900000 }, { year: 2050, value: 3100000 },
+    ],
+  },
+  roaddeaths: {
+    key: 'roaddeaths', label: 'Road Traffic Deaths Today', shortLabel: 'Road Deaths',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.043, resetDaily: true,
+    unit: 'people', format: 'integer',
+    source: 'WHO Global Status Report on Road Safety 2023', sourceUrl: 'https://www.who.int/teams/social-determinants-of-health/safety-and-mobility/global-status-report-on-road-safety-2023',
+    category: 'health', route: '/road-traffic-deaths-today',
+    description: 'People who died in road traffic accidents today.', icon: 'Car',
+    gradient: 'from-zinc-950 via-slate-950 to-slate-950',
+    history: [
+      { year: 2000, value: 1150000 }, { year: 2010, value: 1250000 },
+      { year: 2015, value: 1350000 }, { year: 2020, value: 1300000 },
+      { year: 2024, value: 1350000 },
+    ],
+    projection: [
+      { year: 2030, value: 1400000 }, { year: 2050, value: 1500000 },
+    ],
+  },
 }
 
 export const CATEGORY_ORDER = ['population', 'environment', 'food', 'health', 'economy', 'government', 'society']

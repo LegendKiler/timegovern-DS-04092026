@@ -1,6 +1,9 @@
 // Auto-generated: routes + categories + featured tools + 656 cities
 export const SEARCH_INDEX = [
-  { name: "Hunger Deaths Today", href: "/hunger-deaths-today", tagline: "Deaths from hunger today" },
+  { name: "Cigarettes Smoked Today", href: "/cigarettes-smoked-today", tagline: "Cigarettes smoked worldwide today" },
+  { name: "Deaths From Smoking Today", href: "/smoking-deaths-today", tagline: "Tobacco-related deaths today" },
+  { name: "Alcohol-Related Deaths Today", href: "/alcohol-deaths-today", tagline: "Alcohol-related deaths today" },
+  { name: "Road Traffic Deaths Today", href: "/road-traffic-deaths-today", tagline: "Road accident deaths today" },  { name: "Hunger Deaths Today", href: "/hunger-deaths-today", tagline: "Deaths from hunger today" },
   { name: "Undernourished People", href: "/undernourished-people", tagline: "People undernourished worldwide" },
   { name: "Newly Obese Today", href: "/newly-obese-today", tagline: "Adults who became obese today" },
   { name: "Obese Adults Worldwide", href: "/obese-adults-worldwide", tagline: "Adults currently obese" },

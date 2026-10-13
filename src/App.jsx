@@ -273,6 +273,10 @@ const NewlyObeseTodayPage = lazy(() => import('./pages/NewlyObeseTodayPage'))
 const ObeseAdultsWorldwidePage = lazy(() => import('./pages/ObeseAdultsWorldwidePage'))
 const NewlyHungryTodayPage = lazy(() => import('./pages/NewlyHungryTodayPage'))
 const AcuteFoodInsecurityPeoplePage = lazy(() => import('./pages/AcuteFoodInsecurityPeoplePage'))
+const CigarettesSmokedTodayPage = lazy(() => import('./pages/CigarettesSmokedTodayPage'))
+const SmokingDeathsTodayPage = lazy(() => import('./pages/SmokingDeathsTodayPage'))
+const AlcoholDeathsTodayPage = lazy(() => import('./pages/AlcoholDeathsTodayPage'))
+const RoadTrafficDeathsTodayPage = lazy(() => import('./pages/RoadTrafficDeathsTodayPage'))
 const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
 const AutoLoanCalculatorPage = lazy(() => import('./pages/AutoLoanCalculatorPage'))
 const CreditCardPayoffCalculatorPage = lazy(() => import('./pages/CreditCardPayoffCalculatorPage'))
@@ -509,6 +513,10 @@ function AppRoutes() {
         <Route path="/obese-adults-worldwide" element={<ObeseAdultsWorldwidePage />} />
         <Route path="/newly-hungry-today" element={<NewlyHungryTodayPage />} />
         <Route path="/acute-food-insecurity-people" element={<AcuteFoodInsecurityPeoplePage />} />
+        <Route path="/cigarettes-smoked-today" element={<CigarettesSmokedTodayPage />} />
+        <Route path="/smoking-deaths-today" element={<SmokingDeathsTodayPage />} />
+        <Route path="/alcohol-deaths-today" element={<AlcoholDeathsTodayPage />} />
+        <Route path="/road-traffic-deaths-today" element={<RoadTrafficDeathsTodayPage />} />
         <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
         <Route path="/food-waste-clock" element={<FoodWasteClockPage />} />
         <Route path="/forest-loss-clock" element={<ForestLossClockPage />} />
