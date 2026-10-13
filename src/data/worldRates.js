@@ -503,6 +503,108 @@ export const WORLD_RATES = {
       { year: 2030, value: 1300000000 }, { year: 2050, value: 1500000000 },
     ],
   },
+  hungerdeaths: {
+    key: 'hungerdeaths', label: 'Deaths From Hunger Today', shortLabel: 'Hunger Deaths',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.29, resetDaily: true,
+    unit: 'people', format: 'integer',
+    source: 'WFP / FAO State of Food Security 2024', sourceUrl: 'https://www.wfp.org/',
+    category: 'food', route: '/hunger-deaths-today',
+    description: 'People who died from hunger-related causes today.', icon: 'HeartCrack',
+    gradient: 'from-red-950 via-rose-950 to-slate-950',
+    history: [
+      { year: 2000, value: 12000000 }, { year: 2010, value: 10500000 },
+      { year: 2015, value: 9200000 }, { year: 2020, value: 9800000 },
+      { year: 2024, value: 9200000 },
+    ],
+    projection: [
+      { year: 2030, value: 7500000 }, { year: 2050, value: 4000000 },
+    ],
+  },
+  undernourished: {
+    key: 'undernourished', label: 'Undernourished People Worldwide', shortLabel: 'Undernourished',
+    baseValue: 735000000, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.03, resetDaily: false,
+    unit: 'people', format: 'integer',
+    source: 'FAO State of Food Security and Nutrition 2024', sourceUrl: 'https://www.fao.org/state-of-food-security-nutrition/',
+    category: 'food', route: '/undernourished-people',
+    description: 'People currently undernourished worldwide.', icon: 'UserMinus',
+    gradient: 'from-amber-950 via-orange-950 to-slate-950',
+    history: [
+      { year: 2000, value: 810000000 }, { year: 2010, value: 620000000 },
+      { year: 2015, value: 615000000 }, { year: 2020, value: 720000000 },
+      { year: 2024, value: 735000000 },
+    ],
+    projection: [
+      { year: 2030, value: 700000000 }, { year: 2050, value: 500000000 },
+    ],
+  },
+  newlyobese: {
+    key: 'newlyobese', label: 'Adults Who Became Obese Today', shortLabel: 'Newly Obese',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.95, resetDaily: true,
+    unit: 'adults', format: 'integer',
+    source: 'WHO Global Health Observatory 2024', sourceUrl: 'https://www.who.int/data/gho',
+    category: 'health', route: '/newly-obese-today',
+    description: 'Adults who became obese today worldwide.', icon: 'UserPlus',
+    gradient: 'from-orange-950 via-amber-950 to-slate-950',
+    history: [
+      { year: 2000, value: 12000000 }, { year: 2010, value: 22000000 },
+      { year: 2015, value: 26000000 }, { year: 2020, value: 29000000 },
+      { year: 2024, value: 30000000 },
+    ],
+    projection: [
+      { year: 2030, value: 32000000 }, { year: 2050, value: 35000000 },
+    ],
+  },
+  obese: {
+    key: 'obese', label: 'Obese Adults Worldwide', shortLabel: 'Obese Adults',
+    baseValue: 1000000000, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.95, resetDaily: false,
+    unit: 'adults', format: 'integer',
+    source: 'WHO Global Health Observatory 2024', sourceUrl: 'https://www.who.int/data/gho',
+    category: 'health', route: '/obese-adults-worldwide',
+    description: 'Adults currently obese worldwide.', icon: 'Users',
+    gradient: 'from-yellow-950 via-amber-950 to-slate-950',
+    history: [
+      { year: 1990, value: 200000000 }, { year: 2000, value: 400000000 },
+      { year: 2010, value: 600000000 }, { year: 2015, value: 700000000 },
+      { year: 2024, value: 1000000000 },
+    ],
+    projection: [
+      { year: 2030, value: 1200000000 }, { year: 2050, value: 1700000000 },
+    ],
+  },
+  newlyhungry: {
+    key: 'newlyhungry', label: 'People Newly Food Insecure Today', shortLabel: 'Newly Hungry',
+    baseValue: 0, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.5, resetDaily: true,
+    unit: 'people', format: 'integer',
+    source: 'Global Report on Food Crises 2024', sourceUrl: 'https://www.fsinplatform.org/global-report-food-crises-2024',
+    category: 'food', route: '/newly-hungry-today',
+    description: 'People who fell into acute food insecurity today.', icon: 'AlertCircle',
+    gradient: 'from-orange-950 via-red-950 to-slate-950',
+    history: [
+      { year: 2016, value: 108000000 }, { year: 2019, value: 135000000 },
+      { year: 2021, value: 193000000 }, { year: 2023, value: 258000000 },
+      { year: 2024, value: 282000000 },
+    ],
+    projection: [
+      { year: 2030, value: 320000000 }, { year: 2050, value: 400000000 },
+    ],
+  },
+  foodinsecure: {
+    key: 'foodinsecure', label: 'People Facing Acute Food Insecurity', shortLabel: 'Food Insecure',
+    baseValue: 282000000, baseTimestamp: Date.UTC(2026, 0, 1), ratePerSecond: 0.5, resetDaily: false,
+    unit: 'people', format: 'integer',
+    source: 'Global Report on Food Crises 2024', sourceUrl: 'https://www.fsinplatform.org/global-report-food-crises-2024',
+    category: 'food', route: '/acute-food-insecurity-people',
+    description: 'People currently facing acute food insecurity worldwide.', icon: 'AlertTriangle',
+    gradient: 'from-red-950 via-orange-950 to-slate-950',
+    history: [
+      { year: 2016, value: 108000000 }, { year: 2019, value: 135000000 },
+      { year: 2021, value: 193000000 }, { year: 2023, value: 258000000 },
+      { year: 2024, value: 282000000 },
+    ],
+    projection: [
+      { year: 2030, value: 320000000 }, { year: 2050, value: 400000000 },
+    ],
+  },
 }
 
 export const CATEGORY_ORDER = ['population', 'environment', 'food', 'health', 'economy', 'government', 'society']

@@ -267,6 +267,12 @@ const BooksPublishedTodayPage = lazy(() => import('./pages/BooksPublishedTodayPa
 const SocialMediaPostsTodayPage = lazy(() => import('./pages/SocialMediaPostsTodayPage'))
 const TvsSoldTodayPage = lazy(() => import('./pages/TvsSoldTodayPage'))
 const MobilePhonesSoldTodayPage = lazy(() => import('./pages/MobilePhonesSoldTodayPage'))
+const HungerDeathsTodayPage = lazy(() => import('./pages/HungerDeathsTodayPage'))
+const UndernourishedPeoplePage = lazy(() => import('./pages/UndernourishedPeoplePage'))
+const NewlyObeseTodayPage = lazy(() => import('./pages/NewlyObeseTodayPage'))
+const ObeseAdultsWorldwidePage = lazy(() => import('./pages/ObeseAdultsWorldwidePage'))
+const NewlyHungryTodayPage = lazy(() => import('./pages/NewlyHungryTodayPage'))
+const AcuteFoodInsecurityPeoplePage = lazy(() => import('./pages/AcuteFoodInsecurityPeoplePage'))
 const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
 const AutoLoanCalculatorPage = lazy(() => import('./pages/AutoLoanCalculatorPage'))
 const CreditCardPayoffCalculatorPage = lazy(() => import('./pages/CreditCardPayoffCalculatorPage'))
@@ -497,6 +503,12 @@ function AppRoutes() {
         <Route path="/social-media-posts-today" element={<SocialMediaPostsTodayPage />} />
         <Route path="/tvs-sold-today" element={<TvsSoldTodayPage />} />
         <Route path="/mobile-phones-sold-today" element={<MobilePhonesSoldTodayPage />} />
+        <Route path="/hunger-deaths-today" element={<HungerDeathsTodayPage />} />
+        <Route path="/undernourished-people" element={<UndernourishedPeoplePage />} />
+        <Route path="/newly-obese-today" element={<NewlyObeseTodayPage />} />
+        <Route path="/obese-adults-worldwide" element={<ObeseAdultsWorldwidePage />} />
+        <Route path="/newly-hungry-today" element={<NewlyHungryTodayPage />} />
+        <Route path="/acute-food-insecurity-people" element={<AcuteFoodInsecurityPeoplePage />} />
         <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
         <Route path="/food-waste-clock" element={<FoodWasteClockPage />} />
         <Route path="/forest-loss-clock" element={<ForestLossClockPage />} />
