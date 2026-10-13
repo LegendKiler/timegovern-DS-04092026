@@ -9,6 +9,7 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
+    "test": "node scripts/test-all.mjs",
         "predev": "powershell -ExecutionPolicy Bypass -File validate-icons.ps1",
         "prebuild": "powershell -ExecutionPolicy Bypass -File validate-icons.ps1"
     },
