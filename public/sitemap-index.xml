@@ -34,4 +34,9 @@
   </sitemap>  <sitemap>
     <loc>https://timegovern.com/sitemap-energy.xml</loc>
     <lastmod>2026-10-13</lastmod>
-  </sitemap></sitemapindex>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-water.xml</loc>
+    <lastmod>2026-10-15</lastmod>
+  </sitemap>
+</sitemapindex>

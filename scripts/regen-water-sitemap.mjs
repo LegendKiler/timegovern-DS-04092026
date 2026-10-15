@@ -1,0 +1,14 @@
+﻿import { readFileSync, writeFileSync } from "node:fs";
+import { join, dirname } from "node:path";
+import { fileURLToPath, pathToFileURL } from "node:url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const root = join(__dirname, "..");
+const mod = await import(pathToFileURL(join(root, "src/data/countryWater.js")).href);
+const list = mod.COUNTRY_WATER;
+const origin = "https://timegovern.com";
+const lines = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
+lines.push("  <url><loc>" + origin + "/water</loc></url>");
+for (const c of list) lines.push("  <url><loc>" + origin + "/water/" + c.code.toLowerCase() + "</loc></url>");
+lines.push("</urlset>");
+writeFileSync(join(root, "public/sitemap-water.xml"), lines.join("\n") + "\n", "utf8");
+console.log("sitemap-water.xml: " + (list.length + 1) + " URLs");
