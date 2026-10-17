@@ -39,4 +39,16 @@
     <loc>https://timegovern.com/sitemap-water.xml</loc>
     <lastmod>2026-10-15</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-world-population-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-co2-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-births-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
 </sitemapindex>

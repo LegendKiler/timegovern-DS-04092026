@@ -1,0 +1,67 @@
+// World CO2 emissions by year - source: World Bank EN.GHG.CO2.MT.CE.AR5 (WLD aggregate)
+// Metric: total CO2 emissions, in megatonnes CO2 equivalent (Mt CO2e).
+// Generated: 2026-10-17
+
+export const WORLD_CO2_BY_YEAR = [
+  { year: 1970, value: 15750.7206520139 },
+  { year: 1971, value: 15682.5508119459 },
+  { year: 1972, value: 16478.7355062985 },
+  { year: 1973, value: 17461.301237098 },
+  { year: 1974, value: 17397.8374987785 },
+  { year: 1975, value: 17327.6992647868 },
+  { year: 1976, value: 18315.3591057151 },
+  { year: 1977, value: 18869.8801838506 },
+  { year: 1978, value: 19479.8511413676 },
+  { year: 1979, value: 20018.7004257031 },
+  { year: 1980, value: 19772.8485982341 },
+  { year: 1981, value: 19402.1903148097 },
+  { year: 1982, value: 19156.9595419897 },
+  { year: 1983, value: 19302.6011748069 },
+  { year: 1984, value: 19921.949855544 },
+  { year: 1985, value: 20181.5266214828 },
+  { year: 1986, value: 20540.4827514233 },
+  { year: 1987, value: 21199.3850931318 },
+  { year: 1988, value: 21958.1557367938 },
+  { year: 1989, value: 22343.1029605016 },
+  { year: 1990, value: 22660.0793635616 },
+  { year: 1991, value: 22794.8648948955 },
+  { year: 1992, value: 22714.9864823348 },
+  { year: 1993, value: 22808.3254174281 },
+  { year: 1994, value: 23039.3848539522 },
+  { year: 1995, value: 23682.2860158302 },
+  { year: 1996, value: 24149.1299265374 },
+  { year: 1997, value: 24598.717494151 },
+  { year: 1998, value: 24756.5058635604 },
+  { year: 1999, value: 24939.9843003825 },
+  { year: 2000, value: 25694.728676422 },
+  { year: 2001, value: 26000.902282105 },
+  { year: 2002, value: 26414.8440145183 },
+  { year: 2003, value: 27642.4034048399 },
+  { year: 2004, value: 28926.3716096114 },
+  { year: 2005, value: 30015.9381441037 },
+  { year: 2006, value: 31037.6185904886 },
+  { year: 2007, value: 32207.3649529402 },
+  { year: 2008, value: 32414.3605153102 },
+  { year: 2009, value: 31966.5998016308 },
+  { year: 2010, value: 33969.4743144853 },
+  { year: 2011, value: 35036.7409019227 },
+  { year: 2012, value: 35489.6763431639 },
+  { year: 2013, value: 36177.3285213532 },
+  { year: 2014, value: 36396.9526866593 },
+  { year: 2015, value: 36292.5234154345 },
+  { year: 2016, value: 36390.7852703318 },
+  { year: 2017, value: 37020.0281885751 },
+  { year: 2018, value: 37905.9615465527 },
+  { year: 2019, value: 38008.4891307628 },
+  { year: 2020, value: 36209.8616367057 },
+  { year: 2021, value: 38219.9967667893 },
+  { year: 2022, value: 38548.1189427624 },
+  { year: 2023, value: 39112.6887901013 },
+  { year: 2024, value: 39632.6642185422 },
+];
+
+export function getCo2ForYear(year) {
+  const y = parseInt(year, 10);
+  if (!Number.isFinite(y)) return null;
+  return WORLD_CO2_BY_YEAR.find(r => r.year === y) || null;
+}

@@ -281,6 +281,12 @@ const Co2ByCountryPage = lazy(() => import('./pages/Co2ByCountryPage'))
 const CountryCo2Page = lazy(() => import('./pages/CountryCo2Page'))
 const WaterByCountryPage = lazy(() => import('./pages/WaterByCountryPage'))
 const CountryWaterPage = lazy(() => import('./pages/CountryWaterPage'))
+const WorldPopulationByYearPage = lazy(() => import('./pages/WorldPopulationByYearPage'))
+const WorldPopulationYearPage = lazy(() => import('./pages/WorldPopulationYearPage'))
+const Co2ByYearPage = lazy(() => import('./pages/Co2ByYearPage'))
+const Co2YearPage = lazy(() => import('./pages/Co2YearPage'))
+const BirthsByYearPage = lazy(() => import('./pages/BirthsByYearPage'))
+const BirthsYearPage = lazy(() => import('./pages/BirthsYearPage'))
 const EnergyByCountryPage = lazy(() => import('./pages/EnergyByCountryPage'))
 const CountryEnergyPage = lazy(() => import('./pages/CountryEnergyPage'))
 const MoneySpentOnlineTodayPage = lazy(() => import('./pages/MoneySpentOnlineTodayPage'))
@@ -527,6 +533,12 @@ function AppRoutes() {
         <Route path="/co2-emissions/:code" element={<CountryCo2Page />} />
         <Route path="/water" element={<WaterByCountryPage />} />
         <Route path="/water/:code" element={<CountryWaterPage />} />
+        <Route path="/world-population-by-year" element={<WorldPopulationByYearPage />} />
+        <Route path="/world-population-by-year/:year" element={<WorldPopulationYearPage />} />
+        <Route path="/co2-by-year" element={<Co2ByYearPage />} />
+        <Route path="/co2-by-year/:year" element={<Co2YearPage />} />
+        <Route path="/births-by-year" element={<BirthsByYearPage />} />
+        <Route path="/births-by-year/:year" element={<BirthsYearPage />} />
         <Route path="/energy" element={<EnergyByCountryPage />} />
         <Route path="/energy/:code" element={<CountryEnergyPage />} />
         <Route path="/energy-use-clock" element={<EnergyUseClockPage />} />
