@@ -34,6 +34,7 @@ const ARTICLES = [
   { to: '/blog/countries-with-most-public-holidays', title: 'Which Countries Have the Most Public Holidays?', desc: 'Top 10 ranked - India, Lebanon, Colombia and more.', tag: 'time', tagLabel: 'Time', icon: Globe },
   { to: '/blog/public-holidays-2026-comparison', title: 'Public Holidays 2026: UK vs US vs Australia vs Germany', desc: 'Side-by-side comparison of holiday counts and dates.', tag: 'time', tagLabel: 'Time', icon: Globe },
   { to: '/blog/sync-team-time-off-time-zones', title: "How to Sync Your Team's Time Off Across Time Zones", desc: 'A playbook for distributed teams coordinating national holidays.', tag: 'time', tagLabel: 'Time', icon: Globe },
+  { to: '/blog/how-to-convert-time-zones-international-meetings', title: 'How to Convert Time Zones for International Meetings', desc: 'A practical guide for remote teams to find the perfect meeting time.', tag: 'time', tagLabel: 'Time', icon: Globe },
 
   { to: '/blog/morning-routine-guide', title: 'Morning Routine Guide', desc: 'Build a morning routine that sets up the whole day - without the hype.', tag: 'habits', tagLabel: 'Habits', icon: Sun },
 
