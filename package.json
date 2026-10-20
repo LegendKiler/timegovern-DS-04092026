@@ -10,8 +10,8 @@
         "build": "vite build",
         "preview": "vite preview",
     "test": "node scripts/test-all.mjs && node scripts/test-hub.mjs && node scripts/test-dupes.mjs",
-        "predev": "powershell -ExecutionPolicy Bypass -File validate-icons.ps1",
-        "prebuild": "powershell -ExecutionPolicy Bypass -File validate-icons.ps1"
+        "predev": "node scripts/prebuild.mjs",
+        "prebuild": "node scripts/prebuild.mjs"
     },
     "dependencies": {
         "@dnd-kit/core": "^6.1.0",
