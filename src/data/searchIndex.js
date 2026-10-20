@@ -473,9 +473,7 @@ export const SEARCH_INDEX = [
   { name: "Time in Melbourne", href: "/time-in/melbourne", tagline: "Live local time" },
   { name: "Time in Brisbane", href: "/time-in/brisbane", tagline: "Live local time" },
   { name: "Time in Perth", href: "/time-in/perth", tagline: "Live local time" },
-  { name: "Time in Auckland", href: "/time-in/auckland", tagline: "Live local time" },
-
-  { name: "Public Holidays", href: "/holidays", tagline: "214 countries" },
+  { name: "Time in Auckland", href: "/time-in/auckland", tagline: "Live local time" }  { name: "Public Holidays", href: "/holidays", tagline: "220 countries" },
   { name: "Andorra Holidays", href: "/holidays/ad/2026", tagline: "Public holidays" },
   { name: "Albania Holidays", href: "/holidays/al/2026", tagline: "Public holidays" },
   { name: "Austria Holidays", href: "/holidays/at/2026", tagline: "Public holidays" },
@@ -690,4 +688,10 @@ export const SEARCH_INDEX = [
   { name: "Sri Lanka Holidays", href: "/holidays/lk/2026", tagline: "Public holidays" },
   { name: "Nepal Holidays", href: "/holidays/np/2026", tagline: "Public holidays" },
   { name: "Kuwait Holidays", href: "/holidays/kw/2026", tagline: "Public holidays" },
+  { name: "Qatar Holidays", href: "/holidays/qa/2026", tagline: "Public holidays" },
+  { name: "Oman Holidays", href: "/holidays/om/2026", tagline: "Public holidays" },
+  { name: "Jordan Holidays", href: "/holidays/jo/2026", tagline: "Public holidays" },
+  { name: "Lebanon Holidays", href: "/holidays/lb/2026", tagline: "Public holidays" },
+  { name: "Myanmar Holidays", href: "/holidays/mm/2026", tagline: "Public holidays" },
+  { name: "Laos Holidays", href: "/holidays/la/2026", tagline: "Public holidays" },
 ]

@@ -51,4 +51,7 @@
     <loc>https://timegovern.com/sitemap-births-by-year.xml</loc>
     <lastmod>2026-10-17</lastmod>
   </sitemap>
+  <sitemap><loc>https://timegovern.com/sitemap-cities-1.xml</loc><lastmod>2026-10-20</lastmod></sitemap>
+  <sitemap><loc>https://timegovern.com/sitemap-cities-2.xml</loc><lastmod>2026-10-20</lastmod></sitemap>
+  <sitemap><loc>https://timegovern.com/sitemap-cities-3.xml</loc><lastmod>2026-10-20</lastmod></sitemap>
 </sitemapindex>
