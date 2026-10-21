@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Clock, Globe, MapPin, Phone, Zap, ShieldCheck, DollarSign, Users, Landmark, Languages, Calculator, ExternalLink, Compass, Sun } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
@@ -8,8 +8,8 @@ import { setPageMeta } from '../lib/seo'
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
+  const [currentTime, setCurrentTime] = useState('')
   
-  // Get neighboring countries from the SAME REGION
   const allCountries = getAllCountries()
   const sameRegion = allCountries
     .filter(c => c.region === country?.region && c.iso2 !== country?.iso2)
@@ -22,6 +22,21 @@ export default function CountryProfilePage() {
       meta.content = `How to call ${country.name}. Find the ${country.name} country code ${country.dialCode}, city area codes, time zone, and key statistics.`
       if (!meta.parentNode) document.head.appendChild(meta)
       setPageMeta()
+
+      const updateTime = () => {
+        try {
+          const timeStr = new Date().toLocaleString('en-US', { 
+            timeZone: country.timezone, 
+            weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true 
+          })
+          setCurrentTime(timeStr)
+        } catch (e) {
+          setCurrentTime('Time unavailable')
+        }
+      }
+      updateTime()
+      const interval = setInterval(updateTime, 60000)
+      return () => clearInterval(interval)
     }
   }, [country])
 
@@ -115,7 +130,7 @@ export default function CountryProfilePage() {
                 </div>
                 <div>
                   <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase">Local Time</div>
-                  <div className="text-xl font-bold text-slate-900 dark:text-white">{new Date().toLocaleTimeString('en-US', { timeZone: country.timezone, hour: '2-digit', minute: '2-digit' })}</div>
+                  <div className="text-xl font-bold text-slate-900 dark:text-white">{currentTime || 'Loading...'}</div>
                   <div className="text-xs text-slate-500 dark:text-slate-400">{country.timezone}</div>
                 </div>
               </CardContent>
