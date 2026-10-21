@@ -432,6 +432,7 @@ const MyWidgetsPage = lazy(() => import('./pages/MyWidgetsPage'))
 const EmbedPage = lazy(() => import('./pages/EmbedPage'))
 const CountryCodesPage = lazy(() => import('./pages/CountryCodesPage'))
 const HolidaysHubPage = lazy(() => import('./pages/HolidaysHubPage'))
+const CountryProfilePage = lazy(() => import('./pages/CountryProfilePage'))
 const HolidayCountryPage = lazy(() => import('./pages/HolidayCountryPage'))
 const LongWeekendsPage = lazy(() => import('./pages/LongWeekendsPage'))
 const JobsPage = lazy(() => import('./pages/JobsPage'))
@@ -485,6 +486,7 @@ function AppRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/news" element={<NewsPage />} />
         <Route path="/holidays" element={<HolidaysHubPage />} />
+        <Route path="/country/:code" element={<CountryProfilePage />} />
         <Route path="/holidays/:country/:year" element={<HolidayCountryPage />} />
         <Route path="/holidays/:country/:year/long-weekends" element={<LongWeekendsPage />} />
         <Route path="/sleep-debt-calculator" element={<SleepDebtPage />} />
