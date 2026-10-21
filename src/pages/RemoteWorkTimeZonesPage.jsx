@@ -23,7 +23,9 @@ const RULES = [
   { n: 3, title: 'Async by Default', body: 'Before booking a meeting, ask: "Can this be a Loom video?" Record your screen, explain your thoughts, and let the team reply on their own schedule.' },
   { n: 4, title: 'Respect Public Holidays', body: 'A public holiday in Germany means your German team is offline. Track it using a shared holiday calendar so you don\'t expect a reply on Whit Monday.' },
   { n: 5, title: 'Document Everything', body: 'If a decision was made in a 3 AM meeting for the Asia team, write it down. The company wiki is your single source of truth, not someone\'s memory.' },
-]export default function RemoteWorkTimeZonesPage() {
+]
+
+export default function RemoteWorkTimeZonesPage() {
   useEffect(() => {
     document.title = 'Remote Work Time Zones: How to Manage a Global Team | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
