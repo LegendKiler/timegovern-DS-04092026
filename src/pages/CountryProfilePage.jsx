@@ -172,7 +172,7 @@ export default function CountryProfilePage() {
       <div>
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link to="/salary" className="block group">
+          <Link to={`/salary/${country.iso2.toLowerCase()}`} className="block group">
             <Card className="h-full group-hover:border-emerald-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg"><Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" /></div>
@@ -184,7 +184,7 @@ export default function CountryProfilePage() {
             </Card>
           </Link>
           
-          <Link to="/world-clock" className="block group">
+          <Link to={`/time-in/${country.cityForTime}`} className="block group">
             <Card className="h-full group-hover:border-blue-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg"><Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" /></div>
@@ -196,7 +196,7 @@ export default function CountryProfilePage() {
             </Card>
           </Link>
 
-          <Link to="/time-zone-converter" className="block group">
+          <Link to={`/time-zone-converter?country=${country.iso2.toLowerCase()}`} className="block group">
             <Card className="h-full group-hover:border-purple-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg"><Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" /></div>
