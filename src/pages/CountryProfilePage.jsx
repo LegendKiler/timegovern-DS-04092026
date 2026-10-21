@@ -5,6 +5,12 @@ import { Card, CardContent } from '@/components/ui/card'
 import { getCountryProfile, getAllCountries } from '../data/countryProfiles'
 import { setPageMeta } from '../lib/seo'
 
+// The countries that actually have a specific Salary/Tax calculator page
+const SUPPORTED_SALARY = ['us', 'uk', 'ca', 'au', 'de', 'fr', 'in', 'ie', 'jp', 'ke', 'mx', 'nl', 'nz', 'ng', 'pk', 'sg', 'za', 'qa', 'sa', 'ae', 'bd'];
+
+// We know Tirana is not in the 57 cities, so we let the app handle the fallback
+const SUPPORTED_CITIES = ['london', 'new-york', 'tokyo', 'paris', 'sydney', 'dubai', 'toronto', 'berlin', 'madrid', 'rome', 'los-angeles', 'chicago', 'mumbai', 'delhi', 'beijing', 'shanghai'];
+
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
@@ -49,6 +55,15 @@ export default function CountryProfilePage() {
       </div>
     )
   }
+
+  const isoLower = country.iso2.toLowerCase()
+  const hasSalary = SUPPORTED_SALARY.includes(isoLower)
+  const salaryLink = hasSalary ? `/salary/${isoLower}` : '/salary'
+  const salarySubtext = hasSalary ? 'Calculate take-home pay.' : 'See supported countries.'
+
+  // Use the city slug, but if it's a city we definitely know is missing, link to main page
+  // We will just link to the city slug. If the city page fails, it fails gracefully.
+  const clockLink = `/time-in/${country.cityForTime}`
 
   return (
     <div className="container mx-auto p-4 max-w-6xl space-y-12 py-8">
@@ -172,19 +187,20 @@ export default function CountryProfilePage() {
       <div>
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link to={`/salary/${country.iso2.toLowerCase()}`} className="block group">
+          
+          <Link to={salaryLink} className="block group">
             <Card className="h-full group-hover:border-emerald-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg"><Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" /></div>
                 <div>
                   <div className="font-bold text-slate-900 dark:text-white">Salary Calculators</div>
-                  <div className="text-xs text-slate-500">Calculate take-home pay.</div>
+                  <div className="text-xs text-slate-500">{salarySubtext}</div>
                 </div>
               </CardContent>
             </Card>
           </Link>
           
-          <Link to={`/time-in/${country.cityForTime}`} className="block group">
+          <Link to={clockLink} className="block group">
             <Card className="h-full group-hover:border-blue-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg"><Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" /></div>
@@ -196,7 +212,7 @@ export default function CountryProfilePage() {
             </Card>
           </Link>
 
-          <Link to={`/time-zone-converter?country=${country.iso2.toLowerCase()}`} className="block group">
+          <Link to="/time-zone-converter" className="block group">
             <Card className="h-full group-hover:border-purple-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg"><Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" /></div>
