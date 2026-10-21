@@ -6,7 +6,7 @@ import { getCountryProfile, getAllCountries } from '../data/countryProfiles'
 import { setPageMeta } from '../lib/seo'
 
 // The countries that actually have a specific Salary/Tax calculator page
-const SUPPORTED_SALARY = ['us', 'uk', 'ca', 'au', 'de', 'fr', 'in', 'ie', 'jp', 'ke', 'mx', 'nl', 'nz', 'ng', 'pk', 'sg', 'za', 'qa', 'sa', 'ae', 'bd'];
+const SUPPORTED_SALARY = ['au', 'bd', 'br', 'ca', 'fr', 'de', 'in', 'ie', 'jp', 'ke', 'mx', 'nl', 'nz', 'ng', 'pk', 'qa', 'sa', 'sg', 'za', 'ae', 'uk'];
 
 // We know Tirana is not in the 57 cities, so we let the app handle the fallback
 const SUPPORTED_CITIES = ['london', 'new-york', 'tokyo', 'paris', 'sydney', 'dubai', 'toronto', 'berlin', 'madrid', 'rome', 'los-angeles', 'chicago', 'mumbai', 'delhi', 'beijing', 'shanghai'];
