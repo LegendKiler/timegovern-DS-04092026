@@ -5,11 +5,11 @@ import { Card, CardContent } from '@/components/ui/card'
 import { getCountryProfile, getAllCountries } from '../data/countryProfiles'
 import { setPageMeta } from '../lib/seo'
 
-// The exact list of countries with data in salaryData.js / taxRates.js
+// The exact list of countries with actual tax/salary data
 const SUPPORTED_SALARY = ['au', 'bd', 'br', 'ca', 'fr', 'de', 'in', 'ie', 'jp', 'ke', 'mx', 'nl', 'nz', 'ng', 'pk', 'qa', 'sa', 'sg', 'za', 'ae', 'uk', 'us'];
 
 // The 57 cities supported by the world clock
-const SUPPORTED_CITIES = ['london', 'new-york', 'tokyo', 'paris', 'sydney', 'dubai', 'toronto', 'berlin', 'madrid', 'rome', 'los-angeles', 'chicago', 'mumbai', 'delhi', 'beijing', 'shanghai', 'tirana', 'buenos-aires', 'cairo', 'lagos', 'nairobi', 'johannesburg', 'seoul', 'singapore', 'bangkok', 'jakarta', 'manila', 'hanoi', 'kuala-lumpur', 'auckland', 'melbourne', 'brisbane', 'perth', 'vancouver', 'montreal', 'new-delhi', 'sao-paulo', 'rio-de-janeiro', 'mexico-city', 'bogota', 'lima', 'santiago', 'buenos-aires', 'montevideo', 'athens', 'istanbul', 'moscow', 'kyiv', 'warsaw', 'prague', 'vienna', 'zurich', 'amsterdam', 'brussels', 'dublin', 'lisbon', 'oslo', 'stockholm', 'copenhagen', 'helsinki'];
+const SUPPORTED_CITIES = ['london', 'new-york', 'tokyo', 'paris', 'sydney', 'dubai', 'toronto', 'berlin', 'madrid', 'rome', 'los-angeles', 'chicago', 'mumbai', 'delhi', 'beijing', 'shanghai', 'tirana', 'buenos-aires', 'cairo', 'lagos', 'nairobi', 'johannesburg', 'seoul', 'singapore', 'bangkok', 'jakarta', 'manila', 'hanoi', 'kuala-lumpur', 'auckland', 'melbourne', 'brisbane', 'perth', 'vancouver', 'montreal', 'new-delhi', 'sao-paulo', 'rio-de-janeiro', 'mexico-city', 'bogota', 'lima', 'santiago', 'montevideo', 'athens', 'istanbul', 'moscow', 'kyiv', 'warsaw', 'prague', 'vienna', 'zurich', 'amsterdam', 'brussels', 'dublin', 'lisbon', 'oslo', 'stockholm', 'copenhagen', 'helsinki'];
 
 export default function CountryProfilePage() {
   const { code } = useParams()
@@ -175,78 +175,56 @@ export default function CountryProfilePage() {
       </div>
 
       {/* EXPLORE TOOLS SECTION */}
-      <div>
-        <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
-          {/* Salary Tool */}
-          {hasSalary ? (
-            <Link to={`/salary/${isoLower}`} className="block group">
-              <Card className="h-full group-hover:border-emerald-400 transition">
-                <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg"><Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" /></div>
-                  <div>
-                    <div className="font-bold text-slate-900 dark:text-white">Salary Calculator</div>
-                    <div className="text-xs text-slate-500">Calculate take-home pay.</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ) : (
-            <div className="block opacity-60 cursor-not-allowed">
-              <Card className="h-full border-dashed">
-                <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-slate-100 dark:bg-slate-800 rounded-lg"><Calculator className="h-6 w-6 text-slate-400" /></div>
-                  <div>
-                    <div className="font-bold text-slate-500 dark:text-slate-400">Salary Calculator</div>
-                    <div className="text-xs text-slate-400">Coming soon for {country.name}.</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          )}
+      {(hasSalary || hasCity) && (
+        <div>
+          <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            
+            {/* Salary Tool (HIDDEN if not supported) */}
+            {hasSalary && (
+              <Link to={`/salary/${isoLower}`} className="block group">
+                <Card className="h-full group-hover:border-emerald-400 transition">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg"><Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" /></div>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">Salary Calculator</div>
+                      <div className="text-xs text-slate-500">Calculate take-home pay.</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
 
-          {/* World Clock Tool */}
-          {hasCity ? (
-            <Link to={`/time-in/${country.cityForTime}`} className="block group">
-              <Card className="h-full group-hover:border-blue-400 transition">
-                <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg"><Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" /></div>
-                  <div>
-                    <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
-                    <div className="text-xs text-slate-500">Live time in {country.capital}.</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          ) : (
-            <Link to="/world-clock" className="block group">
-              <Card className="h-full group-hover:border-blue-400 transition">
-                <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg"><Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" /></div>
-                  <div>
-                    <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
-                    <div className="text-xs text-slate-500">Search all 57 cities.</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          )}
+            {/* World Clock Tool (HIDDEN if no city, else link to specific city) */}
+            {hasCity && (
+              <Link to={`/time-in/${country.cityForTime}`} className="block group">
+                <Card className="h-full group-hover:border-blue-400 transition">
+                  <CardContent className="p-5 flex items-start gap-4">
+                    <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg"><Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" /></div>
+                    <div>
+                      <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
+                      <div className="text-xs text-slate-500">Live time in {country.capital}.</div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            )}
 
-          {/* Time Zone Tool */}
-          <Link to="/time-zone-converter" className="block group">
-            <Card className="h-full group-hover:border-purple-400 transition">
-              <CardContent className="p-5 flex items-start gap-4">
-                <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg"><Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" /></div>
-                <div>
-                  <div className="font-bold text-slate-900 dark:text-white">Time Zone Converter</div>
-                  <div className="text-xs text-slate-500">Convert {country.name} time.</div>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
+            {/* Time Zone Tool (ALWAYS SHOWN) */}
+            <Link to="/time-zone-converter" className="block group">
+              <Card className="h-full group-hover:border-purple-400 transition">
+                <CardContent className="p-5 flex items-start gap-4">
+                  <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg"><Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" /></div>
+                  <div>
+                    <div className="font-bold text-slate-900 dark:text-white">Time Zone Converter</div>
+                    <div className="text-xs text-slate-500">Convert {country.name} time.</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          </div>
         </div>
-      </div>
+      )}
 
       {/* MORE COUNTRIES SECTION */}
       {sameRegion.length > 0 && (
