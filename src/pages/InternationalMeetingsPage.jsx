@@ -21,7 +21,7 @@ const STEPS = [
   { n: 1, title: 'Identify your extremes', body: 'Find the team member furthest west and the one furthest east. Calculate the total time difference between them. If it is more than 9 hours, a single synchronous meeting is highly inefficient.' },
   { n: 2, title: 'Find the overlap window', body: 'Open a time zone converter and look for the block of time where everyone falls between 8 AM and 6 PM local time. This is your "green zone."' },
   { n: 3, title: 'Rotate the pain', body: 'If the green zone is tiny or non-existent, rotate the meeting time. One week it favors Europe, the next it favors the Americas, the next APAC. Nobody should suffer a 4 AM call three weeks in a row.' },
-  { n: 4, title: 'Record everything', body: 'For anyone joining outside their normal hours, make the video recording and written action items accessible within 2 hours of the meeting ending.' },
+  { n: 4, title: 'Record everything', body: 'For anyone joining outside their normal hours, make the video recording and written action items accessible within 2 hours of the meeting ending. If you need to dial into a conference bridge, check our <Link to="/country-codes" className="text-cyan-600 dark:text-cyan-400 font-semibold hover:underline">International Country Codes directory</Link> first.' },
   { n: 5, title: 'Use asynchronous default', body: 'Every meeting should be asked: "Could this have been a Loom video or a Slack thread?" Protect the synchronous time for real-time collaboration.' },
 ]
 

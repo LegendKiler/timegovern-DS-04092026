@@ -148,7 +148,7 @@ export default function BestTimeToTakeLeave2026Page() {
             </div>
           </div>
           <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-            Find the same pattern in your own country by looking at the <Link to="/holidays" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">public holidays hub</Link>, then filter for Mondays and Fridays — those are the days that bridge best.
+            Find the same pattern in your own country by looking at the <Link to="/holidays" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">public holidays hub</Link>, then filter for Mondays and Fridays — those are the days that bridge best. If you're travelling internationally, remember to check the <Link to="/country-codes" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">dialing codes</Link> before you go.
           </p>
         </section>
 

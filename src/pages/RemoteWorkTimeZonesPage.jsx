@@ -94,7 +94,7 @@ export default function RemoteWorkTimeZonesPage() {
           </p>
           <div className="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
             <p className="text-sm font-semibold text-slate-900 dark:text-white mb-2">
-              Use the <Link to="/holidays" className="text-emerald-600 dark:text-emerald-400 hover:underline">TimeGovern Public Holidays Hub</Link> to sync your team's time off:
+              Use the <Link to="/holidays" className="text-emerald-600 dark:text-emerald-400 hover:underline">TimeGovern Public Holidays Hub</Link> to sync your team's time off, and bookmark our <Link to="/country-codes" className="text-emerald-600 dark:text-emerald-400 hover:underline">Country Codes directory</Link> for their dialing codes:
             </p>
             <ul className="text-sm space-y-1 text-slate-700 dark:text-slate-300">
               <li>1. Export the .ics file for each team member's country.</li>
