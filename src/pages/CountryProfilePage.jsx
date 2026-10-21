@@ -42,7 +42,6 @@ export default function CountryProfilePage() {
       
       <div className="container mx-auto p-4 max-w-6xl space-y-8 py-8">
         
-        {/* HEADER */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
           <div>
             <Link to="/country-codes" className="inline-flex items-center text-sm text-slate-500 hover:text-blue-600 mb-2">
@@ -70,7 +69,6 @@ export default function CountryProfilePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
-          {/* LEFT SIDEBAR (Stats) */}
           <div className="lg:col-span-4 space-y-6">
             <Card>
               <CardContent className="p-5 space-y-4">
@@ -111,7 +109,6 @@ export default function CountryProfilePage() {
               </CardContent>
             </Card>
 
-            {/* CTA to existing tools */}
             <div className="bg-slate-100 dark:bg-slate-800 p-5 rounded-xl border border-slate-200 dark:border-slate-700 space-y-3">
               <h3 className="font-bold text-slate-900 dark:text-white">Need to schedule a call?</h3>
               <p className="text-sm text-slate-600 dark:text-slate-400">Use our live tools to find the best time to talk to someone in {country.name}.</p>
@@ -126,7 +123,6 @@ export default function CountryProfilePage() {
             </div>
           </div>
 
-          {/* RIGHT MAIN AREA (Dialing & Codes) */}
           <div className="lg:col-span-8 space-y-8">
             
             <Card>
