@@ -9,7 +9,11 @@ import { setPageMeta } from '../lib/seo'
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
+  
+  // State for live data
   const [currentTime, setCurrentTime] = useState('')
+  const [population, setPopulation] = useState(country?.population || 'N/A')
+  const [languages, setLanguages] = useState(country?.languages || 'N/A')
 
   const allCountries = getAllCountries()
   const sameRegion = allCountries
@@ -24,6 +28,7 @@ export default function CountryProfilePage() {
       if (!meta.parentNode) document.head.appendChild(meta)
       setPageMeta()
 
+      // 1. Local Time updater
       const updateTime = () => {
         try {
           const timeStr = new Date().toLocaleString('en-US', {
@@ -37,6 +42,22 @@ export default function CountryProfilePage() {
       }
       updateTime()
       const interval = setInterval(updateTime, 60000)
+
+      // 2. Fetch Live Population & Languages from REST Countries
+      fetch(`https://restcountries.com/v3.1/alpha/${country.iso2}?fields=population,languages`)
+        .then(res => res.json())
+        .then(data => {
+          if (data && data[0]) {
+            const popNum = data[0].population
+            setPopulation(popNum ? popNum.toLocaleString('en-US') : 'N/A')
+            
+            const langs = data[0].languages || {}
+            const langList = Object.values(langs)
+            setLanguages(langList.length > 0 ? langList.join(', ') : 'N/A')
+          }
+        })
+        .catch(err => console.error("Live stats fetch failed:", err))
+
       return () => clearInterval(interval)
     }
   }, [country])
@@ -51,14 +72,28 @@ export default function CountryProfilePage() {
     )
   }
 
-  // ── Determine if a salary calculator exists for this country ──
+  // ── Determine if a salary calculator exists ──
   const isoLower = country.iso2.toLowerCase()
+  const iso3Lower = country.iso3?.toLowerCase() || ''
   const nameLower = country.name.toLowerCase()
   const nameNoSpaces = nameLower.replace(/\s/g, '')
 
+  // Map ISO2 codes to the exact keys used in salaryData.js
+  const SALARY_ALIASES = {
+    'us': 'usa', 'gb': 'uk', 'uk': 'uk', 'usa': 'usa',
+    'ca': 'canada', 'au': 'australia', 'de': 'germany', 'fr': 'france',
+    'in': 'india', 'jp': 'japan', 'br': 'brazil', 'mx': 'mexico',
+    'za': 'southafrica', 'ng': 'nigeria', 'ke': 'kenya', 'pk': 'pakistan',
+    'bd': 'bangladesh', 'sg': 'singapore', 'nl': 'netherlands', 'nz': 'newzealand',
+    'ie': 'ireland', 'qa': 'qatar', 'sa': 'saudi', 'ae': 'uae'
+  }
+  const targetKey = SALARY_ALIASES[isoLower] || isoLower
+
   const salaryKey = Object.keys(SALARY_COUNTRIES || {}).find(
     key =>
+      key === targetKey ||
       key === isoLower ||
+      key === iso3Lower ||
       key === nameLower ||
       key === nameNoSpaces
   )
@@ -67,6 +102,7 @@ export default function CountryProfilePage() {
 
   return (
     <div className="container mx-auto p-4 max-w-6xl space-y-12 py-8">
+      
       {/* HEADER */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
         <div>
@@ -90,6 +126,7 @@ export default function CountryProfilePage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
         {/* LEFT SIDEBAR (Stats) */}
         <div className="lg:col-span-4 space-y-6">
           <Card>
@@ -108,7 +145,7 @@ export default function CountryProfilePage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Users className="h-4 w-4 text-slate-400 mt-0.5" />
-                  <div><div className="font-semibold text-slate-900 dark:text-white">Population</div><div className="text-slate-600 dark:text-slate-400">{country.population}</div></div>
+                  <div><div className="font-semibold text-slate-900 dark:text-white">Population</div><div className="text-slate-600 dark:text-slate-400">{population}</div></div>
                 </div>
                 <div className="flex items-start gap-3">
                   <MapPin className="h-4 w-4 text-slate-400 mt-0.5" />
@@ -120,7 +157,7 @@ export default function CountryProfilePage() {
                 </div>
                 <div className="flex items-start gap-3">
                   <Languages className="h-4 w-4 text-slate-400 mt-0.5" />
-                  <div><div className="font-semibold text-slate-900 dark:text-white">Languages</div><div className="text-slate-600 dark:text-slate-400">{country.languages}</div></div>
+                  <div><div className="font-semibold text-slate-900 dark:text-white">Languages</div><div className="text-slate-600 dark:text-slate-400">{languages}</div></div>
                 </div>
               </div>
             </CardContent>
@@ -129,6 +166,7 @@ export default function CountryProfilePage() {
 
         {/* RIGHT MAIN AREA */}
         <div className="lg:col-span-8 space-y-8">
+          
           {/* LIVE TIME & WEATHER WIDGETS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 border-blue-100 dark:border-slate-700">
@@ -176,60 +214,59 @@ export default function CountryProfilePage() {
         </div>
       </div>
 
-      {/* EXPLORE TOOLS SECTION – only render tools that actually exist */}
-      {(hasSalary || true) && ( // always show at least the Time Zone Converter
-        <div>
-          <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Salary – only if data exists */}
-            {hasSalary && (
-              <Link to={salaryLink} className="block group">
-                <Card className="h-full group-hover:border-emerald-400 transition">
-                  <CardContent className="p-5 flex items-start gap-4">
-                    <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
-                      <Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
-                    </div>
-                    <div>
-                      <div className="font-bold text-slate-900 dark:text-white">Salary Calculator</div>
-                      <div className="text-xs text-slate-500">Calculate take-home pay.</div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            )}
-
-            {/* World Clock – always show, link to safe hub */}
-            <Link to="/world-clock" className="block group">
-              <Card className="h-full group-hover:border-blue-400 transition">
+      {/* EXPLORE TOOLS SECTION */}
+      <div>
+        <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          
+          {/* Salary – only if data exists */}
+          {hasSalary && (
+            <Link to={salaryLink} className="block group">
+              <Card className="h-full group-hover:border-emerald-400 transition">
                 <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                    <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
+                    <Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <div>
-                    <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
-                    <div className="text-xs text-slate-500">Live time worldwide.</div>
+                    <div className="font-bold text-slate-900 dark:text-white">Salary Calculator</div>
+                    <div className="text-xs text-slate-500">Calculate take-home pay.</div>
                   </div>
                 </CardContent>
               </Card>
             </Link>
+          )}
 
-            {/* Time Zone Converter – always show */}
-            <Link to="/time-zone-converter" className="block group">
-              <Card className="h-full group-hover:border-purple-400 transition">
-                <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg">
-                    <Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-slate-900 dark:text-white">Time Zone Converter</div>
-                    <div className="text-xs text-slate-500">Convert {country.name} time.</div>
-                  </div>
-                </CardContent>
-              </Card>
-            </Link>
-          </div>
+          {/* World Clock – always show, link to safe hub */}
+          <Link to="/world-clock" className="block group">
+            <Card className="h-full group-hover:border-blue-400 transition">
+              <CardContent className="p-5 flex items-start gap-4">
+                <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg">
+                  <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
+                  <div className="text-xs text-slate-500">Live time worldwide.</div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Time Zone Converter – always show */}
+          <Link to="/time-zone-converter" className="block group">
+            <Card className="h-full group-hover:border-purple-400 transition">
+              <CardContent className="p-5 flex items-start gap-4">
+                <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg">
+                  <Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 dark:text-white">Time Zone Converter</div>
+                  <div className="text-xs text-slate-500">Convert {country.name} time.</div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-      )}
+      </div>
 
       {/* MORE COUNTRIES SECTION */}
       {sameRegion.length > 0 && (
