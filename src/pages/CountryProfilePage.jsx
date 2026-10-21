@@ -1,21 +1,16 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { ArrowLeft, Clock, Globe, MapPin, Phone, Zap, ShieldCheck, DollarSign, Users, Landmark, Languages, Calculator, ExternalLink, Compass, Sun } from 'lucide-react'
+import { ArrowLeft, Clock, Globe, MapPin, Phone, DollarSign, Users, Landmark, Languages, Calculator, ExternalLink, Compass, Sun } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { getCountryProfile, getAllCountries } from '../data/countryProfiles'
+import { COUNTRIES as SALARY_COUNTRIES } from '../data/salaryData'
 import { setPageMeta } from '../lib/seo'
-
-// The exact list of countries with actual tax/salary data
-const SUPPORTED_SALARY = ['au', 'bd', 'br', 'ca', 'fr', 'de', 'in', 'ie', 'jp', 'ke', 'mx', 'nl', 'nz', 'ng', 'pk', 'qa', 'sa', 'sg', 'za', 'ae', 'uk', 'us'];
-
-// The 57 cities supported by the world clock
-const SUPPORTED_CITIES = ['london', 'new-york', 'tokyo', 'paris', 'sydney', 'dubai', 'toronto', 'berlin', 'madrid', 'rome', 'los-angeles', 'chicago', 'mumbai', 'delhi', 'beijing', 'shanghai', 'tirana', 'buenos-aires', 'cairo', 'lagos', 'nairobi', 'johannesburg', 'seoul', 'singapore', 'bangkok', 'jakarta', 'manila', 'hanoi', 'kuala-lumpur', 'auckland', 'melbourne', 'brisbane', 'perth', 'vancouver', 'montreal', 'new-delhi', 'sao-paulo', 'rio-de-janeiro', 'mexico-city', 'bogota', 'lima', 'santiago', 'montevideo', 'athens', 'istanbul', 'moscow', 'kyiv', 'warsaw', 'prague', 'vienna', 'zurich', 'amsterdam', 'brussels', 'dublin', 'lisbon', 'oslo', 'stockholm', 'copenhagen', 'helsinki'];
 
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
   const [currentTime, setCurrentTime] = useState('')
-  
+
   const allCountries = getAllCountries()
   const sameRegion = allCountries
     .filter(c => c.region === country?.region && c.iso2 !== country?.iso2)
@@ -31,9 +26,9 @@ export default function CountryProfilePage() {
 
       const updateTime = () => {
         try {
-          const timeStr = new Date().toLocaleString('en-US', { 
-            timeZone: country.timezone, 
-            weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true 
+          const timeStr = new Date().toLocaleString('en-US', {
+            timeZone: country.timezone,
+            weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: true
           })
           setCurrentTime(timeStr)
         } catch (e) {
@@ -56,13 +51,22 @@ export default function CountryProfilePage() {
     )
   }
 
+  // ── Determine if a salary calculator exists for this country ──
   const isoLower = country.iso2.toLowerCase()
-  const hasSalary = SUPPORTED_SALARY.includes(isoLower)
-  const hasCity = SUPPORTED_CITIES.includes(country.cityForTime)
+  const nameLower = country.name.toLowerCase()
+  const nameNoSpaces = nameLower.replace(/\s/g, '')
+
+  const salaryKey = Object.keys(SALARY_COUNTRIES || {}).find(
+    key =>
+      key === isoLower ||
+      key === nameLower ||
+      key === nameNoSpaces
+  )
+  const hasSalary = Boolean(salaryKey)
+  const salaryLink = hasSalary ? `/salary/${salaryKey}` : null
 
   return (
     <div className="container mx-auto p-4 max-w-6xl space-y-12 py-8">
-      
       {/* HEADER */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
         <div>
@@ -86,7 +90,6 @@ export default function CountryProfilePage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
         {/* LEFT SIDEBAR (Stats) */}
         <div className="lg:col-span-4 space-y-6">
           <Card>
@@ -126,7 +129,6 @@ export default function CountryProfilePage() {
 
         {/* RIGHT MAIN AREA */}
         <div className="lg:col-span-8 space-y-8">
-          
           {/* LIVE TIME & WEATHER WIDGETS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 border-blue-100 dark:border-slate-700">
@@ -174,18 +176,19 @@ export default function CountryProfilePage() {
         </div>
       </div>
 
-      {/* EXPLORE TOOLS SECTION */}
-      {(hasSalary || hasCity) && (
+      {/* EXPLORE TOOLS SECTION – only render tools that actually exist */}
+      {(hasSalary || true) && ( // always show at least the Time Zone Converter
         <div>
           <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            
-            {/* Salary Tool (HIDDEN if not supported) */}
+            {/* Salary – only if data exists */}
             {hasSalary && (
-              <Link to={`/salary/${isoLower}`} className="block group">
+              <Link to={salaryLink} className="block group">
                 <Card className="h-full group-hover:border-emerald-400 transition">
                   <CardContent className="p-5 flex items-start gap-4">
-                    <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg"><Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" /></div>
+                    <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
+                      <Calculator className="h-6 w-6 text-emerald-600 dark:text-emerald-400" />
+                    </div>
                     <div>
                       <div className="font-bold text-slate-900 dark:text-white">Salary Calculator</div>
                       <div className="text-xs text-slate-500">Calculate take-home pay.</div>
@@ -195,26 +198,28 @@ export default function CountryProfilePage() {
               </Link>
             )}
 
-            {/* World Clock Tool (HIDDEN if no city, else link to specific city) */}
-            {hasCity && (
-              <Link to={`/time-in/${country.cityForTime}`} className="block group">
-                <Card className="h-full group-hover:border-blue-400 transition">
-                  <CardContent className="p-5 flex items-start gap-4">
-                    <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg"><Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" /></div>
-                    <div>
-                      <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
-                      <div className="text-xs text-slate-500">Live time in {country.capital}.</div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            )}
+            {/* World Clock – always show, link to safe hub */}
+            <Link to="/world-clock" className="block group">
+              <Card className="h-full group-hover:border-blue-400 transition">
+                <CardContent className="p-5 flex items-start gap-4">
+                  <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg">
+                    <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
+                    <div className="text-xs text-slate-500">Live time worldwide.</div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
 
-            {/* Time Zone Tool (ALWAYS SHOWN) */}
+            {/* Time Zone Converter – always show */}
             <Link to="/time-zone-converter" className="block group">
               <Card className="h-full group-hover:border-purple-400 transition">
                 <CardContent className="p-5 flex items-start gap-4">
-                  <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg"><Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" /></div>
+                  <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg">
+                    <Globe className="h-6 w-6 text-purple-600 dark:text-purple-400" />
+                  </div>
                   <div>
                     <div className="font-bold text-slate-900 dark:text-white">Time Zone Converter</div>
                     <div className="text-xs text-slate-500">Convert {country.name} time.</div>
@@ -285,7 +290,6 @@ export default function CountryProfilePage() {
           </a>
         </div>
       </div>
-
     </div>
   )
 }
