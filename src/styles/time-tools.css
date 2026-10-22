@@ -1,0 +1,21 @@
+.world-clock, .tz-converter { max-width: 1000px; margin: 40px auto; padding: 20px; color: #e2e8f0; font-family: system-ui, -apple-system, sans-serif; }
+.world-clock h1, .tz-converter h1 { font-size: 2rem; margin-bottom: 20px; }
+.world-clock header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; padding-bottom: 20px; margin-bottom: 30px; }
+.world-clock nav a { color: #60a5fa; text-decoration: none; margin: 0 10px; }
+.world-clock nav a:hover { text-decoration: underline; }
+.clock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+.clock-card { background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
+.clock-card .city { font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; }
+.clock-card .tz { color: #94a3b8; font-size: 0.8rem; margin-bottom: 15px; }
+.clock-card .time { font-size: 2rem; font-weight: bold; color: #60a5fa; font-variant-numeric: tabular-nums; margin-bottom: 5px; }
+.clock-card .date { color: #94a3b8; font-size: 0.9rem; }
+.tz-converter .country-picker { margin-bottom: 30px; background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
+.tz-converter input[type="text"], .tz-converter input[type="date"], .tz-converter input[type="time"], .tz-converter select { background: #0f172a; color: #e2e8f0; border: 1px solid #475569; padding: 8px; border-radius: 4px; margin: 5px; }
+.tz-converter .quick-picks { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
+.tz-converter button { background: #334155; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+.tz-converter button:hover, .tz-converter button.active { background: #3b82f6; }
+.converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; background: #1e293b; padding: 20px; border-radius: 8px; border: 1px solid #334155; }
+.converter-grid label { display: block; margin: 15px 0; }
+.result { margin-top: 30px; padding: 20px; background: #1e293b; border-left: 4px solid #3b82f6; border-radius: 4px; font-size: 1.2rem; }
+.result code { background: #0f172a; padding: 2px 6px; border-radius: 4px; color: #60a5fa; }
+.error { color: #ef4444; background: #7f1d1d; padding: 10px; border-radius: 4px; }

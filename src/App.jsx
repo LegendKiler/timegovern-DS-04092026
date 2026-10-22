@@ -1,4 +1,5 @@
 import CountryWorldClockPage from './pages/CountryWorldClockPage'
+import TimeZoneConverterPage from './pages/TimeZoneConverterPage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { UserProvider, useUser } from './context/UserContext'
 import { AuthProvider } from './context/AuthContext'
@@ -497,10 +498,13 @@ function AppRoutes() {
         <Route path="/blog/sleep-debt-and-weight-gain" element={<SleepDebtAndWeightGainPage />} />
         <Route path="/blog/best-time-to-drink-coffee" element={<BestTimeToDrinkCoffeePage />} />
         <Route path="/blog/caffeine-withdrawal" element={<CaffeineWithdrawalPage />} />
-        <Route path="/time-zone-converter" element={<TimeZonePage />} />
+        <Route path="/time-zone-converter" element={<TimeZoneConverterPage />} />
+        <Route path="/converter" element={<TimeZoneConverterPage />} />
         <Route path="/pomodoro-timer" element={<PomodoroPage />} />
         <Route path="/countdown-timer" element={<CountdownPage />} />
-        <Route path="/world-clock" element={<WorldClockPage />} />`n        <Route path="/world-clock/country/:iso2" element={<CountryWorldClockPage />} />
+        <Route path="/world-clock" element={<WorldClockPage />} />
+        <Route path="/world-clock/:iso2" element={<CountryWorldClockPage />} />
+        <Route path="/world-clock/country/:iso2" element={<CountryWorldClockPage />} />
         <Route path="/unit-converter" element={<UnitConverterPage />} />
         <Route path="/word-counter" element={<WordCounterPage />} />
         <Route path="/random-number-generator" element={<RandomNumberPage />} />
@@ -988,7 +992,7 @@ export default function App() {
         {isEmbedPage ? (
           <Router>
             <div className="min-h-screen bg-background text-foreground relative">
-              {/* Subtle radial glow ÃƒÂ¢â‚¬\u201d no more grid cubes */}
+              {/* Subtle radial glow ÃƒÆ’Ã‚Â¢Ã¢â€šÂ¬\u201d no more grid cubes */}
               <div className="fixed inset-0 pointer-events-none -z-10">
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl"></div>
@@ -1000,7 +1004,7 @@ export default function App() {
           <AutoTranslateProvider apiKey={import.meta.env.VITE_LINGO_API_KEY || ''} sourceLocale="en" availableLocales="all">
             <Router>
             <div className="min-h-screen bg-background text-foreground relative">
-              {/* Subtle radial glow ÃƒÂ¢â‚¬\u201d no more grid cubes */}
+              {/* Subtle radial glow ÃƒÆ’Ã‚Â¢Ã¢â€šÂ¬\u201d no more grid cubes */}
               <div className="fixed inset-0 pointer-events-none -z-10">
                 <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-3xl"></div>
                 <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-3xl"></div>

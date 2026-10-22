@@ -9,7 +9,7 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-    "test": "node scripts/test-all.mjs && node scripts/test-hub.mjs && node scripts/test-dupes.mjs",
+        "test": "node scripts/test-all.mjs && node scripts/test-hub.mjs && node scripts/test-dupes.mjs",
         "predev": "node scripts/prebuild.mjs",
         "prebuild": "node scripts/prebuild.mjs"
     },
@@ -42,7 +42,8 @@
         "react-simple-maps": "^3.0.0",
         "recharts": "^3.10.1",
         "suncalc": "^1.9.0",
-        "tailwind-merge": "^2.4.0"
+        "tailwind-merge": "^2.4.0",
+        "tz-lookup": "^6.1.25"
     },
     "devDependencies": {
         "@vitejs/plugin-react": "^4.3.1",
