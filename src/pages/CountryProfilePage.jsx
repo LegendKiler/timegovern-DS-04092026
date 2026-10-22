@@ -216,7 +216,7 @@ export default function CountryProfilePage() {
             </Card>
           </Link>
 
-          <Link to={`/world-clock`} className="block group">
+          <Link to={`/world-clock/country/${isoLower}`} className="block group">
             <Card className="h-full group-hover:border-blue-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg">

@@ -1,3 +1,4 @@
+import CountryWorldClockPage from './pages/CountryWorldClockPage'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { UserProvider, useUser } from './context/UserContext'
 import { AuthProvider } from './context/AuthContext'
@@ -499,7 +500,7 @@ function AppRoutes() {
         <Route path="/time-zone-converter" element={<TimeZonePage />} />
         <Route path="/pomodoro-timer" element={<PomodoroPage />} />
         <Route path="/countdown-timer" element={<CountdownPage />} />
-        <Route path="/world-clock" element={<WorldClockPage />} />
+        <Route path="/world-clock" element={<WorldClockPage />} />`n        <Route path="/world-clock/country/:iso2" element={<CountryWorldClockPage />} />
         <Route path="/unit-converter" element={<UnitConverterPage />} />
         <Route path="/word-counter" element={<WordCounterPage />} />
         <Route path="/random-number-generator" element={<RandomNumberPage />} />
