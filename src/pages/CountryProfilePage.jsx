@@ -9,6 +9,7 @@ export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
   const [currentTime, setCurrentTime] = useState('')
+  const [liveData, setLiveData] = useState({ population: null, languages: null })
 
   const allCountries = getAllCountries()
   const sameRegion = allCountries
@@ -36,6 +37,38 @@ export default function CountryProfilePage() {
       }
       updateTime()
       const interval = setInterval(updateTime, 60000)
+
+      // LIVE API FETCH (v5 then v3.1 fallback)
+      const fetchLive = async () => {
+        try {
+          let res = await fetch(`https://restcountries.com/v5/alpha/${country.iso2}?fields=population,languages`)
+          if (!res.ok) throw new Error('v5 failed')
+          let data = await res.json()
+          const item = Array.isArray(data) ? data[0] : data
+          if (item && item.population) {
+            setLiveData({
+              population: item.population.toLocaleString('en-US'),
+              languages: item.languages ? Object.values(item.languages).join(', ') : null
+            })
+            return
+          }
+        } catch (e) {
+          try {
+            let res = await fetch(`https://restcountries.com/v3.1/alpha/${country.iso2}?fields=population,languages`)
+            let data = await res.json()
+            if (data && data[0]) {
+              setLiveData({
+                population: data[0].population ? data[0].population.toLocaleString('en-US') : null,
+                languages: data[0].languages ? Object.values(data[0].languages).join(', ') : null
+              })
+            }
+          } catch (err) {
+            console.log('Live API failed, using static data')
+          }
+        }
+      }
+      fetchLive()
+
       return () => clearInterval(interval)
     }
   }, [country])
@@ -50,8 +83,10 @@ export default function CountryProfilePage() {
     )
   }
 
-  const population = country.population || 'N/A'
-  const languages = country.languages || 'N/A'
+  // Use live data if available, otherwise static
+  const population = liveData.population || country.population || 'N/A'
+  const languages = liveData.languages || country.languages || 'N/A'
+  
   const hasSalary = country.hasSalary === true
   const salaryLink = hasSalary ? `/salary/${country.salaryKey}` : null
   const isoLower = country.iso2.toLowerCase()

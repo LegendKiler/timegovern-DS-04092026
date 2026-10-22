@@ -1,6 +1,5 @@
 import fs from 'fs';
 
-// Countries with a real salary calculator page (matching salaryData.js keys)
 const SALARY_KEYS = {
   'usa': ['US', 'united states'],
   'uk': ['GB', 'united kingdom'],
@@ -26,25 +25,24 @@ const SALARY_KEYS = {
 };
 
 async function generate() {
-  console.log('Fetching from mledoze/countries...');
-  const res = await fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json');
+  console.log('Fetching from dr5hn/countries-states-cities-database...');
+  const res = await fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/json/countries.json');
   const data = await res.json();
   
   if (!Array.isArray(data)) {
     console.error('API error:', data);
     process.exit(1);
   }
-  
+
   const profiles = {};
   for (const c of data) {
-    if (!c.cca2) continue;
-    const code = c.cca2.toLowerCase();
-    const iso2 = c.cca2;
-    const iso3 = c.cca3;
-    const name = c.name.common;
+    if (!c.iso2) continue;
+    const code = c.iso2.toLowerCase();
+    const iso2 = c.iso2;
+    const iso3 = c.iso3 || '';
+    const name = c.name;
     const nameLower = name.toLowerCase();
     
-    // Pre-compute salary support
     let salaryKey = null;
     for (const [key, aliases] of Object.entries(SALARY_KEYS)) {
       if (aliases.some(a => a.toLowerCase() === code || a.toLowerCase() === nameLower)) {
@@ -53,49 +51,30 @@ async function generate() {
       }
     }
     
-    // Population (comma-formatted)
-    let population = 'N/A';
-    if (typeof c.population === 'number' && c.population > 0) {
-      population = c.population.toLocaleString('en-US');
-    }
+    const population = c.population ? c.population.toLocaleString('en-US') : 'N/A';
     
-    // Languages (all joined)
     let languages = 'N/A';
-    if (c.languages && Object.keys(c.languages).length > 0) {
-      languages = Object.values(c.languages).join(', ');
-    }
+    try {
+      const langs = JSON.parse(c.languages);
+      if (Array.isArray(langs) && langs.length > 0) {
+        languages = langs.map(l => l.name).join(', ');
+      }
+    } catch(e) {}
     
-    // Dial code
-    let dialCode = '';
-    if (c.idd && c.idd.root) {
-      const suffix = (c.idd.suffixes && c.idd.suffixes.length > 0) ? c.idd.suffixes[0] : '';
-      dialCode = c.idd.root + suffix;
-    }
+    const dialCode = c.phone_code ? '+' + c.phone_code : '';
+    const capital = c.capital || 'N/A';
+    const currency = c.currency ? c.currency_name + ' (' + c.currency + ')' : 'N/A';
     
-    // Capital
-    const capital = (c.capital && c.capital.length > 0) ? c.capital[0] : 'N/A';
-    
-    // Currency
-    let currency = 'N/A';
-    if (c.currencies) {
-      const currKey = Object.keys(c.currencies)[0];
-      if (currKey) currency = c.currencies[currKey].name + ' (' + currKey + ')';
-    }
-    
-    // Timezone
-    const timezone = (c.timezones && c.timezones.length > 0) ? c.timezones[0] : 'UTC';
-    
-    // Lat/Lng
-    const lat = (c.latlng && c.latlng.length === 2) ? Math.round(c.latlng[0] * 100) / 100 : 0;
-    const lng = (c.latlng && c.latlng.length === 2) ? Math.round(c.latlng[1] * 100) / 100 : 0;
-    
-    // Region
+    let timezone = 'UTC';
+    try {
+      const tz = JSON.parse(c.timezones);
+      if (Array.isArray(tz) && tz.length > 0) timezone = tz[0].zoneName;
+    } catch(e) {}
+
+    const lat = c.latitude ? parseFloat(c.latitude) : 0;
+    const lng = c.longitude ? parseFloat(c.longitude) : 0;
     const region = c.region || 'Other';
-    
-    // Area
-    const area = (typeof c.area === 'number' && c.area > 0) ? c.area.toLocaleString('en-US') + ' KM²' : 'N/A';
-    
-    // City slug
+    const area = 'N/A'; // dr5hn dataset doesn't have area
     const cityForTime = capital.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ /g, '-');
     
     profiles[code] = {
@@ -124,7 +103,7 @@ async function generate() {
   console.log('Generated ' + Object.keys(profiles).length + ' profiles.');
   
   console.log('\n--- Sample verification ---');
-  const samples = ['us', 'gb', 'ca', 'al', 'jp', 'de', 'au'];
+  const samples = ['us', 'gb', 'ca', 'al', 'jp'];
   for (const code of samples) {
     const p = profiles[code];
     if (p) {
@@ -132,5 +111,4 @@ async function generate() {
     }
   }
 }
-
 generate();
