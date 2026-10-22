@@ -3,14 +3,11 @@ import { Link, useParams } from 'react-router-dom'
 import { ArrowLeft, Clock, Globe, MapPin, Phone, DollarSign, Users, Landmark, Languages, Calculator, ExternalLink, Compass, Sun } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { getCountryProfile, getAllCountries } from '../data/countryProfiles'
-import { COUNTRIES as SALARY_COUNTRIES } from '../data/salaryData'
-import { COUNTRY_STATS } from '../data/countryStats'
 import { setPageMeta } from '../lib/seo'
 
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
-  
   const [currentTime, setCurrentTime] = useState('')
 
   const allCountries = getAllCountries()
@@ -53,43 +50,15 @@ export default function CountryProfilePage() {
     )
   }
 
-  // Use local data for stats to avoid CORS issues
-  const iso2Upper = country.iso2.toUpperCase()
-  const stats = COUNTRY_STATS[iso2Upper] || {}
-  const population = stats.population || 'N/A'
-  const languages = stats.languages || 'N/A'
-
-  // Determine if a salary calculator exists
+  const population = country.population || 'N/A'
+  const languages = country.languages || 'N/A'
+  const hasSalary = country.hasSalary === true
+  const salaryLink = hasSalary ? `/salary/${country.salaryKey}` : null
   const isoLower = country.iso2.toLowerCase()
-  const iso3Lower = country.iso3?.toLowerCase() || ''
-  const nameLower = country.name.toLowerCase()
-  const nameNoSpaces = nameLower.replace(/\s/g, '')
-
-  const SALARY_ALIASES = {
-    'us': 'usa', 'gb': 'uk', 'uk': 'uk', 'usa': 'usa',
-    'ca': 'canada', 'au': 'australia', 'de': 'germany', 'fr': 'france',
-    'in': 'india', 'jp': 'japan', 'br': 'brazil', 'mx': 'mexico',
-    'za': 'southafrica', 'ng': 'nigeria', 'ke': 'kenya', 'pk': 'pakistan',
-    'bd': 'bangladesh', 'sg': 'singapore', 'nl': 'netherlands', 'nz': 'newzealand',
-    'ie': 'ireland', 'qa': 'qatar', 'sa': 'saudi', 'ae': 'uae'
-  }
-  const targetKey = SALARY_ALIASES[isoLower] || isoLower
-
-  const salaryKey = Object.keys(SALARY_COUNTRIES || {}).find(
-    key =>
-      key === targetKey ||
-      key === isoLower ||
-      key === iso3Lower ||
-      key === nameLower ||
-      key === nameNoSpaces
-  )
-  const hasSalary = Boolean(salaryKey)
-  const salaryLink = hasSalary ? `/salary/${salaryKey}` : null
 
   return (
     <div className="container mx-auto p-4 max-w-6xl space-y-12 py-8">
       
-      {/* HEADER */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 border-b pb-6">
         <div>
           <Link to="/country-codes" className="inline-flex items-center text-sm text-slate-500 hover:text-blue-600 mb-2">
@@ -113,7 +82,6 @@ export default function CountryProfilePage() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        {/* LEFT SIDEBAR (Stats) */}
         <div className="lg:col-span-4 space-y-6">
           <Card>
             <CardContent className="p-5 space-y-4">
@@ -150,10 +118,7 @@ export default function CountryProfilePage() {
           </Card>
         </div>
 
-        {/* RIGHT MAIN AREA */}
         <div className="lg:col-span-8 space-y-8">
-          
-          {/* LIVE TIME & WEATHER WIDGETS */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-slate-900 dark:to-slate-800 border-blue-100 dark:border-slate-700">
               <CardContent className="p-5 flex items-center gap-4">
@@ -200,11 +165,9 @@ export default function CountryProfilePage() {
         </div>
       </div>
 
-      {/* EXPLORE TOOLS SECTION */}
       <div>
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          
           {hasSalary && (
             <Link to={salaryLink} className="block group">
               <Card className="h-full group-hover:border-emerald-400 transition">
@@ -221,21 +184,7 @@ export default function CountryProfilePage() {
             </Link>
           )}
 
-          <Link to="/world-clock" className="block group">
-            <Card className="h-full group-hover:border-blue-400 transition">
-              <CardContent className="p-5 flex items-start gap-4">
-                <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg">
-                  <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-                </div>
-                <div>
-                  <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
-                  <div className="text-xs text-slate-500">Live time worldwide.</div>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Link to="/time-zone-converter" className="block group">
+          <Link to={`/time-zone-converter?country=${isoLower}`} className="block group">
             <Card className="h-full group-hover:border-purple-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg">
@@ -248,10 +197,23 @@ export default function CountryProfilePage() {
               </CardContent>
             </Card>
           </Link>
+
+          <Link to={`/world-clock`} className="block group">
+            <Card className="h-full group-hover:border-blue-400 transition">
+              <CardContent className="p-5 flex items-start gap-4">
+                <div className="p-2 bg-blue-50 dark:bg-blue-950 rounded-lg">
+                  <Clock className="h-6 w-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <div>
+                  <div className="font-bold text-slate-900 dark:text-white">World Clock</div>
+                  <div className="text-xs text-slate-500">Live time worldwide.</div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
 
-      {/* MORE COUNTRIES SECTION */}
       {sameRegion.length > 0 && (
         <div>
           <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">More {country.region} countries</h2>
@@ -271,7 +233,6 @@ export default function CountryProfilePage() {
         </div>
       )}
 
-      {/* OFFICIAL SOURCES */}
       <div>
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Official sources</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

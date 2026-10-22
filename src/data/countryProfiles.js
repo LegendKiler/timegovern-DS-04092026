@@ -1,4 +1,5 @@
-// Data generated automatically via Node fetch
+// Auto-generated with embedded stats and salary info
+// Run: node scripts/generate-all-country-data.mjs
 
 export const COUNTRY_PROFILES = {
   "aw": {
@@ -15,7 +16,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "oranjestad",
     "lat": 12.5,
     "lng": -69.97,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "af": {
     "name": "Afghanistan",
@@ -31,7 +34,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kabul",
     "lat": 33,
     "lng": 65,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ao": {
     "name": "Angola",
@@ -47,7 +52,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "luanda",
     "lat": -12.5,
     "lng": 18.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ai": {
     "name": "Anguilla",
@@ -63,7 +70,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "the-valley",
     "lat": 18.25,
     "lng": -63.17,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ax": {
     "name": "Åland Islands",
@@ -79,7 +88,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "mariehamn",
     "lat": 60.12,
     "lng": 19.9,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "al": {
     "name": "Albania",
@@ -95,7 +106,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tirana",
     "lat": 41,
     "lng": 20,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ad": {
     "name": "Andorra",
@@ -111,7 +124,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "andorra-la-vella",
     "lat": 42.5,
     "lng": 1.5,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ae": {
     "name": "United Arab Emirates",
@@ -127,7 +142,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "abu-dhabi",
     "lat": 24,
     "lng": 54,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "uae"
   },
   "ar": {
     "name": "Argentina",
@@ -143,7 +160,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "buenos-aires",
     "lat": -34,
     "lng": -64,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "am": {
     "name": "Armenia",
@@ -159,7 +178,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "yerevan",
     "lat": 40,
     "lng": 45,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "as": {
     "name": "American Samoa",
@@ -175,7 +196,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "pago-pago",
     "lat": -14.33,
     "lng": -170,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "aq": {
     "name": "Antarctica",
@@ -186,12 +209,14 @@ export const COUNTRY_PROFILES = {
     "population": "N/A",
     "area": "14,000,000 KM²",
     "currency": "N/A",
-    "languages": "",
+    "languages": "N/A",
     "timezone": "UTC",
-    "cityForTime": "n/a",
+    "cityForTime": "na",
     "lat": -90,
     "lng": 0,
-    "region": "Antarctic"
+    "region": "Antarctic",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tf": {
     "name": "French Southern and Antarctic Lands",
@@ -204,10 +229,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Euro (EUR)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "port-aux-français",
+    "cityForTime": "portauxfranais",
     "lat": -49.25,
     "lng": 69.17,
-    "region": "Antarctic"
+    "region": "Antarctic",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ag": {
     "name": "Antigua and Barbuda",
@@ -223,7 +250,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "saint-johns",
     "lat": 17.05,
     "lng": -61.8,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "au": {
     "name": "Australia",
@@ -239,7 +268,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "canberra",
     "lat": -27,
     "lng": 133,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": true,
+    "salaryKey": "australia"
   },
   "at": {
     "name": "Austria",
@@ -255,7 +286,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "vienna",
     "lat": 47.33,
     "lng": 13.33,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "az": {
     "name": "Azerbaijan",
@@ -271,7 +304,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "baku",
     "lat": 40.5,
     "lng": 47.5,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bi": {
     "name": "Burundi",
@@ -287,7 +322,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "gitega",
     "lat": -3.5,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "be": {
     "name": "Belgium",
@@ -303,7 +340,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "brussels",
     "lat": 50.83,
     "lng": 4,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bj": {
     "name": "Benin",
@@ -316,10 +355,12 @@ export const COUNTRY_PROFILES = {
     "currency": "West African CFA franc (XOF)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "porto-novo",
+    "cityForTime": "portonovo",
     "lat": 9.5,
     "lng": 2.25,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bf": {
     "name": "Burkina Faso",
@@ -335,7 +376,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ouagadougou",
     "lat": 13,
     "lng": -2,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bd": {
     "name": "Bangladesh",
@@ -351,7 +394,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "dhaka",
     "lat": 24,
     "lng": 90,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "bangladesh"
   },
   "bg": {
     "name": "Bulgaria",
@@ -367,7 +412,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "sofia",
     "lat": 43,
     "lng": 25,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bh": {
     "name": "Bahrain",
@@ -383,7 +430,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "manama",
     "lat": 26,
     "lng": 50.55,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bs": {
     "name": "Bahamas",
@@ -399,7 +448,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "nassau",
     "lat": 24.25,
     "lng": -76,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ba": {
     "name": "Bosnia and Herzegovina",
@@ -415,7 +466,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "sarajevo",
     "lat": 44,
     "lng": 18,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bl": {
     "name": "Saint Barthélemy",
@@ -431,7 +484,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "gustavia",
     "lat": 18.5,
     "lng": -63.42,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sh": {
     "name": "Saint Helena, Ascension and Tristan da Cunha",
@@ -447,7 +502,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "jamestown",
     "lat": -15.95,
     "lng": -5.72,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "by": {
     "name": "Belarus",
@@ -463,7 +520,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "minsk",
     "lat": 53,
     "lng": 28,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bz": {
     "name": "Belize",
@@ -479,7 +538,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "belmopan",
     "lat": 17.25,
     "lng": -88.75,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bm": {
     "name": "Bermuda",
@@ -495,7 +556,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "hamilton",
     "lat": 32.33,
     "lng": -64.75,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bo": {
     "name": "Bolivia",
@@ -511,7 +574,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "sucre",
     "lat": -17,
     "lng": -65,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bq": {
     "name": "Caribbean Netherlands",
@@ -527,7 +592,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kralendijk",
     "lat": 12.18,
     "lng": -68.25,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "br": {
     "name": "Brazil",
@@ -540,10 +607,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Brazilian real (BRL)",
     "languages": "Portuguese",
     "timezone": "UTC",
-    "cityForTime": "brasília",
+    "cityForTime": "braslia",
     "lat": -10,
     "lng": -55,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": true,
+    "salaryKey": "brazil"
   },
   "bb": {
     "name": "Barbados",
@@ -559,7 +628,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bridgetown",
     "lat": 13.17,
     "lng": -59.53,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bn": {
     "name": "Brunei",
@@ -575,7 +646,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bandar-seri-begawan",
     "lat": 4.5,
     "lng": 114.67,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bt": {
     "name": "Bhutan",
@@ -591,7 +664,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "thimphu",
     "lat": 27.5,
     "lng": 90.5,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bv": {
     "name": "Bouvet Island",
@@ -604,10 +679,12 @@ export const COUNTRY_PROFILES = {
     "currency": "N/A",
     "languages": "Norwegian",
     "timezone": "UTC",
-    "cityForTime": "n/a",
+    "cityForTime": "na",
     "lat": -54.43,
     "lng": 3.4,
-    "region": "Antarctic"
+    "region": "Antarctic",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "bw": {
     "name": "Botswana",
@@ -623,7 +700,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "gaborone",
     "lat": -22,
     "lng": 24,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cf": {
     "name": "Central African Republic",
@@ -639,7 +718,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bangui",
     "lat": 7,
     "lng": 21,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ca": {
     "name": "Canada",
@@ -655,7 +736,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ottawa",
     "lat": 60,
     "lng": -95,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": true,
+    "salaryKey": "canada"
   },
   "cc": {
     "name": "Cocos (Keeling) Islands",
@@ -671,7 +754,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "west-island",
     "lat": -12.5,
     "lng": 96.83,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ch": {
     "name": "Switzerland",
@@ -687,7 +772,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bern",
     "lat": 47,
     "lng": 8,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cl": {
     "name": "Chile",
@@ -703,7 +790,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "santiago",
     "lat": -30,
     "lng": -71,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cn": {
     "name": "China",
@@ -719,7 +808,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "beijing",
     "lat": 35,
     "lng": 105,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ci": {
     "name": "Ivory Coast",
@@ -735,7 +826,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "yamoussoukro",
     "lat": 8,
     "lng": -5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cm": {
     "name": "Cameroon",
@@ -748,10 +841,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Central African CFA franc (XAF)",
     "languages": "English, French",
     "timezone": "UTC",
-    "cityForTime": "yaoundé",
+    "cityForTime": "yaound",
     "lat": 6,
     "lng": 12,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cd": {
     "name": "DR Congo",
@@ -767,7 +862,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kinshasa",
     "lat": 0,
     "lng": 25,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cg": {
     "name": "Congo",
@@ -783,7 +880,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "brazzaville",
     "lat": -1,
     "lng": 15,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ck": {
     "name": "Cook Islands",
@@ -799,7 +898,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "avarua",
     "lat": -21.23,
     "lng": -159.77,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "co": {
     "name": "Colombia",
@@ -812,10 +913,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Colombian peso (COP)",
     "languages": "Spanish",
     "timezone": "UTC",
-    "cityForTime": "bogotá",
+    "cityForTime": "bogot",
     "lat": 4,
     "lng": -72,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "km": {
     "name": "Comoros",
@@ -831,7 +934,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "moroni",
     "lat": -12.17,
     "lng": 44.25,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cv": {
     "name": "Cape Verde",
@@ -847,7 +952,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "praia",
     "lat": 16,
     "lng": -24,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cr": {
     "name": "Costa Rica",
@@ -860,10 +967,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Costa Rican colón (CRC)",
     "languages": "Spanish",
     "timezone": "UTC",
-    "cityForTime": "san-josé",
+    "cityForTime": "san-jos",
     "lat": 10,
     "lng": -84,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cu": {
     "name": "Cuba",
@@ -879,7 +988,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "havana",
     "lat": 21.5,
     "lng": -80,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cw": {
     "name": "Curaçao",
@@ -895,7 +1006,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "willemstad",
     "lat": 12.12,
     "lng": -68.93,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cx": {
     "name": "Christmas Island",
@@ -911,7 +1024,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "flying-fish-cove",
     "lat": -10.5,
     "lng": 105.67,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ky": {
     "name": "Cayman Islands",
@@ -927,7 +1042,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "george-town",
     "lat": 19.5,
     "lng": -80.5,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cy": {
     "name": "Cyprus",
@@ -943,7 +1060,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "nicosia",
     "lat": 35,
     "lng": 33,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "cz": {
     "name": "Czechia",
@@ -959,7 +1078,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "prague",
     "lat": 49.75,
     "lng": 15.5,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "de": {
     "name": "Germany",
@@ -975,7 +1096,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "berlin",
     "lat": 51,
     "lng": 9,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": true,
+    "salaryKey": "germany"
   },
   "dj": {
     "name": "Djibouti",
@@ -991,7 +1114,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "djibouti",
     "lat": 11.5,
     "lng": 43,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "dm": {
     "name": "Dominica",
@@ -1007,7 +1132,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "roseau",
     "lat": 15.42,
     "lng": -61.33,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "dk": {
     "name": "Denmark",
@@ -1023,7 +1150,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "copenhagen",
     "lat": 56,
     "lng": 10,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "do": {
     "name": "Dominican Republic",
@@ -1039,7 +1168,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "santo-domingo",
     "lat": 19,
     "lng": -70.67,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "dz": {
     "name": "Algeria",
@@ -1055,7 +1186,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "algiers",
     "lat": 28,
     "lng": 3,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ec": {
     "name": "Ecuador",
@@ -1071,7 +1204,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "quito",
     "lat": -2,
     "lng": -77.5,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "eg": {
     "name": "Egypt",
@@ -1087,7 +1222,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "cairo",
     "lat": 27,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "er": {
     "name": "Eritrea",
@@ -1103,7 +1240,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "asmara",
     "lat": 15,
     "lng": 39,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "eh": {
     "name": "Western Sahara",
@@ -1116,10 +1255,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Algerian dinar (DZD)",
     "languages": "Berber, Hassaniya, Spanish",
     "timezone": "UTC",
-    "cityForTime": "el-aaiún",
+    "cityForTime": "el-aain",
     "lat": 24.5,
     "lng": -13,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "es": {
     "name": "Spain",
@@ -1135,7 +1276,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "madrid",
     "lat": 40,
     "lng": -4,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ee": {
     "name": "Estonia",
@@ -1151,7 +1294,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tallinn",
     "lat": 59,
     "lng": 26,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "et": {
     "name": "Ethiopia",
@@ -1167,7 +1312,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "addis-ababa",
     "lat": 8,
     "lng": 38,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "fi": {
     "name": "Finland",
@@ -1183,7 +1330,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "helsinki",
     "lat": 64,
     "lng": 26,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "fj": {
     "name": "Fiji",
@@ -1199,7 +1348,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "suva",
     "lat": -18,
     "lng": 175,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "fk": {
     "name": "Falkland Islands",
@@ -1215,7 +1366,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "stanley",
     "lat": -51.75,
     "lng": -59,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "fr": {
     "name": "France",
@@ -1231,7 +1384,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "paris",
     "lat": 46,
     "lng": 2,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": true,
+    "salaryKey": "france"
   },
   "fo": {
     "name": "Faroe Islands",
@@ -1244,10 +1399,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Danish krone (DKK)",
     "languages": "Danish, Faroese",
     "timezone": "UTC",
-    "cityForTime": "tórshavn",
+    "cityForTime": "trshavn",
     "lat": 62,
     "lng": -7,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "fm": {
     "name": "Micronesia",
@@ -1263,7 +1420,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "palikir",
     "lat": 6.92,
     "lng": 158.25,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ga": {
     "name": "Gabon",
@@ -1279,7 +1438,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "libreville",
     "lat": -1,
     "lng": 11.75,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gb": {
     "name": "United Kingdom",
@@ -1295,7 +1456,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "london",
     "lat": 54,
     "lng": -2,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": true,
+    "salaryKey": "uk"
   },
   "ge": {
     "name": "Georgia",
@@ -1311,7 +1474,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tbilisi",
     "lat": 42,
     "lng": 43.5,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gg": {
     "name": "Guernsey",
@@ -1324,10 +1489,12 @@ export const COUNTRY_PROFILES = {
     "currency": "British pound (GBP)",
     "languages": "English, French, Guernésiais",
     "timezone": "UTC",
-    "cityForTime": "st.-peter-port",
+    "cityForTime": "st-peter-port",
     "lat": 49.47,
     "lng": -2.58,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gh": {
     "name": "Ghana",
@@ -1343,7 +1510,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "accra",
     "lat": 8,
     "lng": -2,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gi": {
     "name": "Gibraltar",
@@ -1359,7 +1528,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "gibraltar",
     "lat": 36.13,
     "lng": -5.35,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gn": {
     "name": "Guinea",
@@ -1375,7 +1546,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "conakry",
     "lat": 11,
     "lng": -10,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gp": {
     "name": "Guadeloupe",
@@ -1388,10 +1561,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Euro (EUR)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "basse-terre",
+    "cityForTime": "basseterre",
     "lat": 16.25,
     "lng": -61.58,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gm": {
     "name": "Gambia",
@@ -1407,7 +1582,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "banjul",
     "lat": 13.47,
     "lng": -16.57,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gw": {
     "name": "Guinea-Bissau",
@@ -1423,7 +1600,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bissau",
     "lat": 12,
     "lng": -15,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gq": {
     "name": "Equatorial Guinea",
@@ -1439,7 +1618,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "malabo",
     "lat": 2,
     "lng": 10,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gr": {
     "name": "Greece",
@@ -1455,7 +1636,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "athens",
     "lat": 39,
     "lng": 22,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gd": {
     "name": "Grenada",
@@ -1468,10 +1651,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Eastern Caribbean dollar (XCD)",
     "languages": "English",
     "timezone": "UTC",
-    "cityForTime": "st.-georges",
+    "cityForTime": "st-georges",
     "lat": 12.12,
     "lng": -61.67,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gl": {
     "name": "Greenland",
@@ -1487,7 +1672,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "nuuk",
     "lat": 72,
     "lng": -40,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gt": {
     "name": "Guatemala",
@@ -1503,7 +1690,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "guatemala-city",
     "lat": 15.5,
     "lng": -90.25,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gf": {
     "name": "French Guiana",
@@ -1519,7 +1708,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "cayenne",
     "lat": 4,
     "lng": -53,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gu": {
     "name": "Guam",
@@ -1532,10 +1723,12 @@ export const COUNTRY_PROFILES = {
     "currency": "United States dollar (USD)",
     "languages": "Chamorro, English, Spanish",
     "timezone": "UTC",
-    "cityForTime": "hagåtña",
+    "cityForTime": "hagta",
     "lat": 13.47,
     "lng": 144.78,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "gy": {
     "name": "Guyana",
@@ -1551,7 +1744,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "georgetown",
     "lat": 5,
     "lng": -59,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "hk": {
     "name": "Hong Kong",
@@ -1567,7 +1762,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "city-of-victoria",
     "lat": 22.27,
     "lng": 114.19,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "hm": {
     "name": "Heard Island and McDonald Islands",
@@ -1580,10 +1777,12 @@ export const COUNTRY_PROFILES = {
     "currency": "N/A",
     "languages": "English",
     "timezone": "UTC",
-    "cityForTime": "n/a",
+    "cityForTime": "na",
     "lat": -53.1,
     "lng": 72.52,
-    "region": "Antarctic"
+    "region": "Antarctic",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "hn": {
     "name": "Honduras",
@@ -1599,7 +1798,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tegucigalpa",
     "lat": 15,
     "lng": -86.5,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "hr": {
     "name": "Croatia",
@@ -1615,7 +1816,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "zagreb",
     "lat": 45.17,
     "lng": 15.5,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ht": {
     "name": "Haiti",
@@ -1628,10 +1831,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Haitian gourde (HTG)",
     "languages": "French, Haitian Creole",
     "timezone": "UTC",
-    "cityForTime": "port-au-prince",
+    "cityForTime": "portauprince",
     "lat": 19,
     "lng": -72.42,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "hu": {
     "name": "Hungary",
@@ -1647,7 +1852,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "budapest",
     "lat": 47,
     "lng": 20,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "id": {
     "name": "Indonesia",
@@ -1663,7 +1870,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "jakarta",
     "lat": -5,
     "lng": 120,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "im": {
     "name": "Isle of Man",
@@ -1679,7 +1888,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "douglas",
     "lat": 54.25,
     "lng": -4.5,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "in": {
     "name": "India",
@@ -1695,7 +1906,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "new-delhi",
     "lat": 20,
     "lng": 77,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "india"
   },
   "io": {
     "name": "British Indian Ocean Territory",
@@ -1711,7 +1924,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "diego-garcia",
     "lat": -6,
     "lng": 71.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ie": {
     "name": "Ireland",
@@ -1727,7 +1942,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "dublin",
     "lat": 53,
     "lng": -8,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ir": {
     "name": "Iran",
@@ -1743,7 +1960,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tehran",
     "lat": 32,
     "lng": 53,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "iq": {
     "name": "Iraq",
@@ -1759,7 +1978,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "baghdad",
     "lat": 33,
     "lng": 44,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "is": {
     "name": "Iceland",
@@ -1775,7 +1996,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "reykjavik",
     "lat": 65,
     "lng": -18,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "il": {
     "name": "Israel",
@@ -1791,7 +2014,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "jerusalem",
     "lat": 31.47,
     "lng": 35.13,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "it": {
     "name": "Italy",
@@ -1807,7 +2032,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "rome",
     "lat": 42.83,
     "lng": 12.83,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "jm": {
     "name": "Jamaica",
@@ -1823,7 +2050,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kingston",
     "lat": 18.25,
     "lng": -77.5,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "je": {
     "name": "Jersey",
@@ -1839,7 +2068,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "saint-helier",
     "lat": 49.25,
     "lng": -2.17,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "jo": {
     "name": "Jordan",
@@ -1855,7 +2086,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "amman",
     "lat": 31,
     "lng": 36,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "jp": {
     "name": "Japan",
@@ -1871,7 +2104,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tokyo",
     "lat": 36,
     "lng": 138,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "japan"
   },
   "kz": {
     "name": "Kazakhstan",
@@ -1887,7 +2122,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "astana",
     "lat": 48,
     "lng": 68,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ke": {
     "name": "Kenya",
@@ -1903,7 +2140,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "nairobi",
     "lat": 1,
     "lng": 38,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": true,
+    "salaryKey": "kenya"
   },
   "kg": {
     "name": "Kyrgyzstan",
@@ -1919,7 +2158,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bishkek",
     "lat": 41,
     "lng": 75,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "kh": {
     "name": "Cambodia",
@@ -1935,7 +2176,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "phnom-penh",
     "lat": 13,
     "lng": 105,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ki": {
     "name": "Kiribati",
@@ -1951,7 +2194,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "south-tarawa",
     "lat": 1.42,
     "lng": 173,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "kn": {
     "name": "Saint Kitts and Nevis",
@@ -1967,7 +2212,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "basseterre",
     "lat": 17.33,
     "lng": -62.75,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "kr": {
     "name": "South Korea",
@@ -1983,7 +2230,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "seoul",
     "lat": 37,
     "lng": 127.5,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "xk": {
     "name": "Kosovo",
@@ -1999,7 +2248,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "pristina",
     "lat": 42.67,
     "lng": 21.17,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "kw": {
     "name": "Kuwait",
@@ -2015,7 +2266,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kuwait-city",
     "lat": 29.5,
     "lng": 45.75,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "la": {
     "name": "Laos",
@@ -2031,7 +2284,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "vientiane",
     "lat": 18,
     "lng": 105,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lb": {
     "name": "Lebanon",
@@ -2047,7 +2302,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "beirut",
     "lat": 33.83,
     "lng": 35.83,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lr": {
     "name": "Liberia",
@@ -2063,7 +2320,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "monrovia",
     "lat": 6.5,
     "lng": -9.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ly": {
     "name": "Libya",
@@ -2079,7 +2338,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tripoli",
     "lat": 25,
     "lng": 17,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lc": {
     "name": "Saint Lucia",
@@ -2095,7 +2356,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "castries",
     "lat": 13.88,
     "lng": -60.97,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "li": {
     "name": "Liechtenstein",
@@ -2111,7 +2374,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "vaduz",
     "lat": 47.27,
     "lng": 9.53,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lk": {
     "name": "Sri Lanka",
@@ -2127,7 +2392,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "colombo",
     "lat": 7,
     "lng": 81,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ls": {
     "name": "Lesotho",
@@ -2143,7 +2410,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "maseru",
     "lat": -29.5,
     "lng": 28.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lt": {
     "name": "Lithuania",
@@ -2159,7 +2428,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "vilnius",
     "lat": 56,
     "lng": 24,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lu": {
     "name": "Luxembourg",
@@ -2175,7 +2446,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "luxembourg",
     "lat": 49.75,
     "lng": 6.17,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "lv": {
     "name": "Latvia",
@@ -2191,7 +2464,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "riga",
     "lat": 57,
     "lng": 25,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mo": {
     "name": "Macau",
@@ -2204,10 +2479,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Macanese pataca (MOP)",
     "languages": "Portuguese, Chinese",
     "timezone": "UTC",
-    "cityForTime": "n/a",
+    "cityForTime": "na",
     "lat": 22.17,
     "lng": 113.55,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mf": {
     "name": "Saint Martin",
@@ -2223,7 +2500,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "marigot",
     "lat": 18.08,
     "lng": -63.95,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ma": {
     "name": "Morocco",
@@ -2239,7 +2518,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "rabat",
     "lat": 32,
     "lng": -5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mc": {
     "name": "Monaco",
@@ -2255,7 +2536,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "monaco",
     "lat": 43.73,
     "lng": 7.4,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "md": {
     "name": "Moldova",
@@ -2268,10 +2551,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Moldovan leu (MDL)",
     "languages": "Moldavian",
     "timezone": "UTC",
-    "cityForTime": "chișinău",
+    "cityForTime": "chiinu",
     "lat": 47,
     "lng": 29,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mg": {
     "name": "Madagascar",
@@ -2287,7 +2572,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "antananarivo",
     "lat": -20,
     "lng": 47,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mv": {
     "name": "Maldives",
@@ -2300,10 +2587,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Maldivian rufiyaa (MVR)",
     "languages": "Maldivian",
     "timezone": "UTC",
-    "cityForTime": "malé",
+    "cityForTime": "mal",
     "lat": 3.25,
     "lng": 73,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mx": {
     "name": "Mexico",
@@ -2319,7 +2608,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "mexico-city",
     "lat": 23,
     "lng": -102,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": true,
+    "salaryKey": "mexico"
   },
   "mh": {
     "name": "Marshall Islands",
@@ -2335,7 +2626,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "majuro",
     "lat": 9,
     "lng": 168,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mk": {
     "name": "North Macedonia",
@@ -2351,7 +2644,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "skopje",
     "lat": 41.83,
     "lng": 22,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ml": {
     "name": "Mali",
@@ -2367,7 +2662,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bamako",
     "lat": 17,
     "lng": -4,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mt": {
     "name": "Malta",
@@ -2383,7 +2680,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "valletta",
     "lat": 35.83,
     "lng": 14.58,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mm": {
     "name": "Myanmar",
@@ -2399,7 +2698,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "naypyidaw",
     "lat": 22,
     "lng": 98,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "me": {
     "name": "Montenegro",
@@ -2415,7 +2716,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "podgorica",
     "lat": 42.5,
     "lng": 19.3,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mn": {
     "name": "Mongolia",
@@ -2431,7 +2734,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ulan-bator",
     "lat": 46,
     "lng": 105,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mp": {
     "name": "Northern Mariana Islands",
@@ -2447,7 +2752,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "saipan",
     "lat": 15.2,
     "lng": 145.75,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mz": {
     "name": "Mozambique",
@@ -2463,7 +2770,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "maputo",
     "lat": -18.25,
     "lng": 35,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mr": {
     "name": "Mauritania",
@@ -2479,7 +2788,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "nouakchott",
     "lat": 20,
     "lng": -12,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ms": {
     "name": "Montserrat",
@@ -2495,7 +2806,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "plymouth",
     "lat": 16.75,
     "lng": -62.2,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mq": {
     "name": "Martinique",
@@ -2508,10 +2821,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Euro (EUR)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "fort-de-france",
+    "cityForTime": "fortdefrance",
     "lat": 14.67,
     "lng": -61,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mu": {
     "name": "Mauritius",
@@ -2527,7 +2842,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "port-louis",
     "lat": -20.28,
     "lng": 57.55,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "mw": {
     "name": "Malawi",
@@ -2543,7 +2860,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "lilongwe",
     "lat": -13.5,
     "lng": 34,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "my": {
     "name": "Malaysia",
@@ -2559,7 +2878,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kuala-lumpur",
     "lat": 2.5,
     "lng": 112.5,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "yt": {
     "name": "Mayotte",
@@ -2575,7 +2896,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "mamoudzou",
     "lat": -12.83,
     "lng": 45.17,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "na": {
     "name": "Namibia",
@@ -2591,7 +2914,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "windhoek",
     "lat": -22,
     "lng": 17,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "nc": {
     "name": "New Caledonia",
@@ -2604,10 +2929,12 @@ export const COUNTRY_PROFILES = {
     "currency": "CFP franc (XPF)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "nouméa",
+    "cityForTime": "nouma",
     "lat": -21.5,
     "lng": 165.5,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ne": {
     "name": "Niger",
@@ -2623,7 +2950,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "niamey",
     "lat": 16,
     "lng": 8,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "nf": {
     "name": "Norfolk Island",
@@ -2639,7 +2968,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kingston",
     "lat": -29.03,
     "lng": 167.95,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ng": {
     "name": "Nigeria",
@@ -2655,7 +2986,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "abuja",
     "lat": 10,
     "lng": 8,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": true,
+    "salaryKey": "nigeria"
   },
   "ni": {
     "name": "Nicaragua",
@@ -2671,7 +3004,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "managua",
     "lat": 13,
     "lng": -85,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "nu": {
     "name": "Niue",
@@ -2687,7 +3022,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "alofi",
     "lat": -19.03,
     "lng": -169.87,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "nl": {
     "name": "Netherlands",
@@ -2703,7 +3040,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "amsterdam",
     "lat": 52.5,
     "lng": 5.75,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": true,
+    "salaryKey": "netherlands"
   },
   "no": {
     "name": "Norway",
@@ -2719,7 +3058,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "oslo",
     "lat": 62,
     "lng": 10,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "np": {
     "name": "Nepal",
@@ -2735,7 +3076,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kathmandu",
     "lat": 28,
     "lng": 84,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "nr": {
     "name": "Nauru",
@@ -2751,7 +3094,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "yaren",
     "lat": -0.53,
     "lng": 166.92,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "nz": {
     "name": "New Zealand",
@@ -2767,7 +3112,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "wellington",
     "lat": -41,
     "lng": 174,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": true,
+    "salaryKey": "newzealand"
   },
   "om": {
     "name": "Oman",
@@ -2783,7 +3130,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "muscat",
     "lat": 21,
     "lng": 57,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pk": {
     "name": "Pakistan",
@@ -2799,7 +3148,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "islamabad",
     "lat": 30,
     "lng": 70,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "pakistan"
   },
   "pa": {
     "name": "Panama",
@@ -2815,7 +3166,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "panama-city",
     "lat": 9,
     "lng": -80,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pn": {
     "name": "Pitcairn Islands",
@@ -2831,7 +3184,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "adamstown",
     "lat": -25.07,
     "lng": -130.1,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pe": {
     "name": "Peru",
@@ -2847,7 +3202,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "lima",
     "lat": -10,
     "lng": -76,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ph": {
     "name": "Philippines",
@@ -2863,7 +3220,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "manila",
     "lat": 13,
     "lng": 122,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pw": {
     "name": "Palau",
@@ -2879,7 +3238,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ngerulmud",
     "lat": 7.5,
     "lng": 134.5,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pg": {
     "name": "Papua New Guinea",
@@ -2895,7 +3256,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "port-moresby",
     "lat": -6,
     "lng": 147,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pl": {
     "name": "Poland",
@@ -2911,7 +3274,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "warsaw",
     "lat": 52,
     "lng": 20,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pr": {
     "name": "Puerto Rico",
@@ -2927,7 +3292,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "san-juan",
     "lat": 18.25,
     "lng": -66.5,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "kp": {
     "name": "North Korea",
@@ -2943,7 +3310,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "pyongyang",
     "lat": 40,
     "lng": 127,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pt": {
     "name": "Portugal",
@@ -2959,7 +3328,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "lisbon",
     "lat": 39.5,
     "lng": -8,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "py": {
     "name": "Paraguay",
@@ -2972,10 +3343,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Paraguayan guaraní (PYG)",
     "languages": "Guaraní, Spanish",
     "timezone": "UTC",
-    "cityForTime": "asunción",
+    "cityForTime": "asuncin",
     "lat": -23,
     "lng": -58,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ps": {
     "name": "Palestine",
@@ -2991,7 +3364,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ramallah",
     "lat": 31.9,
     "lng": 35.2,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pf": {
     "name": "French Polynesia",
@@ -3004,10 +3379,12 @@ export const COUNTRY_PROFILES = {
     "currency": "CFP franc (XPF)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "papeetē",
+    "cityForTime": "papeet",
     "lat": -15,
     "lng": -140,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "qa": {
     "name": "Qatar",
@@ -3023,7 +3400,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "doha",
     "lat": 25.5,
     "lng": 51.25,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "qatar"
   },
   "re": {
     "name": "Réunion",
@@ -3036,10 +3415,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Euro (EUR)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "saint-denis",
+    "cityForTime": "saintdenis",
     "lat": -21.15,
     "lng": 55.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ro": {
     "name": "Romania",
@@ -3055,7 +3436,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bucharest",
     "lat": 46,
     "lng": 25,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ru": {
     "name": "Russia",
@@ -3071,7 +3454,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "moscow",
     "lat": 60,
     "lng": 100,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "rw": {
     "name": "Rwanda",
@@ -3087,7 +3472,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kigali",
     "lat": -2,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sa": {
     "name": "Saudi Arabia",
@@ -3103,7 +3490,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "riyadh",
     "lat": 25,
     "lng": 45,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "saudi"
   },
   "sd": {
     "name": "Sudan",
@@ -3119,7 +3508,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "khartoum",
     "lat": 15,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sn": {
     "name": "Senegal",
@@ -3135,7 +3526,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "dakar",
     "lat": 14,
     "lng": -14,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sg": {
     "name": "Singapore",
@@ -3151,7 +3544,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "singapore",
     "lat": 1.37,
     "lng": 103.8,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": true,
+    "salaryKey": "singapore"
   },
   "gs": {
     "name": "South Georgia",
@@ -3167,7 +3562,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "king-edward-point",
     "lat": -54.5,
     "lng": -37,
-    "region": "Antarctic"
+    "region": "Antarctic",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sj": {
     "name": "Svalbard and Jan Mayen",
@@ -3176,14 +3573,16 @@ export const COUNTRY_PROFILES = {
     "dialCode": "+4779",
     "capital": "Longyearbyen",
     "population": "N/A",
-    "area": "-1 KM²",
+    "area": "N/A",
     "currency": "krone (NOK)",
     "languages": "Norwegian",
     "timezone": "UTC",
     "cityForTime": "longyearbyen",
     "lat": 78,
     "lng": 20,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sb": {
     "name": "Solomon Islands",
@@ -3199,7 +3598,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "honiara",
     "lat": -8,
     "lng": 159,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sl": {
     "name": "Sierra Leone",
@@ -3215,7 +3616,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "freetown",
     "lat": 8.5,
     "lng": -11.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sv": {
     "name": "El Salvador",
@@ -3231,7 +3634,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "san-salvador",
     "lat": 13.83,
     "lng": -88.92,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sm": {
     "name": "San Marino",
@@ -3247,7 +3652,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "city-of-san-marino",
     "lat": 43.77,
     "lng": 12.42,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "so": {
     "name": "Somalia",
@@ -3263,7 +3670,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "mogadishu",
     "lat": 10,
     "lng": 49,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "pm": {
     "name": "Saint Pierre and Miquelon",
@@ -3276,10 +3685,12 @@ export const COUNTRY_PROFILES = {
     "currency": "Euro (EUR)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "saint-pierre",
+    "cityForTime": "saintpierre",
     "lat": 46.83,
     "lng": -56.33,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "rs": {
     "name": "Serbia",
@@ -3295,7 +3706,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "belgrade",
     "lat": 44,
     "lng": 21,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ss": {
     "name": "South Sudan",
@@ -3311,7 +3724,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "juba",
     "lat": 7,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "st": {
     "name": "São Tomé and Príncipe",
@@ -3324,10 +3739,12 @@ export const COUNTRY_PROFILES = {
     "currency": "São Tomé and Príncipe dobra (STN)",
     "languages": "Portuguese",
     "timezone": "UTC",
-    "cityForTime": "são-tomé",
+    "cityForTime": "so-tom",
     "lat": 1,
     "lng": 7,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sr": {
     "name": "Suriname",
@@ -3343,7 +3760,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "paramaribo",
     "lat": 4,
     "lng": -56,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sk": {
     "name": "Slovakia",
@@ -3359,7 +3778,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bratislava",
     "lat": 48.67,
     "lng": 19.5,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "si": {
     "name": "Slovenia",
@@ -3375,7 +3796,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ljubljana",
     "lat": 46.12,
     "lng": 14.82,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "se": {
     "name": "Sweden",
@@ -3391,7 +3814,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "stockholm",
     "lat": 62,
     "lng": 15,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sz": {
     "name": "Eswatini",
@@ -3407,7 +3832,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "lobamba",
     "lat": -26.5,
     "lng": 31.5,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sx": {
     "name": "Sint Maarten",
@@ -3423,7 +3850,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "philipsburg",
     "lat": 18.03,
     "lng": -63.05,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sc": {
     "name": "Seychelles",
@@ -3439,7 +3868,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "victoria",
     "lat": -4.58,
     "lng": 55.67,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "sy": {
     "name": "Syria",
@@ -3455,7 +3886,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "damascus",
     "lat": 35,
     "lng": 38,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tc": {
     "name": "Turks and Caicos Islands",
@@ -3471,7 +3904,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "cockburn-town",
     "lat": 21.75,
     "lng": -71.58,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "td": {
     "name": "Chad",
@@ -3487,7 +3922,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ndjamena",
     "lat": 15,
     "lng": 19,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tg": {
     "name": "Togo",
@@ -3500,10 +3937,12 @@ export const COUNTRY_PROFILES = {
     "currency": "West African CFA franc (XOF)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "lomé",
+    "cityForTime": "lom",
     "lat": 8,
     "lng": 1.17,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "th": {
     "name": "Thailand",
@@ -3519,7 +3958,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "bangkok",
     "lat": 15,
     "lng": 100,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tj": {
     "name": "Tajikistan",
@@ -3535,7 +3976,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "dushanbe",
     "lat": 39,
     "lng": 71,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tk": {
     "name": "Tokelau",
@@ -3551,7 +3994,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "fakaofo",
     "lat": -9,
     "lng": -172,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tm": {
     "name": "Turkmenistan",
@@ -3567,7 +4012,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ashgabat",
     "lat": 40,
     "lng": 60,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tl": {
     "name": "Timor-Leste",
@@ -3583,7 +4030,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "dili",
     "lat": -8.83,
     "lng": 125.92,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "to": {
     "name": "Tonga",
@@ -3599,7 +4048,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "nukualofa",
     "lat": -20,
     "lng": -175,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tt": {
     "name": "Trinidad and Tobago",
@@ -3615,7 +4066,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "port-of-spain",
     "lat": 11,
     "lng": -61,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tn": {
     "name": "Tunisia",
@@ -3631,7 +4084,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tunis",
     "lat": 34,
     "lng": 9,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tr": {
     "name": "Türkiye",
@@ -3647,7 +4102,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "ankara",
     "lat": 39,
     "lng": 35,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tv": {
     "name": "Tuvalu",
@@ -3663,7 +4120,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "funafuti",
     "lat": -8,
     "lng": 178,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tw": {
     "name": "Taiwan",
@@ -3679,7 +4138,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "taipei",
     "lat": 23.5,
     "lng": 121,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "tz": {
     "name": "Tanzania",
@@ -3695,7 +4156,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "dodoma",
     "lat": -6,
     "lng": 35,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ug": {
     "name": "Uganda",
@@ -3711,7 +4174,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kampala",
     "lat": 1,
     "lng": 32,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ua": {
     "name": "Ukraine",
@@ -3727,7 +4192,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kyiv",
     "lat": 49,
     "lng": 32,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "um": {
     "name": "United States Minor Outlying Islands",
@@ -3740,10 +4207,12 @@ export const COUNTRY_PROFILES = {
     "currency": "United States dollar (USD)",
     "languages": "English",
     "timezone": "UTC",
-    "cityForTime": "n/a",
+    "cityForTime": "na",
     "lat": 19.3,
     "lng": 166.63,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "uy": {
     "name": "Uruguay",
@@ -3759,7 +4228,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "montevideo",
     "lat": -33,
     "lng": -56,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "us": {
     "name": "United States",
@@ -3772,10 +4243,12 @@ export const COUNTRY_PROFILES = {
     "currency": "United States dollar (USD)",
     "languages": "English",
     "timezone": "UTC",
-    "cityForTime": "washington-d.c.",
+    "cityForTime": "washington-dc",
     "lat": 38,
     "lng": -97,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": true,
+    "salaryKey": "usa"
   },
   "uz": {
     "name": "Uzbekistan",
@@ -3791,7 +4264,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "tashkent",
     "lat": 41,
     "lng": 64,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "va": {
     "name": "Vatican City",
@@ -3807,7 +4282,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "vatican-city",
     "lat": 41.9,
     "lng": 12.45,
-    "region": "Europe"
+    "region": "Europe",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "vc": {
     "name": "Saint Vincent and the Grenadines",
@@ -3823,7 +4300,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "kingstown",
     "lat": 13.25,
     "lng": -61.2,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ve": {
     "name": "Venezuela",
@@ -3839,7 +4318,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "caracas",
     "lat": 8,
     "lng": -66,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "vg": {
     "name": "British Virgin Islands",
@@ -3855,7 +4336,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "road-town",
     "lat": 18.43,
     "lng": -64.62,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "vi": {
     "name": "United States Virgin Islands",
@@ -3871,7 +4354,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "charlotte-amalie",
     "lat": 18.35,
     "lng": -64.93,
-    "region": "Americas"
+    "region": "Americas",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "vn": {
     "name": "Vietnam",
@@ -3887,7 +4372,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "hanoi",
     "lat": 16.17,
     "lng": 107.83,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "vu": {
     "name": "Vanuatu",
@@ -3903,7 +4390,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "port-vila",
     "lat": -16,
     "lng": 167,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "wf": {
     "name": "Wallis and Futuna",
@@ -3916,10 +4405,12 @@ export const COUNTRY_PROFILES = {
     "currency": "CFP franc (XPF)",
     "languages": "French",
     "timezone": "UTC",
-    "cityForTime": "mata-utu",
+    "cityForTime": "matautu",
     "lat": -13.3,
     "lng": -176.2,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ws": {
     "name": "Samoa",
@@ -3935,7 +4426,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "apia",
     "lat": -13.58,
     "lng": -172.33,
-    "region": "Oceania"
+    "region": "Oceania",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "ye": {
     "name": "Yemen",
@@ -3951,7 +4444,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "sanaa",
     "lat": 15,
     "lng": 48,
-    "region": "Asia"
+    "region": "Asia",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "za": {
     "name": "South Africa",
@@ -3967,7 +4462,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "pretoria",
     "lat": -29,
     "lng": 24,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": true,
+    "salaryKey": "southafrica"
   },
   "zm": {
     "name": "Zambia",
@@ -3983,7 +4480,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "lusaka",
     "lat": -15,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   },
   "zw": {
     "name": "Zimbabwe",
@@ -3999,7 +4498,9 @@ export const COUNTRY_PROFILES = {
     "cityForTime": "harare",
     "lat": -20,
     "lng": 30,
-    "region": "Africa"
+    "region": "Africa",
+    "hasSalary": false,
+    "salaryKey": null
   }
 };
 
