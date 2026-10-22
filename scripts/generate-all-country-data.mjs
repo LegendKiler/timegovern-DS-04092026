@@ -1,32 +1,10 @@
 import fs from 'fs';
 
-const SALARY_KEYS = {
-  'usa': ['US', 'united states'],
-  'uk': ['GB', 'united kingdom'],
-  'canada': ['CA', 'canada'],
-  'australia': ['AU', 'australia'],
-  'germany': ['DE', 'germany'],
-  'france': ['FR', 'france'],
-  'india': ['IN', 'india'],
-  'japan': ['JP', 'japan'],
-  'brazil': ['BR', 'brazil'],
-  'mexico': ['MX', 'mexico'],
-  'southafrica': ['ZA', 'south africa'],
-  'nigeria': ['NG', 'nigeria'],
-  'kenya': ['KE', 'kenya'],
-  'pakistan': ['PK', 'pakistan'],
-  'bangladesh': ['BD', 'bangladesh'],
-  'singapore': ['SG', 'singapore'],
-  'netherlands': ['NL', 'netherlands'],
-  'newzealand': ['NZ', 'new zealand'],
-  'qatar': ['QA', 'qatar'],
-  'saudi': ['SA', 'saudi arabia'],
-  'uae': ['AE', 'united arab emirates'],
-};
+const SALARY_COUNTRIES = ['US', 'GB', 'CA', 'AU', 'DE', 'FR', 'IN', 'JP', 'BR', 'MX', 'ZA', 'NG', 'KE', 'PK', 'BD', 'SG', 'NL', 'NZ', 'QA', 'SA', 'AE'];
 
 async function generate() {
-  console.log('Fetching from dr5hn/countries-states-cities-database...');
-  const res = await fetch('https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/master/json/countries.json');
+  console.log('Fetching complete data from mledoze/countries...');
+  const res = await fetch('https://raw.githubusercontent.com/mledoze/countries/master/countries.json');
   const data = await res.json();
   
   if (!Array.isArray(data)) {
@@ -36,51 +14,59 @@ async function generate() {
 
   const profiles = {};
   for (const c of data) {
-    if (!c.iso2) continue;
-    const code = c.iso2.toLowerCase();
-    const iso2 = c.iso2;
-    const iso3 = c.iso3 || '';
-    const name = c.name;
-    const nameLower = name.toLowerCase();
+    if (!c.cca2) continue;
+    const code = c.cca2.toLowerCase();
+    const iso2 = c.cca2;
+    const name = c.name.common;
     
-    let salaryKey = null;
-    for (const [key, aliases] of Object.entries(SALARY_KEYS)) {
-      if (aliases.some(a => a.toLowerCase() === code || a.toLowerCase() === nameLower)) {
-        salaryKey = key;
-        break;
+    // Dial Code
+    let dialCode = '';
+    if (c.idd && c.idd.root) {
+      dialCode = c.idd.root;
+      // If there's exactly one suffix, append it. Otherwise, just use root.
+      if (c.idd.suffixes && c.idd.suffixes.length === 1) {
+        dialCode += c.idd.suffixes[0];
       }
     }
     
+    // Population
     const population = c.population ? c.population.toLocaleString('en-US') : 'N/A';
     
+    // Area
+    const area = c.area ? c.area.toLocaleString('en-US') + ' KM²' : 'N/A';
+    
+    // Languages
     let languages = 'N/A';
-    try {
-      const langs = JSON.parse(c.languages);
-      if (Array.isArray(langs) && langs.length > 0) {
-        languages = langs.map(l => l.name).join(', ');
-      }
-    } catch(e) {}
+    if (c.languages && Object.keys(c.languages).length > 0) {
+      languages = Object.values(c.languages).join(', ');
+    }
     
-    const dialCode = c.phone_code ? '+' + c.phone_code : '';
-    const capital = c.capital || 'N/A';
-    const currency = c.currency ? c.currency_name + ' (' + c.currency + ')' : 'N/A';
+    // Currency
+    let currency = 'N/A';
+    if (c.currencies) {
+      const currKey = Object.keys(c.currencies)[0];
+      if (currKey) currency = c.currencies[currKey].name + ' (' + currKey + ')';
+    }
     
-    let timezone = 'UTC';
-    try {
-      const tz = JSON.parse(c.timezones);
-      if (Array.isArray(tz) && tz.length > 0) timezone = tz[0].zoneName;
-    } catch(e) {}
-
-    const lat = c.latitude ? parseFloat(c.latitude) : 0;
-    const lng = c.longitude ? parseFloat(c.longitude) : 0;
+    // Capital
+    const capital = (c.capital && c.capital.length > 0) ? c.capital[0] : 'N/A';
+    
+    // Timezone
+    const timezone = (c.timezones && c.timezones.length > 0) ? c.timezones[0] : 'UTC';
+    
+    // Lat/Lng
+    const lat = (c.latlng && c.latlng.length === 2) ? Math.round(c.latlng[0] * 100) / 100 : 0;
+    const lng = (c.latlng && c.latlng.length === 2) ? Math.round(c.latlng[1] * 100) / 100 : 0;
+    
+    // Region
     const region = c.region || 'Other';
-    const area = 'N/A'; // dr5hn dataset doesn't have area
-    const cityForTime = capital.toLowerCase().replace(/[^a-z0-9 ]/g, '').replace(/ /g, '-');
     
+    // Salary Support (Direct ISO2 match)
+    const hasSalary = SALARY_COUNTRIES.includes(iso2);
+
     profiles[code] = {
       name,
       iso2,
-      iso3,
       dialCode,
       capital,
       population,
@@ -88,27 +74,27 @@ async function generate() {
       currency,
       languages,
       timezone,
-      cityForTime,
       lat,
       lng,
       region,
-      hasSalary: salaryKey !== null,
-      salaryKey: salaryKey,
+      hasSalary
     };
   }
   
-  const output = '// Auto-generated with embedded stats and salary info\n// Run: node scripts/generate-all-country-data.mjs\n\nexport const COUNTRY_PROFILES = ' + JSON.stringify(profiles, null, 2) + ';\n\nexport const getAllCountries = () => Object.values(COUNTRY_PROFILES);\nexport const getCountryProfile = (code) => COUNTRY_PROFILES[code.toLowerCase()];\n';
+  const output = '// Auto-generated with full stats embedded\n// Run: node scripts/generate-all-country-data.mjs\n\nexport const COUNTRY_PROFILES = ' + JSON.stringify(profiles, null, 2) + ';\n\nexport const getAllCountries = () => Object.values(COUNTRY_PROFILES);\nexport const getCountryProfile = (code) => COUNTRY_PROFILES[code.toLowerCase()];\n';
   
   fs.writeFileSync('src/data/countryProfiles.js', output);
   console.log('Generated ' + Object.keys(profiles).length + ' profiles.');
   
-  console.log('\n--- Sample verification ---');
-  const samples = ['us', 'gb', 'ca', 'al', 'jp'];
-  for (const code of samples) {
-    const p = profiles[code];
-    if (p) {
-      console.log(code.toUpperCase() + ': pop=' + p.population + ' | langs=' + p.languages + ' | salary=' + p.hasSalary + (p.salaryKey ? ' (' + p.salaryKey + ')' : ''));
-    }
+  console.log('\n--- Verification (Canada) ---');
+  const ca = profiles['ca'];
+  if (ca) {
+    console.log(`Name: ${ca.name}`);
+    console.log(`Dial: ${ca.dialCode}`);
+    console.log(`Area: ${ca.area}`);
+    console.log(`Pop:  ${ca.population}`);
+    console.log(`Lang: ${ca.languages}`);
+    console.log(`Sal:  ${ca.hasSalary}`);
   }
 }
 generate();

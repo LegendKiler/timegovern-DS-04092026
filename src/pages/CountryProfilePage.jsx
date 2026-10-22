@@ -8,6 +8,7 @@ import { setPageMeta } from '../lib/seo'
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
+  
   const [currentTime, setCurrentTime] = useState('')
   const [liveData, setLiveData] = useState({ population: null, languages: null })
 
@@ -38,33 +39,19 @@ export default function CountryProfilePage() {
       updateTime()
       const interval = setInterval(updateTime, 60000)
 
-      // LIVE API FETCH (v5 then v3.1 fallback)
+      // LIVE API FETCH for real-time population/languages
       const fetchLive = async () => {
         try {
-          let res = await fetch(`https://restcountries.com/v5/alpha/${country.iso2}?fields=population,languages`)
-          if (!res.ok) throw new Error('v5 failed')
+          let res = await fetch(`https://restcountries.com/v3.1/alpha/${country.iso2}?fields=population,languages`)
           let data = await res.json()
-          const item = Array.isArray(data) ? data[0] : data
-          if (item && item.population) {
+          if (data && data[0]) {
             setLiveData({
-              population: item.population.toLocaleString('en-US'),
-              languages: item.languages ? Object.values(item.languages).join(', ') : null
+              population: data[0].population ? data[0].population.toLocaleString('en-US') : null,
+              languages: data[0].languages ? Object.values(data[0].languages).join(', ') : null
             })
-            return
           }
-        } catch (e) {
-          try {
-            let res = await fetch(`https://restcountries.com/v3.1/alpha/${country.iso2}?fields=population,languages`)
-            let data = await res.json()
-            if (data && data[0]) {
-              setLiveData({
-                population: data[0].population ? data[0].population.toLocaleString('en-US') : null,
-                languages: data[0].languages ? Object.values(data[0].languages).join(', ') : null
-              })
-            }
-          } catch (err) {
-            console.log('Live API failed, using static data')
-          }
+        } catch (err) {
+          console.log('Live API failed, keeping static data')
         }
       }
       fetchLive()
@@ -83,12 +70,8 @@ export default function CountryProfilePage() {
     )
   }
 
-  // Use live data if available, otherwise static
   const population = liveData.population || country.population || 'N/A'
   const languages = liveData.languages || country.languages || 'N/A'
-  
-  const hasSalary = country.hasSalary === true
-  const salaryLink = hasSalary ? `/salary/${country.salaryKey}` : null
   const isoLower = country.iso2.toLowerCase()
 
   return (
@@ -104,11 +87,11 @@ export default function CountryProfilePage() {
           </h1>
         </div>
         <div className="flex gap-2">
-          <div className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center shadow-md">
-            <div className="text-2xl font-bold">{country.dialCode}</div>
+          <div className="bg-blue-600 text-white px-4 py-2 rounded-lg text-center shadow-md min-w-[80px]">
+            <div className="text-2xl font-bold">{country.dialCode || 'N/A'}</div>
             <div className="text-[10px] font-semibold tracking-wider uppercase">Dialing</div>
           </div>
-          <div className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-center shadow-md">
+          <div className="bg-emerald-600 text-white px-4 py-2 rounded-lg text-center shadow-md min-w-[80px]">
             <div className="text-2xl font-bold">{country.iso2}</div>
             <div className="text-[10px] font-semibold tracking-wider uppercase">ISO 2</div>
           </div>
@@ -190,10 +173,10 @@ export default function CountryProfilePage() {
                 <Phone className="h-5 w-5 text-emerald-500" /> How to Call {country.name}
               </h2>
               <p className="text-slate-600 dark:text-slate-400 text-sm">
-                To call {country.name} from another country, dial your international access code, then <strong>{country.dialCode}</strong>, followed by the area code and local number.
+                To call {country.name} from another country, dial your international access code, then <strong>{country.dialCode || 'N/A'}</strong>, followed by the area code and local number.
               </p>
               <div className="bg-slate-50 dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800 font-mono text-sm">
-                [Intl Access Code] + <strong className="text-blue-600 dark:text-blue-400">{country.dialCode}</strong> + [Area Code] + [Local Number]
+                [Intl Access Code] + <strong className="text-blue-600 dark:text-blue-400">{country.dialCode || 'N/A'}</strong> + [Area Code] + [Local Number]
               </div>
             </CardContent>
           </Card>
@@ -203,8 +186,8 @@ export default function CountryProfilePage() {
       <div>
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {hasSalary && (
-            <Link to={salaryLink} className="block group">
+          {country.hasSalary && (
+            <Link to={`/salary/${isoLower}`} className="block group">
               <Card className="h-full group-hover:border-emerald-400 transition">
                 <CardContent className="p-5 flex items-start gap-4">
                   <div className="p-2 bg-emerald-50 dark:bg-emerald-950 rounded-lg">
@@ -219,7 +202,7 @@ export default function CountryProfilePage() {
             </Link>
           )}
 
-          <Link to={`/time-zone-converter?country=${isoLower}`} className="block group">
+          <Link to={`/time-zone-converter`} className="block group">
             <Card className="h-full group-hover:border-purple-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
                 <div className="p-2 bg-purple-50 dark:bg-purple-950 rounded-lg">
@@ -259,7 +242,7 @@ export default function CountryProfilePage() {
                   <CardContent className="p-4">
                     <div className="font-bold text-lg text-slate-900 dark:text-white">{c.iso2}</div>
                     <div className="font-semibold text-slate-700 dark:text-slate-300">{c.name}</div>
-                    <div className="text-xs text-slate-500 mt-1">{c.iso2} - {c.dialCode}</div>
+                    <div className="text-xs text-slate-500 mt-1">{c.iso2} - {c.dialCode || 'N/A'}</div>
                   </CardContent>
                 </Card>
               </Link>
