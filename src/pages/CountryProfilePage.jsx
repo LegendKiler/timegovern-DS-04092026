@@ -4,16 +4,14 @@ import { ArrowLeft, Clock, Globe, MapPin, Phone, DollarSign, Users, Landmark, La
 import { Card, CardContent } from '@/components/ui/card'
 import { getCountryProfile, getAllCountries } from '../data/countryProfiles'
 import { COUNTRIES as SALARY_COUNTRIES } from '../data/salaryData'
+import { COUNTRY_STATS } from '../data/countryStats'
 import { setPageMeta } from '../lib/seo'
 
 export default function CountryProfilePage() {
   const { code } = useParams()
   const country = getCountryProfile(code)
   
-  // State for live data
   const [currentTime, setCurrentTime] = useState('')
-  const [population, setPopulation] = useState(country?.population || 'N/A')
-  const [languages, setLanguages] = useState(country?.languages || 'N/A')
 
   const allCountries = getAllCountries()
   const sameRegion = allCountries
@@ -28,7 +26,6 @@ export default function CountryProfilePage() {
       if (!meta.parentNode) document.head.appendChild(meta)
       setPageMeta()
 
-      // 1. Local Time updater
       const updateTime = () => {
         try {
           const timeStr = new Date().toLocaleString('en-US', {
@@ -42,22 +39,6 @@ export default function CountryProfilePage() {
       }
       updateTime()
       const interval = setInterval(updateTime, 60000)
-
-      // 2. Fetch Live Population & Languages from REST Countries
-      fetch(`https://restcountries.com/v3.1/alpha/${country.iso2}?fields=population,languages`)
-        .then(res => res.json())
-        .then(data => {
-          if (data && data[0]) {
-            const popNum = data[0].population
-            setPopulation(popNum ? popNum.toLocaleString('en-US') : 'N/A')
-            
-            const langs = data[0].languages || {}
-            const langList = Object.values(langs)
-            setLanguages(langList.length > 0 ? langList.join(', ') : 'N/A')
-          }
-        })
-        .catch(err => console.error("Live stats fetch failed:", err))
-
       return () => clearInterval(interval)
     }
   }, [country])
@@ -72,13 +53,18 @@ export default function CountryProfilePage() {
     )
   }
 
-  // ── Determine if a salary calculator exists ──
+  // Use local data for stats to avoid CORS issues
+  const iso2Upper = country.iso2.toUpperCase()
+  const stats = COUNTRY_STATS[iso2Upper] || {}
+  const population = stats.population || 'N/A'
+  const languages = stats.languages || 'N/A'
+
+  // Determine if a salary calculator exists
   const isoLower = country.iso2.toLowerCase()
   const iso3Lower = country.iso3?.toLowerCase() || ''
   const nameLower = country.name.toLowerCase()
   const nameNoSpaces = nameLower.replace(/\s/g, '')
 
-  // Map ISO2 codes to the exact keys used in salaryData.js
   const SALARY_ALIASES = {
     'us': 'usa', 'gb': 'uk', 'uk': 'uk', 'usa': 'usa',
     'ca': 'canada', 'au': 'australia', 'de': 'germany', 'fr': 'france',
@@ -219,7 +205,6 @@ export default function CountryProfilePage() {
         <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-4">Explore {country.name} tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           
-          {/* Salary – only if data exists */}
           {hasSalary && (
             <Link to={salaryLink} className="block group">
               <Card className="h-full group-hover:border-emerald-400 transition">
@@ -236,7 +221,6 @@ export default function CountryProfilePage() {
             </Link>
           )}
 
-          {/* World Clock – always show, link to safe hub */}
           <Link to="/world-clock" className="block group">
             <Card className="h-full group-hover:border-blue-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
@@ -251,7 +235,6 @@ export default function CountryProfilePage() {
             </Card>
           </Link>
 
-          {/* Time Zone Converter – always show */}
           <Link to="/time-zone-converter" className="block group">
             <Card className="h-full group-hover:border-purple-400 transition">
               <CardContent className="p-5 flex items-start gap-4">
