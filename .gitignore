@@ -58,3 +58,6 @@ audit-report-*.txt
 *.broken*
 *.broken2
 "New Text Document.txt"
+
+# local backups - never commit
+backups/
