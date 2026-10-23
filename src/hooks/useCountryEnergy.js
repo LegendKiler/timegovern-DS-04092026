@@ -17,7 +17,7 @@ export function useCountryEnergy(code) {
       .then(result => {
         if (cancelled) return
         if (result && result.year >= bundled.year) {
-          setLive(result)
+          setLive({ ...result, _code: code.toUpperCase() })
           setStatus(result.source)
         } else {
           setStatus('bundled')
@@ -30,7 +30,7 @@ export function useCountryEnergy(code) {
   useEffect(() => {
     if (!code || !bundled) return
     let cancelled = false
-    setHistoryStatus('loading')
+    setHistory(null); setHistoryStatus('loading')
     fetchCountryEnergyHistory(code)
       .then(result => {
         if (cancelled) return
@@ -47,7 +47,7 @@ export function useCountryEnergy(code) {
 
   const merged = useMemo(() => {
     if (!bundled) return null
-    if (live && live.year >= bundled.year) {
+    if (live && live._code === bundled.code && live.year >= bundled.year) {
       return { ...bundled, perCapita: live.perCapita, year: live.year, freshness: status }
     }
     return { ...bundled, freshness: 'bundled' }

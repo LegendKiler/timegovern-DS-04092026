@@ -14,7 +14,7 @@ export function useCountryGdp(code) {
     setStatus('loading')
     fetchCountryGdp(code).then(result => {
       if (cancelled) return
-      if (result && result.year >= bundled.year) { setLive(result); setStatus(result.source) }
+      if (result && result.year >= bundled.year) { setLive({ ...result, _code: code.toUpperCase() }); setStatus(result.source) }
       else setStatus('bundled')
     }).catch(() => { if (!cancelled) setStatus('bundled') })
     return () => { cancelled = true }
@@ -22,7 +22,7 @@ export function useCountryGdp(code) {
   useEffect(() => {
     if (!code || !bundled) return
     let cancelled = false
-    setHistoryStatus('loading')
+    setHistory(null); setHistoryStatus('loading')
     fetchCountryGdpHistory(code).then(result => {
       if (cancelled) return
       if (result && result.points && result.points.length > 5) { setHistory(result.points); setHistoryStatus(result.source) }
@@ -32,7 +32,7 @@ export function useCountryGdp(code) {
   }, [code, bundled])
   const merged = useMemo(() => {
     if (!bundled) return null
-    if (live && live.year >= bundled.year) return { ...bundled, value: live.value, year: live.year, freshness: status }
+    if (live && live._code === bundled.code && live.year >= bundled.year) return { ...bundled, value: live.value, year: live.year, freshness: status }
     return { ...bundled, freshness: 'bundled' }
   }, [bundled, live, status])
   const cacheStatus = useMemo(() => code ? getCacheStatus('gdp_' + String(code).toUpperCase()) : null, [code, status])

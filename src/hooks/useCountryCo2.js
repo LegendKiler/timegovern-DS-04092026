@@ -17,7 +17,7 @@ export function useCountryCo2(code) {
       .then(result => {
         if (cancelled) return
         if (result && result.year >= bundled.year) {
-          setLive(result)
+          setLive({ ...result, _code: code.toUpperCase() })
           setStatus(result.source)
         } else {
           setStatus('bundled')
@@ -30,7 +30,7 @@ export function useCountryCo2(code) {
   useEffect(() => {
     if (!code || !bundled) return
     let cancelled = false
-    setHistoryStatus('loading')
+    setHistory(null); setHistoryStatus('loading')
     fetchCountryCo2History(code)
       .then(result => {
         if (cancelled) return
@@ -47,7 +47,7 @@ export function useCountryCo2(code) {
 
   const merged = useMemo(() => {
     if (!bundled) return null
-    if (live && live.year >= bundled.year) {
+    if (live && live._code === bundled.code && live.year >= bundled.year) {
       return { ...bundled, value: live.value, year: live.year, freshness: status }
     }
     return { ...bundled, freshness: 'bundled' }
