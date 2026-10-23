@@ -85,16 +85,17 @@ export default function WeatherVsPage() {
   const tzA = wxA ? wxA.timezone : (countryA ? countryA.tz[0] : 'UTC')
   const tzB = wxB ? wxB.timezone : (countryB ? countryB.tz[0] : 'UTC')
 
-  // Time difference
-  const timeOffset = useMemo(() => {
-    if (!wxA || !wxB) return null
+  // Time difference (plain computation, no hook - avoids React #310 when
+  // conditional early returns happen above; trivial math, no memoization needed)
+  let timeOffset = null
+  if (wxA && wxB) {
     try {
       const now = new Date()
       const aT = new Date(now.toLocaleString('en-US', { timeZone: tzA }))
       const bT = new Date(now.toLocaleString('en-US', { timeZone: tzB }))
-      return Math.round((bT - aT) / 3600000)
-    } catch { return null }
-  }, [wxA, wxB, tzA, tzB])
+      timeOffset = Math.round((bT - aT) / 3600000)
+    } catch { timeOffset = null }
+  }
 
   const wmoA = wxA && wxA.current ? getWmoInfo(wxA.current.weather_code) : null
   const wmoB = wxB && wxB.current ? getWmoInfo(wxB.current.weather_code) : null
