@@ -156,6 +156,14 @@ async function main() {
   await smoke(page, "/water/in", ["India"]);
   await smoke(page, "/co2-emissions", ["CO2"]);
   await smoke(page, "/energy", ["Energy"]);
+  await smoke(page, "/marriages-today", ["Marriages"]);
+  await smoke(page, "/divorces-today", ["Divorces"]);
+  await smoke(page, "/cars-produced-today", ["Cars"]);
+  await smoke(page, "/flights-today", ["Flights"]);
+  await smoke(page, "/suicides-today", ["Suicides"]);
+  await smoke(page, "/cancer-deaths-today", ["Cancer"]);
+  await smoke(page, "/diabetes-deaths-today", ["Diabetes"]);
+  await smoke(page, "/plastic-bottles-produced-today", ["Plastic Bottles"]);
 
   console.log("\n=== Navigation tests (the reported bug class) ===");
   // Reported bug: life-expectancy uy -> click Peru -> value must change

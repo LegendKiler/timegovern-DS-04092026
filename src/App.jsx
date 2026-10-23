@@ -261,6 +261,14 @@ const WaterUsedClockPage = lazy(() => import('./pages/WaterUsedClockPage'))
 const RenewableEnergyClockPage = lazy(() => import('./pages/RenewableEnergyClockPage'))
 const EmailsSentTodayPage = lazy(() => import('./pages/EmailsSentTodayPage'))
 const GoogleSearchesTodayPage = lazy(() => import('./pages/GoogleSearchesTodayPage'))
+const MarriagesTodayPage = lazy(() => import('./pages/MarriagesTodayPage'))
+const DivorcesTodayPage = lazy(() => import('./pages/DivorcesTodayPage'))
+const CarsProducedTodayPage = lazy(() => import('./pages/CarsProducedTodayPage'))
+const FlightsTodayPage = lazy(() => import('./pages/FlightsTodayPage'))
+const SuicidesTodayPage = lazy(() => import('./pages/SuicidesTodayPage'))
+const CancerDeathsTodayPage = lazy(() => import('./pages/CancerDeathsTodayPage'))
+const DiabetesDeathsTodayPage = lazy(() => import('./pages/DiabetesDeathsTodayPage'))
+const PlasticBottlesProducedTodayPage = lazy(() => import('./pages/PlasticBottlesProducedTodayPage'))
 const GdpClockPage = lazy(() => import('./pages/GdpClockPage'))
 const HealthSpendingClockPage = lazy(() => import('./pages/HealthSpendingClockPage'))
 const EducationSpendingClockPage = lazy(() => import('./pages/EducationSpendingClockPage'))
@@ -586,6 +594,14 @@ function AppRoutes() {
         <Route path="/renewable-energy-clock" element={<RenewableEnergyClockPage />} />
         <Route path="/emails-sent-today" element={<EmailsSentTodayPage />} />
         <Route path="/google-searches-today" element={<GoogleSearchesTodayPage />} />
+        <Route path="/marriages-today" element={<MarriagesTodayPage />} />
+        <Route path="/divorces-today" element={<DivorcesTodayPage />} />
+        <Route path="/cars-produced-today" element={<CarsProducedTodayPage />} />
+        <Route path="/flights-today" element={<FlightsTodayPage />} />
+        <Route path="/suicides-today" element={<SuicidesTodayPage />} />
+        <Route path="/cancer-deaths-today" element={<CancerDeathsTodayPage />} />
+        <Route path="/diabetes-deaths-today" element={<DiabetesDeathsTodayPage />} />
+        <Route path="/plastic-bottles-produced-today" element={<PlasticBottlesProducedTodayPage />} />
         <Route path="/gdp-clock" element={<GdpClockPage />} />
         <Route path="/money-spent-online-today" element={<MoneySpentOnlineTodayPage />} />
         <Route path="/population" element={<PopulationByCountryPage />} />
