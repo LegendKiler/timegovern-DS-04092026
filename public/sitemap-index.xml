@@ -55,4 +55,32 @@
   <sitemap><loc>https://timegovern.com/sitemap-cities-2.xml</loc><lastmod>2026-10-20</lastmod></sitemap>
   <sitemap><loc>https://timegovern.com/sitemap-cities-3.xml</loc><lastmod>2026-10-20</lastmod></sitemap>
   <sitemap><loc>https://timegovern.com/sitemap-country-codes.xml</loc><lastmod>2026-10-21</lastmod></sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-gdp.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-life-expectancy.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-gdp-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-deaths-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-life-expectancy-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-forest-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://timegovern.com/sitemap-renewable-by-year.xml</loc>
+    <lastmod>2026-10-17</lastmod>
+  </sitemap>
 </sitemapindex>

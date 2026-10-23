@@ -1,0 +1,70 @@
+import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Leaf, Sparkles } from 'lucide-react'
+import { Card, CardContent } from '@/components/ui/card'
+import ShareButtons from '../components/ShareButtons'
+import { setPageMeta } from '../lib/seo'
+import { WORLD_RENEWABLE_BY_YEAR } from '../data/worldRenewableByYear'
+
+const FAQ = [
+  { q: "What is this metric?", a: "Renewable energy consumption (including hydro, solar, wind, biomass, geothermal) as a percentage of total final energy consumption." },
+  { q: "Why does the data stop at 2020?", a: "The World Bank compiles this indicator from IEA data with a multi-year lag. Newer years appear as the IEA publishes them." },
+  { q: "Is the world on track for renewable targets?", a: "As of 2020 the share is around 20%. For climate targets, most scenarios require tripling this by 2050 - a pace the world has not yet achieved." },
+  { q: "Where does the data come from?", a: "World Bank indicator EG.FEC.RNEW.ZS, World aggregate. Compiles IEA World Energy Balances." },
+]
+const FAQ_SCHEMA = { '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: FAQ.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) }
+const COLLECTION_SCHEMA = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: "World Renewable Energy Share by Year", url: 'https://timegovern.com/renewable-energy-by-year' }
+
+export default function WorldRenewableByYearPage() {
+  useEffect(() => {
+    document.title = "World Renewable Energy Share by Year" + ' (' + WORLD_RENEWABLE_BY_YEAR[0].year + '-' + WORLD_RENEWABLE_BY_YEAR[WORLD_RENEWABLE_BY_YEAR.length-1].year + ') | TimeGovern'
+    let d = document.querySelector('meta[name="description"]')
+    if (!d) { d = document.createElement('meta'); d.setAttribute('name', 'description'); document.head.appendChild(d) }
+    d.setAttribute('content', "World Renewable Energy Share by Year historical data. Source: World Bank.")
+    setPageMeta()
+    window.scrollTo(0, 0)
+  }, [])
+  const reversed = [...WORLD_RENEWABLE_BY_YEAR].reverse()
+  const min = WORLD_RENEWABLE_BY_YEAR[0], max = WORLD_RENEWABLE_BY_YEAR[WORLD_RENEWABLE_BY_YEAR.length-1]
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(COLLECTION_SCHEMA) }} />
+      <div className="container mx-auto p-4 max-w-4xl space-y-8">
+        <div className="relative overflow-hidden rounded-3xl shadow-xl">
+          <div className="absolute inset-0 bg-gradient-to-br from-lime-950 via-green-950 to-slate-950" />
+          <div className="relative z-10 p-8 md:p-12 text-white">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-5">
+              <Sparkles className="h-3.5 w-3.5 text-lime-300" />
+              <span className="text-xs font-bold uppercase tracking-widest text-lime-300">{WORLD_RENEWABLE_BY_YEAR.length} years</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-4 leading-tight flex items-center gap-4">
+              <Leaf className="h-10 w-10 md:h-14 md:w-14 text-lime-300" />
+              World Renewable Energy Share by Year
+            </h1>
+            <p className="text-white/70 max-w-2xl text-base md:text-lg leading-relaxed">
+              Historical data for every year from {min.year} to {max.year}. Click any year for detail.
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {reversed.map(r => (
+            <Link key={r.year} to={'/renewable-energy-by-year/' + r.year} className="rounded-xl border border-border bg-card hover:border-lime-400 p-3 transition-colors">
+              <div className="text-xs text-muted-foreground tabular-nums">{r.year}</div>
+              <div className="font-black tabular-nums text-lg">{(v => v.toFixed(1) + '%')(r.value)}</div>
+            </Link>
+          ))}
+        </div>
+        <div>
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-5">Frequently asked questions</h2>
+          <div className="space-y-3">
+            {FAQ.map((f, i) => (<Card key={i}><CardContent className="p-5"><h3 className="font-bold mb-2 text-sm">{f.q}</h3><p className="text-sm text-muted-foreground leading-relaxed">{f.a}</p></CardContent></Card>))}
+          </div>
+        </div>
+        <div className="flex justify-center mt-8">
+          <ShareButtons url={typeof window !== 'undefined' ? window.location.href : ''} title={typeof document !== 'undefined' ? document.title : "World Renewable Energy Share by Year"} />
+        </div>
+      </div>
+    </>
+  )
+}

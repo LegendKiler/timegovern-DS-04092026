@@ -104,7 +104,16 @@ const KNOWN_DORMANT = new Set([
   "UKNationalInsurancePage.jsx",
   "UKTakeHomePayPage.jsx",
   "UKTaxBracketsPage.jsx",
+  "CountryCodesHubPage.jsx",
 ]);
+// (patch) also detect top-level static imports: import X from './pages/Y'
+{
+  const _appSrc = readFileSync("src/App.jsx", "utf8");
+  for (const _m of _appSrc.matchAll(/^import\s+\w+\s+from\s+['"]\.\/pages\/(\w+)['"]/gm)) {
+    imported.add(_m[1] + ".jsx");
+  }
+}
+
 const orphans = allPages.filter(f => !imported.has(f) && !KNOWN_DORMANT.has(f));
 const dormant = allPages.filter(f => !imported.has(f) && KNOWN_DORMANT.has(f));
 if (dormant.length > 0) console.log("  INFO " + dormant.length + " known dormant page(s) not wired: " + dormant.join(", "));

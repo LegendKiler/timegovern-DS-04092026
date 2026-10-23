@@ -289,3 +289,95 @@ export async function fetchCountryWaterHistory(code) {
     return out
   } catch { return null }
 }
+
+// ---- GDP (World Bank NY.GDP.MKTP.CD, US$, divided by 1e9 for billions) ----
+const GDP_INDICATOR = 'NY.GDP.MKTP.CD'
+export async function fetchCountryGdp(code) {
+  if (!code) return null
+  const key = 'gdp_' + String(code).toUpperCase()
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/' + GDP_INDICATOR + '?format=json&per_page=100&date=1960:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    if (!Array.isArray(json) || json.length < 2) throw new Error('no rows')
+    const rows = (json[1] || []).filter(r => r.value != null)
+    if (!rows.length) throw new Error('no data')
+    rows.sort((a, b) => String(b.date).localeCompare(String(a.date)))
+    const out = { value: Number(rows[0].value) / 1e9, year: parseInt(rows[0].date, 10), source: 'live' }
+    writeCache(key, out)
+    return out
+  } catch { return null }
+}
+export async function fetchCountryGdpHistory(code) {
+  if (!code) return null
+  const key = 'gdphist_' + String(code).toUpperCase()
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/' + GDP_INDICATOR + '?format=json&per_page=100&date=1960:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    if (!Array.isArray(json) || json.length < 2) throw new Error('no rows')
+    const points = (json[1] || []).filter(r => r.value != null).map(r => ({ year: parseInt(r.date, 10), value: Number(r.value) / 1e9 })).sort((a, b) => a.year - b.year)
+    if (!points.length) throw new Error('no data')
+    const out = { points, source: 'live' }
+    writeCache(key, out)
+    return out
+  } catch { return null }
+}
+
+// ---- Life expectancy (World Bank SP.DYN.LE00.IN, years) ----
+const LE_INDICATOR = 'SP.DYN.LE00.IN'
+export async function fetchCountryLifeExpectancy(code) {
+  if (!code) return null
+  const key = 'le_' + String(code).toUpperCase()
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/' + LE_INDICATOR + '?format=json&per_page=100&date=1960:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    if (!Array.isArray(json) || json.length < 2) throw new Error('no rows')
+    const rows = (json[1] || []).filter(r => r.value != null)
+    if (!rows.length) throw new Error('no data')
+    rows.sort((a, b) => String(b.date).localeCompare(String(a.date)))
+    const out = { value: Number(rows[0].value), year: parseInt(rows[0].date, 10), source: 'live' }
+    writeCache(key, out)
+    return out
+  } catch { return null }
+}
+export async function fetchCountryLifeExpectancyHistory(code) {
+  if (!code) return null
+  const key = 'lehist_' + String(code).toUpperCase()
+  const cached = readCache(key)
+  if (cached) return { ...cached, source: 'cache' }
+  try {
+    const url = 'https://api.worldbank.org/v2/country/' + code + '/indicator/' + LE_INDICATOR + '?format=json&per_page=100&date=1960:2024'
+    const ctrl = new AbortController()
+    const timer = setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS)
+    const res = await fetch(url, { signal: ctrl.signal })
+    clearTimeout(timer)
+    if (!res.ok) throw new Error('HTTP ' + res.status)
+    const json = await res.json()
+    if (!Array.isArray(json) || json.length < 2) throw new Error('no rows')
+    const points = (json[1] || []).filter(r => r.value != null).map(r => ({ year: parseInt(r.date, 10), value: Number(r.value) })).sort((a, b) => a.year - b.year)
+    if (!points.length) throw new Error('no data')
+    const out = { points, source: 'live' }
+    writeCache(key, out)
+    return out
+  } catch { return null }
+}

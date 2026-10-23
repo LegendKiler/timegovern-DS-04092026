@@ -283,6 +283,20 @@ const Co2ByCountryPage = lazy(() => import('./pages/Co2ByCountryPage'))
 const CountryCo2Page = lazy(() => import('./pages/CountryCo2Page'))
 const WaterByCountryPage = lazy(() => import('./pages/WaterByCountryPage'))
 const CountryWaterPage = lazy(() => import('./pages/CountryWaterPage'))
+const GdpByCountryPage = lazy(() => import('./pages/GdpByCountryPage'))
+const CountryGdpPage = lazy(() => import('./pages/CountryGdpPage'))
+const LifeExpectancyByCountryPage = lazy(() => import('./pages/LifeExpectancyByCountryPage'))
+const CountryLifeExpectancyPage = lazy(() => import('./pages/CountryLifeExpectancyPage'))
+const WorldGdpByYearPage = lazy(() => import('./pages/WorldGdpByYearPage'))
+const WorldGdpYearPage = lazy(() => import('./pages/WorldGdpYearPage'))
+const WorldDeathsByYearPage = lazy(() => import('./pages/WorldDeathsByYearPage'))
+const WorldDeathsYearPage = lazy(() => import('./pages/WorldDeathsYearPage'))
+const WorldLifeExpectancyByYearPage = lazy(() => import('./pages/WorldLifeExpectancyByYearPage'))
+const WorldLifeExpectancyYearPage = lazy(() => import('./pages/WorldLifeExpectancyYearPage'))
+const WorldForestByYearPage = lazy(() => import('./pages/WorldForestByYearPage'))
+const WorldForestYearPage = lazy(() => import('./pages/WorldForestYearPage'))
+const WorldRenewableByYearPage = lazy(() => import('./pages/WorldRenewableByYearPage'))
+const WorldRenewableYearPage = lazy(() => import('./pages/WorldRenewableYearPage'))
 const WorldPopulationByYearPage = lazy(() => import('./pages/WorldPopulationByYearPage'))
 const WorldPopulationYearPage = lazy(() => import('./pages/WorldPopulationYearPage'))
 const Co2ByYearPage = lazy(() => import('./pages/Co2ByYearPage'))
@@ -542,6 +556,20 @@ function AppRoutes() {
         <Route path="/co2-emissions/:code" element={<CountryCo2Page />} />
         <Route path="/water" element={<WaterByCountryPage />} />
         <Route path="/water/:code" element={<CountryWaterPage />} />
+        <Route path="/gdp" element={<GdpByCountryPage />} />
+        <Route path="/gdp/:code" element={<CountryGdpPage />} />
+        <Route path="/life-expectancy" element={<LifeExpectancyByCountryPage />} />
+        <Route path="/life-expectancy/:code" element={<CountryLifeExpectancyPage />} />
+        <Route path="/gdp-by-year" element={<WorldGdpByYearPage />} />
+        <Route path="/gdp-by-year/:year" element={<WorldGdpYearPage />} />
+        <Route path="/deaths-by-year" element={<WorldDeathsByYearPage />} />
+        <Route path="/deaths-by-year/:year" element={<WorldDeathsYearPage />} />
+        <Route path="/life-expectancy-by-year" element={<WorldLifeExpectancyByYearPage />} />
+        <Route path="/life-expectancy-by-year/:year" element={<WorldLifeExpectancyYearPage />} />
+        <Route path="/forest-by-year" element={<WorldForestByYearPage />} />
+        <Route path="/forest-by-year/:year" element={<WorldForestYearPage />} />
+        <Route path="/renewable-energy-by-year" element={<WorldRenewableByYearPage />} />
+        <Route path="/renewable-energy-by-year/:year" element={<WorldRenewableYearPage />} />
         <Route path="/world-population-by-year" element={<WorldPopulationByYearPage />} />
         <Route path="/world-population-by-year/:year" element={<WorldPopulationYearPage />} />
         <Route path="/co2-by-year" element={<Co2ByYearPage />} />
