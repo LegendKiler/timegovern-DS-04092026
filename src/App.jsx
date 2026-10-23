@@ -293,6 +293,11 @@ const WaterByCountryPage = lazy(() => import('./pages/WaterByCountryPage'))
 const CountryWaterPage = lazy(() => import('./pages/CountryWaterPage'))
 const GdpByCountryPage = lazy(() => import('./pages/GdpByCountryPage'))
 const CountryGdpPage = lazy(() => import('./pages/CountryGdpPage'))
+const RegionHubPage = lazy(() => import('./pages/RegionHubPage'))
+const RegionDetailPage = lazy(() => import('./pages/RegionDetailPage'))
+const CompareHubPage = lazy(() => import('./pages/CompareHubPage'))
+const CompareMetricPage = lazy(() => import('./pages/CompareMetricPage'))
+const ComparePairPage = lazy(() => import('./pages/ComparePairPage'))
 const LifeExpectancyByCountryPage = lazy(() => import('./pages/LifeExpectancyByCountryPage'))
 const CountryLifeExpectancyPage = lazy(() => import('./pages/CountryLifeExpectancyPage'))
 const WorldGdpByYearPage = lazy(() => import('./pages/WorldGdpByYearPage'))
@@ -566,6 +571,11 @@ function AppRoutes() {
         <Route path="/water/:code" element={<CountryWaterPage />} />
         <Route path="/gdp" element={<GdpByCountryPage />} />
         <Route path="/gdp/:code" element={<CountryGdpPage />} />
+        <Route path="/region" element={<RegionHubPage />} />
+        <Route path="/region/:slug" element={<RegionDetailPage />} />
+        <Route path="/compare" element={<CompareHubPage />} />
+        <Route path="/compare/:metric" element={<CompareMetricPage />} />
+        <Route path="/compare/:metric/:pair" element={<ComparePairPage />} />
         <Route path="/life-expectancy" element={<LifeExpectancyByCountryPage />} />
         <Route path="/life-expectancy/:code" element={<CountryLifeExpectancyPage />} />
         <Route path="/gdp-by-year" element={<WorldGdpByYearPage />} />

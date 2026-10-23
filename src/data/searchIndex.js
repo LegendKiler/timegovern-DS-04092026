@@ -2,6 +2,8 @@
 export const SEARCH_INDEX = [
   { name: "Energy Use by Country", href: "/energy", tagline: "Ranked energy consumption for all countries" },
   { name: "CO2 Emissions by Country", href: "/co2-emissions", tagline: "Ranked CO2 emissions for all countries" },
+  { name: "World Regions", href: "/region", tagline: "All regions - population, GDP, CO2, more" },
+  { name: "Compare Countries", href: "/compare", tagline: "Side-by-side country statistics" },
   { name: "Water Use by Country", href: "/water", tagline: "Ranked freshwater withdrawals for all countries" },
   { name: "World Population by Year", href: "/world-population-by-year", tagline: "Historical population data 1960-2024" },
   { name: "World CO2 Emissions by Year", href: "/co2-by-year", tagline: "Historical CO2 emissions by year" },
