@@ -402,6 +402,110 @@ async function main() {
     if (!/62\.13/.test(body)) throw new Error("62.13 mph missing");
     if (!/27\.77/.test(body)) throw new Error("27.77 m/s missing");
   });
+  // ============ TIER C-math ============
+  // 34. Logarithm: log10(1000) = 3, ln(e) ~ 1
+  await tc("log10(1000) = 3, ln(2.718) ~ 1", async () => {
+    await page.goto(BASE + "/logarithm-calculator", { waitUntil: 'networkidle' });
+    const inputs = page.locator('input[type="number"]');
+    await inputs.nth(0).fill("1000");
+    await inputs.nth(1).fill("10");
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b3\b/.test(body)) throw new Error("log10 3 missing");
+  });
+
+  // 35. Quadratic: x^2 - 5x + 6 = 0 -> x = 2, 3
+  await tc("quadratic x^2-5x+6 roots = 2,3", async () => {
+    await page.goto(BASE + "/quadratic-calculator", { waitUntil: 'networkidle' });
+    const inputs = page.locator('input[type="number"]');
+    await inputs.nth(0).fill("1");
+    await inputs.nth(1).fill("-5");
+    await inputs.nth(2).fill("6");
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    // Roots are 3 and 2 (order may vary)
+    if (!/\b3\b/.test(body)) throw new Error("root 3 missing");
+    if (!/\b2\b/.test(body)) throw new Error("root 2 missing");
+  });
+
+  // 36. Matrix det: [[1,2],[3,4]] det = -2
+  await tc("matrix det [[1,2],[3,4]] = -2", async () => {
+    await page.goto(BASE + "/matrix-calculator", { waitUntil: 'networkidle' });
+    // defaults 1,2,3,4 det should be 1*4 - 2*3 = -2
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/-2\b/.test(body)) throw new Error("det -2 missing");
+  });
+
+  // 37. GCD/LCM: 12, 18, 24 -> gcd 6, lcm 72
+  await tc("gcd/lcm 12,18,24 -> 6,72", async () => {
+    await page.goto(BASE + "/gcd-lcm-calculator", { waitUntil: 'networkidle' });
+    // defaults already 12, 18, 24
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b6\b/.test(body)) throw new Error("gcd 6 missing");
+    if (!/\b72\b/.test(body)) throw new Error("lcm 72 missing");
+  });
+
+  // 38. Prime factor: 360 = 2^3 x 3^2 x 5
+  await tc("prime factor 360 = 2^3 x 3^2 x 5", async () => {
+    await page.goto(BASE + "/prime-factorization-calculator", { waitUntil: 'networkidle' });
+    // defaults 360
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/2\^3/.test(body)) throw new Error("2^3 missing");
+    if (!/3\^2/.test(body)) throw new Error("3^2 missing");
+  });
+
+  // 39. Permutation/Combination: P(10,3) = 720, C(10,3) = 120
+  await tc("perm/comb P(10,3)=720 C(10,3)=120", async () => {
+    await page.goto(BASE + "/permutation-combination-calculator", { waitUntil: 'networkidle' });
+    // defaults n=10, r=3
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b720\b/.test(body)) throw new Error("P 720 missing");
+    if (!/\b120\b/.test(body)) throw new Error("C 120 missing");
+  });
+
+  // 40. Probability: P(A)=0.5, P(B)=0.5, P(AnB)=0.25 -> P(AuB)=0.75 (75%), independent
+  await tc("probability P(AuB)=75% independent", async () => {
+    await page.goto(BASE + "/probability-calculator", { waitUntil: 'networkidle' });
+    // defaults 0.5, 0.5, 0.25
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/75\.00%/.test(body)) throw new Error("75.00% union missing");
+    if (!/independent/.test(body)) throw new Error("independent label missing");
+  });
+
+  // 41. Slope: (0,0) to (4,8) -> m=2, b=0
+  await tc("slope (0,0)->(4,8) m=2 b=0", async () => {
+    await page.goto(BASE + "/slope-calculator", { waitUntil: 'networkidle' });
+    // defaults 0,0,4,8
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b2\b/.test(body)) throw new Error("slope 2 missing");
+    // y = 2x + 0
+    if (!/y = 2.*0/.test(body) && !/y = 2 x \+ 0/.test(body)) throw new Error("y = 2x + 0 missing");
+  });
+
+  // 42. Triangle SSS 3,4,5 right triangle: area 6, perimeter 12, angles ~36.87/53.13/90
+  await tc("triangle SSS 3,4,5 = area 6, perim 12", async () => {
+    await page.goto(BASE + "/triangle-calculator", { waitUntil: 'networkidle' });
+    // defaults 3,4,5
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b6\b/.test(body)) throw new Error("area 6 missing");
+    if (!/\b12\b/.test(body)) throw new Error("perimeter 12 missing");
+  });
+
+  // 43. Area: rectangle 5x3 = 15
+  await tc("area rectangle 5x3 = 15", async () => {
+    await page.goto(BASE + "/area-calculator", { waitUntil: 'networkidle' });
+    // defaults rectangle w=5 h=3
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b15\b/.test(body)) throw new Error("area 15 missing");
+  });
   await browser.close();
   server.kill();
 
