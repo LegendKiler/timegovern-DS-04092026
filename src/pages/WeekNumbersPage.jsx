@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import ShareButtons from '../components/ShareButtons'
 import { setPageMeta } from '../lib/seo'
 import { getISOWeek, getWeeksInYear, getWeekStartDate } from '../lib/calendarUtils'
+import WeekNumberCalculator from '../components/calculators/WeekNumberCalculator'
 
 const FAQ = [
   { q: 'What is the current week number?', a: 'Today falls in ISO week {week} of {year}.' },
@@ -78,6 +79,10 @@ export default function WeekNumbersPage() {
           </CardContent>
         </Card>
 
+        <div className="mb-2">
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4">Check any date</h2>
+          <WeekNumberCalculator />
+        </div>
         <div className="grid md:grid-cols-3 gap-3">
           <Card><CardContent className="p-5">
             <div className="text-[10px] font-black uppercase tracking-wider text-muted-foreground mb-1">Weeks in {year}</div>
@@ -130,7 +135,11 @@ export default function WeekNumbersPage() {
 
         <div>
           <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-5">Related tools</h2>
-          <div className="grid md:grid-cols-3 gap-3">
+          <div className="mb-2">
+          <h2 className="text-2xl md:text-3xl font-black tracking-tight mb-4">Check any date</h2>
+          <WeekNumberCalculator />
+        </div>
+        <div className="grid md:grid-cols-3 gap-3">
             <Link to="/calendar" className="block rounded-xl border border-border bg-card hover:border-cyan-400 p-5 transition-colors">
               <Calendar className="h-5 w-5 text-cyan-500 mb-2" />
               <h3 className="font-bold mb-1">Calendar</h3>
