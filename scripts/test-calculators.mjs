@@ -506,6 +506,77 @@ async function main() {
     const body = await page.locator('body').innerText();
     if (!/\b15\b/.test(body)) throw new Error("area 15 missing");
   });
+  // ============ TIER C-math-final ============
+  // 44. Sig figs: 0.004560 = 4 sig figs
+  await tc("sig figs 0.004560 = 4", async () => {
+    await page.goto(BASE + "/significant-figures-calculator", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(2000);
+    // Look at the whole page text after calculator mounted
+    const body = await page.locator('body').innerText();
+    // Count is in "SIGNIFICANT FIGURES" section followed by a digit 4-6
+    // (bug: current returns 6, expected 4)
+    const m = body.match(/SIGNIFICANT FIGURES\s+([0-9])/i);
+    if (!m) throw new Error("could not find count section. Body tail: " + body.slice(-500).replace(/\n/g, ' | '));
+    if (m[1] !== "4") throw new Error("expected 4, got " + m[1]);
+  });
+
+  
+
+  // 45. Percent error: exp=9.8, theo=10 -> 2.0000%
+  await tc("percent error 9.8 vs 10 = 2%", async () => {
+    await page.goto(BASE + "/percent-error-calculator", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(2000);
+    const body = await page.locator('body').innerText();
+    // Display should be "Percent error" followed by "2.0000%"
+    const m = body.match(/Percent error\s+([0-9.]+)%/i);
+    if (!m) throw new Error("no Percent error line. Body tail: " + body.slice(-500).replace(/\n/g, ' | '));
+    if (parseFloat(m[1]) < 1.99 || parseFloat(m[1]) > 2.01) {
+      throw new Error("expected 2.00 +/- 0.01, got " + m[1]);
+    }
+  });
+
+  
+
+  // 46. Exponent: 2^10 = 1024
+  await tc("exponent 2^10 = 1024", async () => {
+    await page.goto(BASE + "/exponent-root-calculator", { waitUntil: 'networkidle' });
+    // defaults 2^10
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/1,024|1024/.test(body)) throw new Error("1024 missing");
+  });
+
+  // 47. Volume: cube 3x3x3 = 27
+  await tc("volume cube 3 = 27", async () => {
+    await page.goto(BASE + "/volume-calculator", { waitUntil: 'networkidle' });
+    // defaults cube side 3
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b27\b/.test(body)) throw new Error("volume 27 missing");
+  });
+
+  // 48. Scientific calculator: 2+3 = 5
+  await tc("scientific 2+3 = 5", async () => {
+    await page.goto(BASE + "/scientific-calculator", { waitUntil: 'networkidle' });
+    await page.locator('button:has-text("2")').first().click();
+    await page.locator('button:has-text("+")').first().click();
+    await page.locator('button:has-text("3")').first().click();
+    await page.locator('button:has-text("=")').first().click();
+    await page.waitForTimeout(300);
+    const body = await page.locator('body').innerText();
+    if (!/\b5\b/.test(body)) throw new Error("result 5 missing");
+  });
+
+  // 49. Roman: 2026 = MMXXVI
+  await tc("roman 2026 = MMXXVI", async () => {
+    await page.goto(BASE + "/roman-numeral-converter", { waitUntil: 'networkidle' });
+    // defaults 2026 -> MMXXVI
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/MMXXVI/.test(body)) throw new Error("MMXXVI missing");
+  });
   await browser.close();
   server.kill();
 

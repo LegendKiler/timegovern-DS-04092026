@@ -11,10 +11,10 @@ export default function PercentErrorCalculator() {
     const E = parseFloat(exp), T = parseFloat(theo)
     if ([E, T].some(isNaN)) return { err: 'Enter both experimental and theoretical values' }
     if (T === 0) return { err: 'Theoretical value cannot be zero' }
-    const err = Math.abs(E - T)
-    const pct = (err / Math.abs(T)) * 100
+    const absErr = Math.abs(E - T)
+    const pct = (absErr / Math.abs(T)) * 100
     const signed = ((E - T) / Math.abs(T)) * 100
-    return { err, pct, signed }
+    return { absErr, pct, signed }
   }, [exp, theo])
 
   return (
@@ -41,7 +41,7 @@ export default function PercentErrorCalculator() {
               <div className="text-3xl font-black text-rose-600 tabular-nums">{result.pct.toFixed(4)}%</div>
             </div>
             <div className="grid grid-cols-2 gap-3 text-center pt-2 border-t border-rose-500/20">
-              <div><div className="text-xs text-muted-foreground">Absolute error</div><div className="font-bold tabular-nums">{result.err.toFixed(6)}</div></div>
+              <div><div className="text-xs text-muted-foreground">Absolute error</div><div className="font-bold tabular-nums">{result.absErr.toFixed(6)}</div></div>
               <div><div className="text-xs text-muted-foreground">Signed error</div><div className="font-bold tabular-nums">{result.signed.toFixed(4)}%</div></div>
             </div>
           </div>

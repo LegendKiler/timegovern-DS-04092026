@@ -17,9 +17,10 @@ function countSigFigs(s) {
     return { count: trimmed.length, reason: 'Trailing zeros after decimal are significant' }
   }
   if (str.includes('.')) {
-    let leadingRemoved = str.replace(/^0+/, '')
-    if (leadingRemoved === '' || leadingRemoved === '.') return { count: 1, reason: 'Only zeros after decimal' }
-    return { count: leadingRemoved.replace('.', '').length, reason: 'All digits after leading zeros are significant' }
+    // Strip ALL leading zeros (integer AND right after decimal) -> count digits
+    const cleaned = str.replace(/^0+\.?0*/, '').replace('.', '')
+    if (cleaned === '' || cleaned === '0') return { count: 1, reason: 'Only zeros' }
+    return { count: cleaned.length, reason: 'All digits after leading zeros are significant' }
   }
   return { count: str.replace(/\./g, '').length, reason: 'Integer digits' }
 }
