@@ -349,6 +349,59 @@ async function main() {
     // 2.625 base + 0.5 moderate = 3.125 -> displays 3.13 L
     if (!/3\.1[23]/.test(body)) throw new Error("3.12/3.13 L missing");
   });
+  // ============ TIER C-unit ============
+  // 29. Temperature: 100 C = 212 F = 373.15 K = 671.67 R
+  await tc("temp 100C = 212F = 373.15K", async () => {
+    await page.goto(BASE + "/temperature-converter", { waitUntil: 'networkidle' });
+    const numInput = page.locator('input[type="number"]').first();
+    await numInput.fill("100");
+    // from defaults to C
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b212\b/.test(body)) throw new Error("212 F missing");
+    if (!/\b373\.15\b/.test(body)) throw new Error("373.15 K missing");
+  });
+
+  // 30. Length: 1 m = 100 cm = 1000 mm = 3.28084 ft
+  await tc("length 1m = 100cm = 3.28084ft", async () => {
+    await page.goto(BASE + "/length-converter", { waitUntil: 'networkidle' });
+    // defaults: 1 m
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b100\b/.test(body)) throw new Error("100 cm missing");
+    if (!/\b1,000\b/.test(body) && !/\b1000\b/.test(body)) throw new Error("1000 mm missing");
+    if (!/3\.2808/.test(body)) throw new Error("3.2808 ft missing");
+  });
+
+  // 31. Weight: 1 kg = 1000 g = 2.20462 lb = 35.274 oz
+  await tc("weight 1kg = 2.20462 lb", async () => {
+    await page.goto(BASE + "/weight-converter", { waitUntil: 'networkidle' });
+    // defaults: 1 kg
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/2\.2046/.test(body)) throw new Error("2.2046 lb missing");
+    if (!/\b1,000\b/.test(body) && !/\b1000\b/.test(body)) throw new Error("1000 g missing");
+  });
+
+  // 32. Data storage: 1 GB = 1024 MB = 1,073,741,824 bytes
+  await tc("storage 1GB = 1024MB", async () => {
+    await page.goto(BASE + "/data-storage-converter", { waitUntil: 'networkidle' });
+    // defaults: 1 GB
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/\b1024\b/.test(body)) throw new Error("1024 MB missing");
+    if (!/1,073,741,824/.test(body)) throw new Error("1073741824 bytes missing");
+  });
+
+  // 33. Speed: 100 km/h = 62.1371 mph = 27.7778 m/s
+  await tc("speed 100kmh = 62.137mph", async () => {
+    await page.goto(BASE + "/speed-converter", { waitUntil: 'networkidle' });
+    // defaults: 100 kmh
+    await page.waitForTimeout(400);
+    const body = await page.locator('body').innerText();
+    if (!/62\.13/.test(body)) throw new Error("62.13 mph missing");
+    if (!/27\.77/.test(body)) throw new Error("27.77 m/s missing");
+  });
   await browser.close();
   server.kill();
 
