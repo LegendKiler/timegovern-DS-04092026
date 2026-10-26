@@ -658,6 +658,92 @@ async function main() {
     // Default: 85@40, 92@60 = 89.2%
     if (!/89\.2/.test(body)) throw new Error("grade 89.2 missing on US");
   });
+  // ============ TIER mortgage-tree ============
+  // 58. US amortization: 450k price, 90k down, 6.5%, 30y, 1.1% tax, 1800 ins -> P&I ~$2274
+  await tc("mortgage us amort 450k/90k/6.5/30 P&I ~2274", async () => {
+    await page.goto(BASE + "/mortgage/usa/amortization", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    // P = 360,000; 6.5%/12 = 0.005417; 360 months -> PMT = 2275
+    if (!/\$2,2[67][0-9]/.test(body)) throw new Error("US P&I ~$2274 missing. Body: " + body.slice(0, 300));
+    if (!/PITI|Total monthly payment/i.test(body)) throw new Error("PITI label missing");
+  });
+
+  // 59. US FHA: 350k price, 680 credit -> down 3.5% = 12,250
+  await tc("mortgage us fha 350k/680 shows 3.5% down", async () => {
+    await page.goto(BASE + "/mortgage/usa/fha", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    // Down 3.5% of 350k = 12,250
+    if (!/\$12,2[0-9][0-9]/.test(body)) throw new Error("FHA 3.5% down $12,250 missing. Body: " + body.slice(0, 300));
+    if (!/Upfront MIP/i.test(body)) throw new Error("Upfront MIP label missing");
+  });
+
+  // 60. UK repayment: £250k, 4.5%, 25y -> £1389/month
+  await tc("mortgage uk repayment 250k/4.5/25 = ~1390", async () => {
+    await page.goto(BASE + "/mortgage/uk/repayment", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(1500);
+    const body = await page.locator('body').innerText();
+    // 250k @ 4.5%/12 over 300 mo = 1389.58 -> Math.round -> 1390. Assert number only (no currency symbol).
+    if (!/1[,.]?39[0-9]|1[,.]?38[0-9]/.test(body)) throw new Error("UK repayment ~1390 missing. Body: " + body.slice(0, 800));
+    if (!/Repayment/i.test(body)) throw new Error("Repayment label missing");
+  });
+
+  // 61. UK stamp duty: £350k England = 5000 (5% on 250k-350k)
+  await tc("mortgage uk stamp duty 350k England = £5000", async () => {
+    await page.goto(BASE + "/mortgage/uk/stamp-duty", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    // 350k England: (350k-250k) x 5% = 5000
+    if (!/£5,0[0-9][0-9]/.test(body)) throw new Error("UK SDLT £5000 missing. Body: " + body.slice(0, 300));
+    if (!/stamp duty/i.test(body)) throw new Error("Stamp duty label missing");
+  });
+
+  // 62. CA CMHC: 600k price, 60k down -> LVR 90%, rate 3.10%, premium 540k*0.031 = 16,740
+  await tc("mortgage ca cmhc 600k/60k -> LVR 90% premium ~16.7k", async () => {
+    await page.goto(BASE + "/mortgage/canada/cmhc-insurance", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    if (!/90\.0%/.test(body)) throw new Error("LTV 90.0% missing. Body: " + body.slice(0, 300));
+    // 540k loan x 3.10% = 16,740
+    if (!/\$16,7[0-9][0-9]/.test(body)) throw new Error("CMHC premium ~$16,740 missing");
+  });
+
+  // 63. CA LTT: Ontario, 600k -> base 8,475
+  await tc("mortgage ca ltt Ontario 600k = $8,475", async () => {
+    await page.goto(BASE + "/mortgage/canada/land-transfer-tax", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    // ON 600k: 55k*0.5% + 195k*1% + 150k*1.5% + 200k*2% = 275 + 1950 + 2250 + 4000 = 8475
+    if (!/\$8,4[0-9][0-9]/.test(body)) throw new Error("CA ON LTT ~$8,475 missing. Body: " + body.slice(0, 300));
+  });
+
+  // 64. India EMI: 50L, 8.75%, 20y -> EMI ~44,168
+  await tc("mortgage in emi 5M/8.75/20 = ~44,168", async () => {
+    await page.goto(BASE + "/mortgage/india/emi", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    // 5M loan @ 8.75%/12, 240mo -> 44186
+    if (!/₹44,1[0-9][0-9]|₹44,2[0-9][0-9]/.test(body)) throw new Error("India EMI ~₹44,168 missing. Body: " + body.slice(0, 300));
+  });
+
+  // 65. AU LMI: 800k price, 100k deposit -> LVR 87.5%, rate 1.97%, premium ~13,790
+  await tc("mortgage au lmi 800k/100k -> LVR 87.5%", async () => {
+    await page.goto(BASE + "/mortgage/australia/lmi", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(700);
+    const body = await page.locator('body').innerText();
+    // 700k loan / 800k price = 87.5%, LVR band 87-88% rate 1.97% -> 700k*0.0197 = 13,790
+    if (!/87\.5/.test(body)) throw new Error("AU LVR 87.5% missing. Body: " + body.slice(0, 300));
+    if (!/\$13,[0-9]{3}/.test(body) && !/\$1[0-9],[0-9]{3}/.test(body)) throw new Error("AU LMI premium missing");
+  });
   await browser.close();
   server.kill();
 
