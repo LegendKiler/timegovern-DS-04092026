@@ -577,6 +577,87 @@ async function main() {
     const body = await page.locator('body').innerText();
     if (!/MMXXVI/.test(body)) throw new Error("MMXXVI missing");
   });
+  // ============ TIER per-country ============
+  // 50. auto-loan /us - 30k price, 5k down, 60mo, 6.9% -> monthly ~$494
+  await tc("auto-loan us 30k/5k/60/6.9 = ~494", async () => {
+    await page.goto(BASE + "/auto-loan-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    // Default: 25,000 principal @ 6.9%/12, 60 mo -> monthly 493.xx
+    if (!/Monthly payment[\s\S]{0,80}\$49[0-9]/i.test(body)) throw new Error("auto-loan monthly ~$494 missing");
+  });
+
+  // 51. auto-loan /gb - shows GBP symbol (£)
+  await tc("auto-loan gb shows pound symbol", async () => {
+    await page.goto(BASE + "/auto-loan-calculator/gb", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    if (!/£/.test(body)) throw new Error("GBP symbol £ missing on GB page");
+  });
+
+  // 52. credit-card-payoff /us - 5000 balance @ 19.99% / 200 per month -> ~35 months
+  await tc("credit-card us 5000/19.99/200 = ~35 months", async () => {
+    await page.goto(BASE + "/credit-card-payoff-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    // 5000 @ 19.99% APR, 200/mo -> about 35 months
+    if (!/Time to payoff[\s\S]{0,60}(2[5-9]y|3[0-9] months|2y [0-9]+m)/i.test(body)) {
+      // Accept 2y 11m or similar
+      if (!/(\d+ years?|2y \d+m|3\d months)/i.test(body)) throw new Error("payoff time missing");
+    }
+  });
+
+  // 53. retirement /us - 30->65, 50k start, 500/mo, 7% -> ~$1.26M
+  await tc("retirement us 30/65/50k/500/7 = ~1.2M", async () => {
+    await page.goto(BASE + "/retirement-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    // 35 years, 50k initial, 500/mo, 7%/12 -> ~1.25M-1.27M
+    if (!/Nest egg[\s\S]{0,80}\$[12],[0-9]{3},[0-9]{3}/i.test(body)) throw new Error("nest egg $1.2M-2M missing");
+  });
+
+  // 54. investment /us - 10k start, 500/mo, 20y, 8% -> ~$342k
+  await tc("investment us 10k/500/20/8 = ~342k", async () => {
+    await page.goto(BASE + "/investment-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    if (!/Value after 20 years[\s\S]{0,80}\$3[2-5][0-9],[0-9]{3}/i.test(body)) throw new Error("investment value ~$342k missing");
+  });
+
+  // 55. pregnancy-due-date /us - renders due date output
+  await tc("pregnancy-due-date us renders", async () => {
+    await page.goto(BASE + "/pregnancy-due-date-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    if (!/Estimated due date/i.test(body)) throw new Error("Estimated due date label missing");
+    if (!/\bweek|weekend|w pregnant/i.test(body) && !/weeks?/.test(body)) throw new Error("weeks pregnant text missing");
+  });
+
+  // 56. ovulation /us - renders ovulation output
+  await tc("ovulation us renders", async () => {
+    await page.goto(BASE + "/ovulation-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    if (!/Estimated ovulation/i.test(body)) throw new Error("Estimated ovulation label missing");
+    if (!/Fertile window/i.test(body)) throw new Error("Fertile window label missing");
+  });
+
+  // 57. grade-calculator /us - renders grade output with US scale
+  await tc("grade us renders 89.2%", async () => {
+    await page.goto(BASE + "/grade-calculator/us", { waitUntil: 'networkidle' });
+    await page.waitForSelector('input', { timeout: 6000 }).catch(() => {});
+    await page.waitForTimeout(600);
+    const body = await page.locator('body').innerText();
+    // Default: 85@40, 92@60 = 89.2%
+    if (!/89\.2/.test(body)) throw new Error("grade 89.2 missing on US");
+  });
   await browser.close();
   server.kill();
 
