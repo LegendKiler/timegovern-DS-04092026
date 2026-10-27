@@ -60,9 +60,22 @@ export function useGeo() {
     let cancelled = false;
     const fallbackTz = browserTimezone();
 
+    // Local dev (localhost / 127.0.0.1): Cloudflare Pages Functions do not run
+    // under `vite preview` or plain `vite dev`, so /api/country 404s there.
+    // Skip the fetch and go straight to the browser-timezone fallback.
+    const isLocal = typeof window !== 'undefined'
+      && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+    if (isLocal) {
+      const value = { country: null, region: null, city: null, timezone: fallbackTz, source: 'local-dev' };
+      writeCache(value);
+      setGeo(value);
+      setLoading(false);
+      return;
+    }
+
     async function fetchGeo() {
       try {
-        const res = await fetch('/api/geo', { headers: { accept: 'application/json' } });
+        const res = await fetch('/api/country', { headers: { accept: 'application/json' } });
         if (!res.ok) throw new Error(`geo ${res.status}`);
         const data = await res.json();
         if (cancelled) return;
