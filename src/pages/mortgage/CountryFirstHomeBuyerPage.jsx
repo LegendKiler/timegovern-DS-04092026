@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useParams, Navigate, Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import FirstHomeBuyerCalculator from '../../components/mortgage/FirstHomeBuyerCalculator'
+import { setPageMeta } from '../../lib/seo'
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
 import CalculatorSidebar from '../../components/mortgage/CalculatorSidebar'
@@ -197,6 +198,7 @@ export default function CountryFirstHomeBuyerPage() {
       const desc = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
       desc.content = 'Free ' + meta.name + ' first home buyer calculator. ' + meta.schemes
       if (!desc.parentNode) document.head.appendChild(desc)
+        setPageMeta()
     }
   }, [meta])
 

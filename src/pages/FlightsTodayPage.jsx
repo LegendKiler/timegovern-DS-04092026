@@ -1,4 +1,7 @@
+import { useEffect } from "react"
+
 import MetricPage from '../components/worldometers/MetricPage'
+import { setPageMeta } from '../lib/seo'
 import { WORLD_RATES } from '../data/worldRates'
 
 const metric = WORLD_RATES.flights
@@ -24,5 +27,6 @@ const RELATED = [
 ]
 
 export default function FlightsTodayPage() {
+  useEffect(() => { setPageMeta() }, [])
   return <MetricPage metric={metric} explainers={EXPLAINERS} faqs={FAQS} related={RELATED} />
 }

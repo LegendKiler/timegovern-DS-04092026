@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import CaBiWeeklyAccelerated from '../../components/mortgage/ca/CaBiWeeklyAccelerated'
+import { setPageMeta } from '../../lib/seo'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
 
@@ -9,6 +10,7 @@ export default function CaBiWeeklyAcceleratedPage() {
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Canadian accelerated bi-weekly mortgage calculator. See interest savings and years cut off by paying every 2 weeks.'
     if (!meta.parentNode) document.head.appendChild(meta)
+    setPageMeta()
   }, [])
 
   const faqs = [

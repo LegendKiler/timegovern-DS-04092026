@@ -1,9 +1,10 @@
-﻿import { useState } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Mail, User, Send, CheckCircle2, AlertCircle } from "lucide-react"
+import { setPageMeta } from "../lib/seo"
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', service: '', message: '' })
@@ -12,6 +13,14 @@ export default function Contact() {
   const [error, setError] = useState('')
 
   const FORMSPREE_ENDPOINT = "https://formspree.io/f/mvkovnva"
+
+  useEffect(() => {
+    document.title = 'Contact Us | TimeGovern'
+    const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
+    meta.content = 'Get in touch with TimeGovern. Questions, feedback, or partnership enquiries - we read every message.'
+    if (!meta.parentNode) document.head.appendChild(meta)
+    setPageMeta()
+  }, [])
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -67,7 +76,8 @@ export default function Contact() {
       <Card className="bg-gradient-to-br from-primary/10 via-card to-accent/10 border-border shadow-xl">
         <CardHeader>
           <CardTitle className="flex items-center gap-2 text-2xl">
-            <Mail className="h-6 w-6 text-primary" /> Contact Us
+            <Mail className="h-6 w-6 text-primary" />
+            <h1 className="text-2xl font-semibold m-0">Contact Us</h1>
           </CardTitle>
           <CardDescription>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</CardDescription>
         </CardHeader>

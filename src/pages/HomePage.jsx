@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import { Calendar, Moon, Clock, Activity, Zap, Wrench, DollarSign, ArrowRight, Search, Shield, CheckCircle2, Sparkles, BookOpen, Globe } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import Clocks from '../components/Clocks'
+import { setPageMeta } from '../lib/seo'
 import WorldClocks from '../components/WorldClocks'
 import { SEARCH_INDEX } from '../data/searchIndex'
 
@@ -65,6 +66,7 @@ export default function HomePage() {
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free sleep, time, health, and productivity tools - sleep debt, time zone converter, world clock, Pomodoro, BMI, and more. No signup, 100% private.'
     if (!meta.parentNode) document.head.appendChild(meta)
+    setPageMeta()
   }, [])
 
   const results = query.trim()

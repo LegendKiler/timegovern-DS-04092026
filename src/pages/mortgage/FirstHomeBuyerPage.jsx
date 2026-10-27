@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 import FirstHomeBuyerCalculator from '../../components/mortgage/FirstHomeBuyerCalculator'
+import { setPageMeta } from '../../lib/seo'
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
 
@@ -11,6 +12,7 @@ export default function FirstHomeBuyerPage() {
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free first home buyer calculator. Stack stamp duty exemptions, government grants, Home Guarantee, and FHSS into one number. Works for 24 countries.'
     if (!meta.parentNode) document.head.appendChild(meta)
+    setPageMeta()
   }, [])
 
   const faqs = [

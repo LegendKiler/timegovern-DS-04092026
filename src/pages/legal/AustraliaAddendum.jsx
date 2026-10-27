@@ -1,11 +1,22 @@
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { useEffect } from "react"
+import { setPageMeta } from "../../lib/seo"
 
 export default function AustraliaAddendum() {
+  useEffect(() => {
+    document.title = 'Australia Privacy Addendum | TimeGovern'
+    const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
+    meta.content = 'Australia Privacy Addendum - Privacy Act 1988 (Cth) compliance, APPs, OAIC contact details.'
+    if (!meta.parentNode) document.head.appendChild(meta)
+    setPageMeta()
+  }, [])
   return (
     <div className="container mx-auto p-4 max-w-3xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">
         <CardHeader>
-          <CardTitle className="text-2xl font-semibold">Australia Privacy Addendum (Privacy Act 1988)</CardTitle>
+          <CardTitle className="text-2xl font-semibold">
+            <h1 className="text-2xl font-semibold m-0">Australia Privacy Addendum (Privacy Act 1988)</h1>
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">Effective Date: 1 January 2026</p>
