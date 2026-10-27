@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import HomeLoanRepayment from '../../components/mortgage/HomeLoanRepayment'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, StatBox, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo'
 
 export default function HomeLoanRepaymentPage() {
   useEffect(() => {
@@ -9,6 +10,7 @@ export default function HomeLoanRepaymentPage() {
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free Australian home loan repayment calculator. Calculate weekly, fortnightly, or monthly repayments and total interest over your loan term.'
     if (!meta.parentNode) document.head.appendChild(meta)
+    setPageMeta()
   }, [])
 
   const faqs = [
