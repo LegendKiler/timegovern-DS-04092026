@@ -5,7 +5,7 @@ export default function Disclaimer() {
     <div className="container mx-auto p-4 max-w-4xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">
         <CardHeader>
-          <CardTitle className="text-2xl font-semibold">Disclaimer</CardTitle>
+          <h1 className="text-2xl font-semibold">Disclaimer</h1>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">Effective Date: 1 January 2026</p>

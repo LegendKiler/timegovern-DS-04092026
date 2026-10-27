@@ -14,7 +14,7 @@ export default function AfricaPrivacy() {
     <div className="container mx-auto p-4 max-w-6xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl mb-6">
         <CardHeader>
-          <CardTitle className="text-2xl font-semibold">Africa Privacy Laws</CardTitle>
+          <h1 className="text-2xl font-semibold">Africa Privacy Laws</h1>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">45+ African countries have enacted data protection laws by end-2025, with 39 countries having fully operational regulators .</p>

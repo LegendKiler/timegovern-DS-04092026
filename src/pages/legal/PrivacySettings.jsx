@@ -24,7 +24,7 @@ export default function PrivacySettings() {
     <div className="container mx-auto p-4 max-w-4xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">
         <CardHeader>
-          <CardTitle className="text-2xl font-semibold">Privacy Settings</CardTitle>
+          <h1 className="text-2xl font-semibold">Privacy Settings</h1>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-6">Control how we handle your personal information and tracking preferences.</p>

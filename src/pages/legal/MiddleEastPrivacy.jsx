@@ -4,7 +4,7 @@ export default function MiddleEastPrivacy() {
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">
-        <CardHeader><CardTitle className="text-2xl font-semibold">Middle East Privacy Laws</CardTitle></CardHeader>
+        <CardHeader><h1 className="text-2xl font-semibold">Middle East Privacy Laws</h1></CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">Effective Date: 1 January 2026</p>
           <div className="space-y-4 text-sm">

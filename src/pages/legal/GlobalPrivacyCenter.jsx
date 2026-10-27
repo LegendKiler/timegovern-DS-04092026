@@ -16,9 +16,9 @@ export default function GlobalPrivacyCenter() {
     <div className="container mx-auto p-4 max-w-6xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl mb-6">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl">
+          <h1 className="flex items-center gap-2 text-2xl">
             <Scale className="h-6 w-6" /> Global Privacy & AI Center
-          </CardTitle>
+          </h1>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">

@@ -7,9 +7,9 @@ export default function GlobalAIPolicy() {
     <div className="container mx-auto p-4 max-w-4xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl mb-6">
         <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl">
+          <h1 className="flex items-center gap-2 text-2xl">
             <Cpu className="h-6 w-6" /> Global AI Policy
-          </CardTitle>
+          </h1>
         </CardHeader>
         <CardContent>
           <p className="text-muted-foreground mb-4">Effective Date: 1 January 2026</p>
