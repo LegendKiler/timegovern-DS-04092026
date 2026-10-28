@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsBiWeekly from '../../components/mortgage/us/UsBiWeekly'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsBiWeeklyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Bi-Weekly Mortgage Calculator — Interest Savings | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'US bi-weekly mortgage calculator. See exactly how much interest and time you save with accelerated bi-weekly payments.'

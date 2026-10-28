@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UkRepayment from '../../components/mortgage/uk/UkRepayment'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UkRepaymentPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'UK Mortgage Repayment Calculator 2026 | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free UK mortgage repayment calculator. Calculate monthly, fortnightly, or weekly payments with full amortization schedule.'

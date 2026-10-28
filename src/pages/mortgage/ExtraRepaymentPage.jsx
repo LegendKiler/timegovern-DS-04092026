@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import ExtraRepayment from '../../components/mortgage/ExtraRepayment'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function ExtraRepaymentPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Extra Repayment Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'See how much interest you save and how many years come off your mortgage with extra repayments.'

@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsPropertyTax from '../../components/mortgage/us/UsPropertyTax'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsPropertyTaxPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'US Property Tax Calculator 2026 — All 50 States | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'US property tax calculator with 2026 effective rates for all 50 states. Highest: New Jersey 2.11%. Lowest: Hawaii 0.27%.'

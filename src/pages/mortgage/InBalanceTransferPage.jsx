@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InBalanceTransfer from '../../components/mortgage/in/InBalanceTransfer'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function InBalanceTransferPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Home Loan Balance Transfer Calculator India | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Indian home loan balance transfer calculator. Compare current EMI with new lender EMI plus fees.'

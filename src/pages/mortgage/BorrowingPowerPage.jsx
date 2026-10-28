@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import BorrowingPower from '../../components/mortgage/BorrowingPower'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function BorrowingPowerPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Borrowing Power Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate your Australian home loan borrowing power. Based on income, expenses, dependents, and deposit.'

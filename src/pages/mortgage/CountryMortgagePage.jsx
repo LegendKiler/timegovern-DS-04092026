@@ -9,6 +9,7 @@ import SaveCalculation from '../../components/SaveCalculation'
 import CountryFlag from '../../components/CountryFlag'
 import AuthorityLink from '../../components/mortgage/AuthorityLink'
 import CalculatorSidebar from '../../components/mortgage/CalculatorSidebar'
+import { setPageMeta } from '../../lib/seo';
 
 const FHB_COUNTRIES = new Set([
   'australia','usa','uk','canada','india','singapore','malaysia',
@@ -21,6 +22,7 @@ export default function CountryMortgagePage() {
   const c = COUNTRIES[slug?.toLowerCase()]
 
   useEffect(() => {
+    setPageMeta();
     if (c) {
       document.title = c.name + ' Mortgage Calculator 2026 | TimeGovern'
       const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })

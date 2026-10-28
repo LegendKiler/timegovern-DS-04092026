@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useUser } from '../context/UserContext'
+import { setPageMeta } from '../lib/seo';
 
 const initialPosts = [
   { id: 1, title: "Welcome to TimeGovern Forum!", author: "admin", content: "Feel free to discuss time-related topics." },
@@ -10,6 +11,11 @@ const initialPosts = [
 ]
 
 export default function ForumPage() {
+
+  useEffect(() => {
+    document.title = 'Forum | TimeGovern';
+    setPageMeta();
+  }, []);
   const [posts, setPosts] = useState(initialPosts)
   const [newPost, setNewPost] = useState('')
   const { user } = useUser()

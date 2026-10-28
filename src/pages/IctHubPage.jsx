@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Code2, ArrowRight } from 'lucide-react'
 import { ICT_TOOLS, ICT_CATEGORIES } from '../data/ictTools'
+import { setPageMeta } from '../lib/seo';
 
 export default function IctHubPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'ICT Tools 2026 — 30 Free Developer & Network Tools | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free online developer tools: Base64, SHA-256, JWT decoder, UUID generator, JSON formatter, regex, subnet, color converter, and more. No signup, no ads.'

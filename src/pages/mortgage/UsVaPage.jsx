@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsVa from '../../components/mortgage/us/UsVa'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsVaPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'VA Loan Calculator 2026 — 0% Down, No PMI | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'VA loan calculator with funding fee (2.15% first use, 3.3% subsequent). No down payment, no PMI ever.'

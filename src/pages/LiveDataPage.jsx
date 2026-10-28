@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 ﻿import { Card, CardContent } from "@/components/ui/card"
 import { Activity, Globe, Zap, Sparkles } from "lucide-react"
 import CurrencyConverter from '../components/live/CurrencyConverter'
@@ -8,6 +10,11 @@ import AirQualityCard from '../components/live/AirQualityCard'
 import IssTracker from '../components/live/IssTracker'
 
 export default function LiveDataPage() {
+
+  useEffect(() => {
+    document.title = 'Live Data | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-7xl">
 

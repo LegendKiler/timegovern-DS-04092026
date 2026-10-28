@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import CaCmhc from '../../components/mortgage/ca/CaCmhc'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function CaCmhcPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'CMHC Insurance Calculator Canada 2026 — Premium Rates | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'CMHC mortgage default insurance calculator. 4.00% at 95% LTV, 3.10% at 90%, 2.80% at 85%. Required when down payment under 20%.'

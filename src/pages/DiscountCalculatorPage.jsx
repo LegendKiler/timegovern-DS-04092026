@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import DiscountCalculator from '../components/calculators/DiscountCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function DiscountCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Discount Calculator — Final Price, Savings, Effective Discount | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate the final price after a discount, the amount you save, and the effective discount when multiple discounts or tax apply. Free online discount calculator.'

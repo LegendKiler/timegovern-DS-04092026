@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import CaAffordability from '../../components/mortgage/ca/CaAffordability'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function CaAffordabilityPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Canadian Mortgage Affordability Calculator — GDS/TDS & Stress Test | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'How much mortgage can I afford in Canada? GDS 39%, TDS 44%, stress test at rate+2% or 5.25%.'

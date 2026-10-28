@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsRefinance from '../../components/mortgage/us/UsRefinance'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsRefinancePage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Mortgage Refinance Break-Even Calculator | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'US mortgage refinance calculator. Enter current and new rates to see monthly savings and break-even point.'

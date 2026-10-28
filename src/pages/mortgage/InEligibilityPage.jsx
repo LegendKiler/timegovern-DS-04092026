@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InEligibility from '../../components/mortgage/in/InEligibility'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function InEligibilityPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Home Loan Eligibility Calculator India 2026 | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'How much home loan can I get in India? FOIR-based eligibility with age-capped tenure. Calculate max loan amount.'

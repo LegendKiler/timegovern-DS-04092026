@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UkOverpayment from '../../components/mortgage/uk/UkOverpayment'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UkOverpaymentPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Mortgage Overpayment Calculator UK — Interest Savings | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'UK mortgage overpayment calculator. See interest saved and years off by overpaying monthly or with a lump sum.'

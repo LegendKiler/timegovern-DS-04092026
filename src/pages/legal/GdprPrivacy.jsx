@@ -1,7 +1,14 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../../lib/seo';
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ShieldCheck, Lock, UserCheck } from "lucide-react"
 
 export default function GdprPrivacy() {
+
+  useEffect(() => {
+    document.title = 'EU GDPR Privacy Policy | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">

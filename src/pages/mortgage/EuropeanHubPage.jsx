@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../../lib/seo';
 import { Link } from 'react-router-dom'
 import { ArrowRight, Globe } from 'lucide-react'
 import { COUNTRIES, HUBS } from '../../components/mortgage/universal/data/countries'
 
 export default function EuropeanHubPage() {
+
+  useEffect(() => {
+    document.title = 'European Mortgage Calculators | TimeGovern';
+    setPageMeta();
+  }, []);
   const hub = HUBS.europe
   return (
     <div className="container mx-auto p-4 max-w-7xl">

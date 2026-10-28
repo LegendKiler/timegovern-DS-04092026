@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import PercentageCalculator from '../components/calculators/PercentageCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function PercentageCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Percentage Calculator — % of Number, % Change, % Difference | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free percentage calculator — find X% of Y, what percentage one number is of another, and percent increase or decrease instantly.'

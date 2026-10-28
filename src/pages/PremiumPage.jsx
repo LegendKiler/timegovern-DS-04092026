@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useUser } from '../context/UserContext'
 
 export default function PremiumPage() {
+
+  useEffect(() => {
+    document.title = 'Premium | TimeGovern';
+    setPageMeta();
+  }, []);
   const { user } = useUser()
   const isPremium = user?.premium
 

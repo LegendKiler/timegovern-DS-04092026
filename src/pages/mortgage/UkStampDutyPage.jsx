@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UkStampDuty from '../../components/mortgage/uk/UkStampDuty'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UkStampDutyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Stamp Duty Calculator UK 2026 — SDLT, LBTT, LTT | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'UK stamp duty calculator covering England (SDLT), Scotland (LBTT), and Wales (LTT), with first-time buyer relief and additional property surcharge.'

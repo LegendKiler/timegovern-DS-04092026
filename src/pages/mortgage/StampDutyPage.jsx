@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import StampDuty from '../../components/mortgage/StampDuty'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function StampDutyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Stamp Duty Calculator Australia 2026 — All 8 States | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Australian stamp duty calculator for all 8 states and territories. Includes first home buyer exemptions and foreign buyer surcharges.'

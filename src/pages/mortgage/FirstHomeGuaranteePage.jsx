@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import FirstHomeGuarantee from '../../components/mortgage/FirstHomeGuarantee'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function FirstHomeGuaranteePage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'First Home Guarantee Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Check eligibility for the Australian First Home Guarantee scheme. Save LMI with a 5% deposit.'

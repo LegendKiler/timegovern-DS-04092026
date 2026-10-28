@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import SalesTaxCalculator from '../components/calculators/SalesTaxCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function SalesTaxCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Sales Tax Calculator — Add or Remove Tax (VAT, GST) | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate sales tax, VAT, or GST on any amount. Add tax to a price or remove it from a total. Includes quick presets for US states, UK, EU, Australia, and more.'

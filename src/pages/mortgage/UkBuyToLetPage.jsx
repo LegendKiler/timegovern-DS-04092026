@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UkBuyToLet from '../../components/mortgage/uk/UkBuyToLet'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UkBuyToLetPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Buy-to-Let Calculator UK — Yield, Tax, ICR | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'UK buy-to-let calculator. Rental yield, Section 24 tax, and ICR stress test with 2026 rates for landlords.'

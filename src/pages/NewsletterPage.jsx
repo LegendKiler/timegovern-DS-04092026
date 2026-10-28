@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Mail, CheckCircle2, Podcast, Calendar, Newspaper, Play, Pause, ChevronDown, ChevronUp, AudioLines, Loader2 } from "lucide-react"
 import { newsletterEditions, podcastEpisodes } from '../data/contentData'
+import { setPageMeta } from '../lib/seo';
 
 // Your TTS API key (free tier: 1M chars/month)
 // Get from https://cloud.google.com/text-to-speech
@@ -24,6 +25,7 @@ export default function NewsletterPage() {
   const [audioUrl, setAudioUrl] = useState('')
 
   useEffect(() => {
+    setPageMeta();
     setCurrentEditions(newsletterEditions[frequency] || [])
     setCurrentEpisodes(podcastEpisodes[podcast] || [])
   }, [frequency, podcast])

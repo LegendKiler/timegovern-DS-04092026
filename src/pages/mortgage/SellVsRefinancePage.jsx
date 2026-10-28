@@ -4,9 +4,11 @@ import { ArrowLeft } from 'lucide-react'
 import SellVsRefinanceCalculator from '../../components/mortgage/SellVsRefinanceCalculator'
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
+import { setPageMeta } from '../../lib/seo';
 
 export default function SellVsRefinancePage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Sell vs Refinance Calculator 2026 — Which Is Better? | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free sell vs refinance calculator. Compare net proceeds from selling against cash-out refinance — including capital gains tax, depreciation recapture, and lifetime interest.'

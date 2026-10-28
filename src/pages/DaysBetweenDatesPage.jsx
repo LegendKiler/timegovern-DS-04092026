@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import DaysBetweenCalculator from '../components/calculators/DaysBetweenCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function DaysBetweenDatesPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Days Between Dates Calculator — Count Days Between Two Dates | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate the exact number of days, weeks, months, and business days between any two dates. Free online days-between-dates calculator.'

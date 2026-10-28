@@ -5,6 +5,7 @@ import HomeEquityCalculator from '../../components/mortgage/HomeEquityCalculator
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
 import CalculatorSidebar from '../../components/mortgage/CalculatorSidebar'
+import { setPageMeta } from '../../lib/seo';
 
 const COUNTRY_HE = {
   australia: { name: 'Australia', currency: 'AUD', hub: 'australia', gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
@@ -161,6 +162,7 @@ export default function CountryHomeEquityPage() {
   const meta = COUNTRY_HE[slug]
 
   useEffect(() => {
+    setPageMeta();
     if (meta) {
       document.title = meta.name + ' Home Equity Calculator 2026 | TimeGovern'
       const desc = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })

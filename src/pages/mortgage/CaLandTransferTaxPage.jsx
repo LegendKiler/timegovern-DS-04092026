@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import CaLandTransferTax from '../../components/mortgage/ca/CaLandTransferTax'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function CaLandTransferTaxPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Land Transfer Tax Calculator Canada 2026 — All Provinces | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Canadian land transfer tax calculator. Ontario, BC, Quebec, Toronto municipal LTT, plus first-time buyer rebates.'

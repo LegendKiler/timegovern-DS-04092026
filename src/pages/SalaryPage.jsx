@@ -4,9 +4,11 @@ import { ArrowLeft } from 'lucide-react'
 import SalaryCalculator from '../components/mortgage/SalaryCalculator'
 import SaveCalculation from '../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../components/mortgage/MortgageLayout'
+import { setPageMeta } from '../lib/seo';
 
 export default function SalaryPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Salary Calculator 2026 — Take Home Pay After Tax (10 Countries) | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free salary calculator for 10 countries. See your take-home pay after income tax and social contributions. Includes official tax authority links.'

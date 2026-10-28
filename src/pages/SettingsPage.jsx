@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { User, Mail, Lock, Crown, Bell, Palette, Globe, Clock, Shield, Trash2, Save, Loader2, CheckCircle2, AlertCircle, Download, Camera, Upload } from "lucide-react"
+import { setPageMeta } from '../lib/seo';
 
 export default function SettingsPage() {
   const navigate = useNavigate()
@@ -31,6 +32,7 @@ export default function SettingsPage() {
   const [newEmail, setNewEmail] = useState('')
 
   useEffect(() => {
+    setPageMeta();
     if (profile) {
       setFullName(profile.full_name || '')
       setTimezone(profile.timezone || 'UTC')

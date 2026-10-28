@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 import { Link } from 'react-router-dom'
 import { Home, ArrowRight, TrendingUp, Building2, Globe, Calculator, Sparkles, Shield, Zap, CheckCircle2, Star } from 'lucide-react'
 
@@ -21,6 +23,11 @@ const FEATURED = [
 ]
 
 export default function MortgageHubPage() {
+
+  useEffect(() => {
+    document.title = 'Mortgage Hub | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-7xl">
 

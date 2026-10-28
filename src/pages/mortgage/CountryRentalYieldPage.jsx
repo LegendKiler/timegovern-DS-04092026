@@ -5,6 +5,7 @@ import RentalYieldCalculator from '../../components/mortgage/RentalYieldCalculat
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
 import CalculatorSidebar from '../../components/mortgage/CalculatorSidebar'
+import { setPageMeta } from '../../lib/seo';
 
 // ============================================================
 // COUNTRY META — currency, region, benchmarks, SEO content
@@ -327,6 +328,7 @@ export default function CountryRentalYieldPage() {
   const meta = COUNTRY_META[slug]
 
   useEffect(() => {
+    setPageMeta();
     if (meta) {
       document.title = meta.name + ' Rental Yield Calculator 2026 — Investment Property Analysis | TimeGovern'
       const desc = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })

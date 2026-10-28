@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Briefcase, MapPin, DollarSign, Clock, ExternalLink, Building2, FileCheck } from "lucide-react"
 
@@ -145,6 +147,11 @@ const jobs = [
 ]
 
 export default function JobsPage() {
+
+  useEffect(() => {
+    document.title = 'Jobs | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl mb-6">

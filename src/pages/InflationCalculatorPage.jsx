@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InflationCalculator from '../components/calculators/InflationCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function InflationCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Inflation Calculator — Historical Value of Money by Country | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'See what any amount of money is worth after inflation. Uses live World Bank CPI data for 40+ countries. Free online inflation calculator.'

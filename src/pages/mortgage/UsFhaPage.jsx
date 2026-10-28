@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsFha from '../../components/mortgage/us/UsFha'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsFhaPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'FHA Loan Calculator 2026 — 3.5% Down + MIP | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'FHA loan calculator with 3.5% down, 1.75% upfront MIP, and 0.55% annual MIP. For credit scores 580+.'

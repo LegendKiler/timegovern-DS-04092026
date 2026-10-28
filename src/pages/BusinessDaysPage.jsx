@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import BusinessDaysCalculator from '../components/calculators/BusinessDaysCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function BusinessDaysPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Business Days Calculator — Working Days Between Two Dates | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate working days between two dates, excluding weekends and public holidays. Supports 15+ countries. Free online business days calculator.'

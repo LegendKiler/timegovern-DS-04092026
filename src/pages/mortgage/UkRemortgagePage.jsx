@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UkRemortgage from '../../components/mortgage/uk/UkRemortgage'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UkRemortgagePage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Remortgage Calculator UK — Break-Even on Switching | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'UK remortgage calculator. See monthly savings, break-even point, and lifetime savings when switching mortgage deals.'

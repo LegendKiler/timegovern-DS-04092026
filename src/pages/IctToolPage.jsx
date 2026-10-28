@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input'
 import { getToolBySlug } from '../data/ictTools'
 import { FaqItem, RelatedMortgageTools } from '../components/mortgage/MortgageLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function IctToolPage() {
   const { slug } = useParams()
@@ -21,6 +22,7 @@ export default function IctToolPage() {
 
   // Reset state when tool changes
   useEffect(() => {
+    setPageMeta();
     if (!tool) return
     // Initialize field defaults
     const init = {}

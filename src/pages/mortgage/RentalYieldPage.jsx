@@ -4,9 +4,11 @@ import { ArrowLeft } from 'lucide-react'
 import RentalYieldCalculator from '../../components/mortgage/RentalYieldCalculator'
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
+import { setPageMeta } from '../../lib/seo';
 
 export default function RentalYieldPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Investment Property Calculator 2026 Ã¢€\u201d Rental Yield, Cash Flow & DSCR | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free investment property calculator Ã¢€\u201d gross rental yield, net yield, cash flow, DSCR, cap rate, and 10-year projection. Works for any country.'

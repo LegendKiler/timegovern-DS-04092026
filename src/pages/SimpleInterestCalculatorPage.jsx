@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import SimpleInterestCalculator from '../components/calculators/SimpleInterestCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function SimpleInterestCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Simple Interest Calculator — I = PRT Formula | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate simple interest using the I = PRT formula. Find total interest, final amount, and rate for any principal, rate, and time period.'

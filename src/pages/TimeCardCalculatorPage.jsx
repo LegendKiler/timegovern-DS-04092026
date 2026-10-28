@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import TimeCardCalculator from '../components/calculators/TimeCardCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function TimeCardCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Time Card Calculator — Weekly Hours & Payroll Calculator | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free time card calculator — enter weekly hours, automatically total hours worked and estimate pay based on your hourly rate.'

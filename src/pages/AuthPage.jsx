@@ -1,12 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Mail, Lock, Loader2, AlertCircle, CheckCircle2, Crown, Sparkles, Zap, Shield, Eye, EyeOff, Check, X } from "lucide-react"
+import { setPageMeta } from '../lib/seo';
 
 export default function AuthPage() {
+
+  useEffect(() => {
+    document.title = 'Auth | TimeGovern';
+    setPageMeta();
+  }, []);
   const navigate = useNavigate()
   const { signIn, signUp, resetPassword } = useAuth()
   const [mode, setMode] = useState('login')

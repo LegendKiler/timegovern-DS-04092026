@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../../lib/seo';
 import { Link } from 'react-router-dom'
 import { Home, ArrowRight, TrendingUp, Building2, Percent, RefreshCw, Key, Gift, Wallet } from 'lucide-react'
 import CountryFlag from '../../components/CountryFlag'
@@ -16,6 +18,11 @@ const TOOLS = [
 ]
 
 export default function UkMortgagePage() {
+
+  useEffect(() => {
+    document.title = 'United Kingdom Mortgage Calculators | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-7xl">
       <div className="relative overflow-hidden rounded-3xl mb-10 shadow-2xl">

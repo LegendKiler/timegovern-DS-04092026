@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import LmiCalculator from '../../components/mortgage/LmiCalculator'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function LmiCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'LMI Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Australian Lenders Mortgage Insurance calculator. See your LMI premium based on property price and deposit.'

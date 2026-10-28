@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import SplitLoan from '../../components/mortgage/SplitLoan'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function SplitLoanPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Split Loan Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Australian split loan calculator. Compare fixed vs variable rate portions with a blended repayment.'

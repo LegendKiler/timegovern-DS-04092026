@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import TimeDurationCalculator from '../components/calculators/TimeDurationCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function TimeDurationPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Time Duration Calculator — Add, Subtract & Measure Time | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate the duration between two times, or add and subtract hours, minutes, and seconds. Free online time duration calculator.'

@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Lock, Loader2, AlertCircle, CheckCircle2, Shield, Eye, EyeOff, Check, X } from "lucide-react"
+import { setPageMeta } from '../lib/seo';
 
 export default function ResetPassword() {
   const navigate = useNavigate()
@@ -28,6 +29,7 @@ export default function ResetPassword() {
   const allValid = rules.every(rule => rule.test(password))
 
   useEffect(() => {
+    setPageMeta();
     // Supabase sends a code in the URL hash; SDK picks it up automatically
     // No action needed — session is established when user lands here
   }, [])

@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UkInterestOnly from '../../components/mortgage/uk/UkInterestOnly'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UkInterestOnlyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Interest-Only Mortgage Calculator UK | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'UK interest-only mortgage calculator. Compare IO payments with the higher P&I repayment after the interest-only period.'

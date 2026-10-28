@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InTaxBenefit from '../../components/mortgage/in/InTaxBenefit'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function InTaxBenefitPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Home Loan Tax Benefit Calculator India 2026 | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate Indian home loan tax savings. Section 24(b) interest up to ₹2L, Section 80C principal up to ₹1.5L.'

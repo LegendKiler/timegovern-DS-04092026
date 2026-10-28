@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsPmi from '../../components/mortgage/us/UsPmi'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsPmiPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'PMI Calculator — Private Mortgage Insurance Cost | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate your monthly PMI cost based on down payment, LVR, and credit score. Typical rates 0.5-1.5% of loan amount.'

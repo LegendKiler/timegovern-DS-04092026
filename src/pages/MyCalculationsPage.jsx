@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Loader2, Trash2, AlertCircle, Calculator, Crown, ExternalLink, Home, Landmark, Coins, Clock, FileText, Calendar, Save, Pencil, Check, X, Percent, TrendingUp } from 'lucide-react'
+import { setPageMeta } from '../lib/seo';
 
 const TYPE_LABELS = {
   mortgage: { label: 'Mortgage', icon: Home, gradient: 'from-emerald-500 to-teal-500' },
@@ -88,6 +89,7 @@ export default function MyCalculationsPage() {
   const [savingName, setSavingName] = useState(false)
 
   useEffect(() => {
+    setPageMeta();
     if (!user) { setLoading(false); return }
     load()
   }, [user])

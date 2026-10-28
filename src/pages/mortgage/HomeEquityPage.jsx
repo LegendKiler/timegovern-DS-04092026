@@ -4,9 +4,11 @@ import { ArrowLeft } from 'lucide-react'
 import HomeEquityCalculator from '../../components/mortgage/HomeEquityCalculator'
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
+import { setPageMeta } from '../../lib/seo';
 
 export default function HomeEquityPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Home Equity Calculator 2026 — How Much Can You Borrow? | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free home equity calculator. Find your tappable equity, compare HELOC vs home equity loan vs cash-out refinance, and see 15-year equity growth with country-specific tax rules.'

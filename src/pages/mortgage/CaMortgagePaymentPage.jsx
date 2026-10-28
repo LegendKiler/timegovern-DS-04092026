@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import CaMortgagePayment from '../../components/mortgage/ca/CaMortgagePayment'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function CaMortgagePaymentPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Canadian Mortgage Payment Calculator 2026 — Semi-Annual Compounding | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free Canadian mortgage calculator with semi-annual compounding, CMHC insurance, and accelerated bi-weekly payment comparison.'

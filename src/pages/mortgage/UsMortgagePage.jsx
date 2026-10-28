@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsMortgageAmortization from '../../components/mortgage/us/UsMortgageAmortization'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsMortgagePage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'US Mortgage Calculator 2026 — PITI & Amortization | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free US mortgage calculator with PITI breakdown, PMI, taxes, insurance, and full amortization schedule. 2026 rates.'

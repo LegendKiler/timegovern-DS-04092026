@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import GpaCalculator from '../components/calculators/GpaCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function GpaCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'GPA Calculator — Calculate Grade Point Average (4.0 Scale) | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate your GPA on the 4.0 scale. Add courses, credits, and letter grades to see your cumulative grade point average instantly.'

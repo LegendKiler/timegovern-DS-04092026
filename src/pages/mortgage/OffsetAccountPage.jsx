@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import OffsetAccount from '../../components/mortgage/OffsetAccount'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function OffsetAccountPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Offset Account Calculator Australia — Interest Savings | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Australian offset account calculator. See how much interest you save and how many years you shave off your home loan with an offset balance.'

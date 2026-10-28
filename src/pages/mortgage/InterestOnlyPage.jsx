@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InterestOnly from '../../components/mortgage/InterestOnly'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function InterestOnlyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Interest-Only Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Australian interest-only home loan calculator. Compare IO payments with P&I repayments after the IO period.'

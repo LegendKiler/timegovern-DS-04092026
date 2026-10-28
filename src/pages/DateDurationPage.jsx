@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import DateDurationCalculator from '../components/calculators/DateDurationCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function DateDurationPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Date Duration Calculator — Exact Time Between Two Dates | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate the exact duration between two dates and times — years, months, days, hours, minutes, and seconds. Free online date duration calculator.'

@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Check, X, Star, Zap, Crown } from "lucide-react"
@@ -92,6 +94,11 @@ const plans = [
 ]
 
 export default function PricingPage() {
+
+  useEffect(() => {
+    document.title = 'Pricing | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-7xl">
       {/* Header */}

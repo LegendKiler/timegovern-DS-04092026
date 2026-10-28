@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import CaRenewal from '../../components/mortgage/ca/CaRenewal'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function CaRenewalPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Mortgage Renewal Calculator Canada 2026 — Payment Shock | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Canadian mortgage renewal calculator. See 2026 payment shock, extend amortization, and model options at renewal.'

@@ -5,6 +5,7 @@ import SellVsRefinanceCalculator from '../../components/mortgage/SellVsRefinance
 import SaveCalculation from '../../components/SaveCalculation'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent, MortgageBreadcrumb } from '../../components/mortgage/MortgageLayout'
 import CalculatorSidebar from '../../components/mortgage/CalculatorSidebar'
+import { setPageMeta } from '../../lib/seo';
 
 const COUNTRY_SVR = {
   australia: { name: 'Australia', currency: 'AUD', hub: 'australia', gradient: 'from-emerald-500 via-teal-500 to-cyan-500',
@@ -146,6 +147,7 @@ export default function CountrySellVsRefinancePage() {
   const meta = COUNTRY_SVR[slug]
 
   useEffect(() => {
+    setPageMeta();
     if (meta) {
       document.title = meta.name + ' Sell vs Refinance Calculator 2026 | TimeGovern'
       const desc = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })

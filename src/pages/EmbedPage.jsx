@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 import { useParams, useSearchParams } from 'react-router-dom'
 import AnalogClockWidget from '../components/widgets/AnalogClockWidget'
 import MultiCityWorldClockWidget from '../components/widgets/MultiCityWorldClockWidget'
@@ -10,6 +12,11 @@ import MoonPhaseWidget from '../components/widgets/MoonPhaseWidget'
 import CurrencyWidget from '../components/widgets/CurrencyWidget'
 
 export default function EmbedPage() {
+
+  useEffect(() => {
+    document.title = 'Embed | TimeGovern';
+    setPageMeta();
+  }, []);
   const { type } = useParams()
   const [params] = useSearchParams()
 

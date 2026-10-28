@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import RoiCalculator from '../components/calculators/RoiCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function RoiCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'ROI Calculator — Return on Investment with CAGR | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Calculate return on investment (ROI) and compound annual growth rate (CAGR) from any initial and final value. Free, instant, no signup.'

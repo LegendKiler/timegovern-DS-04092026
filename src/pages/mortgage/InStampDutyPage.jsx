@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InStampDuty from '../../components/mortgage/in/InStampDuty'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function InStampDutyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Stamp Duty Calculator India 2026 — All States | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Indian stamp duty and registration charges for all states. Maharashtra, Delhi, Karnataka, Tamil Nadu, UP, and more.'

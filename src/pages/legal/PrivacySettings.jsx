@@ -1,10 +1,16 @@
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import { useUser } from '../../context/UserContext'
 import { Button } from "@/components/ui/button"
 import { Switch } from "@/components/ui/switch" // Ensure Switch component exists; otherwise use simple checkbox
+import { setPageMeta } from '../../lib/seo';
 
 export default function PrivacySettings() {
+
+  useEffect(() => {
+    document.title = 'Privacy Settings | TimeGovern';
+    setPageMeta();
+  }, []);
   const { settings, updateSettings } = useUser()
   const [cookies, setCookies] = useState(true)
   const [analytics, setAnalytics] = useState(true)

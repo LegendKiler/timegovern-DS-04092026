@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Copy, Check, Trash2, Code2, Loader2, Plus, Crown, Clock, Calendar, Cloud, Moon, Timer, AlertCircle } from 'lucide-react'
+import { setPageMeta } from '../lib/seo';
 
 const ICONS = { clock: Clock, digital: Clock, countdown: Timer, weather: Cloud, 'days-until': Calendar, moon: Moon }
 const GRADIENTS = {
@@ -45,6 +46,7 @@ export default function MyWidgetsPage() {
   const [error, setError] = useState('')
 
   useEffect(() => {
+    setPageMeta();
     if (!user) { setLoading(false); return }
     load()
   }, [user])

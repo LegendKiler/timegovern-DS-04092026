@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Plane, Car, Calendar, MapPin, Trash2, Download, Loader2, AlertCircle, ExternalLink, Clock, Filter, Award, Hash, Sparkles, TrendingUp } from 'lucide-react'
 import { downloadCarVoucher } from '../components/CarBookingPdf'
 import { downloadFlightVoucher } from '../components/FlightBookingPdf'
+import { setPageMeta } from '../lib/seo';
 
 export default function MyBookingsPage() {
   const navigate = useNavigate()
@@ -16,6 +17,7 @@ export default function MyBookingsPage() {
   const [error, setError] = useState('')
 
   useEffect(() => {
+    setPageMeta();
     if (!user) { setLoading(false); return }
     loadBookings()
   }, [user])

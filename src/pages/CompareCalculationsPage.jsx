@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Loader2, AlertCircle, Calculator, ArrowLeft, CheckSquare, Square, TrendingUp, TrendingDown } from 'lucide-react'
+import { setPageMeta } from '../lib/seo';
 
 // Format a value for display in the comparison table
 function formatValue(val) {
@@ -41,6 +42,7 @@ export default function CompareCalculationsPage() {
   const [selectedIds, setSelectedIds] = useState([])
 
   useEffect(() => {
+    setPageMeta();
     if (!user) { setLoading(false); return }
     load()
   }, [user])

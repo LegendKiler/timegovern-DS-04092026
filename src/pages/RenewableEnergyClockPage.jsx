@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 import MetricPage from '../components/worldometers/MetricPage'
 import { WORLD_RATES } from '../data/worldRates'
 
@@ -26,5 +28,10 @@ const RELATED = [
 ]
 
 export default function RenewableEnergyClockPage() {
+
+  useEffect(() => {
+    document.title = 'Renewable Energy Clock | TimeGovern';
+    setPageMeta();
+  }, []);
   return <MetricPage metric={metric} explainers={EXPLAINERS} faqs={FAQS} related={RELATED} />
 }

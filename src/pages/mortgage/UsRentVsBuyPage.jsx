@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UsRentVsBuy from '../../components/mortgage/us/UsRentVsBuy'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function UsRentVsBuyPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Rent vs Buy Calculator — US Home Buying Decision | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'US rent vs buy calculator. Compare home equity, appreciation, and net cost over 5, 7, or 10 years.'

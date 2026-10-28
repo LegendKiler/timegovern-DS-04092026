@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import UnixTimestampConverter from '../components/calculators/UnixTimestampConverter'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function UnixTimestampPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Unix Timestamp Converter — Epoch Time to Date | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Convert Unix timestamps to human-readable dates, or convert any date to a Unix epoch timestamp. Free, instant, works offline.'

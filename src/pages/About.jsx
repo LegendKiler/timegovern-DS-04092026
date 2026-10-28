@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 ﻿import { Card, CardContent } from "@/components/ui/card"
 import { Link } from "react-router-dom"
 import { Globe2, Users, CalendarDays, Rocket, MapPin, Mail, Phone } from "lucide-react"
 
 export default function About() {
+
+  useEffect(() => {
+    document.title = 'About | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-6xl">
       {/* Hero / Mission */}

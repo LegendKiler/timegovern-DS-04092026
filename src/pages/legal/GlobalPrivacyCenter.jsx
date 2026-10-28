@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../../lib/seo';
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link } from "react-router-dom"
 import { ShieldCheck, FileText, Scale, Cpu, Globe2 } from "lucide-react"
@@ -12,6 +14,11 @@ const regions = [
 ]
 
 export default function GlobalPrivacyCenter() {
+
+  useEffect(() => {
+    document.title = 'Global Privacy Center | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-6xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl mb-6">

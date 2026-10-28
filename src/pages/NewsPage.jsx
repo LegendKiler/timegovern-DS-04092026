@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { Newspaper, Sparkles } from 'lucide-react'
 import NewsFeed from '../components/NewsFeed'
+import { setPageMeta } from '../lib/seo';
 
 export default function NewsPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Live News 2026 — Business, Tech, Sports & World | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Live news from around the world. Business, technology, sports, health, science, entertainment. Updated in real time.'

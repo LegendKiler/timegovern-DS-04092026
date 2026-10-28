@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../lib/seo';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link } from "react-router-dom"
 
@@ -5460,6 +5462,11 @@ const pages = [
 ]
 
 export default function SiteMap() {
+
+  useEffect(() => {
+    document.title = 'Site Map | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4">
       <Card>

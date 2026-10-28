@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import NovatedLease from '../../components/mortgage/NovatedLease'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function NovatedLeasePage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Novated Lease Calculator Australia | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Australian novated lease calculator with FBT, ECM, and ATO residual values. Calculate your pre-tax car salary packaging.'

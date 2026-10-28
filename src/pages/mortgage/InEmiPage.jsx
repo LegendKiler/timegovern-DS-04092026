@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import InEmi from '../../components/mortgage/in/InEmi'
 import { MortgageHero, FaqItem, RelatedMortgageTools, MortgageSeoContent } from '../../components/mortgage/MortgageLayout'
 import SaveCalculation from '../../components/SaveCalculation'
+import { setPageMeta } from '../../lib/seo';
 
 export default function InEmiPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Home Loan EMI Calculator India 2026 | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free Indian home loan EMI calculator. Monthly EMI with full amortization schedule. 2026 rates for SBI, HDFC, ICICI.'

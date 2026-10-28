@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { HOLIDAY_COUNTRIES_BY_REGION, REGION_ORDER } from '../data/countryCodes'
+import { setPageMeta } from '../lib/seo';
 
 export default function HolidaysHubPage() {
+
+  useEffect(() => {
+    document.title = 'Public Holidays | TimeGovern';
+    setPageMeta();
+  }, []);
   const currentYear = new Date().getFullYear()
   const [year, setYear] = useState(currentYear)
   const [q, setQ] = useState('')

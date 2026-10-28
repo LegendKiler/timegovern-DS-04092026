@@ -1,8 +1,15 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../../lib/seo';
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link } from "react-router-dom"
 import { Shield, Cpu, FileText, Globe2 } from "lucide-react"
 
 export default function GlobalAIPolicy() {
+
+  useEffect(() => {
+    document.title = 'Global AIPolicy | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-4xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl mb-6">

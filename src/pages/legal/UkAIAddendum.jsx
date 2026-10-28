@@ -1,6 +1,13 @@
+import { useEffect } from 'react';
+import { setPageMeta } from '../../lib/seo';
 ﻿import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default function UkAIAddendum() {
+
+  useEffect(() => {
+    document.title = 'UK AI Addendum | TimeGovern';
+    setPageMeta();
+  }, []);
   return (
     <div className="container mx-auto p-4 max-w-3xl">
       <Card className="bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">

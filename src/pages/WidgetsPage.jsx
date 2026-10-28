@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom'
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -13,6 +13,7 @@ import WeatherWidget from '../components/widgets/WeatherWidget'
 import DaysUntilWidget from '../components/widgets/DaysUntilWidget'
 import MoonPhaseWidget from '../components/widgets/MoonPhaseWidget'
 import InfoTooltip from '../components/widgets/InfoTooltip'
+import { setPageMeta } from '../lib/seo';
 
 const BASE = typeof window !== 'undefined' ? window.location.origin : 'https://timegovern.com'
 
@@ -226,6 +227,11 @@ function WidgetCard({ widget, isPro, isUserPro }) {
 }
 
 export default function WidgetsPage() {
+
+  useEffect(() => {
+    document.title = 'Widgets | TimeGovern';
+    setPageMeta();
+  }, []);
   const { user, premiumTier } = useAuth()
   const isUserPro = premiumTier === 'pro' || premiumTier === 'premium'
 

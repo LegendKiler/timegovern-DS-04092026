@@ -2,9 +2,11 @@ import { useEffect } from 'react'
 import HoursCalculator from '../components/calculators/HoursCalculator'
 import { PageHero, FaqItem, RelatedTools, SeoContent } from '../components/calculators/SeoLayout'
 import SaveCalculation from '../components/SaveCalculation'
+import { setPageMeta } from '../lib/seo';
 
 export default function HoursCalculatorPage() {
   useEffect(() => {
+    setPageMeta();
     document.title = 'Hours Calculator — Calculate Work Hours, Time Between Times | TimeGovern'
     const meta = document.querySelector('meta[name="description"]') || Object.assign(document.createElement('meta'), { name: 'description' })
     meta.content = 'Free hours calculator — add or subtract work hours, calculate time between two times, and total daily or weekly work hours instantly.'

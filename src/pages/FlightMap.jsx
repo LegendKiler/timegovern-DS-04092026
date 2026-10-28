@@ -1,104 +1,148 @@
-import { useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Globe, Plane, Search, Radio, AlertCircle } from "lucide-react"
+import { useState, useEffect } from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+import { setPageMeta } from '../lib/seo';
+
+// Fix for default Leaflet marker icons in React
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+});
+
+// Custom plane icon
+const planeIcon = new L.Icon({
+  iconUrl: 'https://cdn-icons-png.flaticon.com/512/7893/7893979.png',
+  iconSize: [24, 24],
+  iconAnchor: [12, 12],
+});
 
 export default function FlightMap() {
-  const [icao, setIcao] = useState('')
-  const [mapUrl, setMapUrl] = useState('https://globe.adsb.lol/?hideSideBar&zoom=4')
+  const [planes, setPlanes] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [mapCenter, setMapCenter] = useState([51.5074, -0.1278]); // Default London
+  const [mapZoom, setMapZoom] = useState(6);
 
-  const searchByIcao = () => {
-    const query = icao.trim().toLowerCase()
-    if (!query) return
-    setMapUrl('https://globe.adsb.lol/?icao=' + query + '&hideSideBar&zoom=8')
-  }
+  useEffect(() => {
+    setPageMeta();
+    const fetchPlanes = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        // Using adsb.lol - a free, CORS-friendly API (Fetches planes within 250nm of London)
+        const res = await fetch('https://api.adsb.lol/v2/point/51.5074/-0.1278/250');
+        
+        if (!res.ok) throw new Error(`API error: ${res.status}`);
+        
+        const data = await res.json();
+        
+        if (data.ac && Array.isArray(data.ac)) {
+          const validPlanes = data.ac.filter(p => p.lat && p.lon);
+          setPlanes(validPlanes);
+        } else {
+          setPlanes([]);
+        }
+      } catch (err) {
+        console.error("Flight fetch failed:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const setView = (type) => {
-    if (type === 'world') setMapUrl('https://globe.adsb.lol/?hideSideBar&zoom=3')
-    else if (type === 'australia') setMapUrl('https://globe.adsb.lol/?hideSideBar&lat=-25.27&lon=133.77&zoom=5')
-    else if (type === 'europe') setMapUrl('https://globe.adsb.lol/?hideSideBar&lat=50&lon=10&zoom=5')
-    else if (type === 'usa') setMapUrl('https://globe.adsb.lol/?hideSideBar&lat=39&lon=-98&zoom=5')
-    else if (type === 'asia') setMapUrl('https://globe.adsb.lol/?hideSideBar&lat=25&lon=110&zoom=4')
-  }
+    fetchPlanes();
+    const interval = setInterval(fetchPlanes, 15000); // Update every 15 seconds
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    const hex = e.target.elements.hex.value.toUpperCase().trim();
+    if (!hex) return;
+    
+    const found = planes.find(p => p.hex.toUpperCase() === hex);
+    if (found) {
+      setMapCenter([found.lat, found.lon]);
+      setMapZoom(9);
+    } else {
+      alert(`Aircraft ${hex} not found in the current live data.`);
+    }
+  };
 
   return (
-    <div className="container mx-auto p-4 max-w-7xl">
-      <Card className="mb-4 bg-gradient-to-br from-primary/10 via-card to-secondary/10 border-border shadow-xl">
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2 text-2xl">
-            <Globe className="h-6 w-6" /> Live World Flight Map
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground mb-4">
-            Watch aircraft move in real time across the world. Filter by region or jump to a specific aircraft by its ICAO24 hex code.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-2 mb-4">
-            <Input
-              placeholder="ICAO24 hex (e.g., 896448)"
-              value={icao}
-              onChange={(e) => setIcao(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && searchByIcao()}
-              className="flex-1"
-            />
-            <Button onClick={searchByIcao}>
-              <Search className="mr-2 h-4 w-4" /> Find Aircraft
-            </Button>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            <Button variant="outline" size="sm" onClick={() => setView('world')}>🌍 World</Button>
-            <Button variant="outline" size="sm" onClick={() => setView('australia')}>🇦🇺 Australia</Button>
-            <Button variant="outline" size="sm" onClick={() => setView('europe')}>🇪🇺 Europe</Button>
-            <Button variant="outline" size="sm" onClick={() => setView('usa')}>🇺🇸 USA</Button>
-            <Button variant="outline" size="sm" onClick={() => setView('asia')}>🌏 Asia</Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card className="bg-card/80 backdrop-blur-sm border-border shadow-xl overflow-hidden">
-        <CardContent className="p-0">
-          <iframe
-            src={mapUrl}
-            className="w-full border-0"
-            style={{ height: '650px' }}
-            title="Live aircraft map"
-            allow="fullscreen"
+    <div style={{ maxWidth: '1200px', margin: '40px auto', padding: '20px', color: '#e2e8f0', fontFamily: 'system-ui, sans-serif' }}>
+      
+      <div style={{ marginBottom: '20px', background: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
+        <h1 style={{ fontSize: '1.8rem', marginBottom: '10px' }}>
+          Live World Flight Map
+        </h1>
+        <p style={{ color: '#94a3b8', marginBottom: '20px' }}>
+          Watch aircraft move in real time. Filter by ICAO24 hex code.
+        </p>
+        
+        <form onSubmit={handleSearch} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+          <input 
+            name="hex"
+            placeholder="ICAO24 hex (e.g., 896448)" 
+            style={{ flex: 1, minWidth: '250px', padding: '12px', borderRadius: '6px', border: '1px solid #475569', background: '#0f172a', color: 'white' }}
           />
-        </CardContent>
-      </Card>
-
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card className="bg-card/80">
-          <CardContent className="p-4 flex items-start gap-3">
-            <Plane className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-sm">Real-time positions</p>
-              <p className="text-xs text-muted-foreground">Aircraft positions update every few seconds from the community ADS-B network.</p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-card/80">
-          <CardContent className="p-4 flex items-start gap-3">
-            <Radio className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-sm">Worldwide coverage</p>
-              <p className="text-xs text-muted-foreground">Millions of aircraft transmissions received daily across 250+ countries.</p>
-            </div>
-          </CardContent>
-        </Card>
-        <Card className="bg-card/80">
-          <CardContent className="p-4 flex items-start gap-3">
-            <AlertCircle className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-            <div>
-              <p className="font-semibold text-sm">Coverage varies</p>
-              <p className="text-xs text-muted-foreground">Some regions may show fewer aircraft depending on receiver density.</p>
-            </div>
-          </CardContent>
-        </Card>
+          <button type="submit" style={{ padding: '12px 24px', background: '#3b82f6', color: 'white', border: 'none', borderRadius: '6px', cursor: 'pointer', fontWeight: 'bold' }}>
+            Find Aircraft
+          </button>
+        </form>
       </div>
+
+      <div style={{ height: '600px', borderRadius: '8px', overflow: 'hidden', border: '1px solid #334155', position: 'relative' }}>
+        {loading && planes.length === 0 && (
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(15, 23, 42, 0.8)', zIndex: 1000, display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'white', fontSize: '1.2rem' }}>
+            Connecting to live flight network...
+          </div>
+        )}
+        
+        {error && (
+          <div style={{ position: 'absolute', top: '20px', left: '50%', transform: 'translateX(-50%)', background: '#ef4444', color: 'white', padding: '12px 24px', borderRadius: '6px', zIndex: 1000, fontWeight: 'bold' }}>
+            {error}
+          </div>
+        )}
+        
+        <MapContainer center={mapCenter} zoom={mapZoom} style={{ height: '100%', width: '100%' }}>
+          <TileLayer
+            url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+            attribution='&copy; <a href="https://carto.com/">CARTO</a>'
+          />
+          {planes.map((plane) => (
+            <Marker key={plane.hex} position={[plane.lat, plane.lon]} icon={planeIcon}>
+              <Popup>
+                <div style={{ color: '#000', fontFamily: 'sans-serif' }}>
+                  <strong>Flight: {plane.flight ? plane.flight.trim() : 'Unknown'}</strong><br/>
+                  Hex Code: {plane.hex}<br/>
+                  Altitude: {plane.alt_baro || 'N/A'} ft<br/>
+                  Speed: {plane.gs || 'N/A'} kts
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      </div>
+      
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '20px' }}>
+        <div style={{ background: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
+          <h3 style={{ color: 'white', marginBottom: '10px' }}>Real-time positions</h3>
+          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Aircraft positions update every few seconds from the community ADS-B network.</p>
+        </div>
+        <div style={{ background: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
+          <h3 style={{ color: 'white', marginBottom: '10px' }}>Worldwide coverage</h3>
+          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Millions of aircraft transmissions received daily across 250+ countries.</p>
+        </div>
+        <div style={{ background: '#1e293b', padding: '20px', borderRadius: '8px', border: '1px solid #334155' }}>
+          <h3 style={{ color: 'white', marginBottom: '10px' }}>Coverage varies</h3>
+          <p style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Some regions may show fewer aircraft depending on receiver density.</p>
+        </div>
+      </div>
+
     </div>
-  )
+  );
 }
