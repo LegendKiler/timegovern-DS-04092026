@@ -483,6 +483,15 @@ const AdvertisingPolicy = lazy(() => import('./pages/legal/AdvertisingPolicy'))
 const Disclaimer = lazy(() => import('./pages/legal/Disclaimer'))
 const TermsConditions = lazy(() => import('./pages/legal/TermsConditions'))
 const PrivacySettings = lazy(() => import('./pages/legal/PrivacySettings'))
+const AfricaPrivacy = lazy(() => import('./pages/legal/AfricaPrivacy'))
+const IndiaPrivacy = lazy(() => import('./pages/legal/IndiaPrivacy'))
+const SingaporePrivacy = lazy(() => import('./pages/legal/SingaporePrivacy'))
+const LatinAmericaPrivacy = lazy(() => import('./pages/legal/LatinAmericaPrivacy'))
+const MiddleEastPrivacy = lazy(() => import('./pages/legal/MiddleEastPrivacy'))
+const SouthAsiaPrivacy = lazy(() => import('./pages/legal/SouthAsiaPrivacy'))
+const UsPrivacy = lazy(() => import('./pages/legal/UsPrivacy'))
+const UsPrivacyState = lazy(() => import('./pages/legal/UsPrivacyState'))
+const AsiaPacificPrivacy = lazy(() => import('./pages/legal/AsiaPacificPrivacy'))
 
 function LanguageDetector() {
   const { setLocale } = useAutoTranslate()
@@ -892,6 +901,15 @@ function AppRoutes() {
         <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/terms" element={<TermsConditions />} />
         <Route path="/privacy-settings" element={<PrivacySettings />} />
+        <Route path="/africa-privacy" element={<AfricaPrivacy />} />
+        <Route path="/india-privacy" element={<IndiaPrivacy />} />
+        <Route path="/singapore-privacy" element={<SingaporePrivacy />} />
+        <Route path="/latin-america-privacy" element={<LatinAmericaPrivacy />} />
+        <Route path="/middle-east-privacy" element={<MiddleEastPrivacy />} />
+        <Route path="/south-asia-privacy" element={<SouthAsiaPrivacy />} />
+        <Route path="/us-privacy" element={<UsPrivacy />} />
+        <Route path="/us-privacy-state" element={<UsPrivacyState />} />
+        <Route path="/asia-pacific-privacy" element={<AsiaPacificPrivacy />} />
       
         <Route path="/blog/germany-income-tax-brackets" element={<GermanyTaxBracketsPage />} />
         <Route path="/blog/germany-take-home-pay" element={<GermanyTakeHomePayPage />} />

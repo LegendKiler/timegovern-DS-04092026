@@ -1123,4 +1123,58 @@
   <url><loc>https://timegovern.com/compare/co2-emissions</loc></url>
   <url><loc>https://timegovern.com/compare/energy</loc></url>
   <url><loc>https://timegovern.com/compare/water</loc></url>
+<url>
+  <loc>https://timegovern.com/africa-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/india-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/singapore-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/latin-america-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/middle-east-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/south-asia-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/us-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/us-privacy-state</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>https://timegovern.com/asia-pacific-privacy</loc>
+  <lastmod>2026-10-29</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.6</priority>
+</url>
 </urlset>
