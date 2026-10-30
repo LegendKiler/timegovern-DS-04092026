@@ -14,7 +14,8 @@
     "test:calc": "node scripts/test-calculators.mjs",
         "predev": "node scripts/prebuild.mjs",
         "sitemap:blog": "node tools/patch-sitemap-blog.mjs",
-        "prebuild": "node scripts/prebuild.mjs && node tools/check-sitemap-coverage.mjs --strict"
+        "prebuild": "node scripts/prebuild.mjs && node tools/check-sitemap-coverage.mjs --strict",
+        "postbuild": "node scripts/prerender.mjs --all"
     },
     "dependencies": {
         "@dnd-kit/core": "^6.1.0",
